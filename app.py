@@ -395,7 +395,15 @@ def _init_f3():
     ir_a(ETAPA_F3)
 
 
-# ── FASE 3 — preguntas 1-3 adaptativas ───────────────────────────
+# ── FASE 3 — valores y contexto (escala bipolar) ─────────────────
+_BIPOLAR_LABELS = {
+    1: "Totalmente ←",
+    2: "Más bien ←",
+    3: "Me da igual",
+    4: "Más bien →",
+    5: "Totalmente →",
+}
+
 def pantalla_f3():
     render_header(is_quiz=True)
     preguntas = st.session_state["orden"]
@@ -407,15 +415,32 @@ def pantalla_f3():
 
     st.markdown(f"##### Fase 3 — Pregunta {idx + 1} de {total}")
     with st.container(key="quiz_question"):
-        st.markdown(f"### {q['texto']}")
+        st.markdown(f"### {q['pregunta']}")
+    st.markdown("&nbsp;")
+
+    # Polos en columnas para contexto visual
+    col_a, col_mid, col_b = st.columns([5, 1, 5])
+    with col_a:
+        st.markdown(
+            f"<div style='padding:0.6rem 0.9rem;border:2px solid var(--ink);"
+            f"border-radius:8px;background:var(--card);font-size:0.92rem;"
+            f"text-align:center;'>← {q['polo_a']}</div>",
+            unsafe_allow_html=True,
+        )
+    with col_b:
+        st.markdown(
+            f"<div style='padding:0.6rem 0.9rem;border:2px solid var(--ink);"
+            f"border-radius:8px;background:var(--card);font-size:0.92rem;"
+            f"text-align:center;'>{q['polo_b']} →</div>",
+            unsafe_allow_html=True,
+        )
     st.markdown("&nbsp;")
 
     prev = resp_f3.get(q["id"])
-    opts = [1, 2, 3]
-    labels = {1: q["opt1"], 2: q["opt2"], 3: q["opt3"]}
+    opts = [1, 2, 3, 4, 5]
     sel = st.radio(
         "f3r", opts,
-        format_func=lambda v: labels[v],
+        format_func=lambda v: _BIPOLAR_LABELS[v],
         index=opts.index(prev) if prev is not None else None,
         horizontal=True,
         label_visibility="collapsed",
@@ -429,6 +454,9 @@ def pantalla_f3():
     if st.session_state.get("_err_idx") == idx:
         st.error("Seleccioná una opción para continuar.")
 
+    st.markdown('<div class="keyboard-hint">Teclas <strong>1–5</strong> · <strong>Enter</strong> para avanzar</div>',
+                unsafe_allow_html=True)
+
     if nueva:
         st.session_state.pop("_err_idx", None)
         if es_ultima:
@@ -441,7 +469,8 @@ def pantalla_f3():
               label_next="Ver resultados →" if es_ultima else "Siguiente →",
               on_next=lambda: _finalizar_completo() if es_ultima else _set_idx(idx + 1))
 
-    _barra(idx + 1, total, "Fase 3 · Afinando resultados")
+    _barra(idx + 1, total, "Fase 3 · Valores y contexto")
+    inyectar_navegacion_teclado(num_opciones=5)
 
 
 def _finalizar_completo():

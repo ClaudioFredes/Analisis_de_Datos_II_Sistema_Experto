@@ -206,20 +206,30 @@ def aplicar_boosts_f3(
     respuestas_f3: dict[str, int],
     preguntas_f3: list[dict],
 ) -> list[dict]:
-    """Aplica los boosts directos de Fase 3 sobre el ranking RIASEC.
+    """Aplica boosts de valores (Fase 3) sobre el ranking RIASEC.
 
-    Cada pregunta tiene boosts_1 y boosts_3 (dicts {career_id: float}).
-    Respuesta 2 (neutral) no genera boost. Los boosts se suman al score
-    de la carrera y el ranking se reordena. afinidad_pct se recalcula.
+    Cada pregunta tiene dos polos (polo_a y polo_b) con sus boosts.
+    La respuesta es una escala bipolar 1-5:
+        1 → polo_a al máximo   (factor = -1.0)
+        2 → polo_a moderado    (factor = -0.5)
+        3 → neutral            (factor =  0.0)
+        4 → polo_b moderado    (factor = +0.5)
+        5 → polo_b al máximo   (factor = +1.0)
+
+    Se aplica: boost = boosts_polo_x[carrera] * |factor|
     """
     boost_map: dict[str, float] = {}
     for q in preguntas_f3:
         resp = respuestas_f3.get(q["id"])
         if resp is None:
             continue
-        boosts = q.get(f"boosts_{resp}", {})
-        for cid, val in boosts.items():
-            boost_map[cid] = boost_map.get(cid, 0.0) + val
+        factor = (resp - 3) / 2.0   # rango [-1, 1]
+        if factor < 0:
+            for cid, val in q.get("boosts_polo_a", {}).items():
+                boost_map[cid] = boost_map.get(cid, 0.0) + val * abs(factor)
+        elif factor > 0:
+            for cid, val in q.get("boosts_polo_b", {}).items():
+                boost_map[cid] = boost_map.get(cid, 0.0) + val * factor
 
     result = []
     for c in ranking:

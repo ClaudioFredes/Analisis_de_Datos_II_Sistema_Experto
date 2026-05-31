@@ -2429,80 +2429,74 @@
         "preguntas": [
           {
             "id": "TF3_01",
-            "texto": "¿Preferís construir nuevas aplicaciones o analizar grandes volúmenes de datos?",
-            "opt1": "Construir aplicaciones",
-            "opt2": "Me da igual",
-            "opt3": "Analizar datos",
-            "boosts_1": {
-              "ingenieria_sistemas": 0.15,
-              "tec_programacion": 0.15,
-              "lic_computacion": 0.1
+            "pregunta": "¿Cómo preferís trabajar habitualmente?",
+            "polo_a": "Solo, con autonomía, en tareas técnicas profundas",
+            "polo_b": "En equipo, con comunicación y coordinación constante",
+            "boosts_polo_a": {
+              "ciberseguridad": 0.12,
+              "tec_programacion": 0.1,
+              "lic_computacion": 0.08
             },
-            "boosts_3": {
-              "ciencia_datos": 0.2,
-              "lic_computacion": 0.1
+            "boosts_polo_b": {
+              "tecnologias_digitales": 0.12,
+              "ingenieria_sistemas": 0.08
             }
           },
           {
             "id": "TF3_02",
-            "texto": "¿Te interesa más la seguridad informática o el desarrollo de software?",
-            "opt1": "Desarrollar software",
-            "opt2": "Me da igual",
-            "opt3": "Seguridad informática",
-            "boosts_1": {
-              "ingenieria_sistemas": 0.15,
-              "tec_programacion": 0.15
+            "pregunta": "¿Qué tipo de problema te resulta más atractivo?",
+            "polo_a": "Un problema bien definido con una solución correcta",
+            "polo_b": "Un problema abierto sin una única respuesta",
+            "boosts_polo_a": {
+              "tec_programacion": 0.12,
+              "ciberseguridad": 0.1
             },
-            "boosts_3": {
-              "ciberseguridad": 0.2
+            "boosts_polo_b": {
+              "ciencia_datos": 0.12,
+              "lic_computacion": 0.08
             }
           },
           {
             "id": "TF3_03",
-            "texto": "¿Preferís la inteligencia artificial y machine learning, o la arquitectura de sistemas?",
-            "opt1": "Arquitectura de sistemas",
-            "opt2": "Me da igual",
-            "opt3": "IA y machine learning",
-            "boosts_1": {
-              "ingenieria_sistemas": 0.2,
-              "lic_computacion": 0.1,
-              "tecnologias_digitales": 0.1
+            "pregunta": "¿Qué ritmo de resultados preferís?",
+            "polo_a": "Ver el resultado de mi trabajo en días o semanas",
+            "polo_b": "Proyectos de largo plazo cuyo impacto es gradual",
+            "boosts_polo_a": {
+              "tec_programacion": 0.12,
+              "tecnologias_digitales": 0.08
             },
-            "boosts_3": {
-              "ciencia_datos": 0.2,
+            "boosts_polo_b": {
+              "ciencia_datos": 0.12,
               "lic_computacion": 0.1
             }
           },
           {
             "id": "TF3_04",
-            "texto": "¿Preferís trabajar de forma técnica e individual, o coordinar equipos y proyectos?",
-            "opt1": "Técnico e individual",
-            "opt2": "Me da igual",
-            "opt3": "Coordinar equipos",
-            "boosts_1": {
-              "tec_programacion": 0.1,
-              "lic_computacion": 0.1,
-              "ciberseguridad": 0.1
+            "pregunta": "¿Cómo preferís desarrollarte profesionalmente?",
+            "polo_a": "Especializarme en una tecnología hasta dominarla profundamente",
+            "polo_b": "Moverme entre distintas áreas según el problema",
+            "boosts_polo_a": {
+              "ciberseguridad": 0.12,
+              "ciencia_datos": 0.1
             },
-            "boosts_3": {
-              "tecnologias_digitales": 0.2,
-              "ingenieria_industrial": 0.1
+            "boosts_polo_b": {
+              "ingenieria_sistemas": 0.12,
+              "tecnologias_digitales": 0.1
             }
           },
           {
             "id": "TF3_05",
-            "texto": "¿Te atrae más trabajar cerca del hardware y redes, o en software puro?",
-            "opt1": "Software puro",
-            "opt2": "Me da igual",
-            "opt3": "Hardware y redes",
-            "boosts_1": {
-              "ingenieria_sistemas": 0.1,
+            "pregunta": "¿Qué entorno de trabajo te atrae más?",
+            "polo_a": "Contextos estables y predecibles, con procesos maduros",
+            "polo_b": "Entornos de cambio rápido e incertidumbre constante",
+            "boosts_polo_a": {
               "tec_programacion": 0.1,
-              "ciencia_datos": 0.1
+              "ciberseguridad": 0.1,
+              "ingenieria_sistemas": 0.08
             },
-            "boosts_3": {
-              "tec_redes": 0.15,
-              "ingenieria_electronica": 0.1
+            "boosts_polo_b": {
+              "ciencia_datos": 0.12,
+              "tecnologias_digitales": 0.1
             }
           }
         ]
@@ -2517,81 +2511,77 @@
         "preguntas": [
           {
             "id": "TF3_06",
-            "texto": "¿Preferís trabajar con redes e infraestructura IT, o con maquinaria y sistemas electromecánicos?",
-            "opt1": "Maquinaria y electromecánica",
-            "opt2": "Me da igual",
-            "opt3": "Redes e IT",
-            "boosts_1": {
-              "ingenieria_mecanica": 0.2,
-              "ingenieria_mecatronica": 0.15,
-              "tec_mantenimiento_industrial": 0.15
+            "pregunta": "¿Qué tipo de trabajo físico preferís?",
+            "polo_a": "Trabajo con las manos en equipos y materiales en el lugar",
+            "polo_b": "Trabajo sentado diseñando, calculando y planificando",
+            "boosts_polo_a": {
+              "tec_mantenimiento_industrial": 0.12,
+              "tec_redes": 0.1
             },
-            "boosts_3": {
-              "tec_redes": 0.2,
-              "ingenieria_electrica": 0.1
+            "boosts_polo_b": {
+              "ingenieria_civil": 0.12,
+              "ingenieria_mecanica": 0.1,
+              "ingenieria_mecatronica": 0.08
             }
           },
           {
             "id": "TF3_07",
-            "texto": "¿Te interesa más la electrónica y los circuitos, o la infraestructura civil?",
-            "opt1": "Infraestructura civil",
-            "opt2": "Me da igual",
-            "opt3": "Electrónica y circuitos",
-            "boosts_1": {
-              "ingenieria_civil": 0.2,
-              "tec_energias_renovables": 0.15
+            "pregunta": "¿Qué actividad te resulta más satisfactoria?",
+            "polo_a": "Mantener y mejorar sistemas que ya existen",
+            "polo_b": "Diseñar e implementar sistemas desde cero",
+            "boosts_polo_a": {
+              "tec_mantenimiento_industrial": 0.12,
+              "tec_redes": 0.08
             },
-            "boosts_3": {
-              "ingenieria_electronica": 0.2,
+            "boosts_polo_b": {
+              "ingenieria_mecanica": 0.12,
               "ingenieria_mecatronica": 0.1,
-              "ingenieria_electrica": 0.1
+              "ingenieria_civil": 0.08
             }
           },
           {
             "id": "TF3_08",
-            "texto": "¿Preferís construir y diseñar sistemas nuevos, o mantener y optimizar los existentes?",
-            "opt1": "Mantener y optimizar",
-            "opt2": "Me da igual",
-            "opt3": "Construir y diseñar",
-            "boosts_1": {
-              "tec_mantenimiento_industrial": 0.2,
-              "tec_higiene_seguridad": 0.1
+            "pregunta": "¿Cómo preferís desarrollarte técnicamente?",
+            "polo_a": "Dominar profundamente un área técnica específica",
+            "polo_b": "Gestionar proyectos integrando distintas disciplinas",
+            "boosts_polo_a": {
+              "ingenieria_electronica": 0.12,
+              "ingenieria_electrica": 0.1,
+              "tec_energias_renovables": 0.08
             },
-            "boosts_3": {
-              "ingenieria_mecanica": 0.15,
-              "ingenieria_mecatronica": 0.15,
-              "ingenieria_electronica": 0.1
+            "boosts_polo_b": {
+              "ingenieria_industrial": 0.12,
+              "ingenieria_mecatronica": 0.1
             }
           },
           {
             "id": "TF3_09",
-            "texto": "¿Te atrae más la automatización y robótica, o la generación y distribución de energía?",
-            "opt1": "Energía y potencia",
-            "opt2": "Me da igual",
-            "opt3": "Automatización y robótica",
-            "boosts_1": {
-              "tec_energias_renovables": 0.2,
-              "ingenieria_electrica": 0.15
+            "pregunta": "¿Dónde preferís trabajar habitualmente?",
+            "polo_a": "En fábricas, plantas o talleres cerrados",
+            "polo_b": "En obras, campo abierto o infraestructura exterior",
+            "boosts_polo_a": {
+              "tec_mantenimiento_industrial": 0.12,
+              "ingenieria_electronica": 0.08
             },
-            "boosts_3": {
-              "ingenieria_mecatronica": 0.2,
-              "ingenieria_industrial": 0.15
+            "boosts_polo_b": {
+              "ingenieria_civil": 0.12,
+              "tec_energias_renovables": 0.1,
+              "ingenieria_ambiental": 0.08
             }
           },
           {
             "id": "TF3_10",
-            "texto": "¿Preferís trabajo en campo y exterior, o en planta industrial y talleres?",
-            "opt1": "Planta y taller",
-            "opt2": "Me da igual",
-            "opt3": "Campo y exterior",
-            "boosts_1": {
-              "tec_mantenimiento_industrial": 0.15,
-              "ingenieria_mecanica": 0.1
+            "pregunta": "¿Qué impacto te motiva más de tu trabajo?",
+            "polo_a": "La eficiencia y la productividad del sistema",
+            "polo_b": "El impacto ambiental y la sustentabilidad",
+            "boosts_polo_a": {
+              "ingenieria_industrial": 0.12,
+              "ingenieria_mecanica": 0.1,
+              "tec_mantenimiento_industrial": 0.08
             },
-            "boosts_3": {
-              "ingenieria_civil": 0.15,
-              "tec_energias_renovables": 0.1,
-              "ingenieria_ambiental": 0.1
+            "boosts_polo_b": {
+              "tec_energias_renovables": 0.12,
+              "ingenieria_ambiental": 0.12
             }
           }
         ]
@@ -2608,74 +2598,72 @@
         "preguntas": [
           {
             "id": "TF3_11",
-            "texto": "¿Preferís diseñar experiencias de usuario, o crear videojuegos y mundos interactivos?",
-            "opt1": "Videojuegos",
-            "opt2": "Me da igual",
-            "opt3": "Experiencias de usuario (UX/UI)",
-            "boosts_1": {
-              "creacion_videojuegos": 0.25
+            "pregunta": "¿Qué tipo de creación te impulsa más?",
+            "polo_a": "Crear con libertad total, sin restricciones de cliente",
+            "polo_b": "Diseñar para resolver necesidades concretas de usuarios",
+            "boosts_polo_a": {
+              "creacion_videojuegos": 0.12,
+              "diseno_multimedial": 0.1
             },
-            "boosts_3": {
-              "diseno_ux_ui": 0.25,
-              "tecnologias_digitales": 0.1
+            "boosts_polo_b": {
+              "diseno_ux_ui": 0.12,
+              "tecnologias_digitales": 0.08
             }
           },
           {
             "id": "TF3_12",
-            "texto": "¿Te importa más la parte visual y artística, o la parte técnica y de código?",
-            "opt1": "Técnico y código",
-            "opt2": "Me da igual",
-            "opt3": "Visual y artístico",
-            "boosts_1": {
-              "creacion_videojuegos": 0.15,
-              "ingenieria_sistemas": 0.1
+            "pregunta": "¿Cuál es tu rol preferido en un proyecto?",
+            "polo_a": "Ejecutar y producir el trabajo creativo o técnico",
+            "polo_b": "Liderar, coordinar y llevar la visión estratégica",
+            "boosts_polo_a": {
+              "diseno_ux_ui": 0.1,
+              "diseno_multimedial": 0.1,
+              "creacion_videojuegos": 0.08
             },
-            "boosts_3": {
-              "diseno_ux_ui": 0.2,
-              "diseno_multimedial": 0.15
+            "boosts_polo_b": {
+              "tecnologias_digitales": 0.12,
+              "ingenieria_industrial": 0.1
             }
           },
           {
             "id": "TF3_13",
-            "texto": "¿Preferís liderar y gestionar proyectos tecnológicos, o ejecutarlos técnicamente?",
-            "opt1": "Ejecutar técnicamente",
-            "opt2": "Me da igual",
-            "opt3": "Liderar y gestionar",
-            "boosts_1": {
-              "ingenieria_sistemas": 0.1,
-              "tec_programacion": 0.1
+            "pregunta": "¿Qué ciclo de proyecto te atrae más?",
+            "polo_a": "Proyectos cortos con resultados visibles en semanas",
+            "polo_b": "Proyectos largos y complejos de varios meses",
+            "boosts_polo_a": {
+              "diseno_ux_ui": 0.12,
+              "diseno_multimedial": 0.08
             },
-            "boosts_3": {
-              "tecnologias_digitales": 0.2,
-              "ingenieria_industrial": 0.15
+            "boosts_polo_b": {
+              "creacion_videojuegos": 0.12,
+              "tecnologias_digitales": 0.1
             }
           },
           {
             "id": "TF3_14",
-            "texto": "¿Te interesa más la animación e interactividad, o el diseño visual estático?",
-            "opt1": "Diseño visual estático",
-            "opt2": "Me da igual",
-            "opt3": "Animación e interactividad",
-            "boosts_1": {
-              "diseno_ux_ui": 0.15
+            "pregunta": "¿Qué aspecto del trabajo creativo te apasiona más?",
+            "polo_a": "La precisión técnica: el código, las herramientas, los detalles",
+            "polo_b": "El concepto y la idea detrás del diseño",
+            "boosts_polo_a": {
+              "creacion_videojuegos": 0.12,
+              "diseno_multimedial": 0.08
             },
-            "boosts_3": {
-              "diseno_multimedial": 0.2,
-              "creacion_videojuegos": 0.1
+            "boosts_polo_b": {
+              "diseno_ux_ui": 0.12,
+              "tecnologias_digitales": 0.08
             }
           },
           {
             "id": "TF3_15",
-            "texto": "¿Preferís trabajar en una empresa tech grande, o en un emprendimiento o proyecto propio?",
-            "opt1": "Emprendimiento propio",
-            "opt2": "Me da igual",
-            "opt3": "Empresa tech grande",
-            "boosts_1": {
-              "tec_programacion": 0.1,
-              "creacion_videojuegos": 0.1
+            "pregunta": "¿Qué tipo de organización preferís?",
+            "polo_a": "Equipos pequeños y ágiles con mucha autonomía",
+            "polo_b": "Estructuras organizadas con roles y procesos definidos",
+            "boosts_polo_a": {
+              "creacion_videojuegos": 0.12,
+              "diseno_ux_ui": 0.08
             },
-            "boosts_3": {
-              "tecnologias_digitales": 0.15,
+            "boosts_polo_b": {
+              "tecnologias_digitales": 0.12,
               "ingenieria_industrial": 0.1
             }
           }
@@ -2694,82 +2682,79 @@
         "preguntas": [
           {
             "id": "CF3_01",
-            "texto": "¿Preferís la matemática pura y la física teórica, o la biología y los sistemas vivos?",
-            "opt1": "Biología y sistemas vivos",
-            "opt2": "Me da igual",
-            "opt3": "Matemática y física",
-            "boosts_1": {
-              "biologia": 0.15,
-              "biotecnologia": 0.15,
-              "bioingenieria": 0.1
+            "pregunta": "¿Qué tipo de conocimiento te atrae más construir?",
+            "polo_a": "Modelos matemáticos y teorías abstractas y formales",
+            "polo_b": "Resultados empíricos obtenidos de experimentos y datos",
+            "boosts_polo_a": {
+              "matematica": 0.14,
+              "fisica": 0.12
             },
-            "boosts_3": {
-              "matematica": 0.2,
-              "fisica": 0.2
+            "boosts_polo_b": {
+              "biologia": 0.12,
+              "biotecnologia": 0.1,
+              "quimica": 0.1
             }
           },
           {
             "id": "CF3_02",
-            "texto": "¿Te interesa más modelar fenómenos con computación, o estudiarlos en laboratorio?",
-            "opt1": "Laboratorio experimental",
-            "opt2": "Me da igual",
-            "opt3": "Modelado computacional",
-            "boosts_1": {
-              "quimica": 0.1,
-              "biologia": 0.1
+            "pregunta": "¿Qué relación tenés con la incertidumbre en tu trabajo?",
+            "polo_a": "Me atraen los resultados exactos y las demostraciones rigurosas",
+            "polo_b": "Disfruto explorar sin saber con certeza adónde lleva",
+            "boosts_polo_a": {
+              "matematica": 0.14
             },
-            "boosts_3": {
-              "bioingenieria": 0.2,
-              "matematica": 0.1,
-              "fisica": 0.1
+            "boosts_polo_b": {
+              "biologia": 0.1,
+              "biotecnologia": 0.12,
+              "bioingenieria": 0.1
             }
           },
           {
             "id": "CF3_03",
-            "texto": "¿Preferís investigación básica (entender el mundo) o aplicada (resolver problemas)?",
-            "opt1": "Aplicada e industrial",
-            "opt2": "Me da igual",
-            "opt3": "Básica y académica",
-            "boosts_1": {
-              "ingenieria_ambiental": 0.15,
-              "ingenieria_alimentos": 0.1,
-              "bioingenieria": 0.1
-            },
-            "boosts_3": {
-              "matematica": 0.15,
-              "fisica": 0.15,
+            "pregunta": "¿En qué contexto te imaginás trabajando?",
+            "polo_a": "La academia: investigar, publicar y enseñar en universidad",
+            "polo_b": "La industria: que mi conocimiento tenga impacto clínico o productivo",
+            "boosts_polo_a": {
+              "matematica": 0.12,
+              "fisica": 0.12,
               "biologia": 0.1
+            },
+            "boosts_polo_b": {
+              "biotecnologia": 0.12,
+              "bioingenieria": 0.12,
+              "ingenieria_quimica": 0.08,
+              "ingenieria_alimentos": 0.08
             }
           },
           {
             "id": "CF3_04",
-            "texto": "¿Te atrae más la genómica y biotecnología molecular, o la física y los materiales?",
-            "opt1": "Física y materiales",
-            "opt2": "Me da igual",
-            "opt3": "Genómica y biotecnología",
-            "boosts_1": {
-              "fisica": 0.2,
-              "ingenieria_quimica": 0.1
+            "pregunta": "¿Cómo preferís trabajar en tu investigación?",
+            "polo_a": "Solo, con mucha concentración e independencia",
+            "polo_b": "Colaborando con otros investigadores y grupos",
+            "boosts_polo_a": {
+              "matematica": 0.12,
+              "fisica": 0.1
             },
-            "boosts_3": {
-              "biotecnologia": 0.2,
-              "bioingenieria": 0.15
+            "boosts_polo_b": {
+              "biotecnologia": 0.12,
+              "bioingenieria": 0.1,
+              "biologia": 0.08
             }
           },
           {
             "id": "CF3_05",
-            "texto": "¿Preferís trabajar en universidades o centros de investigación, o en empresas e industria?",
-            "opt1": "Empresas e industria",
-            "opt2": "Me da igual",
-            "opt3": "Academia e investigación",
-            "boosts_1": {
-              "ingenieria_quimica": 0.15,
-              "ingenieria_alimentos": 0.1
+            "pregunta": "¿Qué horizonte temporal de impacto aceptás?",
+            "polo_a": "Mis resultados pueden tardar años o décadas en tener impacto",
+            "polo_b": "Necesito ver la utilidad concreta de mi trabajo en el corto plazo",
+            "boosts_polo_a": {
+              "matematica": 0.12,
+              "fisica": 0.12,
+              "biologia": 0.08
             },
-            "boosts_3": {
-              "matematica": 0.1,
-              "fisica": 0.1,
-              "biologia": 0.1
+            "boosts_polo_b": {
+              "ingenieria_quimica": 0.12,
+              "ingenieria_alimentos": 0.1,
+              "bioingenieria": 0.1
             }
           }
         ]
@@ -2784,82 +2769,85 @@
         "preguntas": [
           {
             "id": "CF3_06",
-            "texto": "¿Preferís el trabajo de laboratorio cerrado, o el trabajo de campo al aire libre?",
-            "opt1": "Campo y exterior",
-            "opt2": "Me da igual",
-            "opt3": "Laboratorio cerrado",
-            "boosts_1": {
-              "geologia": 0.2,
-              "agronomia": 0.2,
-              "tec_produccion_agropecuaria": 0.15
+            "pregunta": "¿Dónde preferís desarrollar tu trabajo científico?",
+            "polo_a": "En el campo, en la naturaleza, al aire libre",
+            "polo_b": "En el laboratorio, con microscopio y reactivos",
+            "boosts_polo_a": {
+              "geologia": 0.14,
+              "agronomia": 0.12,
+              "tec_produccion_agropecuaria": 0.1,
+              "geografia": 0.1
             },
-            "boosts_3": {
-              "quimica": 0.15,
-              "tec_laboratorio": 0.15,
-              "biotecnologia": 0.1
+            "boosts_polo_b": {
+              "quimica": 0.12,
+              "tec_laboratorio": 0.12,
+              "biotecnologia": 0.08
             }
           },
           {
             "id": "CF3_07",
-            "texto": "¿Te interesa más la química y sus procesos, o la biología y los organismos vivos?",
-            "opt1": "Biología y organismos",
-            "opt2": "Me da igual",
-            "opt3": "Química y procesos",
-            "boosts_1": {
-              "biologia": 0.2,
-              "biotecnologia": 0.15
+            "pregunta": "¿Qué objetivo final te motiva más?",
+            "polo_a": "Producir: procesos industriales con resultados concretos",
+            "polo_b": "Investigar: entender los mecanismos fundamentales",
+            "boosts_polo_a": {
+              "agronomia": 0.12,
+              "tec_produccion_agropecuaria": 0.12,
+              "ingenieria_alimentos": 0.1
             },
-            "boosts_3": {
-              "quimica": 0.2,
-              "ingenieria_quimica": 0.15
+            "boosts_polo_b": {
+              "biologia": 0.12,
+              "quimica": 0.1,
+              "geologia": 0.08
             }
           },
           {
             "id": "CF3_08",
-            "texto": "¿Preferís estudiar procesos a escala molecular y celular, o a escala de ecosistemas y paisajes?",
-            "opt1": "Ecosistemas y paisajes",
-            "opt2": "Me da igual",
-            "opt3": "Molecular y celular",
-            "boosts_1": {
-              "biologia": 0.1,
+            "pregunta": "¿Qué objeto de estudio te atrae más?",
+            "polo_a": "Los seres vivos: plantas, animales, microorganismos",
+            "polo_b": "Los materiales: rocas, suelos, sustancias químicas",
+            "boosts_polo_a": {
+              "biologia": 0.12,
               "agronomia": 0.1,
-              "geologia": 0.1
+              "tec_produccion_agropecuaria": 0.1,
+              "biotecnologia": 0.08
             },
-            "boosts_3": {
-              "biotecnologia": 0.2,
-              "quimica": 0.15,
-              "tec_laboratorio": 0.1
+            "boosts_polo_b": {
+              "quimica": 0.12,
+              "geologia": 0.12,
+              "ingenieria_quimica": 0.08,
+              "tec_laboratorio": 0.08
             }
           },
           {
             "id": "CF3_09",
-            "texto": "¿Te atrae estudiar la Tierra y su historia geológica, o los seres vivos y su evolución?",
-            "opt1": "Seres vivos y evolución",
-            "opt2": "Me da igual",
-            "opt3": "Tierra y geología",
-            "boosts_1": {
-              "biologia": 0.2,
-              "biotecnologia": 0.1
+            "pregunta": "¿Cómo preferís estructurar tu trabajo?",
+            "polo_a": "Diseñar y ejecutar experimentos de forma independiente",
+            "polo_b": "Trabajar en equipos técnicos con roles complementarios",
+            "boosts_polo_a": {
+              "biologia": 0.1,
+              "quimica": 0.1,
+              "geologia": 0.1
             },
-            "boosts_3": {
-              "geologia": 0.25,
-              "geografia": 0.1
+            "boosts_polo_b": {
+              "ingenieria_alimentos": 0.12,
+              "tec_laboratorio": 0.1,
+              "biotecnologia": 0.1
             }
           },
           {
             "id": "CF3_10",
-            "texto": "¿Preferís aplicaciones industriales (alimentos, fármacos), o investigación científica pura?",
-            "opt1": "Investigación pura",
-            "opt2": "Me da igual",
-            "opt3": "Aplicaciones industriales",
-            "boosts_1": {
-              "biologia": 0.15,
-              "quimica": 0.15
+            "pregunta": "¿En qué escala preferís operar?",
+            "polo_a": "Precisión y detalle a escala pequeña: moléculas, muestras",
+            "polo_b": "Impacto a gran escala: producción, territorios, ecosistemas",
+            "boosts_polo_a": {
+              "tec_laboratorio": 0.12,
+              "quimica": 0.1
             },
-            "boosts_3": {
-              "ingenieria_alimentos": 0.2,
-              "ingenieria_quimica": 0.15,
-              "bioingenieria": 0.1
+            "boosts_polo_b": {
+              "agronomia": 0.12,
+              "geologia": 0.1,
+              "ingenieria_alimentos": 0.1,
+              "geografia": 0.08
             }
           }
         ]
@@ -2876,80 +2864,78 @@
         "preguntas": [
           {
             "id": "CF3_11",
-            "texto": "¿Preferís trabajar en protección del medioambiente, o en producción agropecuaria y alimentos?",
-            "opt1": "Agropecuario y alimentos",
-            "opt2": "Me da igual",
-            "opt3": "Medioambiente",
-            "boosts_1": {
-              "agronomia": 0.2,
-              "tec_produccion_agropecuaria": 0.2,
-              "ingenieria_alimentos": 0.1
-            },
-            "boosts_3": {
-              "ingenieria_ambiental": 0.25,
+            "pregunta": "¿Cuál es tu motivación principal como científico/a?",
+            "polo_a": "Proteger y restaurar el medioambiente",
+            "polo_b": "Optimizar la producción y los procesos industriales",
+            "boosts_polo_a": {
+              "ingenieria_ambiental": 0.14,
               "geografia": 0.1
+            },
+            "boosts_polo_b": {
+              "agronomia": 0.12,
+              "ingenieria_alimentos": 0.12,
+              "tec_produccion_agropecuaria": 0.08
             }
           },
           {
             "id": "CF3_12",
-            "texto": "¿Te atrae la biotecnología de última generación, o los procesos de ingeniería establecidos?",
-            "opt1": "Ingeniería establecida",
-            "opt2": "Me da igual",
-            "opt3": "Biotecnología avanzada",
-            "boosts_1": {
-              "ingenieria_quimica": 0.15,
-              "ingenieria_alimentos": 0.1
+            "pregunta": "¿En qué sector te imaginás trabajando?",
+            "polo_a": "Organismos públicos, municipios o ONGs",
+            "polo_b": "Empresas privadas, consultoras o laboratorios",
+            "boosts_polo_a": {
+              "ingenieria_ambiental": 0.12,
+              "geografia": 0.1
             },
-            "boosts_3": {
-              "bioingenieria": 0.2,
-              "biotecnologia": 0.15
+            "boosts_polo_b": {
+              "ingenieria_alimentos": 0.12,
+              "biotecnologia": 0.1,
+              "ingenieria_quimica": 0.1
             }
           },
           {
             "id": "CF3_13",
-            "texto": "¿Preferís trabajar en campo y exterior, o en plantas industriales o laboratorios?",
-            "opt1": "Plantas e industria",
-            "opt2": "Me da igual",
-            "opt3": "Campo y exterior",
-            "boosts_1": {
-              "ingenieria_alimentos": 0.15,
-              "ingenieria_quimica": 0.15
+            "pregunta": "¿Dónde preferís trabajar?",
+            "polo_a": "En el territorio: campo, obras o instalaciones",
+            "polo_b": "En laboratorio u oficina técnica",
+            "boosts_polo_a": {
+              "agronomia": 0.12,
+              "tec_produccion_agropecuaria": 0.12,
+              "geologia": 0.08
             },
-            "boosts_3": {
-              "agronomia": 0.2,
-              "tec_produccion_agropecuaria": 0.15,
-              "ingenieria_ambiental": 0.1
+            "boosts_polo_b": {
+              "tec_laboratorio": 0.12,
+              "biotecnologia": 0.1,
+              "ingenieria_alimentos": 0.08
             }
           },
           {
             "id": "CF3_14",
-            "texto": "¿Te interesa trabajar con muestras clínicas de laboratorio, o con datos ambientales de campo?",
-            "opt1": "Datos ambientales",
-            "opt2": "Me da igual",
-            "opt3": "Muestras clínicas",
-            "boosts_1": {
-              "ingenieria_ambiental": 0.1,
-              "geologia": 0.1
+            "pregunta": "¿Qué impulsa más tu curiosidad profesional?",
+            "polo_a": "Tecnologías de punta y alta innovación",
+            "polo_b": "Procesos probados y bien establecidos para optimizarlos",
+            "boosts_polo_a": {
+              "biotecnologia": 0.12,
+              "bioingenieria": 0.12
             },
-            "boosts_3": {
-              "tec_laboratorio": 0.25,
-              "farmacia": 0.1
+            "boosts_polo_b": {
+              "ingenieria_alimentos": 0.1,
+              "quimica": 0.1,
+              "tec_laboratorio": 0.08
             }
           },
           {
             "id": "CF3_15",
-            "texto": "¿Preferís trabajo investigativo e independiente, o en equipo con metas de producción?",
-            "opt1": "Producción y equipo",
-            "opt2": "Me da igual",
-            "opt3": "Investigativo e independiente",
-            "boosts_1": {
-              "agronomia": 0.1,
-              "ingenieria_alimentos": 0.1
+            "pregunta": "¿Qué tipo de impacto valorás más?",
+            "polo_a": "El impacto en comunidades y en la sociedad",
+            "polo_b": "La precisión técnica y los resultados medibles",
+            "boosts_polo_a": {
+              "ingenieria_ambiental": 0.12,
+              "agronomia": 0.1
             },
-            "boosts_3": {
-              "biologia": 0.1,
-              "quimica": 0.1,
-              "matematica": 0.1
+            "boosts_polo_b": {
+              "ingenieria_alimentos": 0.12,
+              "biotecnologia": 0.1,
+              "ingenieria_quimica": 0.08
             }
           }
         ]
@@ -2967,79 +2953,83 @@
         "preguntas": [
           {
             "id": "SF3_01",
-            "texto": "¿Preferís situaciones de urgencia y alta complejidad, o procesos de recuperación largos?",
-            "opt1": "Recuperación y largo plazo",
-            "opt2": "Me da igual",
-            "opt3": "Urgencia y alta complejidad",
-            "boosts_1": {
-              "kinesiologia": 0.2,
-              "nutricion": 0.15
-            },
-            "boosts_3": {
-              "medicina": 0.15,
-              "enfermeria": 0.15,
+            "pregunta": "¿Qué ritmo de trabajo clínico preferís?",
+            "polo_a": "La urgencia: situaciones críticas donde cada minuto importa",
+            "polo_b": "El seguimiento a largo plazo y la evolución del paciente",
+            "boosts_polo_a": {
+              "medicina": 0.12,
+              "enfermeria": 0.1,
               "tec_anestesia": 0.1
+            },
+            "boosts_polo_b": {
+              "kinesiologia": 0.12,
+              "nutricion": 0.12,
+              "fonoaudiologia": 0.08
             }
           },
           {
             "id": "SF3_02",
-            "texto": "¿Te interesa más el diagnóstico y tratamiento médico, o la rehabilitación y el movimiento?",
-            "opt1": "Rehabilitación y movimiento",
-            "opt2": "Me da igual",
-            "opt3": "Diagnóstico y tratamiento",
-            "boosts_1": {
-              "kinesiologia": 0.25
+            "pregunta": "¿Qué aspecto del trabajo de salud te atrae más?",
+            "polo_a": "La parte técnica y manual: procedimientos, cirugías, técnicas",
+            "polo_b": "Acompañar, enseñar y guiar al paciente en su proceso",
+            "boosts_polo_a": {
+              "odontologia": 0.12,
+              "tec_instrumentacion_quirurgica": 0.12,
+              "tec_anestesia": 0.1,
+              "kinesiologia": 0.08
             },
-            "boosts_3": {
-              "medicina": 0.2,
-              "odontologia": 0.1
+            "boosts_polo_b": {
+              "nutricion": 0.12,
+              "fonoaudiologia": 0.1,
+              "psicopedagogia": 0.08
             }
           },
           {
             "id": "SF3_03",
-            "texto": "¿Preferís trabajar con personas o con animales?",
-            "opt1": "Animales",
-            "opt2": "Indistinto",
-            "opt3": "Personas",
-            "boosts_1": {
-              "veterinaria": 0.35
+            "pregunta": "¿Qué es lo más importante para vos en la relación con el paciente?",
+            "polo_a": "El vínculo humano: escuchar, contener, estar presente",
+            "polo_b": "La resolución clínica y biológica del problema",
+            "boosts_polo_a": {
+              "enfermeria": 0.12,
+              "psicopedagogia": 0.1,
+              "fonoaudiologia": 0.08
             },
-            "boosts_3": {
-              "medicina": 0.1,
-              "enfermeria": 0.1,
-              "kinesiologia": 0.1
+            "boosts_polo_b": {
+              "medicina": 0.12,
+              "odontologia": 0.1,
+              "veterinaria": 0.08
             }
           },
           {
             "id": "SF3_04",
-            "texto": "¿Te atrae la parte clínica y manual (procedimientos), o la educación y consejería del paciente?",
-            "opt1": "Educación y consejería",
-            "opt2": "Me da igual",
-            "opt3": "Procedimientos clínicos",
-            "boosts_1": {
-              "nutricion": 0.2,
-              "psicopedagogia": 0.1
+            "pregunta": "¿Qué parte del proceso clínico disfrutás más?",
+            "polo_a": "Analizar, interpretar síntomas y llegar a un diagnóstico",
+            "polo_b": "Ejecutar: operar, rehabilitar, intervenir",
+            "boosts_polo_a": {
+              "medicina": 0.12,
+              "nutricion": 0.1
             },
-            "boosts_3": {
-              "odontologia": 0.2,
-              "tec_instrumentacion_quirurgica": 0.15,
-              "enfermeria": 0.1
+            "boosts_polo_b": {
+              "odontologia": 0.12,
+              "kinesiologia": 0.12,
+              "tec_instrumentacion_quirurgica": 0.08
             }
           },
           {
             "id": "SF3_05",
-            "texto": "¿Preferís una especialización específica (boca, huesos, lenguaje), o la atención médica integral?",
-            "opt1": "Medicina integral",
-            "opt2": "Me da igual",
-            "opt3": "Especialización específica",
-            "boosts_1": {
-              "medicina": 0.2,
-              "enfermeria": 0.1
+            "pregunta": "¿Cómo preferís ejercer la profesión?",
+            "polo_a": "Como parte de un equipo interdisciplinario",
+            "polo_b": "De forma independiente, con tu propia práctica",
+            "boosts_polo_a": {
+              "medicina": 0.1,
+              "enfermeria": 0.12,
+              "tec_anestesia": 0.08
             },
-            "boosts_3": {
-              "odontologia": 0.2,
-              "fonoaudiologia": 0.15,
-              "kinesiologia": 0.1
+            "boosts_polo_b": {
+              "nutricion": 0.12,
+              "odontologia": 0.1,
+              "kinesiologia": 0.1,
+              "veterinaria": 0.08
             }
           }
         ]
@@ -3055,74 +3045,75 @@
         "preguntas": [
           {
             "id": "SF3_06",
-            "texto": "¿Preferís trabajar directamente con pacientes, o en roles técnicos de análisis y apoyo?",
-            "opt1": "Análisis técnico",
-            "opt2": "Me da igual",
-            "opt3": "Directamente con pacientes",
-            "boosts_1": {
-              "tec_laboratorio": 0.25,
-              "farmacia": 0.2
+            "pregunta": "¿Cuánto contacto directo con pacientes querés en tu trabajo?",
+            "polo_a": "Prefiero el rol técnico, con mínima interacción con pacientes",
+            "polo_b": "Aunque sea técnico, quiero interactuar con los pacientes",
+            "boosts_polo_a": {
+              "tec_laboratorio": 0.12,
+              "farmacia": 0.12
             },
-            "boosts_3": {
-              "medicina": 0.15,
-              "enfermeria": 0.1
+            "boosts_polo_b": {
+              "tec_instrumentacion_quirurgica": 0.1,
+              "tec_anestesia": 0.1,
+              "enfermeria": 0.08
             }
           },
           {
             "id": "SF3_07",
-            "texto": "¿Te interesa más el análisis clínico de muestras, o el trabajo en quirófano?",
-            "opt1": "Quirófano",
-            "opt2": "Me da igual",
-            "opt3": "Análisis de muestras",
-            "boosts_1": {
-              "tec_instrumentacion_quirurgica": 0.25,
-              "tec_anestesia": 0.2
+            "pregunta": "¿Qué entorno clínico te atrae más?",
+            "polo_a": "Máxima precisión y control: nada puede salir mal",
+            "polo_b": "Situaciones cambiantes que requieren adaptar la respuesta",
+            "boosts_polo_a": {
+              "tec_laboratorio": 0.12,
+              "farmacia": 0.12
             },
-            "boosts_3": {
-              "tec_laboratorio": 0.3
+            "boosts_polo_b": {
+              "tec_anestesia": 0.12,
+              "tec_instrumentacion_quirurgica": 0.1
             }
           },
           {
             "id": "SF3_08",
-            "texto": "¿Preferís trabajar con medicamentos y farmacología, o con equipos y procedimientos médicos?",
-            "opt1": "Equipos y procedimientos",
-            "opt2": "Me da igual",
-            "opt3": "Medicamentos y farmacología",
-            "boosts_1": {
-              "tec_anestesia": 0.15,
-              "tec_instrumentacion_quirurgica": 0.15
+            "pregunta": "¿Cómo preferís tomar decisiones en el trabajo?",
+            "polo_a": "Siguiendo protocolos establecidos y normas claras",
+            "polo_b": "Con autonomía para tomar decisiones técnicas propias",
+            "boosts_polo_a": {
+              "tec_laboratorio": 0.12,
+              "farmacia": 0.1
             },
-            "boosts_3": {
-              "farmacia": 0.25
+            "boosts_polo_b": {
+              "medicina": 0.1,
+              "tec_anestesia": 0.1
             }
           },
           {
             "id": "SF3_09",
-            "texto": "¿Te atrae la investigación de nuevos tratamientos, o la aplicación de protocolos establecidos?",
-            "opt1": "Aplicación de protocolos",
-            "opt2": "Me da igual",
-            "opt3": "Investigación clínica",
-            "boosts_1": {
-              "tec_laboratorio": 0.15,
-              "farmacia": 0.1
+            "pregunta": "¿Qué dimensión del trabajo de salud te motiva más?",
+            "polo_a": "La investigación: nuevos fármacos, nuevas técnicas",
+            "polo_b": "La aplicación clínica directa y el trabajo con pacientes",
+            "boosts_polo_a": {
+              "farmacia": 0.12,
+              "tec_laboratorio": 0.1
             },
-            "boosts_3": {
-              "medicina": 0.15
+            "boosts_polo_b": {
+              "tec_instrumentacion_quirurgica": 0.12,
+              "tec_anestesia": 0.1,
+              "enfermeria": 0.08
             }
           },
           {
             "id": "SF3_10",
-            "texto": "¿Preferís trabajo independiente y analítico, o coordinación dentro de equipos clínicos?",
-            "opt1": "Equipos clínicos",
-            "opt2": "Me da igual",
-            "opt3": "Independiente y analítico",
-            "boosts_1": {
-              "enfermeria": 0.1,
-              "tec_instrumentacion_quirurgica": 0.1
+            "pregunta": "¿Qué escala de impacto te importa más?",
+            "polo_a": "El impacto directo en cada paciente que atiendo",
+            "polo_b": "Mejorar el sistema de salud a escala más amplia",
+            "boosts_polo_a": {
+              "tec_instrumentacion_quirurgica": 0.12,
+              "tec_anestesia": 0.1,
+              "farmacia": 0.08
             },
-            "boosts_3": {
-              "tec_laboratorio": 0.15,
-              "farmacia": 0.15
+            "boosts_polo_b": {
+              "tec_laboratorio": 0.12,
+              "medicina": 0.08
             }
           }
         ]
@@ -3138,76 +3129,74 @@
         "preguntas": [
           {
             "id": "SF3_11",
-            "texto": "¿Preferís trabajar con niños y jóvenes en su desarrollo, o con adultos en su recuperación?",
-            "opt1": "Adultos y recuperación",
-            "opt2": "Me da igual",
-            "opt3": "Niños y desarrollo",
-            "boosts_1": {
-              "terapia_ocupacional": 0.2,
-              "acompanamiento_terapeutico": 0.15
+            "pregunta": "¿Qué ritmo de cambio esperás ver en los pacientes?",
+            "polo_a": "Tolero bien la lentitud: los cambios llevan meses o años",
+            "polo_b": "Prefiero procesos donde los resultados son más rápidos",
+            "boosts_polo_a": {
+              "acompanamiento_terapeutico": 0.14,
+              "psicopedagogia": 0.1
             },
-            "boosts_3": {
-              "psicopedagogia": 0.25,
-              "fonoaudiologia": 0.15
+            "boosts_polo_b": {
+              "kinesiologia": 0.12,
+              "fonoaudiologia": 0.1
             }
           },
           {
             "id": "SF3_12",
-            "texto": "¿Te interesa más apoyar dificultades de aprendizaje o comunicación, o la recuperación funcional?",
-            "opt1": "Recuperación funcional",
-            "opt2": "Me da igual",
-            "opt3": "Aprendizaje y comunicación",
-            "boosts_1": {
-              "terapia_ocupacional": 0.2,
-              "kinesiologia": 0.1
+            "pregunta": "¿Qué tipo de vínculo terapéutico preferís?",
+            "polo_a": "El vínculo emocional profundo es lo central de mi trabajo",
+            "polo_b": "Prefiero un rol técnico donde el vínculo es secundario",
+            "boosts_polo_a": {
+              "acompanamiento_terapeutico": 0.14,
+              "psicopedagogia": 0.1
             },
-            "boosts_3": {
-              "psicopedagogia": 0.2,
-              "fonoaudiologia": 0.2
+            "boosts_polo_b": {
+              "kinesiologia": 0.12,
+              "fonoaudiologia": 0.1,
+              "terapia_ocupacional": 0.08
             }
           },
           {
             "id": "SF3_13",
-            "texto": "¿Preferís usar actividades creativas y lúdicas como herramienta terapéutica, o técnicas estructuradas?",
-            "opt1": "Técnicas estructuradas",
-            "opt2": "Me da igual",
-            "opt3": "Creativas y lúdicas",
-            "boosts_1": {
-              "fonoaudiologia": 0.1,
+            "pregunta": "¿Dónde preferís trabajar?",
+            "polo_a": "Inserto/a en una institución: escuela, hospital, ONG",
+            "polo_b": "En consultorio propio o como profesional autónomo/a",
+            "boosts_polo_a": {
+              "terapia_ocupacional": 0.12,
               "psicopedagogia": 0.1
             },
-            "boosts_3": {
-              "terapia_ocupacional": 0.25
+            "boosts_polo_b": {
+              "acompanamiento_terapeutico": 0.12,
+              "fonoaudiologia": 0.1
             }
           },
           {
             "id": "SF3_14",
-            "texto": "¿Te atrae el acompañamiento emocional y psicológico, o la terapia física y funcional?",
-            "opt1": "Física y funcional",
-            "opt2": "Me da igual",
-            "opt3": "Emocional y psicológico",
-            "boosts_1": {
-              "kinesiologia": 0.15,
-              "terapia_ocupacional": 0.1
+            "pregunta": "¿Qué herramienta terapéutica preferís usar?",
+            "polo_a": "Actividades creativas, lúdicas y artísticas",
+            "polo_b": "Técnicas estructuradas y protocolos terapéuticos",
+            "boosts_polo_a": {
+              "terapia_ocupacional": 0.14,
+              "acompanamiento_terapeutico": 0.1
             },
-            "boosts_3": {
-              "acompanamiento_terapeutico": 0.2,
-              "psicopedagogia": 0.15
+            "boosts_polo_b": {
+              "fonoaudiologia": 0.12,
+              "kinesiologia": 0.1,
+              "psicopedagogia": 0.08
             }
           },
           {
             "id": "SF3_15",
-            "texto": "¿Preferís trabajar en instituciones (escuelas, hospitales), o en consultorio o domicilio?",
-            "opt1": "Consultorio o domicilio",
-            "opt2": "Me da igual",
-            "opt3": "Instituciones",
-            "boosts_1": {
-              "fonoaudiologia": 0.1,
-              "psicopedagogia": 0.1
+            "pregunta": "¿Con qué población preferís trabajar?",
+            "polo_a": "Principalmente con niños y adolescentes",
+            "polo_b": "Con adultos, adultos mayores o situaciones de crisis",
+            "boosts_polo_a": {
+              "psicopedagogia": 0.12,
+              "fonoaudiologia": 0.1
             },
-            "boosts_3": {
-              "terapia_ocupacional": 0.15,
-              "enfermeria": 0.05
+            "boosts_polo_b": {
+              "acompanamiento_terapeutico": 0.12,
+              "terapia_ocupacional": 0.1
             }
           }
         ]
@@ -3225,76 +3214,84 @@
         "preguntas": [
           {
             "id": "ARF3_01",
-            "texto": "¿Preferís el diseño gráfico y la comunicación visual, o las artes audiovisuales (cine, video)?",
-            "opt1": "Audiovisual y cine",
-            "opt2": "Me da igual",
-            "opt3": "Diseño gráfico",
-            "boosts_1": {
-              "artes_audiovisuales": 0.25,
-              "fotografia": 0.15
+            "pregunta": "¿Qué impulsa más tu creación?",
+            "polo_a": "La expresión personal, el arte propio sin restricciones",
+            "polo_b": "El diseño al servicio de una idea o necesidad del cliente",
+            "boosts_polo_a": {
+              "artes_visuales": 0.12,
+              "musica": 0.1,
+              "actuacion": 0.08,
+              "fotografia": 0.08
             },
-            "boosts_3": {
-              "diseno_grafico": 0.25,
-              "diseno_multimedial": 0.1
+            "boosts_polo_b": {
+              "diseno_grafico": 0.12,
+              "diseno_industrial": 0.1,
+              "diseno_indumentaria": 0.08
             }
           },
           {
             "id": "ARF3_02",
-            "texto": "¿Te interesa más la música y la composición, o las artes visuales (pintura, escultura)?",
-            "opt1": "Artes visuales",
-            "opt2": "Me da igual",
-            "opt3": "Música y composición",
-            "boosts_1": {
-              "artes_visuales": 0.25
+            "pregunta": "¿Cómo preferís crear?",
+            "polo_a": "En soledad, con total control del proceso creativo",
+            "polo_b": "En un equipo creativo colaborativo",
+            "boosts_polo_a": {
+              "artes_visuales": 0.12,
+              "musica": 0.1,
+              "fotografia": 0.1
             },
-            "boosts_3": {
-              "musica": 0.25
+            "boosts_polo_b": {
+              "artes_audiovisuales": 0.12,
+              "diseno_multimedial": 0.1,
+              "creacion_videojuegos": 0.08
             }
           },
           {
             "id": "ARF3_03",
-            "texto": "¿Preferís crear contenido artístico propio, o diseñar para empresas y marcas?",
-            "opt1": "Diseñar para marcas",
-            "opt2": "Me da igual",
-            "opt3": "Arte propio",
-            "boosts_1": {
-              "diseno_grafico": 0.2,
-              "diseno_industrial": 0.15
+            "pregunta": "¿Qué tipo de obra te atrae más crear?",
+            "polo_a": "Arte en vivo: el momento único e irrepetible",
+            "polo_b": "Obras físicas o digitales que perduran",
+            "boosts_polo_a": {
+              "actuacion": 0.14,
+              "musica": 0.1
             },
-            "boosts_3": {
-              "artes_visuales": 0.2,
-              "musica": 0.1,
-              "actuacion": 0.1
+            "boosts_polo_b": {
+              "arquitectura": 0.12,
+              "diseno_industrial": 0.1,
+              "artes_visuales": 0.08,
+              "fotografia": 0.08
             }
           },
           {
             "id": "ARF3_04",
-            "texto": "¿Te atrae más el diseño tridimensional (espacios, objetos, moda), o el plano (gráfico, digital)?",
-            "opt1": "Plano y digital",
-            "opt2": "Me da igual",
-            "opt3": "Tridimensional",
-            "boosts_1": {
-              "diseno_grafico": 0.15,
-              "diseno_multimedial": 0.15
+            "pregunta": "¿En tu proceso creativo, qué manda más?",
+            "polo_a": "La intuición y la espontaneidad",
+            "polo_b": "La técnica, el oficio y la precisión",
+            "boosts_polo_a": {
+              "actuacion": 0.12,
+              "artes_visuales": 0.1
             },
-            "boosts_3": {
-              "arquitectura": 0.2,
-              "diseno_industrial": 0.15,
-              "diseno_indumentaria": 0.15
+            "boosts_polo_b": {
+              "arquitectura": 0.12,
+              "diseno_industrial": 0.1,
+              "diseno_grafico": 0.08,
+              "musica": 0.08
             }
           },
           {
             "id": "ARF3_05",
-            "texto": "¿Preferís la fotografía y el registro de momentos, o la animación y creación de mundos?",
-            "opt1": "Animación y mundos",
-            "opt2": "Me da igual",
-            "opt3": "Fotografía",
-            "boosts_1": {
-              "diseno_multimedial": 0.2,
-              "creacion_videojuegos": 0.15
+            "pregunta": "¿Qué valorás más en tu trabajo creativo?",
+            "polo_a": "El valor artístico y la expresión por sobre la utilidad",
+            "polo_b": "Que el trabajo tenga una función concreta y útil",
+            "boosts_polo_a": {
+              "artes_visuales": 0.12,
+              "musica": 0.1,
+              "actuacion": 0.1
             },
-            "boosts_3": {
-              "fotografia": 0.3
+            "boosts_polo_b": {
+              "arquitectura": 0.12,
+              "diseno_industrial": 0.1,
+              "diseno_indumentaria": 0.08,
+              "diseno_grafico": 0.08
             }
           }
         ]
@@ -3310,75 +3307,78 @@
         "preguntas": [
           {
             "id": "ARF3_06",
-            "texto": "¿Preferís escribir (periodismo, literatura, guiones), o actuar y estar en escena?",
-            "opt1": "Actuar y escena",
-            "opt2": "Me da igual",
-            "opt3": "Escribir",
-            "boosts_1": {
-              "actuacion": 0.3
+            "pregunta": "¿Qué rol preferís en una producción artística o comunicacional?",
+            "polo_a": "El protagonismo: actuar, presentar, estar en primer plano",
+            "polo_b": "Producir y coordinar para que otros brillen",
+            "boosts_polo_a": {
+              "actuacion": 0.14,
+              "comunicacion_social": 0.08
             },
-            "boosts_3": {
-              "letras": 0.2,
-              "comunicacion_social": 0.15
+            "boosts_polo_b": {
+              "artes_audiovisuales": 0.12,
+              "diseno_grafico": 0.1,
+              "relaciones_publicas": 0.08
             }
           },
           {
             "id": "ARF3_07",
-            "texto": "¿Te interesa más el periodismo y los hechos reales, o la escritura creativa y la ficción?",
-            "opt1": "Escritura creativa",
-            "opt2": "Me da igual",
-            "opt3": "Periodismo",
-            "boosts_1": {
-              "letras": 0.25
+            "pregunta": "¿Qué tipo de contenido te motiva más crear?",
+            "polo_a": "Ficción: crear mundos, personajes, historias",
+            "polo_b": "Realidad: informar, documentar, comunicar hechos",
+            "boosts_polo_a": {
+              "actuacion": 0.12,
+              "letras": 0.12,
+              "musica": 0.08
             },
-            "boosts_3": {
-              "comunicacion_social": 0.25
+            "boosts_polo_b": {
+              "comunicacion_social": 0.12,
+              "artes_audiovisuales": 0.1
             }
           },
           {
             "id": "ARF3_08",
-            "texto": "¿Preferís dirigir y producir proyectos artísticos, o ser el ejecutor (actuar, diseñar, componer)?",
-            "opt1": "Ejecutor artístico",
-            "opt2": "Me da igual",
-            "opt3": "Producir y dirigir",
-            "boosts_1": {
+            "pregunta": "¿Qué efecto querés provocar con tu trabajo?",
+            "polo_a": "Mover emociones: hacer reír, llorar, sentir",
+            "polo_b": "Informar, persuadir o generar cambios de opinión",
+            "boosts_polo_a": {
+              "actuacion": 0.12,
               "musica": 0.1,
-              "actuacion": 0.1,
-              "artes_visuales": 0.1
+              "letras": 0.08
             },
-            "boosts_3": {
-              "artes_audiovisuales": 0.2,
-              "comunicacion_social": 0.1
+            "boosts_polo_b": {
+              "comunicacion_social": 0.12,
+              "relaciones_publicas": 0.1
             }
           },
           {
             "id": "ARF3_09",
-            "texto": "¿Te atrae más la gastronomía como arte y técnica, o las artes escénicas (teatro, danza)?",
-            "opt1": "Artes escénicas",
-            "opt2": "Me da igual",
-            "opt3": "Gastronomía",
-            "boosts_1": {
-              "actuacion": 0.2
+            "pregunta": "¿Qué relación preferís con el mercado?",
+            "polo_a": "Crear lo que quiero, sin importar si es comercialmente viable",
+            "polo_b": "Adaptarme a lo que el público o el cliente necesita",
+            "boosts_polo_a": {
+              "letras": 0.12,
+              "actuacion": 0.1,
+              "musica": 0.08
             },
-            "boosts_3": {
-              "gastronomia": 0.3
+            "boosts_polo_b": {
+              "comunicacion_social": 0.1,
+              "relaciones_publicas": 0.1,
+              "gastronomia": 0.08
             }
           },
           {
             "id": "ARF3_10",
-            "texto": "¿Preferís trabajo comercial con clientes y marcas, o proyectos artísticos propios?",
-            "opt1": "Proyectos propios",
-            "opt2": "Me da igual",
-            "opt3": "Comercial y marcas",
-            "boosts_1": {
-              "actuacion": 0.1,
-              "musica": 0.1,
-              "letras": 0.1
+            "pregunta": "¿A qué escala preferís trabajar?",
+            "polo_a": "Trabajo artesanal de pequeña escala y proximidad",
+            "polo_b": "Medios, productoras y trabajo a gran escala",
+            "boosts_polo_a": {
+              "gastronomia": 0.12,
+              "letras": 0.1,
+              "musica": 0.08
             },
-            "boosts_3": {
-              "diseno_grafico": 0.15,
-              "comunicacion_social": 0.15,
-              "diseno_industrial": 0.1
+            "boosts_polo_b": {
+              "comunicacion_social": 0.12,
+              "artes_audiovisuales": 0.12
             }
           }
         ]
@@ -3394,74 +3394,78 @@
         "preguntas": [
           {
             "id": "ARF3_11",
-            "texto": "¿Preferís el diseño de moda e indumentaria, o el diseño de espacios e interiores?",
-            "opt1": "Espacios e interiores",
-            "opt2": "Me da igual",
-            "opt3": "Moda e indumentaria",
-            "boosts_1": {
-              "arquitectura": 0.25
+            "pregunta": "¿Qué priorizás en un diseño?",
+            "polo_a": "Que resuelva bien el problema funcional",
+            "polo_b": "La belleza, la forma y la experiencia estética",
+            "boosts_polo_a": {
+              "diseno_ux_ui": 0.12,
+              "diseno_industrial": 0.1,
+              "arquitectura": 0.08
             },
-            "boosts_3": {
-              "diseno_indumentaria": 0.3
+            "boosts_polo_b": {
+              "artes_visuales": 0.12,
+              "diseno_indumentaria": 0.1
             }
           },
           {
             "id": "ARF3_12",
-            "texto": "¿Te interesa más el diseño industrial de objetos, o el diseño digital e interactivo?",
-            "opt1": "Digital e interactivo",
-            "opt2": "Me da igual",
-            "opt3": "Objetos e industrial",
-            "boosts_1": {
-              "diseno_ux_ui": 0.2,
-              "diseno_multimedial": 0.15
+            "pregunta": "¿A qué escala preferís diseñar?",
+            "polo_a": "A gran escala: edificios, espacios, sistemas",
+            "polo_b": "A pequeña escala: objetos, prendas, pantallas",
+            "boosts_polo_a": {
+              "arquitectura": 0.16
             },
-            "boosts_3": {
-              "diseno_industrial": 0.25
+            "boosts_polo_b": {
+              "diseno_industrial": 0.12,
+              "diseno_indumentaria": 0.1,
+              "diseno_ux_ui": 0.08
             }
           },
           {
             "id": "ARF3_13",
-            "texto": "¿Preferís la gastronomía creativa, o el diseño de productos visuales y gráficos?",
-            "opt1": "Diseño visual",
-            "opt2": "Me da igual",
-            "opt3": "Gastronomía",
-            "boosts_1": {
-              "diseno_grafico": 0.15,
+            "pregunta": "¿Qué tipo de disciplina preferís?",
+            "polo_a": "Con normas técnicas y estándares claros",
+            "polo_b": "Con experimentación como parte central del proceso",
+            "boosts_polo_a": {
+              "arquitectura": 0.12,
               "diseno_industrial": 0.1
             },
-            "boosts_3": {
-              "gastronomia": 0.3
+            "boosts_polo_b": {
+              "diseno_indumentaria": 0.12,
+              "artes_visuales": 0.1,
+              "gastronomia": 0.08
             }
           },
           {
             "id": "ARF3_14",
-            "texto": "¿Te atrae crear videojuegos combinando arte y tecnología, o el diseño puramente artístico?",
-            "opt1": "Arte puro",
-            "opt2": "Me da igual",
-            "opt3": "Videojuegos y tecnología",
-            "boosts_1": {
-              "artes_visuales": 0.15,
-              "musica": 0.1
+            "pregunta": "¿Qué ciclo de proyecto preferís?",
+            "polo_a": "Proyectos de larga duración donde profundizo mucho",
+            "polo_b": "Ciclos cortos con iteraciones rápidas y feedback frecuente",
+            "boosts_polo_a": {
+              "arquitectura": 0.12,
+              "diseno_industrial": 0.1
             },
-            "boosts_3": {
-              "creacion_videojuegos": 0.25,
-              "diseno_multimedial": 0.1
+            "boosts_polo_b": {
+              "diseno_ux_ui": 0.12,
+              "diseno_multimedial": 0.1,
+              "creacion_videojuegos": 0.08,
+              "gastronomia": 0.08
             }
           },
           {
             "id": "ARF3_15",
-            "texto": "¿Preferís diseñar en 3D y con volumen, o en 2D y plano (gráficos, ilustraciones)?",
-            "opt1": "2D e ilustración",
-            "opt2": "Me da igual",
-            "opt3": "3D y volumen",
-            "boosts_1": {
-              "diseno_grafico": 0.2,
-              "diseno_multimedial": 0.1,
-              "fotografia": 0.1
+            "pregunta": "¿Qué relación preferís con la tecnología?",
+            "polo_a": "Disciplinas con tradición, oficio y maestría manual",
+            "polo_b": "Disciplinas que incorporan tecnología de punta",
+            "boosts_polo_a": {
+              "gastronomia": 0.12,
+              "diseno_indumentaria": 0.1,
+              "artes_visuales": 0.08
             },
-            "boosts_3": {
-              "arquitectura": 0.2,
-              "diseno_industrial": 0.2
+            "boosts_polo_b": {
+              "diseno_ux_ui": 0.12,
+              "diseno_multimedial": 0.1,
+              "creacion_videojuegos": 0.1
             }
           }
         ]
@@ -3479,80 +3483,81 @@
         "preguntas": [
           {
             "id": "NGF3_01",
-            "texto": "¿Preferís crear y hacer crecer tu propio negocio, o liderar dentro de organizaciones grandes?",
-            "opt1": "Organizaciones grandes",
-            "opt2": "Me da igual",
-            "opt3": "Propio negocio",
-            "boosts_1": {
-              "administracion_empresas": 0.2,
-              "recursos_humanos": 0.15
-            },
-            "boosts_3": {
+            "pregunta": "¿Cuál es tu ambición profesional?",
+            "polo_a": "Construir algo propio: mi empresa, mi marca, mi negocio",
+            "polo_b": "Hacer carrera dentro de organizaciones existentes",
+            "boosts_polo_a": {
               "marketing": 0.1,
-              "negocios_digitales": 0.15
+              "negocios_digitales": 0.12,
+              "martillero_publico": 0.08
+            },
+            "boosts_polo_b": {
+              "administracion_empresas": 0.12,
+              "recursos_humanos": 0.1,
+              "relaciones_internacionales": 0.08
             }
           },
           {
             "id": "NGF3_02",
-            "texto": "¿Te interesa más el marketing y las ventas, o las relaciones institucionales e internacionales?",
-            "opt1": "Internacional e institucional",
-            "opt2": "Me da igual",
-            "opt3": "Marketing y ventas",
-            "boosts_1": {
-              "relaciones_internacionales": 0.2,
-              "comercio_internacional": 0.15
+            "pregunta": "¿Cómo te relacionás con el riesgo?",
+            "polo_a": "Me atrae: tomar decisiones con información incompleta",
+            "polo_b": "Prefiero planificar en entornos estables y predecibles",
+            "boosts_polo_a": {
+              "marketing": 0.1,
+              "negocios_digitales": 0.12,
+              "martillero_publico": 0.08
             },
-            "boosts_3": {
-              "marketing": 0.2,
-              "relaciones_publicas": 0.15,
-              "martillero_publico": 0.1
+            "boosts_polo_b": {
+              "administracion_empresas": 0.1,
+              "recursos_humanos": 0.1,
+              "finanzas": 0.08
             }
           },
           {
             "id": "NGF3_03",
-            "texto": "¿Preferís negocios digitales e internet, o negocios presenciales y tradicionales?",
-            "opt1": "Tradicionales y presenciales",
-            "opt2": "Me da igual",
-            "opt3": "Digital e internet",
-            "boosts_1": {
-              "administracion_empresas": 0.1,
-              "martillero_publico": 0.1
+            "pregunta": "¿Qué te energiza más en el trabajo?",
+            "polo_a": "Trabajar con personas: convencer, liderar, motivar",
+            "polo_b": "Trabajar con datos, modelos y análisis",
+            "boosts_polo_a": {
+              "recursos_humanos": 0.12,
+              "relaciones_publicas": 0.1,
+              "relaciones_internacionales": 0.08
             },
-            "boosts_3": {
-              "negocios_digitales": 0.25,
-              "marketing": 0.1
+            "boosts_polo_b": {
+              "finanzas": 0.12,
+              "economia": 0.1,
+              "negocios_digitales": 0.08
             }
           },
           {
             "id": "NGF3_04",
-            "texto": "¿Te atrae el turismo y la hotelería, o las finanzas y los mercados?",
-            "opt1": "Finanzas y mercados",
-            "opt2": "Me da igual",
-            "opt3": "Turismo y hotelería",
-            "boosts_1": {
-              "finanzas": 0.2,
-              "economia": 0.15,
-              "actuario": 0.1
+            "pregunta": "¿Cuál es tu horizonte geográfico preferido?",
+            "polo_a": "El mercado local y nacional",
+            "polo_b": "Lo internacional: otros países, culturas y mercados",
+            "boosts_polo_a": {
+              "martillero_publico": 0.12,
+              "administracion_empresas": 0.08
             },
-            "boosts_3": {
-              "lic_turismo": 0.25,
-              "tec_turismo": 0.2
+            "boosts_polo_b": {
+              "relaciones_internacionales": 0.12,
+              "comercio_internacional": 0.12,
+              "lic_turismo": 0.08
             }
           },
           {
             "id": "NGF3_05",
-            "texto": "¿Preferís gestionar personas y equipos, o gestionar recursos financieros y operaciones?",
-            "opt1": "Recursos financieros",
-            "opt2": "Me da igual",
-            "opt3": "Personas y equipos",
-            "boosts_1": {
-              "finanzas": 0.15,
-              "logistica": 0.1,
-              "contador_publico": 0.1
+            "pregunta": "¿Qué horizonte temporal de resultados preferís?",
+            "polo_a": "Resultados rápidos y objetivos a corto plazo",
+            "polo_b": "Construir estructuras y estrategias de largo plazo",
+            "boosts_polo_a": {
+              "marketing": 0.12,
+              "negocios_digitales": 0.1,
+              "martillero_publico": 0.08
             },
-            "boosts_3": {
-              "recursos_humanos": 0.25,
-              "administracion_empresas": 0.1
+            "boosts_polo_b": {
+              "administracion_empresas": 0.12,
+              "relaciones_internacionales": 0.1,
+              "recursos_humanos": 0.08
             }
           }
         ]
@@ -3568,75 +3573,81 @@
         "preguntas": [
           {
             "id": "NGF3_06",
-            "texto": "¿Preferís el análisis económico y los mercados financieros, o la contabilidad e impuestos?",
-            "opt1": "Contabilidad e impuestos",
-            "opt2": "Me da igual",
-            "opt3": "Economía y mercados",
-            "boosts_1": {
-              "contador_publico": 0.2,
-              "tec_administracion_contable": 0.15
+            "pregunta": "¿Qué tipo de trabajo preferís?",
+            "polo_a": "Investigar, modelar y analizar para generar insights",
+            "polo_b": "Ejecutar, controlar y gestionar procesos concretos",
+            "boosts_polo_a": {
+              "economia": 0.12,
+              "finanzas": 0.1,
+              "actuario": 0.1
             },
-            "boosts_3": {
-              "economia": 0.2,
-              "finanzas": 0.2
+            "boosts_polo_b": {
+              "contador_publico": 0.12,
+              "tec_administracion_contable": 0.1,
+              "logistica": 0.08
             }
           },
           {
             "id": "NGF3_07",
-            "texto": "¿Te interesa más el análisis actuarial de riesgos, o la gestión financiera de empresas?",
-            "opt1": "Gestión financiera",
-            "opt2": "Me da igual",
-            "opt3": "Actuarial y riesgos",
-            "boosts_1": {
-              "finanzas": 0.2,
-              "administracion_empresas": 0.1
+            "pregunta": "¿Qué relación preferís con la incertidumbre numérica?",
+            "polo_a": "Me atraen los problemas de riesgo e incertidumbre",
+            "polo_b": "Prefiero el control, la precisión y la certeza contable",
+            "boosts_polo_a": {
+              "actuario": 0.14,
+              "economia": 0.1,
+              "finanzas": 0.1
             },
-            "boosts_3": {
-              "actuario": 0.3
+            "boosts_polo_b": {
+              "contador_publico": 0.12,
+              "tec_administracion_contable": 0.1,
+              "escribania": 0.08
             }
           },
           {
             "id": "NGF3_08",
-            "texto": "¿Preferís trabajar en el sector público y estatal, o en el sector privado?",
-            "opt1": "Sector privado",
-            "opt2": "Me da igual",
-            "opt3": "Sector público",
-            "boosts_1": {
-              "administracion_empresas": 0.15,
-              "marketing": 0.1
+            "pregunta": "¿En qué sector te imaginás?",
+            "polo_a": "El sector público o regulatorio",
+            "polo_b": "El sector privado: empresas, consultoras",
+            "boosts_polo_a": {
+              "administracion_publica": 0.14,
+              "economia": 0.08
             },
-            "boosts_3": {
-              "administracion_publica": 0.25,
-              "escribania": 0.1
+            "boosts_polo_b": {
+              "finanzas": 0.12,
+              "actuario": 0.1,
+              "contador_publico": 0.08
             }
           },
           {
             "id": "NGF3_09",
-            "texto": "¿Te atrae el comercio internacional e importación/exportación, o la logística y cadena de suministro?",
-            "opt1": "Logística y cadena de suministro",
-            "opt2": "Me da igual",
-            "opt3": "Comercio internacional",
-            "boosts_1": {
-              "logistica": 0.25
+            "pregunta": "¿Cómo preferís trabajar?",
+            "polo_a": "Trabajo técnico independiente, con poca interacción",
+            "polo_b": "Asesorar clientes y tener relaciones de servicio",
+            "boosts_polo_a": {
+              "actuario": 0.12,
+              "economia": 0.1,
+              "finanzas": 0.08
             },
-            "boosts_3": {
-              "comercio_internacional": 0.25
+            "boosts_polo_b": {
+              "contador_publico": 0.12,
+              "escribania": 0.1,
+              "comercio_internacional": 0.08
             }
           },
           {
             "id": "NGF3_10",
-            "texto": "¿Preferís trabajo metódico y detallista (revisar números, controlar), o creativo y estratégico?",
-            "opt1": "Creativo y estratégico",
-            "opt2": "Me da igual",
-            "opt3": "Metódico y detallista",
-            "boosts_1": {
-              "marketing": 0.15,
-              "relaciones_publicas": 0.1
+            "pregunta": "¿En qué escala de impacto preferís operar?",
+            "polo_a": "Entender y actuar sobre la economía a nivel macro",
+            "polo_b": "Generar impacto concreto en empresas o personas",
+            "boosts_polo_a": {
+              "economia": 0.14,
+              "administracion_publica": 0.1
             },
-            "boosts_3": {
-              "contador_publico": 0.15,
-              "tec_administracion_contable": 0.15,
-              "logistica": 0.1
+            "boosts_polo_b": {
+              "contador_publico": 0.1,
+              "logistica": 0.1,
+              "finanzas": 0.08,
+              "tec_administracion_contable": 0.08
             }
           }
         ]
@@ -3652,78 +3663,84 @@
         "preguntas": [
           {
             "id": "NGF3_11",
-            "texto": "¿Preferís trabajar con clientes y relaciones, o en operaciones y procesos internos?",
-            "opt1": "Operaciones internas",
-            "opt2": "Me da igual",
-            "opt3": "Clientes y relaciones",
-            "boosts_1": {
-              "logistica": 0.15,
-              "administracion_publica": 0.1
+            "pregunta": "¿Qué es lo central de tu trabajo ideal?",
+            "polo_a": "La relación con clientes o personas",
+            "polo_b": "Gestionar operaciones y procesos internos",
+            "boosts_polo_a": {
+              "relaciones_publicas": 0.12,
+              "recursos_humanos": 0.1,
+              "martillero_publico": 0.1,
+              "lic_turismo": 0.08
             },
-            "boosts_3": {
-              "relaciones_publicas": 0.2,
-              "recursos_humanos": 0.15,
-              "martillero_publico": 0.1
+            "boosts_polo_b": {
+              "logistica": 0.12,
+              "secretariado_ejecutivo": 0.1,
+              "escribania": 0.08
             }
           },
           {
             "id": "NGF3_12",
-            "texto": "¿Te interesa más el turismo y la hospitalidad, o las relaciones institucionales y públicas?",
-            "opt1": "Institucional y público",
-            "opt2": "Me da igual",
-            "opt3": "Turismo y hospitalidad",
-            "boosts_1": {
-              "relaciones_internacionales": 0.2,
-              "relaciones_publicas": 0.15
+            "pregunta": "¿Qué tipo de entorno preferís?",
+            "polo_a": "Donde puedo innovar y proponer cosas nuevas",
+            "polo_b": "Organizado con procesos claros y definidos",
+            "boosts_polo_a": {
+              "marketing": 0.12,
+              "negocios_digitales": 0.1,
+              "relaciones_publicas": 0.08
             },
-            "boosts_3": {
-              "lic_turismo": 0.25,
-              "tec_turismo": 0.15
+            "boosts_polo_b": {
+              "secretariado_ejecutivo": 0.12,
+              "escribania": 0.1,
+              "logistica": 0.1,
+              "administracion_empresas": 0.08
             }
           },
           {
             "id": "NGF3_13",
-            "texto": "¿Preferís el trabajo notarial y documental, o la gestión administrativa de empresas?",
-            "opt1": "Gestión administrativa",
-            "opt2": "Me da igual",
-            "opt3": "Notarial y documental",
-            "boosts_1": {
-              "administracion_empresas": 0.15,
-              "secretariado_ejecutivo": 0.1
+            "pregunta": "¿Cómo preferís ejercer la profesión?",
+            "polo_a": "Como profesional autónomo/a con mi propia cartera",
+            "polo_b": "Dentro de un equipo u organización",
+            "boosts_polo_a": {
+              "martillero_publico": 0.14,
+              "escribania": 0.1
             },
-            "boosts_3": {
-              "escribania": 0.3
+            "boosts_polo_b": {
+              "recursos_humanos": 0.12,
+              "administracion_empresas": 0.1,
+              "relaciones_publicas": 0.08
             }
           },
           {
             "id": "NGF3_14",
-            "texto": "¿Te atrae la creatividad en marketing y publicidad, o la precisión en contabilidad y finanzas?",
-            "opt1": "Contabilidad y finanzas",
-            "opt2": "Me da igual",
-            "opt3": "Marketing y publicidad",
-            "boosts_1": {
-              "contador_publico": 0.2,
-              "finanzas": 0.15
+            "pregunta": "¿Qué tipo de impacto valorás más?",
+            "polo_a": "El impacto directo en las personas que atiendo",
+            "polo_b": "Mejorar el funcionamiento de organizaciones",
+            "boosts_polo_a": {
+              "recursos_humanos": 0.12,
+              "lic_turismo": 0.1,
+              "tec_turismo": 0.08,
+              "relaciones_publicas": 0.08
             },
-            "boosts_3": {
-              "marketing": 0.2,
-              "relaciones_publicas": 0.15,
-              "negocios_digitales": 0.1
+            "boosts_polo_b": {
+              "administracion_empresas": 0.12,
+              "logistica": 0.1,
+              "secretariado_ejecutivo": 0.08
             }
           },
           {
             "id": "NGF3_15",
-            "texto": "¿Preferís trabajar como profesional autónomo, o dentro de organizaciones?",
-            "opt1": "Dentro de organizaciones",
-            "opt2": "Me da igual",
-            "opt3": "Profesional autónomo",
-            "boosts_1": {
-              "administracion_empresas": 0.1,
-              "logistica": 0.1
+            "pregunta": "¿Qué alcance geográfico preferís?",
+            "polo_a": "Trabajo presencial, cara a cara, en el ámbito local",
+            "polo_b": "Gestión global, viajes y entornos internacionales",
+            "boosts_polo_a": {
+              "martillero_publico": 0.12,
+              "escribania": 0.1,
+              "secretariado_ejecutivo": 0.08
             },
-            "boosts_3": {
-              "martillero_publico": 0.2,
-              "escribania": 0.15
+            "boosts_polo_b": {
+              "relaciones_internacionales": 0.12,
+              "lic_turismo": 0.1,
+              "comercio_internacional": 0.1
             }
           }
         ]
@@ -3741,74 +3758,74 @@
         "preguntas": [
           {
             "id": "HUF3_01",
-            "texto": "¿Preferís enseñar y acompañar el aprendizaje, o trabajar en problemáticas sociales y comunitarias?",
-            "opt1": "Problemáticas sociales",
-            "opt2": "Me da igual",
-            "opt3": "Enseñar",
-            "boosts_1": {
-              "trabajo_social": 0.2,
-              "psicologia": 0.1
+            "pregunta": "¿Qué escala de cambio te motiva más?",
+            "polo_a": "Cambio estructural: políticas, comunidades, sistemas",
+            "polo_b": "Cambio individual: acompañar a cada persona",
+            "boosts_polo_a": {
+              "trabajo_social": 0.12,
+              "ciencias_educacion": 0.1
             },
-            "boosts_3": {
-              "ciencias_educacion": 0.2,
-              "profesorado_educacion_primaria": 0.15
+            "boosts_polo_b": {
+              "psicologia": 0.12,
+              "psicopedagogia": 0.1
             }
           },
           {
             "id": "HUF3_02",
-            "texto": "¿Te interesa más la psicología y el acompañamiento emocional, o el trabajo social y comunitario?",
-            "opt1": "Trabajo social",
-            "opt2": "Me da igual",
-            "opt3": "Psicología",
-            "boosts_1": {
-              "trabajo_social": 0.25
+            "pregunta": "¿Qué tipo de vínculo profesional podés sostener?",
+            "polo_a": "Vínculos emocionales intensos y situaciones dolorosas",
+            "polo_b": "Prefiero cierta distancia profesional con los casos",
+            "boosts_polo_a": {
+              "psicologia": 0.12,
+              "trabajo_social": 0.1
             },
-            "boosts_3": {
-              "psicologia": 0.25
+            "boosts_polo_b": {
+              "ciencias_educacion": 0.12,
+              "psicopedagogia": 0.1
             }
           },
           {
             "id": "HUF3_03",
-            "texto": "¿Preferís trabajar con niños y jóvenes, o con adultos y familias en contextos vulnerables?",
-            "opt1": "Adultos y familias vulnerables",
-            "opt2": "Me da igual",
-            "opt3": "Niños y jóvenes",
-            "boosts_1": {
-              "trabajo_social": 0.15,
+            "pregunta": "¿Con qué población preferís trabajar?",
+            "polo_a": "Personas en situaciones de vulnerabilidad extrema",
+            "polo_b": "La población general, sin foco en crisis",
+            "boosts_polo_a": {
+              "trabajo_social": 0.12,
               "psicologia": 0.1
             },
-            "boosts_3": {
-              "profesorado_educacion_primaria": 0.2,
-              "psicopedagogia": 0.15
+            "boosts_polo_b": {
+              "ciencias_educacion": 0.12,
+              "profesorado_educacion_primaria": 0.1,
+              "educacion_fisica": 0.08
             }
           },
           {
             "id": "HUF3_04",
-            "texto": "¿Te atrae la orientación vocacional y el aprendizaje, o la terapia y el bienestar mental?",
-            "opt1": "Terapia y bienestar",
-            "opt2": "Me da igual",
-            "opt3": "Aprendizaje y vocacional",
-            "boosts_1": {
-              "psicologia": 0.2
+            "pregunta": "¿Cómo preferís ejercer la profesión?",
+            "polo_a": "Dentro de instituciones: escuelas, hospitales, ONGs",
+            "polo_b": "Consultorio propio o ejercicio independiente",
+            "boosts_polo_a": {
+              "trabajo_social": 0.12,
+              "profesorado_educacion_primaria": 0.1,
+              "educacion_fisica": 0.08
             },
-            "boosts_3": {
-              "ciencias_educacion": 0.15,
-              "psicopedagogia": 0.15
+            "boosts_polo_b": {
+              "psicologia": 0.14,
+              "psicopedagogia": 0.1
             }
           },
           {
             "id": "HUF3_05",
-            "texto": "¿Preferís la educación física y el deporte, o la docencia en aulas?",
-            "opt1": "Docencia en aulas",
-            "opt2": "Me da igual",
-            "opt3": "Educación física y deporte",
-            "boosts_1": {
-              "ciencias_educacion": 0.15,
-              "profesorado_educacion_primaria": 0.1,
-              "profesorado_ciencias_exactas": 0.1
+            "pregunta": "¿A través de qué dimensión preferís trabajar?",
+            "polo_a": "El cuerpo, el movimiento y lo físico",
+            "polo_b": "El lenguaje, el pensamiento y el aprendizaje",
+            "boosts_polo_a": {
+              "educacion_fisica": 0.18
             },
-            "boosts_3": {
-              "educacion_fisica": 0.3
+            "boosts_polo_b": {
+              "psicologia": 0.1,
+              "psicopedagogia": 0.1,
+              "ciencias_educacion": 0.08
             }
           }
         ]
@@ -3824,74 +3841,81 @@
         "preguntas": [
           {
             "id": "HUF3_06",
-            "texto": "¿Preferís la investigación histórica y académica, o el ejercicio del derecho en tribunales?",
-            "opt1": "Derecho y tribunales",
-            "opt2": "Me da igual",
-            "opt3": "Historia y academia",
-            "boosts_1": {
-              "abogacia": 0.2,
-              "escribania": 0.15
+            "pregunta": "¿Qué tipo de trabajo intelectual te atrae más?",
+            "polo_a": "Convencer, debatir y defender una posición",
+            "polo_b": "Analizar, comprender e interpretar sin defender",
+            "boosts_polo_a": {
+              "abogacia": 0.14,
+              "ciencia_politica": 0.08
             },
-            "boosts_3": {
-              "historia": 0.25,
-              "sociologia": 0.1
+            "boosts_polo_b": {
+              "historia": 0.12,
+              "sociologia": 0.1,
+              "filosofia": 0.08
             }
           },
           {
             "id": "HUF3_07",
-            "texto": "¿Te interesa más la ciencia política y las instituciones, o la filosofía y el pensamiento abstracto?",
-            "opt1": "Filosofía y pensamiento",
-            "opt2": "Me da igual",
-            "opt3": "Política e instituciones",
-            "boosts_1": {
-              "filosofia": 0.25
+            "pregunta": "¿Qué dimensión temporal te atrae más estudiar?",
+            "polo_a": "El pasado: fuentes históricas y documentos",
+            "polo_b": "La coyuntura actual y los procesos en curso",
+            "boosts_polo_a": {
+              "historia": 0.16
             },
-            "boosts_3": {
-              "ciencia_politica": 0.25,
-              "relaciones_internacionales": 0.1
+            "boosts_polo_b": {
+              "sociologia": 0.1,
+              "ciencia_politica": 0.1,
+              "relaciones_internacionales": 0.08,
+              "comunicacion_social": 0.08
             }
           },
           {
             "id": "HUF3_08",
-            "texto": "¿Preferís el análisis sociológico de la sociedad, o el trabajo concreto con personas?",
-            "opt1": "Trabajo con personas",
-            "opt2": "Me da igual",
-            "opt3": "Análisis sociológico",
-            "boosts_1": {
-              "trabajo_social": 0.15,
-              "psicologia": 0.1
+            "pregunta": "¿Desde dónde preferís pensar?",
+            "polo_a": "Categorías abstractas, conceptos y sistemas teóricos",
+            "polo_b": "Casos concretos y problemas reales",
+            "boosts_polo_a": {
+              "filosofia": 0.14,
+              "historia": 0.1,
+              "sociologia": 0.08
             },
-            "boosts_3": {
-              "sociologia": 0.25,
-              "ciencia_politica": 0.1
+            "boosts_polo_b": {
+              "abogacia": 0.12,
+              "ciencia_politica": 0.1,
+              "relaciones_internacionales": 0.08
             }
           },
           {
             "id": "HUF3_09",
-            "texto": "¿Te atrae la escritura y la literatura, o la traducción y los idiomas extranjeros?",
-            "opt1": "Idiomas y traducción",
-            "opt2": "Me da igual",
-            "opt3": "Escritura y literatura",
-            "boosts_1": {
-              "traductorado": 0.3
+            "pregunta": "¿Cómo se expresa principalmente tu trabajo?",
+            "polo_a": "A través de la escritura y el análisis",
+            "polo_b": "A través de la intervención y la acción",
+            "boosts_polo_a": {
+              "historia": 0.12,
+              "filosofia": 0.1,
+              "letras": 0.1,
+              "sociologia": 0.08
             },
-            "boosts_3": {
-              "letras": 0.25,
-              "comunicacion_social": 0.1
+            "boosts_polo_b": {
+              "abogacia": 0.12,
+              "ciencia_politica": 0.1
             }
           },
           {
             "id": "HUF3_10",
-            "texto": "¿Preferís las relaciones internacionales y la diplomacia, o la política nacional e instituciones?",
-            "opt1": "Política nacional",
-            "opt2": "Me da igual",
-            "opt3": "Internacional y diplomacia",
-            "boosts_1": {
-              "ciencia_politica": 0.2,
-              "abogacia": 0.1
+            "pregunta": "¿Qué modo de trabajo preferís?",
+            "polo_a": "Solitario: leer, investigar, escribir",
+            "polo_b": "En red: reuniones, negociaciones, institución",
+            "boosts_polo_a": {
+              "historia": 0.12,
+              "filosofia": 0.1,
+              "letras": 0.1,
+              "traductorado": 0.08
             },
-            "boosts_3": {
-              "relaciones_internacionales": 0.3
+            "boosts_polo_b": {
+              "abogacia": 0.12,
+              "ciencia_politica": 0.1,
+              "relaciones_internacionales": 0.1
             }
           }
         ]
@@ -3907,76 +3931,77 @@
         "preguntas": [
           {
             "id": "HUF3_11",
-            "texto": "¿Preferís defender personas en el ámbito legal, o gestionar documentos y actos jurídicos?",
-            "opt1": "Gestión documental",
-            "opt2": "Me da igual",
-            "opt3": "Defensa y litigios",
-            "boosts_1": {
-              "escribania": 0.25,
-              "archivologia": 0.15
+            "pregunta": "¿Qué tipo de trabajo jurídico te atrae más?",
+            "polo_a": "Juicios, alegatos y defensa de partes",
+            "polo_b": "Dar certeza jurídica: documentar, escriturar, certificar",
+            "boosts_polo_a": {
+              "abogacia": 0.16
             },
-            "boosts_3": {
-              "abogacia": 0.25
+            "boosts_polo_b": {
+              "escribania": 0.14,
+              "archivologia": 0.1
             }
           },
           {
             "id": "HUF3_12",
-            "texto": "¿Te interesa más la comunicación y el periodismo, o la gestión de archivos e información?",
-            "opt1": "Archivos e información",
-            "opt2": "Me da igual",
-            "opt3": "Comunicación y periodismo",
-            "boosts_1": {
-              "archivologia": 0.2
+            "pregunta": "¿Qué ritmo de trabajo preferís?",
+            "polo_a": "Los conflictos, las urgencias y la presión",
+            "polo_b": "El trabajo metódico, archivístico y sin urgencias",
+            "boosts_polo_a": {
+              "abogacia": 0.14,
+              "comunicacion_social": 0.08
             },
-            "boosts_3": {
-              "comunicacion_social": 0.25
+            "boosts_polo_b": {
+              "escribania": 0.12,
+              "archivologia": 0.12,
+              "historia": 0.08
             }
           },
           {
             "id": "HUF3_13",
-            "texto": "¿Preferís trabajar en el ámbito político-gubernamental, o en el cultural y educativo?",
-            "opt1": "Cultural y educativo",
-            "opt2": "Me da igual",
-            "opt3": "Político y gubernamental",
-            "boosts_1": {
-              "historia": 0.15,
-              "ciencias_educacion": 0.1
+            "pregunta": "¿Qué impacto te motiva más?",
+            "polo_a": "Resolver el problema concreto de una persona o empresa",
+            "polo_b": "Preservar, comunicar e interpretar la cultura y la historia",
+            "boosts_polo_a": {
+              "abogacia": 0.12,
+              "escribania": 0.1
             },
-            "boosts_3": {
-              "ciencia_politica": 0.2,
-              "relaciones_internacionales": 0.1
+            "boosts_polo_b": {
+              "archivologia": 0.12,
+              "historia": 0.1,
+              "ciencias_educacion": 0.08
             }
           },
           {
             "id": "HUF3_14",
-            "texto": "¿Te atrae la catalogación y preservación de archivos históricos, o la docencia e investigación?",
-            "opt1": "Docencia e investigación",
-            "opt2": "Me da igual",
-            "opt3": "Archivos históricos",
-            "boosts_1": {
-              "historia": 0.15,
-              "filosofia": 0.1,
-              "ciencias_educacion": 0.1
+            "pregunta": "¿Cómo preferís comunicarte profesionalmente?",
+            "polo_a": "En forma oral: argumentar, presentar, dialogar",
+            "polo_b": "En forma escrita: redactar, documentar, analizar",
+            "boosts_polo_a": {
+              "abogacia": 0.12,
+              "comunicacion_social": 0.1
             },
-            "boosts_3": {
-              "archivologia": 0.25
+            "boosts_polo_b": {
+              "escribania": 0.12,
+              "archivologia": 0.1,
+              "historia": 0.08,
+              "filosofia": 0.08
             }
           },
           {
             "id": "HUF3_15",
-            "texto": "¿Preferís mediar en conflictos (laboral, familiar, judicial), o investigar y comunicar ideas?",
-            "opt1": "Investigar y comunicar",
-            "opt2": "Me da igual",
-            "opt3": "Mediar en conflictos",
-            "boosts_1": {
-              "historia": 0.1,
-              "sociologia": 0.1,
-              "comunicacion_social": 0.1
+            "pregunta": "¿En qué sector te imaginás trabajando?",
+            "polo_a": "Sector privado o ejercicio independiente",
+            "polo_b": "Sector público, cultural u organismos",
+            "boosts_polo_a": {
+              "abogacia": 0.12,
+              "escribania": 0.1
             },
-            "boosts_3": {
-              "abogacia": 0.15,
-              "escribania": 0.1,
-              "trabajo_social": 0.1
+            "boosts_polo_b": {
+              "archivologia": 0.12,
+              "historia": 0.1,
+              "ciencias_educacion": 0.08,
+              "ciencia_politica": 0.08
             }
           }
         ]
