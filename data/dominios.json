@@ -1,0 +1,90 @@
+{
+  "_meta": {
+    "descripcion": "Definición de los 6 dominios de interés del Sistema Experto Vocacional. Cada dominio agrupa carreras afines y tiene su propio banco de preguntas RIASEC en preguntas.json (preguntas_por_dominio). El usuario elige 1 o 2 dominios en la Fase 1; el test carga únicamente las preguntas y carreras del/los dominio/s seleccionado/s."
+  },
+  "dominios": [
+    {
+      "id": "tecnologia",
+      "nombre": "Tecnología & Sistemas",
+      "icono": "💻",
+      "descripcion": "Programar, diseñar redes, construir sistemas digitales, trabajar con hardware y software.",
+      "actividades": ["Configurar servidores y redes", "Programar aplicaciones", "Diseñar circuitos electrónicos", "Analizar datos con algoritmos"],
+      "carreras_ejemplo": ["Ingeniería en Sistemas", "Tecnicatura en Redes", "Ciberseguridad", "Ciencia de Datos"],
+      "carreras": [
+        "ingenieria_mecanica", "ingenieria_civil", "ingenieria_electronica", "ingenieria_industrial",
+        "ingenieria_mecatronica", "ingenieria_electrica", "ingenieria_sistemas", "ciberseguridad",
+        "tecnologias_digitales", "tec_programacion", "ciencia_datos", "tec_energias_renovables",
+        "tec_mantenimiento_industrial", "tec_higiene_seguridad", "tec_redes", "ingenieria_ambiental",
+        "ingenieria_alimentos", "bioingenieria", "lic_computacion", "creacion_videojuegos", "diseno_ux_ui"
+      ]
+    },
+    {
+      "id": "ciencias",
+      "nombre": "Ciencias Naturales",
+      "icono": "🔬",
+      "descripcion": "Explorar el mundo natural, hacer experimentos, investigar fenómenos biológicos, químicos y geológicos.",
+      "actividades": ["Experimentos de laboratorio", "Trabajo de campo", "Investigación científica", "Modelado de fenómenos naturales"],
+      "carreras_ejemplo": ["Biología", "Química", "Biotecnología", "Geología"],
+      "carreras": [
+        "biologia", "quimica", "matematica", "fisica", "biotecnologia", "agronomia",
+        "tec_produccion_agropecuaria", "geologia", "bioingenieria", "ingenieria_ambiental",
+        "ingenieria_alimentos", "ingenieria_quimica", "farmacia", "tec_laboratorio", "geografia"
+      ]
+    },
+    {
+      "id": "salud",
+      "nombre": "Salud & Cuidado",
+      "icono": "🏥",
+      "descripcion": "Atender, cuidar y mejorar la salud de personas y animales. Prevenir enfermedades y acompañar tratamientos.",
+      "actividades": ["Atención a pacientes", "Diagnóstico clínico", "Rehabilitación física", "Apoyo emocional terapéutico"],
+      "carreras_ejemplo": ["Medicina", "Kinesiología", "Enfermería", "Nutrición"],
+      "carreras": [
+        "medicina", "odontologia", "enfermeria", "kinesiologia", "nutricion", "fonoaudiologia",
+        "veterinaria", "farmacia", "tec_laboratorio", "tec_instrumentacion_quirurgica",
+        "tec_anestesia", "acompanamiento_terapeutico", "terapia_ocupacional", "psicopedagogia"
+      ]
+    },
+    {
+      "id": "arte",
+      "nombre": "Arte & Comunicación",
+      "icono": "🎨",
+      "descripcion": "Crear, diseñar, comunicar y expresar ideas a través del arte, el diseño, la música o los medios.",
+      "actividades": ["Diseño visual y gráfico", "Producción audiovisual", "Escritura creativa", "Música y actuación"],
+      "carreras_ejemplo": ["Diseño Gráfico", "Artes Audiovisuales", "Música", "Comunicación Social"],
+      "carreras": [
+        "arquitectura", "diseno_grafico", "diseno_industrial", "diseno_indumentaria", "diseno_multimedial",
+        "diseno_ux_ui", "artes_visuales", "musica", "artes_audiovisuales", "fotografia", "actuacion",
+        "creacion_videojuegos", "comunicacion_social", "letras", "gastronomia"
+      ]
+    },
+    {
+      "id": "negocios",
+      "nombre": "Negocios & Gestión",
+      "icono": "📊",
+      "descripcion": "Crear empresas, gestionar equipos, negociar, hacer marketing y manejar finanzas.",
+      "actividades": ["Gestión de empresas", "Marketing y ventas", "Análisis financiero", "Emprendimiento"],
+      "carreras_ejemplo": ["Administración de Empresas", "Marketing", "Contador Público", "Comercio Internacional"],
+      "carreras": [
+        "administracion_empresas", "marketing", "relaciones_publicas", "recursos_humanos",
+        "comercio_internacional", "negocios_digitales", "tec_turismo", "martillero_publico",
+        "contador_publico", "economia", "finanzas", "actuario", "administracion_publica",
+        "logistica", "tec_administracion_contable", "secretariado_ejecutivo",
+        "relaciones_internacionales", "lic_turismo", "escribania"
+      ]
+    },
+    {
+      "id": "humanidades",
+      "nombre": "Humanidades & Educación",
+      "icono": "📚",
+      "descripcion": "Estudiar la sociedad, el derecho, la historia, las ideas, enseñar y ayudar a las personas.",
+      "actividades": ["Investigación social y humanística", "Enseñanza y pedagogía", "Trabajo con comunidades", "Derecho y justicia"],
+      "carreras_ejemplo": ["Abogacía", "Historia", "Psicología", "Trabajo Social"],
+      "carreras": [
+        "psicologia", "trabajo_social", "sociologia", "ciencia_politica", "abogacia",
+        "comunicacion_social", "letras", "traductorado", "archivologia", "ciencias_educacion",
+        "profesorado_educacion_primaria", "profesorado_ciencias_exactas", "historia",
+        "filosofia", "psicopedagogia", "educacion_fisica", "relaciones_internacionales", "escribania"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3986 @@
+{
+  "_meta": {
+    "descripcion": "Banco de preguntas del Sistema Experto Vocacional v2. Estructura de dos fases: (1) el usuario elige 1-2 dominios; (2) se carga el banco RIASEC específico del dominio. Las preguntas dentro de cada dominio están diseñadas para discriminar entre las carreras de ese dominio. Los filtros (segunda capa) se aplican igual que antes.",
+    "modelo": "RIASEC - John L. Holland. Dimensiones: R=Realista, I=Investigador, A=Artístico, S=Social, E=Emprendedor, C=Convencional.",
+    "escala_likert": {
+      "1": "Lo detestaría",
+      "2": "No me gustaría",
+      "3": "Me da igual",
+      "4": "Me gustaría",
+      "5": "Me encantaría"
+    },
+    "total_filtros": 10
+  },
+  "preguntas_fase1": [
+    {
+      "id": "D_T1",
+      "dominio": "tecnologia",
+      "pregunta": "Configurar y mantener una red de computadoras para que todos los dispositivos se conecten sin problemas",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_T2",
+      "dominio": "tecnologia",
+      "pregunta": "Escribir código para crear una aplicación, automatizar una tarea o resolver un problema lógico",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_T3",
+      "dominio": "tecnologia",
+      "pregunta": "Entender, armar y reparar el hardware de una computadora, servidor o dispositivo electrónico",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_CN1",
+      "dominio": "ciencias",
+      "pregunta": "Trabajar en laboratorio estudiando cómo funciona un proceso biológico, químico o físico",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_CN2",
+      "dominio": "ciencias",
+      "pregunta": "Salir al campo a explorar y registrar fenómenos naturales: suelos, ecosistemas, rocas o especies",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_CN3",
+      "dominio": "ciencias",
+      "pregunta": "Resolver problemas matemáticos complejos o modelar fenómenos de la naturaleza con ecuaciones",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_SA1",
+      "dominio": "salud",
+      "pregunta": "Aprender a interpretar síntomas, análisis de sangre o radiografías para ayudar a diagnosticar",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_SA2",
+      "dominio": "salud",
+      "pregunta": "Acompañar y ayudar a una persona enferma o lesionada en su proceso de recuperación",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_SA3",
+      "dominio": "salud",
+      "pregunta": "Estudiar cómo funciona el cuerpo humano o animal y qué pasa cuando enferma o se lesiona",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_AR1",
+      "dominio": "arte",
+      "pregunta": "Diseñar algo visualmente impactante: una pieza gráfica, una identidad de marca o un espacio",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_AR2",
+      "dominio": "arte",
+      "pregunta": "Crear una obra artística propia: música, fotografía, video, escritura o actuación",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_AR3",
+      "dominio": "arte",
+      "pregunta": "Comunicar ideas o noticias de forma que llegue, convenza o emocione a quien las recibe",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_NG1",
+      "dominio": "negocios",
+      "pregunta": "Analizar un negocio o mercado para entender por qué funciona y cómo podría crecer",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_NG2",
+      "dominio": "negocios",
+      "pregunta": "Liderar un equipo de personas para que trabajen juntos y logren un objetivo comercial",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_NG3",
+      "dominio": "negocios",
+      "pregunta": "Negociar, vender o convencer a alguien de que acepte una propuesta o tome una decisión",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_HU1",
+      "dominio": "humanidades",
+      "pregunta": "Investigar un fenómeno social, histórico o cultural para entender sus causas y consecuencias profundas",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_HU2",
+      "dominio": "humanidades",
+      "pregunta": "Enseñar, guiar o acompañar a alguien en su proceso de aprendizaje o desarrollo personal",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_HU3",
+      "dominio": "humanidades",
+      "pregunta": "Defender los derechos de alguien, mediar en un conflicto o trabajar por la justicia social",
+      "ponderacion": 1.0
+    }
+  ],
+  "preguntas_por_dominio": {
+    "tecnologia": [
+      {
+        "id": "T_R01",
+        "dimension": "R",
+        "pregunta": "Armar y cablear un servidor o PC desde cero, instalando componentes físicos",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "T_R02",
+        "dimension": "R",
+        "pregunta": "Diagnosticar y reparar fallas de hardware en equipos informáticos o electrónicos",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "T_R03",
+        "dimension": "R",
+        "pregunta": "Instalar y configurar equipos de red (routers, switches, access points) en una empresa",
+        "ponderacion": 2.0
+      },
+      {
+        "id": "T_R04",
+        "dimension": "R",
+        "pregunta": "Diseñar y soldar circuitos electrónicos o sistemas embebidos",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "T_R05",
+        "dimension": "R",
+        "pregunta": "Construir o mantener infraestructura física: racks, cableado estructurado, centros de datos",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "T_I01",
+        "dimension": "I",
+        "pregunta": "Diseñar la arquitectura de un sistema de software complejo desde cero",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "T_I02",
+        "dimension": "I",
+        "pregunta": "Analizar tráfico de red para detectar intrusiones o comportamientos anómalos",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "T_I03",
+        "dimension": "I",
+        "pregunta": "Resolver un bug complejo rastreando la lógica de un programa paso a paso",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "T_I04",
+        "dimension": "I",
+        "pregunta": "Estudiar en profundidad cómo funciona un protocolo de red o un sistema operativo",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "T_I05",
+        "dimension": "I",
+        "pregunta": "Investigar vulnerabilidades de seguridad en sistemas y diseñar defensas contra ataques",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "T_I06",
+        "dimension": "I",
+        "pregunta": "Aplicar estadística y machine learning para extraer patrones de grandes datasets",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "T_I07",
+        "dimension": "I",
+        "pregunta": "Explorar documentación técnica y papers para resolver un problema complejo de sistemas",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "T_A01",
+        "dimension": "A",
+        "pregunta": "Diseñar la interfaz visual y la experiencia de usuario de una aplicación digital",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "T_A02",
+        "dimension": "A",
+        "pregunta": "Crear videojuegos combinando programación con diseño gráfico y narrativa",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "T_A03",
+        "dimension": "A",
+        "pregunta": "Producir visualizaciones interactivas de datos que comuniquen información de forma clara",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "T_S01",
+        "dimension": "S",
+        "pregunta": "Capacitar y explicar tecnología a usuarios o empleados sin conocimientos técnicos",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "T_S02",
+        "dimension": "S",
+        "pregunta": "Coordinar y liderar un equipo de desarrollo de software o ingeniería",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "T_E01",
+        "dimension": "E",
+        "pregunta": "Lanzar una startup tecnológica, definir el producto y conseguir inversores",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "T_E02",
+        "dimension": "E",
+        "pregunta": "Gestionar proyectos de TI con plazos, presupuesto y equipos multidisciplinarios",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "T_E03",
+        "dimension": "E",
+        "pregunta": "Negociar e implementar soluciones tecnológicas con clientes empresariales",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "T_C01",
+        "dimension": "C",
+        "pregunta": "Configurar y administrar servidores, bases de datos o servicios en la nube",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "T_C02",
+        "dimension": "C",
+        "pregunta": "Documentar sistemas, APIs y arquitecturas técnicas de forma precisa y estructurada",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "T_C03",
+        "dimension": "C",
+        "pregunta": "Administrar redes corporativas siguiendo estándares y protocolos (ISO, ITIL, OSI)",
+        "ponderacion": 2.0
+      },
+      {
+        "id": "T_C04",
+        "dimension": "C",
+        "pregunta": "Hacer testing exhaustivo de software buscando errores de forma sistemática",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "T_C05",
+        "dimension": "C",
+        "pregunta": "Configurar sistemas de seguridad perimetral: firewalls, VPNs y monitoreo de red",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "T_C06",
+        "dimension": "C",
+        "pregunta": "Programar siguiendo buenas prácticas: código limpio, revisiones y control de versiones",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "T_C07",
+        "dimension": "C",
+        "pregunta": "Diseñar y optimizar bases de datos garantizando integridad, rendimiento y seguridad",
+        "ponderacion": 1.5
+      }
+    ],
+    "ciencias": [
+      {
+        "id": "CN_R01",
+        "dimension": "R",
+        "pregunta": "Realizar trabajo de campo: recolectar muestras, medir en ecosistemas o yacimientos geológicos",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "CN_R02",
+        "dimension": "R",
+        "pregunta": "Operar equipos de laboratorio: microscopios, espectrómetros, centrífugas",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "CN_R03",
+        "dimension": "R",
+        "pregunta": "Cultivar microorganismos, células o tejidos en condiciones controladas de laboratorio",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "CN_R04",
+        "dimension": "R",
+        "pregunta": "Explorar terrenos geológicos o ecosistemas para registrar y analizar sus características",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "CN_R05",
+        "dimension": "R",
+        "pregunta": "Preparar muestras histológicas, diseccionar organismos o procesar especímenes biológicos",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "CN_I01",
+        "dimension": "I",
+        "pregunta": "Diseñar y ejecutar experimentos controlados para poner a prueba una hipótesis científica",
+        "ponderacion": 2.0
+      },
+      {
+        "id": "CN_I02",
+        "dimension": "I",
+        "pregunta": "Analizar secuencias de ADN, proteínas o genomas con herramientas bioinformáticas",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "CN_I03",
+        "dimension": "I",
+        "pregunta": "Investigar las propiedades de compuestos químicos nuevos y sus posibles aplicaciones industriales",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "CN_I04",
+        "dimension": "I",
+        "pregunta": "Estudiar cómo los ecosistemas responden a cambios climáticos o contaminación ambiental",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "CN_I05",
+        "dimension": "I",
+        "pregunta": "Resolver problemas matemáticos avanzados: ecuaciones diferenciales, análisis, álgebra abstracta",
+        "ponderacion": 2.0
+      },
+      {
+        "id": "CN_I06",
+        "dimension": "I",
+        "pregunta": "Modelar y simular fenómenos físicos o naturales mediante computación científica",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "CN_I07",
+        "dimension": "I",
+        "pregunta": "Investigar los mecanismos moleculares de enfermedades para desarrollar nuevos tratamientos",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "CN_I08",
+        "dimension": "I",
+        "pregunta": "Analizar datos geológicos, sísmicos o satelitales para identificar recursos naturales o riesgos",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "CN_A01",
+        "dimension": "A",
+        "pregunta": "Ilustrar con precisión procesos biológicos, anatómicos o geológicos para comunicar ciencia",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "CN_A02",
+        "dimension": "A",
+        "pregunta": "Divulgar descubrimientos científicos de forma clara y atractiva para el público general",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "CN_S01",
+        "dimension": "S",
+        "pregunta": "Trabajar en proyectos de conservación de especies amenazadas o restauración de ecosistemas",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "CN_S02",
+        "dimension": "S",
+        "pregunta": "Asesorar a empresas o gobiernos sobre impacto ambiental, sostenibilidad y riesgo ecológico",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "CN_E01",
+        "dimension": "E",
+        "pregunta": "Gestionar un proyecto de investigación con equipos multidisciplinarios y financiamiento externo",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "CN_E02",
+        "dimension": "E",
+        "pregunta": "Fundar una empresa de biotecnología o tecnología ambiental basada en un descubrimiento científico",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "CN_C01",
+        "dimension": "C",
+        "pregunta": "Registrar meticulosamente cada paso y resultado de un experimento para garantizar reproducibilidad",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "CN_C02",
+        "dimension": "C",
+        "pregunta": "Gestionar bases de datos científicos aplicando estadística rigurosa para validar resultados",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "CN_C03",
+        "dimension": "C",
+        "pregunta": "Garantizar que los procedimientos de laboratorio cumplan normas de bioseguridad y calidad",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "CN_C04",
+        "dimension": "C",
+        "pregunta": "Escribir informes técnicos y artículos científicos con rigor metodológico y precisión",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "CN_C05",
+        "dimension": "C",
+        "pregunta": "Controlar variables y condiciones experimentales para asegurar que los datos sean válidos",
+        "ponderacion": 1.0
+      }
+    ],
+    "salud": [
+      {
+        "id": "SA_R01",
+        "dimension": "R",
+        "pregunta": "Realizar procedimientos clínicos manuales: suturas, vendajes, inyecciones, curaciones",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "SA_R02",
+        "dimension": "R",
+        "pregunta": "Operar equipos médicos diagnósticos: resonancias, rayos X, ecografías, electrocardiogramas",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "SA_R03",
+        "dimension": "R",
+        "pregunta": "Aplicar técnicas de fisioterapia o kinesiología: ejercicios, masajes, rehabilitación física",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "SA_R04",
+        "dimension": "R",
+        "pregunta": "Preparar y dispensar medicamentos con exactitud en una farmacia u hospital",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "SA_I01",
+        "dimension": "I",
+        "pregunta": "Diagnosticar enfermedades integrando síntomas, análisis clínicos e imágenes médicas",
+        "ponderacion": 2.0
+      },
+      {
+        "id": "SA_I02",
+        "dimension": "I",
+        "pregunta": "Investigar y evaluar la evidencia científica para actualizar protocolos de tratamiento",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "SA_I03",
+        "dimension": "I",
+        "pregunta": "Interpretar resultados de laboratorio clínico: bioquímica, hematología, microbiología",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "SA_I04",
+        "dimension": "I",
+        "pregunta": "Estudiar la relación entre nutrición, hábitos de vida y la salud de las personas",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "SA_I05",
+        "dimension": "I",
+        "pregunta": "Evaluar el desarrollo cognitivo, emocional o del lenguaje de un paciente mediante tests",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "SA_A01",
+        "dimension": "A",
+        "pregunta": "Diseñar programas de rehabilitación usando actividades creativas: arte, música o juego terapéutico",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "SA_A02",
+        "dimension": "A",
+        "pregunta": "Crear materiales educativos accesibles para pacientes o comunidades con distintas capacidades",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "SA_S01",
+        "dimension": "S",
+        "pregunta": "Atender y contener emocionalmente a un paciente en un momento de dolor o incertidumbre",
+        "ponderacion": 2.0
+      },
+      {
+        "id": "SA_S02",
+        "dimension": "S",
+        "pregunta": "Trabajar en equipo interdisciplinario para abordar un caso clínico complejo",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "SA_S03",
+        "dimension": "S",
+        "pregunta": "Educar a pacientes y familias sobre cómo manejar una condición crónica en su vida cotidiana",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "SA_S04",
+        "dimension": "S",
+        "pregunta": "Detectar y acompañar situaciones de vulnerabilidad social, psicológica o de aprendizaje",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "SA_S05",
+        "dimension": "S",
+        "pregunta": "Enseñar hábitos saludables y prevención de enfermedades en escuelas o centros comunitarios",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "SA_S06",
+        "dimension": "S",
+        "pregunta": "Acompañar a una persona en su proceso de aprendizaje cuando tiene dificultades específicas",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "SA_E01",
+        "dimension": "E",
+        "pregunta": "Coordinar y gestionar un servicio o área dentro de un hospital o clínica",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "SA_E02",
+        "dimension": "E",
+        "pregunta": "Diseñar y llevar adelante campañas de salud pública para cambiar hábitos en una comunidad",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "SA_C01",
+        "dimension": "C",
+        "pregunta": "Registrar con precisión la historia clínica y la evolución de cada paciente",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "SA_C02",
+        "dimension": "C",
+        "pregunta": "Seguir estrictamente protocolos de bioseguridad e higiene en la atención al paciente",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "SA_C03",
+        "dimension": "C",
+        "pregunta": "Gestionar insumos y medicamentos: stock, vencimientos y cadena de frío",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "SA_C04",
+        "dimension": "C",
+        "pregunta": "Verificar que cada práctica clínica cumpla con las normativas sanitarias y protocolos vigentes",
+        "ponderacion": 1.0
+      }
+    ],
+    "arte": [
+      {
+        "id": "AR_R01",
+        "dimension": "R",
+        "pregunta": "Construir escenografías, decorados o instalaciones artísticas a escala real",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "AR_R02",
+        "dimension": "R",
+        "pregunta": "Elaborar platos o preparaciones culinarias con técnica y presentación cuidada",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "AR_I01",
+        "dimension": "I",
+        "pregunta": "Investigar el contexto histórico y referencias culturales para desarrollar un concepto creativo sólido",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "AR_I02",
+        "dimension": "I",
+        "pregunta": "Analizar la obra de otros artistas o diseñadores para encontrar tu propia identidad creativa",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "AR_I03",
+        "dimension": "I",
+        "pregunta": "Estudiar el comportamiento de la audiencia o del usuario para diseñar experiencias que impacten",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "AR_A01",
+        "dimension": "A",
+        "pregunta": "Componer o arreglar música para transmitir emociones específicas a través del sonido",
+        "ponderacion": 2.0
+      },
+      {
+        "id": "AR_A02",
+        "dimension": "A",
+        "pregunta": "Escribir guiones, obras de teatro o historias con personajes y conflictos propios",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "AR_A03",
+        "dimension": "A",
+        "pregunta": "Crear piezas de diseño gráfico que combinen estética y comunicación de forma efectiva",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "AR_A04",
+        "dimension": "A",
+        "pregunta": "Fotografiar o filmar capturando momentos, luces y perspectivas que generen impacto visual",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "AR_A05",
+        "dimension": "A",
+        "pregunta": "Dibujar, ilustrar o pintar para expresar ideas o emociones que no caben en palabras",
+        "ponderacion": 2.0
+      },
+      {
+        "id": "AR_A06",
+        "dimension": "A",
+        "pregunta": "Diseñar la identidad visual de una marca: logo, paleta cromática, tipografía y estilo",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "AR_A07",
+        "dimension": "A",
+        "pregunta": "Actuar en teatro o cine, habitando personajes con cuerpo, voz y emoción",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "AR_A08",
+        "dimension": "A",
+        "pregunta": "Crear animaciones, motion graphics o efectos visuales para comunicar ideas en movimiento",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "AR_A09",
+        "dimension": "A",
+        "pregunta": "Diseñar espacios habitables o urbanos que combinen función, estética y experiencia humana",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "AR_S01",
+        "dimension": "S",
+        "pregunta": "Dirigir actores o un equipo creativo para llevar adelante una producción artística",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "AR_S02",
+        "dimension": "S",
+        "pregunta": "Comunicar noticias o historias de forma que informen y generen impacto social",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "AR_S03",
+        "dimension": "S",
+        "pregunta": "Colaborar con otras disciplinas (música + imagen, texto + diseño) en proyectos colectivos",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "AR_E01",
+        "dimension": "E",
+        "pregunta": "Gestionar una empresa creativa: estudio de diseño, productora audiovisual o sello musical",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "AR_E02",
+        "dimension": "E",
+        "pregunta": "Desarrollar y comercializar tu obra o servicios creativos de forma independiente",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "AR_E03",
+        "dimension": "E",
+        "pregunta": "Liderar la producción de una película, álbum o exposición de principio a fin",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "AR_E04",
+        "dimension": "E",
+        "pregunta": "Crear contenido digital que construya audiencia y genere monetización",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "AR_C01",
+        "dimension": "C",
+        "pregunta": "Dominar herramientas técnicas de producción: software de diseño, DAW, cámara, postproducción",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "AR_C02",
+        "dimension": "C",
+        "pregunta": "Entregar proyectos creativos con calidad y en los plazos y formatos acordados con el cliente",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "AR_C03",
+        "dimension": "C",
+        "pregunta": "Gestionar derechos de autor, contratos y aspectos legales de la industria creativa",
+        "ponderacion": 1.0
+      }
+    ],
+    "negocios": [
+      {
+        "id": "NG_R01",
+        "dimension": "R",
+        "pregunta": "Supervisar operaciones físicas: stock, logística y cadena de suministro en una planta o depósito",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "NG_R02",
+        "dimension": "R",
+        "pregunta": "Gestionar un local o punto de venta directamente, coordinando el equipo en piso",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "NG_I01",
+        "dimension": "I",
+        "pregunta": "Analizar datos de mercado, tendencias y competidores para tomar decisiones estratégicas",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "NG_I02",
+        "dimension": "I",
+        "pregunta": "Construir modelos financieros y proyecciones económicas para evaluar la viabilidad de proyectos",
+        "ponderacion": 2.0
+      },
+      {
+        "id": "NG_I03",
+        "dimension": "I",
+        "pregunta": "Investigar el comportamiento del consumidor para diseñar estrategias de marketing efectivas",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "NG_I04",
+        "dimension": "I",
+        "pregunta": "Analizar estados contables e indicadores financieros para detectar oportunidades o riesgos",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "NG_I05",
+        "dimension": "I",
+        "pregunta": "Diseñar estrategias de comercio exterior evaluando mercados internacionales y normativas",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "NG_A01",
+        "dimension": "A",
+        "pregunta": "Crear campañas publicitarias originales que conecten emocionalmente con el público objetivo",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "NG_A02",
+        "dimension": "A",
+        "pregunta": "Diseñar la estrategia de marca (branding) y la comunicación visual de una empresa",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "NG_A03",
+        "dimension": "A",
+        "pregunta": "Producir contenido creativo para redes sociales y plataformas de marketing digital",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "NG_S01",
+        "dimension": "S",
+        "pregunta": "Negociar contratos y acuerdos con proveedores, clientes o socios comerciales",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "NG_S02",
+        "dimension": "S",
+        "pregunta": "Gestionar equipos: reclutar, capacitar, motivar y resolver conflictos entre personas",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "NG_S03",
+        "dimension": "S",
+        "pregunta": "Asesorar y fidelizar clientes construyendo relaciones comerciales a largo plazo",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "NG_S04",
+        "dimension": "S",
+        "pregunta": "Representar a una empresa en reuniones, ferias, congresos o presentaciones institucionales",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "NG_E01",
+        "dimension": "E",
+        "pregunta": "Crear y hacer crecer un emprendimiento propio desde la idea hasta el mercado",
+        "ponderacion": 2.0
+      },
+      {
+        "id": "NG_E02",
+        "dimension": "E",
+        "pregunta": "Liderar una organización tomando decisiones estratégicas con impacto real en los resultados",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "NG_E03",
+        "dimension": "E",
+        "pregunta": "Buscar y cerrar acuerdos comerciales o rondas de inversión para expandir un negocio",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "NG_E04",
+        "dimension": "E",
+        "pregunta": "Diseñar el plan de negocios de una startup y presentarlo de forma convincente ante inversores",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "NG_E05",
+        "dimension": "E",
+        "pregunta": "Gestionar el presupuesto y las finanzas de una organización para maximizar su rentabilidad",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "NG_C01",
+        "dimension": "C",
+        "pregunta": "Llevar la contabilidad, liquidar impuestos y preparar balances de una empresa",
+        "ponderacion": 2.0
+      },
+      {
+        "id": "NG_C02",
+        "dimension": "C",
+        "pregunta": "Diseñar y controlar procesos administrativos eficientes dentro de una organización",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "NG_C03",
+        "dimension": "C",
+        "pregunta": "Gestionar documentación legal, contratos y cumplimiento normativo de una empresa",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "NG_C04",
+        "dimension": "C",
+        "pregunta": "Organizar y coordinar la logística de proyectos o eventos garantizando cada detalle",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "NG_C05",
+        "dimension": "C",
+        "pregunta": "Auditar procesos o cuentas para garantizar transparencia, orden y cumplimiento de normas",
+        "ponderacion": 1.5
+      }
+    ],
+    "humanidades": [
+      {
+        "id": "HU_R01",
+        "dimension": "R",
+        "pregunta": "Entrenar a personas, dar clases de educación física o coordinar actividades deportivas",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "HU_R02",
+        "dimension": "R",
+        "pregunta": "Realizar trabajo de campo etnográfico: entrevistar comunidades y hacer observación participante",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "HU_I01",
+        "dimension": "I",
+        "pregunta": "Investigar y escribir sobre historia, filosofía o pensamiento social con rigor académico",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "HU_I02",
+        "dimension": "I",
+        "pregunta": "Analizar textos literarios, filosóficos o jurídicos en profundidad para extraer su sentido",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "HU_I03",
+        "dimension": "I",
+        "pregunta": "Interpretar datos sociales, encuestas o estadísticas para comprender fenómenos humanos",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "HU_I04",
+        "dimension": "I",
+        "pregunta": "Estudiar sistemas políticos, instituciones y dinámicas del poder en distintas sociedades",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "HU_I05",
+        "dimension": "I",
+        "pregunta": "Aprender idiomas y usarlos como herramienta de análisis cultural y comunicación internacional",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "HU_I06",
+        "dimension": "I",
+        "pregunta": "Estudiar casos para comprender el comportamiento humano y sus motivaciones psicológicas",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "HU_A01",
+        "dimension": "A",
+        "pregunta": "Escribir ensayos, artículos o libros que transmitan ideas complejas con claridad y estilo propio",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "HU_A02",
+        "dimension": "A",
+        "pregunta": "Traducir o interpretar textos capturando matices culturales, expresivos y de significado",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "HU_A03",
+        "dimension": "A",
+        "pregunta": "Crear materiales pedagógicos originales que hagan accesible el conocimiento complejo",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "HU_A04",
+        "dimension": "A",
+        "pregunta": "Diseñar actividades o espacios de aprendizaje que estimulen la curiosidad y el pensamiento",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "HU_S01",
+        "dimension": "S",
+        "pregunta": "Construir vínculos pedagógicos significativos con estudiantes y acompañarlos en su aprendizaje",
+        "ponderacion": 2.0
+      },
+      {
+        "id": "HU_S02",
+        "dimension": "S",
+        "pregunta": "Acompañar psicológica o socialmente a personas en procesos de cambio o dificultad",
+        "ponderacion": 2.0
+      },
+      {
+        "id": "HU_S03",
+        "dimension": "S",
+        "pregunta": "Defender los derechos de una persona o comunidad en contextos legales o institucionales",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "HU_S04",
+        "dimension": "S",
+        "pregunta": "Mediar en conflictos entre personas, grupos o países buscando acuerdos justos y duraderos",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "HU_S05",
+        "dimension": "S",
+        "pregunta": "Trabajar con comunidades vulnerables para mejorar sus condiciones de vida y sus derechos",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "HU_S06",
+        "dimension": "S",
+        "pregunta": "Orientar y apoyar a niños o jóvenes con dificultades de aprendizaje o desarrollo",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "HU_E01",
+        "dimension": "E",
+        "pregunta": "Participar en política o gestión pública para incidir en decisiones que afectan a muchos",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "HU_E02",
+        "dimension": "E",
+        "pregunta": "Liderar organizaciones sociales, ONGs o movimientos culturales con impacto en la comunidad",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "HU_E03",
+        "dimension": "E",
+        "pregunta": "Defender causas o clientes en el ámbito judicial, argumentando con persuasión y rigor",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "HU_C01",
+        "dimension": "C",
+        "pregunta": "Redactar documentos legales, escrituras notariales o actas con precisión técnica y jurídica",
+        "ponderacion": 1.5
+      },
+      {
+        "id": "HU_C02",
+        "dimension": "C",
+        "pregunta": "Catalogar, clasificar y conservar archivos, documentos o colecciones culturales e históricas",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "HU_C03",
+        "dimension": "C",
+        "pregunta": "Seguir protocolos pedagógicos o psicológicos dentro de marcos normativos e institucionales",
+        "ponderacion": 1.0
+      },
+      {
+        "id": "HU_C04",
+        "dimension": "C",
+        "pregunta": "Registrar y sistematizar de forma rigurosa la información recogida en una investigación",
+        "ponderacion": 1.0
+      }
+    ]
+  },
+  "triadas_por_dominio": {
+    "tecnologia": [
+      {
+        "id": "TEC_TR01",
+        "opciones": [
+          {
+            "id": "TEC_TR01_R",
+            "dimension": "R",
+            "texto": "Armar y reparar el hardware de servidores o equipos electrónicos"
+          },
+          {
+            "id": "TEC_TR01_I",
+            "dimension": "I",
+            "texto": "Desarrollar modelos de IA que aprenden de grandes volúmenes de datos"
+          },
+          {
+            "id": "TEC_TR01_A",
+            "dimension": "A",
+            "texto": "Diseñar la experiencia visual e interactiva de una aplicación digital"
+          }
+        ]
+      },
+      {
+        "id": "TEC_TR02",
+        "opciones": [
+          {
+            "id": "TEC_TR02_R",
+            "dimension": "R",
+            "texto": "Instalar y mantener la infraestructura física de una red empresarial"
+          },
+          {
+            "id": "TEC_TR02_S",
+            "dimension": "S",
+            "texto": "Capacitar usuarios y equipos en el uso de nuevas tecnologías"
+          },
+          {
+            "id": "TEC_TR02_C",
+            "dimension": "C",
+            "texto": "Revisar y documentar el código garantizando calidad y estándares"
+          }
+        ]
+      },
+      {
+        "id": "TEC_TR03",
+        "opciones": [
+          {
+            "id": "TEC_TR03_R",
+            "dimension": "R",
+            "texto": "Construir y calibrar sistemas electrónicos o de automatización industrial"
+          },
+          {
+            "id": "TEC_TR03_E",
+            "dimension": "E",
+            "texto": "Crear una startup tecnológica y conseguir inversores para escalarla"
+          },
+          {
+            "id": "TEC_TR03_I",
+            "dimension": "I",
+            "texto": "Detectar y corregir vulnerabilidades de seguridad en sistemas informáticos"
+          }
+        ]
+      },
+      {
+        "id": "TEC_TR04",
+        "opciones": [
+          {
+            "id": "TEC_TR04_R",
+            "dimension": "R",
+            "texto": "Configurar y mantener servidores y servicios en producción"
+          },
+          {
+            "id": "TEC_TR04_A",
+            "dimension": "A",
+            "texto": "Crear videojuegos diseñando mecánicas, mundos y experiencia del jugador"
+          },
+          {
+            "id": "TEC_TR04_S",
+            "dimension": "S",
+            "texto": "Guiar y ayudar a usuarios a resolver sus problemas tecnológicos"
+          }
+        ]
+      },
+      {
+        "id": "TEC_TR05",
+        "opciones": [
+          {
+            "id": "TEC_TR05_R",
+            "dimension": "R",
+            "texto": "Diseñar y soldar circuitos electrónicos para sistemas embebidos"
+          },
+          {
+            "id": "TEC_TR05_C",
+            "dimension": "C",
+            "texto": "Administrar una red corporativa asegurando conectividad y seguridad"
+          },
+          {
+            "id": "TEC_TR05_E",
+            "dimension": "E",
+            "texto": "Gestionar proyectos de TI coordinando equipos, plazos y presupuesto"
+          }
+        ]
+      },
+      {
+        "id": "TEC_TR06",
+        "opciones": [
+          {
+            "id": "TEC_TR06_I",
+            "dimension": "I",
+            "texto": "Programar la lógica central de una aplicación o sistema de backend"
+          },
+          {
+            "id": "TEC_TR06_A",
+            "dimension": "A",
+            "texto": "Diseñar interfaces y flujos de usuario intuitivos y visualmente atractivos"
+          },
+          {
+            "id": "TEC_TR06_E",
+            "dimension": "E",
+            "texto": "Definir el roadmap de un producto digital y priorizar sus funcionalidades"
+          }
+        ]
+      },
+      {
+        "id": "TEC_TR07",
+        "opciones": [
+          {
+            "id": "TEC_TR07_I",
+            "dimension": "I",
+            "texto": "Analizar datos para descubrir patrones y construir modelos predictivos"
+          },
+          {
+            "id": "TEC_TR07_S",
+            "dimension": "S",
+            "texto": "Enseñar programación o tecnología a estudiantes o equipos de trabajo"
+          },
+          {
+            "id": "TEC_TR07_C",
+            "dimension": "C",
+            "texto": "Diseñar y optimizar bases de datos para rendimiento e integridad"
+          }
+        ]
+      },
+      {
+        "id": "TEC_TR08",
+        "opciones": [
+          {
+            "id": "TEC_TR08_I",
+            "dimension": "I",
+            "texto": "Analizar ataques informáticos para entender cómo fueron posibles"
+          },
+          {
+            "id": "TEC_TR08_A",
+            "dimension": "A",
+            "texto": "Crear visualizaciones gráficas que expliquen datos complejos con claridad"
+          },
+          {
+            "id": "TEC_TR08_C",
+            "dimension": "C",
+            "texto": "Automatizar el despliegue y mantenimiento de infraestructura en la nube"
+          }
+        ]
+      },
+      {
+        "id": "TEC_TR09",
+        "opciones": [
+          {
+            "id": "TEC_TR09_A",
+            "dimension": "A",
+            "texto": "Crear sistemas de diseño y componentes visuales para productos digitales"
+          },
+          {
+            "id": "TEC_TR09_S",
+            "dimension": "S",
+            "texto": "Coordinar equipos técnicos multidisciplinarios en proyectos tecnológicos"
+          },
+          {
+            "id": "TEC_TR09_E",
+            "dimension": "E",
+            "texto": "Definir la estrategia tecnológica de una organización como CTO o director IT"
+          }
+        ]
+      },
+      {
+        "id": "TEC_TR10",
+        "opciones": [
+          {
+            "id": "TEC_TR10_S",
+            "dimension": "S",
+            "texto": "Atender y resolver incidencias técnicas de los usuarios de una empresa"
+          },
+          {
+            "id": "TEC_TR10_E",
+            "dimension": "E",
+            "texto": "Asesorar a organizaciones en su estrategia de transformación digital"
+          },
+          {
+            "id": "TEC_TR10_C",
+            "dimension": "C",
+            "texto": "Auditar sistemas para garantizar el cumplimiento de normas de seguridad"
+          }
+        ]
+      }
+    ],
+    "ciencias": [
+      {
+        "id": "CN_TR01",
+        "opciones": [
+          {
+            "id": "CN_TR01_R",
+            "dimension": "R",
+            "texto": "Explorar terrenos geológicos o ecosistemas y recolectar muestras"
+          },
+          {
+            "id": "CN_TR01_I",
+            "dimension": "I",
+            "texto": "Analizar secuencias genéticas para entender la función de genes"
+          },
+          {
+            "id": "CN_TR01_A",
+            "dimension": "A",
+            "texto": "Comunicar descubrimientos científicos al público general de forma clara"
+          }
+        ]
+      },
+      {
+        "id": "CN_TR02",
+        "opciones": [
+          {
+            "id": "CN_TR02_R",
+            "dimension": "R",
+            "texto": "Sintetizar compuestos químicos nuevos en laboratorio"
+          },
+          {
+            "id": "CN_TR02_S",
+            "dimension": "S",
+            "texto": "Trabajar con comunidades en proyectos de conservación ambiental"
+          },
+          {
+            "id": "CN_TR02_C",
+            "dimension": "C",
+            "texto": "Sistematizar datos experimentales para garantizar reproducibilidad"
+          }
+        ]
+      },
+      {
+        "id": "CN_TR03",
+        "opciones": [
+          {
+            "id": "CN_TR03_R",
+            "dimension": "R",
+            "texto": "Cultivar microorganismos o tejidos celulares en condiciones controladas"
+          },
+          {
+            "id": "CN_TR03_E",
+            "dimension": "E",
+            "texto": "Gestionar un proyecto de investigación con equipo y presupuesto externo"
+          },
+          {
+            "id": "CN_TR03_I",
+            "dimension": "I",
+            "texto": "Resolver problemas de matemática avanzada o modelado computacional"
+          }
+        ]
+      },
+      {
+        "id": "CN_TR04",
+        "opciones": [
+          {
+            "id": "CN_TR04_R",
+            "dimension": "R",
+            "texto": "Recolectar y procesar muestras de rocas, suelos o minerales en campo"
+          },
+          {
+            "id": "CN_TR04_A",
+            "dimension": "A",
+            "texto": "Ilustrar con precisión organismos, procesos biológicos o formaciones"
+          },
+          {
+            "id": "CN_TR04_S",
+            "dimension": "S",
+            "texto": "Enseñar ciencias en instituciones educativas o centros de divulgación"
+          }
+        ]
+      },
+      {
+        "id": "CN_TR05",
+        "opciones": [
+          {
+            "id": "CN_TR05_R",
+            "dimension": "R",
+            "texto": "Operar equipos de laboratorio complejos: espectrómetros, PCR, centrífugas"
+          },
+          {
+            "id": "CN_TR05_C",
+            "dimension": "C",
+            "texto": "Verificar con rigor estadístico la validez de los resultados de un estudio"
+          },
+          {
+            "id": "CN_TR05_E",
+            "dimension": "E",
+            "texto": "Fundar una empresa de biotecnología basada en un descubrimiento propio"
+          }
+        ]
+      },
+      {
+        "id": "CN_TR06",
+        "opciones": [
+          {
+            "id": "CN_TR06_I",
+            "dimension": "I",
+            "texto": "Simular y modelar fenómenos naturales con computación científica"
+          },
+          {
+            "id": "CN_TR06_A",
+            "dimension": "A",
+            "texto": "Escribir artículos o libros que expliquen descubrimientos científicos"
+          },
+          {
+            "id": "CN_TR06_E",
+            "dimension": "E",
+            "texto": "Dirigir un laboratorio de investigación tomando decisiones estratégicas"
+          }
+        ]
+      },
+      {
+        "id": "CN_TR07",
+        "opciones": [
+          {
+            "id": "CN_TR07_I",
+            "dimension": "I",
+            "texto": "Investigar mecanismos moleculares de enfermedades para nuevos tratamientos"
+          },
+          {
+            "id": "CN_TR07_S",
+            "dimension": "S",
+            "texto": "Asesorar a empresas o gobiernos sobre impacto ambiental y sostenibilidad"
+          },
+          {
+            "id": "CN_TR07_C",
+            "dimension": "C",
+            "texto": "Gestionar bases de datos científicas garantizando trazabilidad"
+          }
+        ]
+      },
+      {
+        "id": "CN_TR08",
+        "opciones": [
+          {
+            "id": "CN_TR08_I",
+            "dimension": "I",
+            "texto": "Resolver ecuaciones diferenciales o problemas de física teórica avanzada"
+          },
+          {
+            "id": "CN_TR08_A",
+            "dimension": "A",
+            "texto": "Diseñar visualizaciones de datos científicos para publicaciones"
+          },
+          {
+            "id": "CN_TR08_C",
+            "dimension": "C",
+            "texto": "Asegurar que los procedimientos cumplan las normas de bioseguridad"
+          }
+        ]
+      },
+      {
+        "id": "CN_TR09",
+        "opciones": [
+          {
+            "id": "CN_TR09_A",
+            "dimension": "A",
+            "texto": "Fotografiar o documentar visualmente fenómenos naturales para investigación"
+          },
+          {
+            "id": "CN_TR09_S",
+            "dimension": "S",
+            "texto": "Colaborar con comunidades para proteger ecosistemas amenazados"
+          },
+          {
+            "id": "CN_TR09_E",
+            "dimension": "E",
+            "texto": "Negociar financiamiento con organismos científicos internacionales"
+          }
+        ]
+      },
+      {
+        "id": "CN_TR10",
+        "opciones": [
+          {
+            "id": "CN_TR10_S",
+            "dimension": "S",
+            "texto": "Explicar conceptos científicos complejos a audiencias no especializadas"
+          },
+          {
+            "id": "CN_TR10_E",
+            "dimension": "E",
+            "texto": "Dirigir equipos de investigadores hacia objetivos científicos concretos"
+          },
+          {
+            "id": "CN_TR10_C",
+            "dimension": "C",
+            "texto": "Redactar publicaciones e informes técnicos con metodología rigurosa"
+          }
+        ]
+      }
+    ],
+    "salud": [
+      {
+        "id": "SA_TR01",
+        "opciones": [
+          {
+            "id": "SA_TR01_R",
+            "dimension": "R",
+            "texto": "Aplicar técnicas de rehabilitación física: masajes y ejercicios terapéuticos"
+          },
+          {
+            "id": "SA_TR01_I",
+            "dimension": "I",
+            "texto": "Diagnosticar enfermedades integrando síntomas, análisis e imágenes médicas"
+          },
+          {
+            "id": "SA_TR01_A",
+            "dimension": "A",
+            "texto": "Usar el arte, la música o el juego como herramienta terapéutica con pacientes"
+          }
+        ]
+      },
+      {
+        "id": "SA_TR02",
+        "opciones": [
+          {
+            "id": "SA_TR02_R",
+            "dimension": "R",
+            "texto": "Asistir en procedimientos quirúrgicos como instrumentador o anestesista"
+          },
+          {
+            "id": "SA_TR02_S",
+            "dimension": "S",
+            "texto": "Acompañar y contener emocionalmente a pacientes y familias en crisis"
+          },
+          {
+            "id": "SA_TR02_C",
+            "dimension": "C",
+            "texto": "Registrar con exactitud la historia clínica y evolución de cada paciente"
+          }
+        ]
+      },
+      {
+        "id": "SA_TR03",
+        "opciones": [
+          {
+            "id": "SA_TR03_R",
+            "dimension": "R",
+            "texto": "Realizar tratamientos dentales y procedimientos de salud bucal"
+          },
+          {
+            "id": "SA_TR03_E",
+            "dimension": "E",
+            "texto": "Gestionar un equipo de salud o dirigir un centro asistencial"
+          },
+          {
+            "id": "SA_TR03_I",
+            "dimension": "I",
+            "texto": "Interpretar análisis clínicos: bioquímica, hematología, microbiología"
+          }
+        ]
+      },
+      {
+        "id": "SA_TR04",
+        "opciones": [
+          {
+            "id": "SA_TR04_R",
+            "dimension": "R",
+            "texto": "Preparar y dispensar medicamentos verificando dosis e interacciones"
+          },
+          {
+            "id": "SA_TR04_A",
+            "dimension": "A",
+            "texto": "Crear materiales educativos de salud accesibles para distintos públicos"
+          },
+          {
+            "id": "SA_TR04_S",
+            "dimension": "S",
+            "texto": "Detectar y acompañar situaciones de vulnerabilidad social o psicológica"
+          }
+        ]
+      },
+      {
+        "id": "SA_TR05",
+        "opciones": [
+          {
+            "id": "SA_TR05_R",
+            "dimension": "R",
+            "texto": "Aplicar procedimientos de enfermería: inyecciones, sueros, curaciones"
+          },
+          {
+            "id": "SA_TR05_C",
+            "dimension": "C",
+            "texto": "Verificar que cada práctica cumpla los protocolos sanitarios vigentes"
+          },
+          {
+            "id": "SA_TR05_E",
+            "dimension": "E",
+            "texto": "Diseñar y ejecutar programas de prevención y salud pública en una comunidad"
+          }
+        ]
+      },
+      {
+        "id": "SA_TR06",
+        "opciones": [
+          {
+            "id": "SA_TR06_I",
+            "dimension": "I",
+            "texto": "Investigar evidencia científica para actualizar protocolos clínicos"
+          },
+          {
+            "id": "SA_TR06_A",
+            "dimension": "A",
+            "texto": "Diseñar actividades creativas y lúdicas para programas de rehabilitación"
+          },
+          {
+            "id": "SA_TR06_E",
+            "dimension": "E",
+            "texto": "Liderar equipos de salud en situaciones de emergencia o alta complejidad"
+          }
+        ]
+      },
+      {
+        "id": "SA_TR07",
+        "opciones": [
+          {
+            "id": "SA_TR07_I",
+            "dimension": "I",
+            "texto": "Estudiar cómo la alimentación impacta en la salud y las enfermedades"
+          },
+          {
+            "id": "SA_TR07_S",
+            "dimension": "S",
+            "texto": "Orientar a niños o jóvenes con dificultades de aprendizaje o desarrollo"
+          },
+          {
+            "id": "SA_TR07_C",
+            "dimension": "C",
+            "texto": "Gestionar stocks de medicamentos garantizando disponibilidad y vencimientos"
+          }
+        ]
+      },
+      {
+        "id": "SA_TR08",
+        "opciones": [
+          {
+            "id": "SA_TR08_I",
+            "dimension": "I",
+            "texto": "Evaluar y tratar trastornos del habla, la voz o la comunicación"
+          },
+          {
+            "id": "SA_TR08_A",
+            "dimension": "A",
+            "texto": "Diseñar actividades de terapia ocupacional adaptadas a cada paciente"
+          },
+          {
+            "id": "SA_TR08_C",
+            "dimension": "C",
+            "texto": "Seguir estrictamente los protocolos de bioseguridad e higiene hospitalaria"
+          }
+        ]
+      },
+      {
+        "id": "SA_TR09",
+        "opciones": [
+          {
+            "id": "SA_TR09_A",
+            "dimension": "A",
+            "texto": "Comunicar información de salud de forma visual, clara y accesible"
+          },
+          {
+            "id": "SA_TR09_S",
+            "dimension": "S",
+            "texto": "Acompañar a pacientes en procesos largos de recuperación física o emocional"
+          },
+          {
+            "id": "SA_TR09_E",
+            "dimension": "E",
+            "texto": "Gestionar el presupuesto y los recursos de un área de salud"
+          }
+        ]
+      },
+      {
+        "id": "SA_TR10",
+        "opciones": [
+          {
+            "id": "SA_TR10_S",
+            "dimension": "S",
+            "texto": "Educar a pacientes y familias sobre el manejo de enfermedades crónicas"
+          },
+          {
+            "id": "SA_TR10_E",
+            "dimension": "E",
+            "texto": "Diseñar nuevos servicios o programas de salud para una institución"
+          },
+          {
+            "id": "SA_TR10_C",
+            "dimension": "C",
+            "texto": "Redactar informes clínicos cumpliendo normativas y estándares de calidad"
+          }
+        ]
+      }
+    ],
+    "arte": [
+      {
+        "id": "AR_TR01",
+        "opciones": [
+          {
+            "id": "AR_TR01_R",
+            "dimension": "R",
+            "texto": "Elaborar platos de alta cocina con técnica culinaria y presentación artística"
+          },
+          {
+            "id": "AR_TR01_I",
+            "dimension": "I",
+            "texto": "Investigar el contexto histórico y cultural para un concepto creativo"
+          },
+          {
+            "id": "AR_TR01_A",
+            "dimension": "A",
+            "texto": "Componer música original que transmita emociones o cuente una historia"
+          }
+        ]
+      },
+      {
+        "id": "AR_TR02",
+        "opciones": [
+          {
+            "id": "AR_TR02_R",
+            "dimension": "R",
+            "texto": "Fotografiar o filmar capturando encuadres y momentos con impacto visual"
+          },
+          {
+            "id": "AR_TR02_S",
+            "dimension": "S",
+            "texto": "Dirigir actores o un equipo creativo en una producción artística"
+          },
+          {
+            "id": "AR_TR02_C",
+            "dimension": "C",
+            "texto": "Editar y postproducir material audiovisual con precisión técnica"
+          }
+        ]
+      },
+      {
+        "id": "AR_TR03",
+        "opciones": [
+          {
+            "id": "AR_TR03_R",
+            "dimension": "R",
+            "texto": "Diseñar y coser indumentaria de moda con técnica y criterio estético"
+          },
+          {
+            "id": "AR_TR03_E",
+            "dimension": "E",
+            "texto": "Gestionar un estudio de diseño, productora o sello musical como empresa"
+          },
+          {
+            "id": "AR_TR03_I",
+            "dimension": "I",
+            "texto": "Analizar tendencias del mercado para definir estrategias de contenido"
+          }
+        ]
+      },
+      {
+        "id": "AR_TR04",
+        "opciones": [
+          {
+            "id": "AR_TR04_R",
+            "dimension": "R",
+            "texto": "Diseñar espacios habitables integrando función, estética y experiencia"
+          },
+          {
+            "id": "AR_TR04_A",
+            "dimension": "A",
+            "texto": "Escribir una novela, guión o historia que conecte emocionalmente"
+          },
+          {
+            "id": "AR_TR04_S",
+            "dimension": "S",
+            "texto": "Informar sobre hechos de actualidad de forma clara y con impacto social"
+          }
+        ]
+      },
+      {
+        "id": "AR_TR05",
+        "opciones": [
+          {
+            "id": "AR_TR05_R",
+            "dimension": "R",
+            "texto": "Actuar en teatro o cine habitando un personaje con cuerpo y emoción"
+          },
+          {
+            "id": "AR_TR05_C",
+            "dimension": "C",
+            "texto": "Gestionar derechos, contratos y aspectos legales del trabajo artístico"
+          },
+          {
+            "id": "AR_TR05_E",
+            "dimension": "E",
+            "texto": "Desarrollar y vender tu obra o servicios creativos de forma autónoma"
+          }
+        ]
+      },
+      {
+        "id": "AR_TR06",
+        "opciones": [
+          {
+            "id": "AR_TR06_I",
+            "dimension": "I",
+            "texto": "Estudiar referentes para desarrollar tu propio lenguaje creativo"
+          },
+          {
+            "id": "AR_TR06_A",
+            "dimension": "A",
+            "texto": "Diseñar la identidad visual de una marca: logo, colores y tipografía"
+          },
+          {
+            "id": "AR_TR06_E",
+            "dimension": "E",
+            "texto": "Liderar la producción de una película, álbum o exposición de arte"
+          }
+        ]
+      },
+      {
+        "id": "AR_TR07",
+        "opciones": [
+          {
+            "id": "AR_TR07_I",
+            "dimension": "I",
+            "texto": "Analizar el comportamiento de audiencias para diseñar experiencias impactantes"
+          },
+          {
+            "id": "AR_TR07_S",
+            "dimension": "S",
+            "texto": "Colaborar con artistas de otras disciplinas en proyectos multidisciplinarios"
+          },
+          {
+            "id": "AR_TR07_C",
+            "dimension": "C",
+            "texto": "Organizar y gestionar el archivo y los derechos de una obra artística"
+          }
+        ]
+      },
+      {
+        "id": "AR_TR08",
+        "opciones": [
+          {
+            "id": "AR_TR08_I",
+            "dimension": "I",
+            "texto": "Analizar obras artísticas para escribir crítica cultural con profundidad"
+          },
+          {
+            "id": "AR_TR08_A",
+            "dimension": "A",
+            "texto": "Interpretar danza, teatro o performance en vivo ante una audiencia"
+          },
+          {
+            "id": "AR_TR08_C",
+            "dimension": "C",
+            "texto": "Dominar el software técnico de diseño, composición musical o edición"
+          }
+        ]
+      },
+      {
+        "id": "AR_TR09",
+        "opciones": [
+          {
+            "id": "AR_TR09_A",
+            "dimension": "A",
+            "texto": "Crear animaciones, motion graphics o contenido visual para medios digitales"
+          },
+          {
+            "id": "AR_TR09_S",
+            "dimension": "S",
+            "texto": "Enseñar tu disciplina artística y acompañar el desarrollo de otros creadores"
+          },
+          {
+            "id": "AR_TR09_E",
+            "dimension": "E",
+            "texto": "Crear contenido digital que construya una audiencia y genere ingresos"
+          }
+        ]
+      },
+      {
+        "id": "AR_TR10",
+        "opciones": [
+          {
+            "id": "AR_TR10_S",
+            "dimension": "S",
+            "texto": "Enseñar arte o música en comunidades y espacios educativos"
+          },
+          {
+            "id": "AR_TR10_E",
+            "dimension": "E",
+            "texto": "Negociar con galerías, festivales o medios para distribuir tu obra"
+          },
+          {
+            "id": "AR_TR10_C",
+            "dimension": "C",
+            "texto": "Cumplir entregas creativas con calidad en los plazos y formatos acordados"
+          }
+        ]
+      }
+    ],
+    "negocios": [
+      {
+        "id": "NG_TR01",
+        "opciones": [
+          {
+            "id": "NG_TR01_R",
+            "dimension": "R",
+            "texto": "Supervisar la logística y operaciones de un depósito o punto de venta"
+          },
+          {
+            "id": "NG_TR01_I",
+            "dimension": "I",
+            "texto": "Construir modelos financieros para evaluar la rentabilidad de proyectos"
+          },
+          {
+            "id": "NG_TR01_A",
+            "dimension": "A",
+            "texto": "Diseñar campañas publicitarias que conecten emocionalmente con el público"
+          }
+        ]
+      },
+      {
+        "id": "NG_TR02",
+        "opciones": [
+          {
+            "id": "NG_TR02_R",
+            "dimension": "R",
+            "texto": "Gestionar un local o comercio coordinando el equipo y las operaciones"
+          },
+          {
+            "id": "NG_TR02_S",
+            "dimension": "S",
+            "texto": "Reclutar, capacitar y motivar a las personas de una organización"
+          },
+          {
+            "id": "NG_TR02_C",
+            "dimension": "C",
+            "texto": "Preparar estados financieros, balances e informes contables"
+          }
+        ]
+      },
+      {
+        "id": "NG_TR03",
+        "opciones": [
+          {
+            "id": "NG_TR03_R",
+            "dimension": "R",
+            "texto": "Coordinar la importación, exportación y distribución de productos"
+          },
+          {
+            "id": "NG_TR03_E",
+            "dimension": "E",
+            "texto": "Crear y escalar un emprendimiento desde la idea hasta el mercado"
+          },
+          {
+            "id": "NG_TR03_I",
+            "dimension": "I",
+            "texto": "Analizar indicadores macroeconómicos para decisiones de inversión"
+          }
+        ]
+      },
+      {
+        "id": "NG_TR04",
+        "opciones": [
+          {
+            "id": "NG_TR04_R",
+            "dimension": "R",
+            "texto": "Organizar eventos corporativos o ferias garantizando cada detalle operativo"
+          },
+          {
+            "id": "NG_TR04_A",
+            "dimension": "A",
+            "texto": "Diseñar la identidad visual y la estrategia de marca de una empresa"
+          },
+          {
+            "id": "NG_TR04_S",
+            "dimension": "S",
+            "texto": "Negociar acuerdos y construir relaciones comerciales de largo plazo"
+          }
+        ]
+      },
+      {
+        "id": "NG_TR05",
+        "opciones": [
+          {
+            "id": "NG_TR05_R",
+            "dimension": "R",
+            "texto": "Controlar inventarios y optimizar el abastecimiento de una empresa"
+          },
+          {
+            "id": "NG_TR05_C",
+            "dimension": "C",
+            "texto": "Auditar cuentas y procesos para garantizar cumplimiento y transparencia"
+          },
+          {
+            "id": "NG_TR05_E",
+            "dimension": "E",
+            "texto": "Liderar la estrategia de una organización con decisiones de alto impacto"
+          }
+        ]
+      },
+      {
+        "id": "NG_TR06",
+        "opciones": [
+          {
+            "id": "NG_TR06_I",
+            "dimension": "I",
+            "texto": "Analizar datos de mercado y consumidores para definir estrategias"
+          },
+          {
+            "id": "NG_TR06_A",
+            "dimension": "A",
+            "texto": "Crear contenido creativo para redes sociales y plataformas digitales"
+          },
+          {
+            "id": "NG_TR06_E",
+            "dimension": "E",
+            "texto": "Presentar un plan de negocio ante inversores para levantar capital"
+          }
+        ]
+      },
+      {
+        "id": "NG_TR07",
+        "opciones": [
+          {
+            "id": "NG_TR07_I",
+            "dimension": "I",
+            "texto": "Analizar KPIs financieros para detectar riesgos u oportunidades"
+          },
+          {
+            "id": "NG_TR07_S",
+            "dimension": "S",
+            "texto": "Asesorar y fidelizar clientes construyendo relaciones de confianza"
+          },
+          {
+            "id": "NG_TR07_C",
+            "dimension": "C",
+            "texto": "Diseñar y controlar procesos administrativos eficientes"
+          }
+        ]
+      },
+      {
+        "id": "NG_TR08",
+        "opciones": [
+          {
+            "id": "NG_TR08_I",
+            "dimension": "I",
+            "texto": "Investigar mercados internacionales y normativas de comercio exterior"
+          },
+          {
+            "id": "NG_TR08_A",
+            "dimension": "A",
+            "texto": "Crear la propuesta de valor y el discurso de venta de un nuevo producto"
+          },
+          {
+            "id": "NG_TR08_C",
+            "dimension": "C",
+            "texto": "Gestionar contratos, documentación legal y cumplimiento normativo"
+          }
+        ]
+      },
+      {
+        "id": "NG_TR09",
+        "opciones": [
+          {
+            "id": "NG_TR09_A",
+            "dimension": "A",
+            "texto": "Diseñar la experiencia del cliente en todos sus puntos de contacto"
+          },
+          {
+            "id": "NG_TR09_S",
+            "dimension": "S",
+            "texto": "Representar a una empresa en eventos, congresos o presentaciones"
+          },
+          {
+            "id": "NG_TR09_E",
+            "dimension": "E",
+            "texto": "Tomar decisiones estratégicas bajo presión para mantener la competitividad"
+          }
+        ]
+      },
+      {
+        "id": "NG_TR10",
+        "opciones": [
+          {
+            "id": "NG_TR10_S",
+            "dimension": "S",
+            "texto": "Mediar en conflictos laborales o comerciales buscando acuerdos justos"
+          },
+          {
+            "id": "NG_TR10_E",
+            "dimension": "E",
+            "texto": "Negociar fusiones, adquisiciones o alianzas estratégicas de gran impacto"
+          },
+          {
+            "id": "NG_TR10_C",
+            "dimension": "C",
+            "texto": "Optimizar los procesos y flujo de trabajo de un área administrativa"
+          }
+        ]
+      }
+    ],
+    "humanidades": [
+      {
+        "id": "HU_TR01",
+        "opciones": [
+          {
+            "id": "HU_TR01_R",
+            "dimension": "R",
+            "texto": "Hacer trabajo de campo etnográfico observando y entrevistando comunidades"
+          },
+          {
+            "id": "HU_TR01_I",
+            "dimension": "I",
+            "texto": "Investigar fenómenos históricos o sociales analizando fuentes primarias"
+          },
+          {
+            "id": "HU_TR01_A",
+            "dimension": "A",
+            "texto": "Escribir textos que transmitan ideas complejas con claridad y estilo"
+          }
+        ]
+      },
+      {
+        "id": "HU_TR02",
+        "opciones": [
+          {
+            "id": "HU_TR02_R",
+            "dimension": "R",
+            "texto": "Dar clases de educación física o entrenar deportistas"
+          },
+          {
+            "id": "HU_TR02_S",
+            "dimension": "S",
+            "texto": "Acompañar psicológicamente a personas que atraviesan dificultades"
+          },
+          {
+            "id": "HU_TR02_C",
+            "dimension": "C",
+            "texto": "Redactar documentos legales o escrituras con exactitud técnica"
+          }
+        ]
+      },
+      {
+        "id": "HU_TR03",
+        "opciones": [
+          {
+            "id": "HU_TR03_R",
+            "dimension": "R",
+            "texto": "Visitar hogares y comunidades para evaluar situaciones de vulnerabilidad"
+          },
+          {
+            "id": "HU_TR03_E",
+            "dimension": "E",
+            "texto": "Liderar campañas políticas o gestionar instituciones públicas"
+          },
+          {
+            "id": "HU_TR03_I",
+            "dimension": "I",
+            "texto": "Analizar argumentos filosóficos o jurídicos buscando verdades e incoherencias"
+          }
+        ]
+      },
+      {
+        "id": "HU_TR04",
+        "opciones": [
+          {
+            "id": "HU_TR04_R",
+            "dimension": "R",
+            "texto": "Restaurar, catalogar y preservar objetos o documentos históricos"
+          },
+          {
+            "id": "HU_TR04_A",
+            "dimension": "A",
+            "texto": "Traducir textos capturando matices culturales y expresivos"
+          },
+          {
+            "id": "HU_TR04_S",
+            "dimension": "S",
+            "texto": "Enseñar y acompañar el proceso de aprendizaje de tus alumnos"
+          }
+        ]
+      },
+      {
+        "id": "HU_TR05",
+        "opciones": [
+          {
+            "id": "HU_TR05_R",
+            "dimension": "R",
+            "texto": "Coordinar actividades recreativas en centros comunitarios o educativos"
+          },
+          {
+            "id": "HU_TR05_C",
+            "dimension": "C",
+            "texto": "Clasificar y conservar archivos históricos, legales o documentales"
+          },
+          {
+            "id": "HU_TR05_E",
+            "dimension": "E",
+            "texto": "Gestionar programas de desarrollo social con impacto comunitario"
+          }
+        ]
+      },
+      {
+        "id": "HU_TR06",
+        "opciones": [
+          {
+            "id": "HU_TR06_I",
+            "dimension": "I",
+            "texto": "Analizar datos sociales o estadísticas para entender fenómenos humanos"
+          },
+          {
+            "id": "HU_TR06_A",
+            "dimension": "A",
+            "texto": "Diseñar materiales pedagógicos creativos que hagan accesible el conocimiento"
+          },
+          {
+            "id": "HU_TR06_E",
+            "dimension": "E",
+            "texto": "Defender causas judiciales argumentando con rigor ante un tribunal"
+          }
+        ]
+      },
+      {
+        "id": "HU_TR07",
+        "opciones": [
+          {
+            "id": "HU_TR07_I",
+            "dimension": "I",
+            "texto": "Estudiar sistemas políticos e instituciones para entender el poder"
+          },
+          {
+            "id": "HU_TR07_S",
+            "dimension": "S",
+            "texto": "Orientar y apoyar a personas con dificultades de aprendizaje o desarrollo"
+          },
+          {
+            "id": "HU_TR07_C",
+            "dimension": "C",
+            "texto": "Sistematizar datos de investigación social con rigor metodológico"
+          }
+        ]
+      },
+      {
+        "id": "HU_TR08",
+        "opciones": [
+          {
+            "id": "HU_TR08_I",
+            "dimension": "I",
+            "texto": "Aprender idiomas y analizar culturas y textos en profundidad"
+          },
+          {
+            "id": "HU_TR08_A",
+            "dimension": "A",
+            "texto": "Diseñar entornos o actividades que estimulen el pensamiento crítico"
+          },
+          {
+            "id": "HU_TR08_C",
+            "dimension": "C",
+            "texto": "Seguir marcos normativos y protocolos en contextos pedagógicos o legales"
+          }
+        ]
+      },
+      {
+        "id": "HU_TR09",
+        "opciones": [
+          {
+            "id": "HU_TR09_A",
+            "dimension": "A",
+            "texto": "Producir contenidos de divulgación histórica o cultural para distintos medios"
+          },
+          {
+            "id": "HU_TR09_S",
+            "dimension": "S",
+            "texto": "Trabajar con comunidades vulnerables para mejorar sus condiciones de vida"
+          },
+          {
+            "id": "HU_TR09_E",
+            "dimension": "E",
+            "texto": "Representar los intereses de personas o grupos ante instituciones del Estado"
+          }
+        ]
+      },
+      {
+        "id": "HU_TR10",
+        "opciones": [
+          {
+            "id": "HU_TR10_S",
+            "dimension": "S",
+            "texto": "Mediar en conflictos familiares o comunitarios buscando resoluciones justas"
+          },
+          {
+            "id": "HU_TR10_E",
+            "dimension": "E",
+            "texto": "Liderar organizaciones sociales, ONGs o movimientos con impacto real"
+          },
+          {
+            "id": "HU_TR10_C",
+            "dimension": "C",
+            "texto": "Redactar actas, resoluciones e informes institucionales con precisión"
+          }
+        ]
+      }
+    ]
+  },
+  "filtros": [
+    {
+      "id": "F1",
+      "etiqueta": "contacto_pacientes",
+      "pregunta": "Trabajar en contacto directo con pacientes: revisar, tratar o cuidar el cuerpo de personas (o animales) enfermos",
+      "descarta": "Carreras de la salud con atención clínica directa (Medicina, Odontología, Enfermería, etc.)."
+    },
+    {
+      "id": "F2",
+      "etiqueta": "programacion",
+      "pregunta": "Pasar gran parte de tu jornada escribiendo código de programación frente a una computadora",
+      "descarta": "Carreras centradas en desarrollo de software (Sistemas, Programación, Ciberseguridad, etc.)."
+    },
+    {
+      "id": "F3",
+      "etiqueta": "matematica_intensa",
+      "pregunta": "Resolver de forma constante problemas de matemática y cálculo avanzado",
+      "descarta": "Carreras con base matemática fuerte (Ingenierías, Física, Economía, Actuario, etc.)."
+    },
+    {
+      "id": "F4",
+      "etiqueta": "trabajo_fisico",
+      "pregunta": "Hacer trabajo físico, manual o al aire libre en vez de trabajar en una oficina",
+      "descarta": "Carreras con fuerte componente práctico/de campo (Agronomía, Mantenimiento, Gastronomía, etc.)."
+    },
+    {
+      "id": "F5",
+      "etiqueta": "exposicion_publica",
+      "pregunta": "Vender, persuadir, liderar, dar clases o hablar frente a grupos de personas de forma frecuente",
+      "descarta": "Carreras comerciales, de gestión y docentes (Marketing, Abogacía, Administración, Profesorados, etc.)."
+    },
+    {
+      "id": "F6",
+      "etiqueta": "expresion_artistica",
+      "pregunta": "Crear obras artísticas y trabajar apoyándote en tu creatividad y sensibilidad estética",
+      "descarta": "Carreras artísticas y de diseño (Artes, Música, Diseño, Fotografía, etc.)."
+    },
+    {
+      "id": "F7",
+      "etiqueta": "dominio_politico",
+      "pregunta": "Trabajar en el ámbito de la política gubernamental o partidaria: gestión pública, campañas, partidos u organismos del Estado",
+      "descarta": "Carreras del ámbito político (Ciencia Política, etc.)."
+    },
+    {
+      "id": "F8",
+      "etiqueta": "rutina_administrativa",
+      "pregunta": "Pasar el día en tareas administrativas repetitivas de oficina: cargar datos, completar planillas y seguir procedimientos burocráticos fijos",
+      "descarta": "Carreras de gestión administrativa y back-office (Contador, Administración Contable, Secretariado, Archivología, Logística)."
+    },
+    {
+      "id": "F9",
+      "etiqueta": "ciencias_naturales",
+      "veto_umbral": 3,
+      "pregunta": "Estudiar y trabajar con organismos vivos, ecosistemas, o procesos biológicos y químicos en laboratorio o en campo",
+      "descarta": "Carreras de ciencias naturales básicas (Biología, Química, Biotecnología, Geología, etc.). Umbral extendido: respuesta neutral (3) también excluye estas carreras."
+    },
+    {
+      "id": "F10",
+      "etiqueta": "acompanamiento_personas",
+      "pregunta": "Acompañar emocionalmente y apoyar a personas que atraviesan dificultades psicológicas, sociales o de aprendizaje como parte central de tu trabajo cotidiano",
+      "descarta": "Carreras de apoyo emocional y social (Psicología, Trabajo Social, Psicopedagogía, Acompañamiento Terapéutico, etc.)."
+    }
+  ],
+  "filtros_por_dominio": {
+    "tecnologia": [
+      {
+        "filtro_id": "F2",
+        "pregunta": "Carreras como Sistemas, Ciberseguridad o Ciencia de Datos implican escribir codigo la mayor parte del dia. Estas dispuesto/a a ese perfil?"
+      },
+      {
+        "filtro_id": "F3",
+        "pregunta": "Carreras como Ingenieria Mecanica, Electrica o Civil requieren matematica y calculo avanzado durante toda la formacion. Te atrae ese nivel?"
+      },
+      {
+        "filtro_id": "F4",
+        "pregunta": "Carreras como Mantenimiento Industrial o Energias Renovables combinan tecnologia con trabajo fisico e instalaciones. Las incluimos?"
+      },
+      {
+        "filtro_id": "F6",
+        "pregunta": "Carreras como Diseno UX/UI o Desarrollo de Videojuegos fusionan tecnologia con creatividad y diseno visual. Te interesa ese perfil?"
+      },
+      {
+        "filtro_id": "F9",
+        "pregunta": "Carreras como Bioingenieria, Ing. Ambiental o Ing. en Alimentos mezclan tecnologia con biologia o quimica. Las incluimos?"
+      }
+    ],
+    "ciencias": [
+      {
+        "filtro_id": "F3",
+        "pregunta": "Carreras como Fisica, Matematica o Bioingenieria requieren resolver matematica y calculo avanzado de forma constante. Te atrae ese nivel?"
+      },
+      {
+        "filtro_id": "F4",
+        "pregunta": "Carreras como Geologia o Agronomia requieren trabajo de campo intenso al aire libre. Este tipo de actividad te parece atractiva?"
+      },
+      {
+        "filtro_id": "F1",
+        "pregunta": "Carreras como Farmacia o Veterinaria implican atencion directa a pacientes o animales enfermos. Las incluimos?"
+      }
+    ],
+    "salud": [
+      {
+        "filtro_id": "F1",
+        "pregunta": "La mayoria de carreras de Salud implican tratar o cuidar directamente el cuerpo de pacientes (Medicina, Enfermeria, Kinesiologia). Esto te atrae?"
+      },
+      {
+        "filtro_id": "F10",
+        "pregunta": "Carreras como Psicopedagogia o Acompanamiento Terapeutico se centran en apoyo emocional y psicologico. Las incluimos?"
+      },
+      {
+        "filtro_id": "F4",
+        "pregunta": "Carreras como Kinesiologia o Veterinaria implican trabajo fisico directo con pacientes o animales. Te parece bien ese tipo de trabajo?"
+      },
+      {
+        "filtro_id": "F9",
+        "pregunta": "Carreras como Farmacia o Veterinaria tienen base fuerte en biologia y quimica de laboratorio. Las incluimos?"
+      },
+      {
+        "filtro_id": "F5",
+        "pregunta": "Algunas carreras implican dar charlas, capacitaciones o trabajar con grupos (Nutricion comunitaria, Psicopedagogia). Las incluimos?"
+      }
+    ],
+    "arte": [
+      {
+        "filtro_id": "F6",
+        "pregunta": "La mayoria de carreras de Arte requieren crear y expresarte artisticamente de forma constante. Es algo que te apasiona o preferis un perfil mas tecnico?"
+      },
+      {
+        "filtro_id": "F5",
+        "pregunta": "Carreras como Actuacion, Comunicacion o Publicidad implican hablar en publico o actuar frente a audiencias. Las incluimos?"
+      },
+      {
+        "filtro_id": "F4",
+        "pregunta": "Carreras como Gastronomia implican trabajo fisico y manual en cocina. Las incluimos?"
+      },
+      {
+        "filtro_id": "F2",
+        "pregunta": "Desarrollo de Videojuegos combina creatividad con programacion. Incluimos carreras que requieren escribir codigo?"
+      }
+    ],
+    "negocios": [
+      {
+        "filtro_id": "F5",
+        "pregunta": "La mayoria de carreras de Negocios implican hablar con clientes, dar presentaciones o liderar equipos de forma frecuente. Este rol te atrae?"
+      },
+      {
+        "filtro_id": "F3",
+        "pregunta": "Carreras como Economia, Finanzas o Actuario requieren matematica y estadistica avanzada. Las incluimos?"
+      },
+      {
+        "filtro_id": "F8",
+        "pregunta": "Carreras como Contador Publico, Secretariado o Logistica implican trabajo administrativo repetitivo de oficina. Las incluimos?"
+      }
+    ],
+    "humanidades": [
+      {
+        "filtro_id": "F5",
+        "pregunta": "Muchas carreras de Humanidades implican dar clases, defender casos en tribunales o hablar en publico frecuentemente. Este rol te atrae?"
+      },
+      {
+        "filtro_id": "F10",
+        "pregunta": "Carreras como Psicologia, Trabajo Social o Psicopedagogia se centran en apoyar emocionalmente a personas en dificultad. Las incluimos?"
+      },
+      {
+        "filtro_id": "F7",
+        "pregunta": "Ciencia Politica implica trabajar en politica, gestion publica o instituciones del Estado. Te interesa este ambito?"
+      },
+      {
+        "filtro_id": "F6",
+        "pregunta": "Carreras como Letras o Traductorado trabajan con el lenguaje como forma de expresion y creatividad. Te interesa ese perfil?"
+      },
+      {
+        "filtro_id": "F8",
+        "pregunta": "Archivologia implica clasificar y gestionar documentos historicos de forma sistematica. La incluimos?"
+      },
+      {
+        "filtro_id": "F4",
+        "pregunta": "Educacion Fisica implica trabajo fisico y deportivo como actividad central de la carrera. La incluimos?"
+      },
+      {
+        "filtro_id": "F3",
+        "pregunta": "Profesorado en Ciencias Exactas requiere matematica avanzada como base de la formacion. La incluimos?"
+      }
+    ]
+  },
+  "fase3_por_dominio": {
+    "tecnologia": [
+      {
+        "id": "tec_analitica",
+        "nombre": "Analítica & Software",
+        "descripcion": "Tu perfil muestra preferencia por el análisis, los algoritmos y la construcción de sistemas de software.",
+        "dims_trigger": [
+          "I",
+          "C"
+        ],
+        "preguntas": [
+          {
+            "id": "TF3_01",
+            "texto": "¿Preferís construir nuevas aplicaciones o analizar grandes volúmenes de datos?",
+            "opt1": "Construir aplicaciones",
+            "opt2": "Me da igual",
+            "opt3": "Analizar datos",
+            "boosts_1": {
+              "ingenieria_sistemas": 0.15,
+              "tec_programacion": 0.15,
+              "lic_computacion": 0.1
+            },
+            "boosts_3": {
+              "ciencia_datos": 0.2,
+              "lic_computacion": 0.1
+            }
+          },
+          {
+            "id": "TF3_02",
+            "texto": "¿Te interesa más la seguridad informática o el desarrollo de software?",
+            "opt1": "Desarrollar software",
+            "opt2": "Me da igual",
+            "opt3": "Seguridad informática",
+            "boosts_1": {
+              "ingenieria_sistemas": 0.15,
+              "tec_programacion": 0.15
+            },
+            "boosts_3": {
+              "ciberseguridad": 0.2
+            }
+          },
+          {
+            "id": "TF3_03",
+            "texto": "¿Preferís la inteligencia artificial y machine learning, o la arquitectura de sistemas?",
+            "opt1": "Arquitectura de sistemas",
+            "opt2": "Me da igual",
+            "opt3": "IA y machine learning",
+            "boosts_1": {
+              "ingenieria_sistemas": 0.2,
+              "lic_computacion": 0.1,
+              "tecnologias_digitales": 0.1
+            },
+            "boosts_3": {
+              "ciencia_datos": 0.2,
+              "lic_computacion": 0.1
+            }
+          },
+          {
+            "id": "TF3_04",
+            "texto": "¿Preferís trabajar de forma técnica e individual, o coordinar equipos y proyectos?",
+            "opt1": "Técnico e individual",
+            "opt2": "Me da igual",
+            "opt3": "Coordinar equipos",
+            "boosts_1": {
+              "tec_programacion": 0.1,
+              "lic_computacion": 0.1,
+              "ciberseguridad": 0.1
+            },
+            "boosts_3": {
+              "tecnologias_digitales": 0.2,
+              "ingenieria_industrial": 0.1
+            }
+          },
+          {
+            "id": "TF3_05",
+            "texto": "¿Te atrae más trabajar cerca del hardware y redes, o en software puro?",
+            "opt1": "Software puro",
+            "opt2": "Me da igual",
+            "opt3": "Hardware y redes",
+            "boosts_1": {
+              "ingenieria_sistemas": 0.1,
+              "tec_programacion": 0.1,
+              "ciencia_datos": 0.1
+            },
+            "boosts_3": {
+              "tec_redes": 0.15,
+              "ingenieria_electronica": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "tec_hardware",
+        "nombre": "Hardware & Sistemas Físicos",
+        "descripcion": "Tu perfil muestra preferencia por los sistemas físicos, la infraestructura y el trabajo técnico con equipos.",
+        "dims_trigger": [
+          "R"
+        ],
+        "preguntas": [
+          {
+            "id": "TF3_06",
+            "texto": "¿Preferís trabajar con redes e infraestructura IT, o con maquinaria y sistemas electromecánicos?",
+            "opt1": "Maquinaria y electromecánica",
+            "opt2": "Me da igual",
+            "opt3": "Redes e IT",
+            "boosts_1": {
+              "ingenieria_mecanica": 0.2,
+              "ingenieria_mecatronica": 0.15,
+              "tec_mantenimiento_industrial": 0.15
+            },
+            "boosts_3": {
+              "tec_redes": 0.2,
+              "ingenieria_electrica": 0.1
+            }
+          },
+          {
+            "id": "TF3_07",
+            "texto": "¿Te interesa más la electrónica y los circuitos, o la infraestructura civil?",
+            "opt1": "Infraestructura civil",
+            "opt2": "Me da igual",
+            "opt3": "Electrónica y circuitos",
+            "boosts_1": {
+              "ingenieria_civil": 0.2,
+              "tec_energias_renovables": 0.15
+            },
+            "boosts_3": {
+              "ingenieria_electronica": 0.2,
+              "ingenieria_mecatronica": 0.1,
+              "ingenieria_electrica": 0.1
+            }
+          },
+          {
+            "id": "TF3_08",
+            "texto": "¿Preferís construir y diseñar sistemas nuevos, o mantener y optimizar los existentes?",
+            "opt1": "Mantener y optimizar",
+            "opt2": "Me da igual",
+            "opt3": "Construir y diseñar",
+            "boosts_1": {
+              "tec_mantenimiento_industrial": 0.2,
+              "tec_higiene_seguridad": 0.1
+            },
+            "boosts_3": {
+              "ingenieria_mecanica": 0.15,
+              "ingenieria_mecatronica": 0.15,
+              "ingenieria_electronica": 0.1
+            }
+          },
+          {
+            "id": "TF3_09",
+            "texto": "¿Te atrae más la automatización y robótica, o la generación y distribución de energía?",
+            "opt1": "Energía y potencia",
+            "opt2": "Me da igual",
+            "opt3": "Automatización y robótica",
+            "boosts_1": {
+              "tec_energias_renovables": 0.2,
+              "ingenieria_electrica": 0.15
+            },
+            "boosts_3": {
+              "ingenieria_mecatronica": 0.2,
+              "ingenieria_industrial": 0.15
+            }
+          },
+          {
+            "id": "TF3_10",
+            "texto": "¿Preferís trabajo en campo y exterior, o en planta industrial y talleres?",
+            "opt1": "Planta y taller",
+            "opt2": "Me da igual",
+            "opt3": "Campo y exterior",
+            "boosts_1": {
+              "tec_mantenimiento_industrial": 0.15,
+              "ingenieria_mecanica": 0.1
+            },
+            "boosts_3": {
+              "ingenieria_civil": 0.15,
+              "tec_energias_renovables": 0.1,
+              "ingenieria_ambiental": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "tec_creativo",
+        "nombre": "Diseño Digital & Gestión Tech",
+        "descripcion": "Tu perfil combina tecnología con creatividad o con la visión estratégica de proyectos y productos digitales.",
+        "dims_trigger": [
+          "A",
+          "E",
+          "S"
+        ],
+        "preguntas": [
+          {
+            "id": "TF3_11",
+            "texto": "¿Preferís diseñar experiencias de usuario, o crear videojuegos y mundos interactivos?",
+            "opt1": "Videojuegos",
+            "opt2": "Me da igual",
+            "opt3": "Experiencias de usuario (UX/UI)",
+            "boosts_1": {
+              "creacion_videojuegos": 0.25
+            },
+            "boosts_3": {
+              "diseno_ux_ui": 0.25,
+              "tecnologias_digitales": 0.1
+            }
+          },
+          {
+            "id": "TF3_12",
+            "texto": "¿Te importa más la parte visual y artística, o la parte técnica y de código?",
+            "opt1": "Técnico y código",
+            "opt2": "Me da igual",
+            "opt3": "Visual y artístico",
+            "boosts_1": {
+              "creacion_videojuegos": 0.15,
+              "ingenieria_sistemas": 0.1
+            },
+            "boosts_3": {
+              "diseno_ux_ui": 0.2,
+              "diseno_multimedial": 0.15
+            }
+          },
+          {
+            "id": "TF3_13",
+            "texto": "¿Preferís liderar y gestionar proyectos tecnológicos, o ejecutarlos técnicamente?",
+            "opt1": "Ejecutar técnicamente",
+            "opt2": "Me da igual",
+            "opt3": "Liderar y gestionar",
+            "boosts_1": {
+              "ingenieria_sistemas": 0.1,
+              "tec_programacion": 0.1
+            },
+            "boosts_3": {
+              "tecnologias_digitales": 0.2,
+              "ingenieria_industrial": 0.15
+            }
+          },
+          {
+            "id": "TF3_14",
+            "texto": "¿Te interesa más la animación e interactividad, o el diseño visual estático?",
+            "opt1": "Diseño visual estático",
+            "opt2": "Me da igual",
+            "opt3": "Animación e interactividad",
+            "boosts_1": {
+              "diseno_ux_ui": 0.15
+            },
+            "boosts_3": {
+              "diseno_multimedial": 0.2,
+              "creacion_videojuegos": 0.1
+            }
+          },
+          {
+            "id": "TF3_15",
+            "texto": "¿Preferís trabajar en una empresa tech grande, o en un emprendimiento o proyecto propio?",
+            "opt1": "Emprendimiento propio",
+            "opt2": "Me da igual",
+            "opt3": "Empresa tech grande",
+            "boosts_1": {
+              "tec_programacion": 0.1,
+              "creacion_videojuegos": 0.1
+            },
+            "boosts_3": {
+              "tecnologias_digitales": 0.15,
+              "ingenieria_industrial": 0.1
+            }
+          }
+        ]
+      }
+    ],
+    "ciencias": [
+      {
+        "id": "cn_teorica",
+        "nombre": "Investigación Teórica",
+        "descripcion": "Tu perfil muestra inclinación hacia la ciencia abstracta, el modelado matemático y la investigación de fondo.",
+        "dims_trigger": [
+          "I",
+          "C"
+        ],
+        "preguntas": [
+          {
+            "id": "CF3_01",
+            "texto": "¿Preferís la matemática pura y la física teórica, o la biología y los sistemas vivos?",
+            "opt1": "Biología y sistemas vivos",
+            "opt2": "Me da igual",
+            "opt3": "Matemática y física",
+            "boosts_1": {
+              "biologia": 0.15,
+              "biotecnologia": 0.15,
+              "bioingenieria": 0.1
+            },
+            "boosts_3": {
+              "matematica": 0.2,
+              "fisica": 0.2
+            }
+          },
+          {
+            "id": "CF3_02",
+            "texto": "¿Te interesa más modelar fenómenos con computación, o estudiarlos en laboratorio?",
+            "opt1": "Laboratorio experimental",
+            "opt2": "Me da igual",
+            "opt3": "Modelado computacional",
+            "boosts_1": {
+              "quimica": 0.1,
+              "biologia": 0.1
+            },
+            "boosts_3": {
+              "bioingenieria": 0.2,
+              "matematica": 0.1,
+              "fisica": 0.1
+            }
+          },
+          {
+            "id": "CF3_03",
+            "texto": "¿Preferís investigación básica (entender el mundo) o aplicada (resolver problemas)?",
+            "opt1": "Aplicada e industrial",
+            "opt2": "Me da igual",
+            "opt3": "Básica y académica",
+            "boosts_1": {
+              "ingenieria_ambiental": 0.15,
+              "ingenieria_alimentos": 0.1,
+              "bioingenieria": 0.1
+            },
+            "boosts_3": {
+              "matematica": 0.15,
+              "fisica": 0.15,
+              "biologia": 0.1
+            }
+          },
+          {
+            "id": "CF3_04",
+            "texto": "¿Te atrae más la genómica y biotecnología molecular, o la física y los materiales?",
+            "opt1": "Física y materiales",
+            "opt2": "Me da igual",
+            "opt3": "Genómica y biotecnología",
+            "boosts_1": {
+              "fisica": 0.2,
+              "ingenieria_quimica": 0.1
+            },
+            "boosts_3": {
+              "biotecnologia": 0.2,
+              "bioingenieria": 0.15
+            }
+          },
+          {
+            "id": "CF3_05",
+            "texto": "¿Preferís trabajar en universidades o centros de investigación, o en empresas e industria?",
+            "opt1": "Empresas e industria",
+            "opt2": "Me da igual",
+            "opt3": "Academia e investigación",
+            "boosts_1": {
+              "ingenieria_quimica": 0.15,
+              "ingenieria_alimentos": 0.1
+            },
+            "boosts_3": {
+              "matematica": 0.1,
+              "fisica": 0.1,
+              "biologia": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "cn_experimental",
+        "nombre": "Ciencia Experimental & De Campo",
+        "descripcion": "Tu perfil muestra preferencia por el trabajo práctico, el laboratorio y la exploración del mundo natural.",
+        "dims_trigger": [
+          "R"
+        ],
+        "preguntas": [
+          {
+            "id": "CF3_06",
+            "texto": "¿Preferís el trabajo de laboratorio cerrado, o el trabajo de campo al aire libre?",
+            "opt1": "Campo y exterior",
+            "opt2": "Me da igual",
+            "opt3": "Laboratorio cerrado",
+            "boosts_1": {
+              "geologia": 0.2,
+              "agronomia": 0.2,
+              "tec_produccion_agropecuaria": 0.15
+            },
+            "boosts_3": {
+              "quimica": 0.15,
+              "tec_laboratorio": 0.15,
+              "biotecnologia": 0.1
+            }
+          },
+          {
+            "id": "CF3_07",
+            "texto": "¿Te interesa más la química y sus procesos, o la biología y los organismos vivos?",
+            "opt1": "Biología y organismos",
+            "opt2": "Me da igual",
+            "opt3": "Química y procesos",
+            "boosts_1": {
+              "biologia": 0.2,
+              "biotecnologia": 0.15
+            },
+            "boosts_3": {
+              "quimica": 0.2,
+              "ingenieria_quimica": 0.15
+            }
+          },
+          {
+            "id": "CF3_08",
+            "texto": "¿Preferís estudiar procesos a escala molecular y celular, o a escala de ecosistemas y paisajes?",
+            "opt1": "Ecosistemas y paisajes",
+            "opt2": "Me da igual",
+            "opt3": "Molecular y celular",
+            "boosts_1": {
+              "biologia": 0.1,
+              "agronomia": 0.1,
+              "geologia": 0.1
+            },
+            "boosts_3": {
+              "biotecnologia": 0.2,
+              "quimica": 0.15,
+              "tec_laboratorio": 0.1
+            }
+          },
+          {
+            "id": "CF3_09",
+            "texto": "¿Te atrae estudiar la Tierra y su historia geológica, o los seres vivos y su evolución?",
+            "opt1": "Seres vivos y evolución",
+            "opt2": "Me da igual",
+            "opt3": "Tierra y geología",
+            "boosts_1": {
+              "biologia": 0.2,
+              "biotecnologia": 0.1
+            },
+            "boosts_3": {
+              "geologia": 0.25,
+              "geografia": 0.1
+            }
+          },
+          {
+            "id": "CF3_10",
+            "texto": "¿Preferís aplicaciones industriales (alimentos, fármacos), o investigación científica pura?",
+            "opt1": "Investigación pura",
+            "opt2": "Me da igual",
+            "opt3": "Aplicaciones industriales",
+            "boosts_1": {
+              "biologia": 0.15,
+              "quimica": 0.15
+            },
+            "boosts_3": {
+              "ingenieria_alimentos": 0.2,
+              "ingenieria_quimica": 0.15,
+              "bioingenieria": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "cn_aplicada",
+        "nombre": "Ciencia Aplicada & Ambiental",
+        "descripcion": "Tu perfil apunta hacia la ciencia en contextos concretos: medioambiente, producción, industria.",
+        "dims_trigger": [
+          "E",
+          "S",
+          "A"
+        ],
+        "preguntas": [
+          {
+            "id": "CF3_11",
+            "texto": "¿Preferís trabajar en protección del medioambiente, o en producción agropecuaria y alimentos?",
+            "opt1": "Agropecuario y alimentos",
+            "opt2": "Me da igual",
+            "opt3": "Medioambiente",
+            "boosts_1": {
+              "agronomia": 0.2,
+              "tec_produccion_agropecuaria": 0.2,
+              "ingenieria_alimentos": 0.1
+            },
+            "boosts_3": {
+              "ingenieria_ambiental": 0.25,
+              "geografia": 0.1
+            }
+          },
+          {
+            "id": "CF3_12",
+            "texto": "¿Te atrae la biotecnología de última generación, o los procesos de ingeniería establecidos?",
+            "opt1": "Ingeniería establecida",
+            "opt2": "Me da igual",
+            "opt3": "Biotecnología avanzada",
+            "boosts_1": {
+              "ingenieria_quimica": 0.15,
+              "ingenieria_alimentos": 0.1
+            },
+            "boosts_3": {
+              "bioingenieria": 0.2,
+              "biotecnologia": 0.15
+            }
+          },
+          {
+            "id": "CF3_13",
+            "texto": "¿Preferís trabajar en campo y exterior, o en plantas industriales o laboratorios?",
+            "opt1": "Plantas e industria",
+            "opt2": "Me da igual",
+            "opt3": "Campo y exterior",
+            "boosts_1": {
+              "ingenieria_alimentos": 0.15,
+              "ingenieria_quimica": 0.15
+            },
+            "boosts_3": {
+              "agronomia": 0.2,
+              "tec_produccion_agropecuaria": 0.15,
+              "ingenieria_ambiental": 0.1
+            }
+          },
+          {
+            "id": "CF3_14",
+            "texto": "¿Te interesa trabajar con muestras clínicas de laboratorio, o con datos ambientales de campo?",
+            "opt1": "Datos ambientales",
+            "opt2": "Me da igual",
+            "opt3": "Muestras clínicas",
+            "boosts_1": {
+              "ingenieria_ambiental": 0.1,
+              "geologia": 0.1
+            },
+            "boosts_3": {
+              "tec_laboratorio": 0.25,
+              "farmacia": 0.1
+            }
+          },
+          {
+            "id": "CF3_15",
+            "texto": "¿Preferís trabajo investigativo e independiente, o en equipo con metas de producción?",
+            "opt1": "Producción y equipo",
+            "opt2": "Me da igual",
+            "opt3": "Investigativo e independiente",
+            "boosts_1": {
+              "agronomia": 0.1,
+              "ingenieria_alimentos": 0.1
+            },
+            "boosts_3": {
+              "biologia": 0.1,
+              "quimica": 0.1,
+              "matematica": 0.1
+            }
+          }
+        ]
+      }
+    ],
+    "salud": [
+      {
+        "id": "sa_clinica",
+        "nombre": "Atención Clínica Directa",
+        "descripcion": "Tu perfil muestra vocación por el trato directo con personas: diagnosticar, tratar y acompañar pacientes.",
+        "dims_trigger": [
+          "S",
+          "R"
+        ],
+        "preguntas": [
+          {
+            "id": "SF3_01",
+            "texto": "¿Preferís situaciones de urgencia y alta complejidad, o procesos de recuperación largos?",
+            "opt1": "Recuperación y largo plazo",
+            "opt2": "Me da igual",
+            "opt3": "Urgencia y alta complejidad",
+            "boosts_1": {
+              "kinesiologia": 0.2,
+              "nutricion": 0.15
+            },
+            "boosts_3": {
+              "medicina": 0.15,
+              "enfermeria": 0.15,
+              "tec_anestesia": 0.1
+            }
+          },
+          {
+            "id": "SF3_02",
+            "texto": "¿Te interesa más el diagnóstico y tratamiento médico, o la rehabilitación y el movimiento?",
+            "opt1": "Rehabilitación y movimiento",
+            "opt2": "Me da igual",
+            "opt3": "Diagnóstico y tratamiento",
+            "boosts_1": {
+              "kinesiologia": 0.25
+            },
+            "boosts_3": {
+              "medicina": 0.2,
+              "odontologia": 0.1
+            }
+          },
+          {
+            "id": "SF3_03",
+            "texto": "¿Preferís trabajar con personas o con animales?",
+            "opt1": "Animales",
+            "opt2": "Indistinto",
+            "opt3": "Personas",
+            "boosts_1": {
+              "veterinaria": 0.35
+            },
+            "boosts_3": {
+              "medicina": 0.1,
+              "enfermeria": 0.1,
+              "kinesiologia": 0.1
+            }
+          },
+          {
+            "id": "SF3_04",
+            "texto": "¿Te atrae la parte clínica y manual (procedimientos), o la educación y consejería del paciente?",
+            "opt1": "Educación y consejería",
+            "opt2": "Me da igual",
+            "opt3": "Procedimientos clínicos",
+            "boosts_1": {
+              "nutricion": 0.2,
+              "psicopedagogia": 0.1
+            },
+            "boosts_3": {
+              "odontologia": 0.2,
+              "tec_instrumentacion_quirurgica": 0.15,
+              "enfermeria": 0.1
+            }
+          },
+          {
+            "id": "SF3_05",
+            "texto": "¿Preferís una especialización específica (boca, huesos, lenguaje), o la atención médica integral?",
+            "opt1": "Medicina integral",
+            "opt2": "Me da igual",
+            "opt3": "Especialización específica",
+            "boosts_1": {
+              "medicina": 0.2,
+              "enfermeria": 0.1
+            },
+            "boosts_3": {
+              "odontologia": 0.2,
+              "fonoaudiologia": 0.15,
+              "kinesiologia": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "sa_tecnico",
+        "nombre": "Técnico & Diagnóstico",
+        "descripcion": "Tu perfil apunta hacia roles técnicos de análisis, apoyo en procedimientos o gestión farmacéutica.",
+        "dims_trigger": [
+          "I",
+          "C"
+        ],
+        "preguntas": [
+          {
+            "id": "SF3_06",
+            "texto": "¿Preferís trabajar directamente con pacientes, o en roles técnicos de análisis y apoyo?",
+            "opt1": "Análisis técnico",
+            "opt2": "Me da igual",
+            "opt3": "Directamente con pacientes",
+            "boosts_1": {
+              "tec_laboratorio": 0.25,
+              "farmacia": 0.2
+            },
+            "boosts_3": {
+              "medicina": 0.15,
+              "enfermeria": 0.1
+            }
+          },
+          {
+            "id": "SF3_07",
+            "texto": "¿Te interesa más el análisis clínico de muestras, o el trabajo en quirófano?",
+            "opt1": "Quirófano",
+            "opt2": "Me da igual",
+            "opt3": "Análisis de muestras",
+            "boosts_1": {
+              "tec_instrumentacion_quirurgica": 0.25,
+              "tec_anestesia": 0.2
+            },
+            "boosts_3": {
+              "tec_laboratorio": 0.3
+            }
+          },
+          {
+            "id": "SF3_08",
+            "texto": "¿Preferís trabajar con medicamentos y farmacología, o con equipos y procedimientos médicos?",
+            "opt1": "Equipos y procedimientos",
+            "opt2": "Me da igual",
+            "opt3": "Medicamentos y farmacología",
+            "boosts_1": {
+              "tec_anestesia": 0.15,
+              "tec_instrumentacion_quirurgica": 0.15
+            },
+            "boosts_3": {
+              "farmacia": 0.25
+            }
+          },
+          {
+            "id": "SF3_09",
+            "texto": "¿Te atrae la investigación de nuevos tratamientos, o la aplicación de protocolos establecidos?",
+            "opt1": "Aplicación de protocolos",
+            "opt2": "Me da igual",
+            "opt3": "Investigación clínica",
+            "boosts_1": {
+              "tec_laboratorio": 0.15,
+              "farmacia": 0.1
+            },
+            "boosts_3": {
+              "medicina": 0.15
+            }
+          },
+          {
+            "id": "SF3_10",
+            "texto": "¿Preferís trabajo independiente y analítico, o coordinación dentro de equipos clínicos?",
+            "opt1": "Equipos clínicos",
+            "opt2": "Me da igual",
+            "opt3": "Independiente y analítico",
+            "boosts_1": {
+              "enfermeria": 0.1,
+              "tec_instrumentacion_quirurgica": 0.1
+            },
+            "boosts_3": {
+              "tec_laboratorio": 0.15,
+              "farmacia": 0.15
+            }
+          }
+        ]
+      },
+      {
+        "id": "sa_apoyo",
+        "nombre": "Apoyo Terapéutico & Rehabilitación",
+        "descripcion": "Tu perfil muestra vocación por el acompañamiento, la rehabilitación y el desarrollo de las personas.",
+        "dims_trigger": [
+          "A",
+          "E"
+        ],
+        "preguntas": [
+          {
+            "id": "SF3_11",
+            "texto": "¿Preferís trabajar con niños y jóvenes en su desarrollo, o con adultos en su recuperación?",
+            "opt1": "Adultos y recuperación",
+            "opt2": "Me da igual",
+            "opt3": "Niños y desarrollo",
+            "boosts_1": {
+              "terapia_ocupacional": 0.2,
+              "acompanamiento_terapeutico": 0.15
+            },
+            "boosts_3": {
+              "psicopedagogia": 0.25,
+              "fonoaudiologia": 0.15
+            }
+          },
+          {
+            "id": "SF3_12",
+            "texto": "¿Te interesa más apoyar dificultades de aprendizaje o comunicación, o la recuperación funcional?",
+            "opt1": "Recuperación funcional",
+            "opt2": "Me da igual",
+            "opt3": "Aprendizaje y comunicación",
+            "boosts_1": {
+              "terapia_ocupacional": 0.2,
+              "kinesiologia": 0.1
+            },
+            "boosts_3": {
+              "psicopedagogia": 0.2,
+              "fonoaudiologia": 0.2
+            }
+          },
+          {
+            "id": "SF3_13",
+            "texto": "¿Preferís usar actividades creativas y lúdicas como herramienta terapéutica, o técnicas estructuradas?",
+            "opt1": "Técnicas estructuradas",
+            "opt2": "Me da igual",
+            "opt3": "Creativas y lúdicas",
+            "boosts_1": {
+              "fonoaudiologia": 0.1,
+              "psicopedagogia": 0.1
+            },
+            "boosts_3": {
+              "terapia_ocupacional": 0.25
+            }
+          },
+          {
+            "id": "SF3_14",
+            "texto": "¿Te atrae el acompañamiento emocional y psicológico, o la terapia física y funcional?",
+            "opt1": "Física y funcional",
+            "opt2": "Me da igual",
+            "opt3": "Emocional y psicológico",
+            "boosts_1": {
+              "kinesiologia": 0.15,
+              "terapia_ocupacional": 0.1
+            },
+            "boosts_3": {
+              "acompanamiento_terapeutico": 0.2,
+              "psicopedagogia": 0.15
+            }
+          },
+          {
+            "id": "SF3_15",
+            "texto": "¿Preferís trabajar en instituciones (escuelas, hospitales), o en consultorio o domicilio?",
+            "opt1": "Consultorio o domicilio",
+            "opt2": "Me da igual",
+            "opt3": "Instituciones",
+            "boosts_1": {
+              "fonoaudiologia": 0.1,
+              "psicopedagogia": 0.1
+            },
+            "boosts_3": {
+              "terapia_ocupacional": 0.15,
+              "enfermeria": 0.05
+            }
+          }
+        ]
+      }
+    ],
+    "arte": [
+      {
+        "id": "ar_visual",
+        "nombre": "Creación Visual & Audiovisual",
+        "descripcion": "Tu perfil muestra inclinación hacia la expresión artística, el diseño visual y la producción de imágenes.",
+        "dims_trigger": [
+          "A",
+          "R"
+        ],
+        "preguntas": [
+          {
+            "id": "ARF3_01",
+            "texto": "¿Preferís el diseño gráfico y la comunicación visual, o las artes audiovisuales (cine, video)?",
+            "opt1": "Audiovisual y cine",
+            "opt2": "Me da igual",
+            "opt3": "Diseño gráfico",
+            "boosts_1": {
+              "artes_audiovisuales": 0.25,
+              "fotografia": 0.15
+            },
+            "boosts_3": {
+              "diseno_grafico": 0.25,
+              "diseno_multimedial": 0.1
+            }
+          },
+          {
+            "id": "ARF3_02",
+            "texto": "¿Te interesa más la música y la composición, o las artes visuales (pintura, escultura)?",
+            "opt1": "Artes visuales",
+            "opt2": "Me da igual",
+            "opt3": "Música y composición",
+            "boosts_1": {
+              "artes_visuales": 0.25
+            },
+            "boosts_3": {
+              "musica": 0.25
+            }
+          },
+          {
+            "id": "ARF3_03",
+            "texto": "¿Preferís crear contenido artístico propio, o diseñar para empresas y marcas?",
+            "opt1": "Diseñar para marcas",
+            "opt2": "Me da igual",
+            "opt3": "Arte propio",
+            "boosts_1": {
+              "diseno_grafico": 0.2,
+              "diseno_industrial": 0.15
+            },
+            "boosts_3": {
+              "artes_visuales": 0.2,
+              "musica": 0.1,
+              "actuacion": 0.1
+            }
+          },
+          {
+            "id": "ARF3_04",
+            "texto": "¿Te atrae más el diseño tridimensional (espacios, objetos, moda), o el plano (gráfico, digital)?",
+            "opt1": "Plano y digital",
+            "opt2": "Me da igual",
+            "opt3": "Tridimensional",
+            "boosts_1": {
+              "diseno_grafico": 0.15,
+              "diseno_multimedial": 0.15
+            },
+            "boosts_3": {
+              "arquitectura": 0.2,
+              "diseno_industrial": 0.15,
+              "diseno_indumentaria": 0.15
+            }
+          },
+          {
+            "id": "ARF3_05",
+            "texto": "¿Preferís la fotografía y el registro de momentos, o la animación y creación de mundos?",
+            "opt1": "Animación y mundos",
+            "opt2": "Me da igual",
+            "opt3": "Fotografía",
+            "boosts_1": {
+              "diseno_multimedial": 0.2,
+              "creacion_videojuegos": 0.15
+            },
+            "boosts_3": {
+              "fotografia": 0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "ar_comunicacion",
+        "nombre": "Comunicación & Producción",
+        "descripcion": "Tu perfil combina el arte con la comunicación de ideas, el trabajo en equipo y la producción de contenidos.",
+        "dims_trigger": [
+          "E",
+          "S"
+        ],
+        "preguntas": [
+          {
+            "id": "ARF3_06",
+            "texto": "¿Preferís escribir (periodismo, literatura, guiones), o actuar y estar en escena?",
+            "opt1": "Actuar y escena",
+            "opt2": "Me da igual",
+            "opt3": "Escribir",
+            "boosts_1": {
+              "actuacion": 0.3
+            },
+            "boosts_3": {
+              "letras": 0.2,
+              "comunicacion_social": 0.15
+            }
+          },
+          {
+            "id": "ARF3_07",
+            "texto": "¿Te interesa más el periodismo y los hechos reales, o la escritura creativa y la ficción?",
+            "opt1": "Escritura creativa",
+            "opt2": "Me da igual",
+            "opt3": "Periodismo",
+            "boosts_1": {
+              "letras": 0.25
+            },
+            "boosts_3": {
+              "comunicacion_social": 0.25
+            }
+          },
+          {
+            "id": "ARF3_08",
+            "texto": "¿Preferís dirigir y producir proyectos artísticos, o ser el ejecutor (actuar, diseñar, componer)?",
+            "opt1": "Ejecutor artístico",
+            "opt2": "Me da igual",
+            "opt3": "Producir y dirigir",
+            "boosts_1": {
+              "musica": 0.1,
+              "actuacion": 0.1,
+              "artes_visuales": 0.1
+            },
+            "boosts_3": {
+              "artes_audiovisuales": 0.2,
+              "comunicacion_social": 0.1
+            }
+          },
+          {
+            "id": "ARF3_09",
+            "texto": "¿Te atrae más la gastronomía como arte y técnica, o las artes escénicas (teatro, danza)?",
+            "opt1": "Artes escénicas",
+            "opt2": "Me da igual",
+            "opt3": "Gastronomía",
+            "boosts_1": {
+              "actuacion": 0.2
+            },
+            "boosts_3": {
+              "gastronomia": 0.3
+            }
+          },
+          {
+            "id": "ARF3_10",
+            "texto": "¿Preferís trabajo comercial con clientes y marcas, o proyectos artísticos propios?",
+            "opt1": "Proyectos propios",
+            "opt2": "Me da igual",
+            "opt3": "Comercial y marcas",
+            "boosts_1": {
+              "actuacion": 0.1,
+              "musica": 0.1,
+              "letras": 0.1
+            },
+            "boosts_3": {
+              "diseno_grafico": 0.15,
+              "comunicacion_social": 0.15,
+              "diseno_industrial": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "ar_tecnico",
+        "nombre": "Diseño Aplicado & Técnico",
+        "descripcion": "Tu perfil combina la creatividad con la precisión técnica o el diseño de objetos, espacios o sistemas.",
+        "dims_trigger": [
+          "I",
+          "C"
+        ],
+        "preguntas": [
+          {
+            "id": "ARF3_11",
+            "texto": "¿Preferís el diseño de moda e indumentaria, o el diseño de espacios e interiores?",
+            "opt1": "Espacios e interiores",
+            "opt2": "Me da igual",
+            "opt3": "Moda e indumentaria",
+            "boosts_1": {
+              "arquitectura": 0.25
+            },
+            "boosts_3": {
+              "diseno_indumentaria": 0.3
+            }
+          },
+          {
+            "id": "ARF3_12",
+            "texto": "¿Te interesa más el diseño industrial de objetos, o el diseño digital e interactivo?",
+            "opt1": "Digital e interactivo",
+            "opt2": "Me da igual",
+            "opt3": "Objetos e industrial",
+            "boosts_1": {
+              "diseno_ux_ui": 0.2,
+              "diseno_multimedial": 0.15
+            },
+            "boosts_3": {
+              "diseno_industrial": 0.25
+            }
+          },
+          {
+            "id": "ARF3_13",
+            "texto": "¿Preferís la gastronomía creativa, o el diseño de productos visuales y gráficos?",
+            "opt1": "Diseño visual",
+            "opt2": "Me da igual",
+            "opt3": "Gastronomía",
+            "boosts_1": {
+              "diseno_grafico": 0.15,
+              "diseno_industrial": 0.1
+            },
+            "boosts_3": {
+              "gastronomia": 0.3
+            }
+          },
+          {
+            "id": "ARF3_14",
+            "texto": "¿Te atrae crear videojuegos combinando arte y tecnología, o el diseño puramente artístico?",
+            "opt1": "Arte puro",
+            "opt2": "Me da igual",
+            "opt3": "Videojuegos y tecnología",
+            "boosts_1": {
+              "artes_visuales": 0.15,
+              "musica": 0.1
+            },
+            "boosts_3": {
+              "creacion_videojuegos": 0.25,
+              "diseno_multimedial": 0.1
+            }
+          },
+          {
+            "id": "ARF3_15",
+            "texto": "¿Preferís diseñar en 3D y con volumen, o en 2D y plano (gráficos, ilustraciones)?",
+            "opt1": "2D e ilustración",
+            "opt2": "Me da igual",
+            "opt3": "3D y volumen",
+            "boosts_1": {
+              "diseno_grafico": 0.2,
+              "diseno_multimedial": 0.1,
+              "fotografia": 0.1
+            },
+            "boosts_3": {
+              "arquitectura": 0.2,
+              "diseno_industrial": 0.2
+            }
+          }
+        ]
+      }
+    ],
+    "negocios": [
+      {
+        "id": "ng_emprendimiento",
+        "nombre": "Emprendimiento & Comercial",
+        "descripcion": "Tu perfil muestra energía para crear, vender y liderar negocios.",
+        "dims_trigger": [
+          "E",
+          "S"
+        ],
+        "preguntas": [
+          {
+            "id": "NGF3_01",
+            "texto": "¿Preferís crear y hacer crecer tu propio negocio, o liderar dentro de organizaciones grandes?",
+            "opt1": "Organizaciones grandes",
+            "opt2": "Me da igual",
+            "opt3": "Propio negocio",
+            "boosts_1": {
+              "administracion_empresas": 0.2,
+              "recursos_humanos": 0.15
+            },
+            "boosts_3": {
+              "marketing": 0.1,
+              "negocios_digitales": 0.15
+            }
+          },
+          {
+            "id": "NGF3_02",
+            "texto": "¿Te interesa más el marketing y las ventas, o las relaciones institucionales e internacionales?",
+            "opt1": "Internacional e institucional",
+            "opt2": "Me da igual",
+            "opt3": "Marketing y ventas",
+            "boosts_1": {
+              "relaciones_internacionales": 0.2,
+              "comercio_internacional": 0.15
+            },
+            "boosts_3": {
+              "marketing": 0.2,
+              "relaciones_publicas": 0.15,
+              "martillero_publico": 0.1
+            }
+          },
+          {
+            "id": "NGF3_03",
+            "texto": "¿Preferís negocios digitales e internet, o negocios presenciales y tradicionales?",
+            "opt1": "Tradicionales y presenciales",
+            "opt2": "Me da igual",
+            "opt3": "Digital e internet",
+            "boosts_1": {
+              "administracion_empresas": 0.1,
+              "martillero_publico": 0.1
+            },
+            "boosts_3": {
+              "negocios_digitales": 0.25,
+              "marketing": 0.1
+            }
+          },
+          {
+            "id": "NGF3_04",
+            "texto": "¿Te atrae el turismo y la hotelería, o las finanzas y los mercados?",
+            "opt1": "Finanzas y mercados",
+            "opt2": "Me da igual",
+            "opt3": "Turismo y hotelería",
+            "boosts_1": {
+              "finanzas": 0.2,
+              "economia": 0.15,
+              "actuario": 0.1
+            },
+            "boosts_3": {
+              "lic_turismo": 0.25,
+              "tec_turismo": 0.2
+            }
+          },
+          {
+            "id": "NGF3_05",
+            "texto": "¿Preferís gestionar personas y equipos, o gestionar recursos financieros y operaciones?",
+            "opt1": "Recursos financieros",
+            "opt2": "Me da igual",
+            "opt3": "Personas y equipos",
+            "boosts_1": {
+              "finanzas": 0.15,
+              "logistica": 0.1,
+              "contador_publico": 0.1
+            },
+            "boosts_3": {
+              "recursos_humanos": 0.25,
+              "administracion_empresas": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "ng_finanzas",
+        "nombre": "Análisis & Finanzas",
+        "descripcion": "Tu perfil muestra inclinación hacia los números, los mercados y el análisis riguroso de la información.",
+        "dims_trigger": [
+          "I",
+          "C"
+        ],
+        "preguntas": [
+          {
+            "id": "NGF3_06",
+            "texto": "¿Preferís el análisis económico y los mercados financieros, o la contabilidad e impuestos?",
+            "opt1": "Contabilidad e impuestos",
+            "opt2": "Me da igual",
+            "opt3": "Economía y mercados",
+            "boosts_1": {
+              "contador_publico": 0.2,
+              "tec_administracion_contable": 0.15
+            },
+            "boosts_3": {
+              "economia": 0.2,
+              "finanzas": 0.2
+            }
+          },
+          {
+            "id": "NGF3_07",
+            "texto": "¿Te interesa más el análisis actuarial de riesgos, o la gestión financiera de empresas?",
+            "opt1": "Gestión financiera",
+            "opt2": "Me da igual",
+            "opt3": "Actuarial y riesgos",
+            "boosts_1": {
+              "finanzas": 0.2,
+              "administracion_empresas": 0.1
+            },
+            "boosts_3": {
+              "actuario": 0.3
+            }
+          },
+          {
+            "id": "NGF3_08",
+            "texto": "¿Preferís trabajar en el sector público y estatal, o en el sector privado?",
+            "opt1": "Sector privado",
+            "opt2": "Me da igual",
+            "opt3": "Sector público",
+            "boosts_1": {
+              "administracion_empresas": 0.15,
+              "marketing": 0.1
+            },
+            "boosts_3": {
+              "administracion_publica": 0.25,
+              "escribania": 0.1
+            }
+          },
+          {
+            "id": "NGF3_09",
+            "texto": "¿Te atrae el comercio internacional e importación/exportación, o la logística y cadena de suministro?",
+            "opt1": "Logística y cadena de suministro",
+            "opt2": "Me da igual",
+            "opt3": "Comercio internacional",
+            "boosts_1": {
+              "logistica": 0.25
+            },
+            "boosts_3": {
+              "comercio_internacional": 0.25
+            }
+          },
+          {
+            "id": "NGF3_10",
+            "texto": "¿Preferís trabajo metódico y detallista (revisar números, controlar), o creativo y estratégico?",
+            "opt1": "Creativo y estratégico",
+            "opt2": "Me da igual",
+            "opt3": "Metódico y detallista",
+            "boosts_1": {
+              "marketing": 0.15,
+              "relaciones_publicas": 0.1
+            },
+            "boosts_3": {
+              "contador_publico": 0.15,
+              "tec_administracion_contable": 0.15,
+              "logistica": 0.1
+            }
+          }
+        ]
+      },
+      {
+        "id": "ng_servicios",
+        "nombre": "Servicios & Gestión",
+        "descripcion": "Tu perfil combina el trato con personas y la organización metódica en contextos de servicio.",
+        "dims_trigger": [
+          "A",
+          "R"
+        ],
+        "preguntas": [
+          {
+            "id": "NGF3_11",
+            "texto": "¿Preferís trabajar con clientes y relaciones, o en operaciones y procesos internos?",
+            "opt1": "Operaciones internas",
+            "opt2": "Me da igual",
+            "opt3": "Clientes y relaciones",
+            "boosts_1": {
+              "logistica": 0.15,
+              "administracion_publica": 0.1
+            },
+            "boosts_3": {
+              "relaciones_publicas": 0.2,
+              "recursos_humanos": 0.15,
+              "martillero_publico": 0.1
+            }
+          },
+          {
+            "id": "NGF3_12",
+            "texto": "¿Te interesa más el turismo y la hospitalidad, o las relaciones institucionales y públicas?",
+            "opt1": "Institucional y público",
+            "opt2": "Me da igual",
+            "opt3": "Turismo y hospitalidad",
+            "boosts_1": {
+              "relaciones_internacionales": 0.2,
+              "relaciones_publicas": 0.15
+            },
+            "boosts_3": {
+              "lic_turismo": 0.25,
+              "tec_turismo": 0.15
+            }
+          },
+          {
+            "id": "NGF3_13",
+            "texto": "¿Preferís el trabajo notarial y documental, o la gestión administrativa de empresas?",
+            "opt1": "Gestión administrativa",
+            "opt2": "Me da igual",
+            "opt3": "Notarial y documental",
+            "boosts_1": {
+              "administracion_empresas": 0.15,
+              "secretariado_ejecutivo": 0.1
+            },
+            "boosts_3": {
+              "escribania": 0.3
+            }
+          },
+          {
+            "id": "NGF3_14",
+            "texto": "¿Te atrae la creatividad en marketing y publicidad, o la precisión en contabilidad y finanzas?",
+            "opt1": "Contabilidad y finanzas",
+            "opt2": "Me da igual",
+            "opt3": "Marketing y publicidad",
+            "boosts_1": {
+              "contador_publico": 0.2,
+              "finanzas": 0.15
+            },
+            "boosts_3": {
+              "marketing": 0.2,
+              "relaciones_publicas": 0.15,
+              "negocios_digitales": 0.1
+            }
+          },
+          {
+            "id": "NGF3_15",
+            "texto": "¿Preferís trabajar como profesional autónomo, o dentro de organizaciones?",
+            "opt1": "Dentro de organizaciones",
+            "opt2": "Me da igual",
+            "opt3": "Profesional autónomo",
+            "boosts_1": {
+              "administracion_empresas": 0.1,
+              "logistica": 0.1
+            },
+            "boosts_3": {
+              "martillero_publico": 0.2,
+              "escribania": 0.15
+            }
+          }
+        ]
+      }
+    ],
+    "humanidades": [
+      {
+        "id": "hu_social",
+        "nombre": "Social & Educación",
+        "descripcion": "Tu perfil muestra vocación por acompañar, enseñar y trabajar directamente con personas y comunidades.",
+        "dims_trigger": [
+          "S",
+          "E"
+        ],
+        "preguntas": [
+          {
+            "id": "HUF3_01",
+            "texto": "¿Preferís enseñar y acompañar el aprendizaje, o trabajar en problemáticas sociales y comunitarias?",
+            "opt1": "Problemáticas sociales",
+            "opt2": "Me da igual",
+            "opt3": "Enseñar",
+            "boosts_1": {
+              "trabajo_social": 0.2,
+              "psicologia": 0.1
+            },
+            "boosts_3": {
+              "ciencias_educacion": 0.2,
+              "profesorado_educacion_primaria": 0.15
+            }
+          },
+          {
+            "id": "HUF3_02",
+            "texto": "¿Te interesa más la psicología y el acompañamiento emocional, o el trabajo social y comunitario?",
+            "opt1": "Trabajo social",
+            "opt2": "Me da igual",
+            "opt3": "Psicología",
+            "boosts_1": {
+              "trabajo_social": 0.25
+            },
+            "boosts_3": {
+              "psicologia": 0.25
+            }
+          },
+          {
+            "id": "HUF3_03",
+            "texto": "¿Preferís trabajar con niños y jóvenes, o con adultos y familias en contextos vulnerables?",
+            "opt1": "Adultos y familias vulnerables",
+            "opt2": "Me da igual",
+            "opt3": "Niños y jóvenes",
+            "boosts_1": {
+              "trabajo_social": 0.15,
+              "psicologia": 0.1
+            },
+            "boosts_3": {
+              "profesorado_educacion_primaria": 0.2,
+              "psicopedagogia": 0.15
+            }
+          },
+          {
+            "id": "HUF3_04",
+            "texto": "¿Te atrae la orientación vocacional y el aprendizaje, o la terapia y el bienestar mental?",
+            "opt1": "Terapia y bienestar",
+            "opt2": "Me da igual",
+            "opt3": "Aprendizaje y vocacional",
+            "boosts_1": {
+              "psicologia": 0.2
+            },
+            "boosts_3": {
+              "ciencias_educacion": 0.15,
+              "psicopedagogia": 0.15
+            }
+          },
+          {
+            "id": "HUF3_05",
+            "texto": "¿Preferís la educación física y el deporte, o la docencia en aulas?",
+            "opt1": "Docencia en aulas",
+            "opt2": "Me da igual",
+            "opt3": "Educación física y deporte",
+            "boosts_1": {
+              "ciencias_educacion": 0.15,
+              "profesorado_educacion_primaria": 0.1,
+              "profesorado_ciencias_exactas": 0.1
+            },
+            "boosts_3": {
+              "educacion_fisica": 0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "hu_investigacion",
+        "nombre": "Investigación & Derecho",
+        "descripcion": "Tu perfil muestra inclinación hacia el análisis riguroso, el pensamiento crítico o el ejercicio del derecho.",
+        "dims_trigger": [
+          "I",
+          "C"
+        ],
+        "preguntas": [
+          {
+            "id": "HUF3_06",
+            "texto": "¿Preferís la investigación histórica y académica, o el ejercicio del derecho en tribunales?",
+            "opt1": "Derecho y tribunales",
+            "opt2": "Me da igual",
+            "opt3": "Historia y academia",
+            "boosts_1": {
+              "abogacia": 0.2,
+              "escribania": 0.15
+            },
+            "boosts_3": {
+              "historia": 0.25,
+              "sociologia": 0.1
+            }
+          },
+          {
+            "id": "HUF3_07",
+            "texto": "¿Te interesa más la ciencia política y las instituciones, o la filosofía y el pensamiento abstracto?",
+            "opt1": "Filosofía y pensamiento",
+            "opt2": "Me da igual",
+            "opt3": "Política e instituciones",
+            "boosts_1": {
+              "filosofia": 0.25
+            },
+            "boosts_3": {
+              "ciencia_politica": 0.25,
+              "relaciones_internacionales": 0.1
+            }
+          },
+          {
+            "id": "HUF3_08",
+            "texto": "¿Preferís el análisis sociológico de la sociedad, o el trabajo concreto con personas?",
+            "opt1": "Trabajo con personas",
+            "opt2": "Me da igual",
+            "opt3": "Análisis sociológico",
+            "boosts_1": {
+              "trabajo_social": 0.15,
+              "psicologia": 0.1
+            },
+            "boosts_3": {
+              "sociologia": 0.25,
+              "ciencia_politica": 0.1
+            }
+          },
+          {
+            "id": "HUF3_09",
+            "texto": "¿Te atrae la escritura y la literatura, o la traducción y los idiomas extranjeros?",
+            "opt1": "Idiomas y traducción",
+            "opt2": "Me da igual",
+            "opt3": "Escritura y literatura",
+            "boosts_1": {
+              "traductorado": 0.3
+            },
+            "boosts_3": {
+              "letras": 0.25,
+              "comunicacion_social": 0.1
+            }
+          },
+          {
+            "id": "HUF3_10",
+            "texto": "¿Preferís las relaciones internacionales y la diplomacia, o la política nacional e instituciones?",
+            "opt1": "Política nacional",
+            "opt2": "Me da igual",
+            "opt3": "Internacional y diplomacia",
+            "boosts_1": {
+              "ciencia_politica": 0.2,
+              "abogacia": 0.1
+            },
+            "boosts_3": {
+              "relaciones_internacionales": 0.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "hu_derecho",
+        "nombre": "Derecho & Gestión Cultural",
+        "descripcion": "Tu perfil combina la escritura, el análisis jurídico o la gestión de patrimonio y documentación.",
+        "dims_trigger": [
+          "A",
+          "R"
+        ],
+        "preguntas": [
+          {
+            "id": "HUF3_11",
+            "texto": "¿Preferís defender personas en el ámbito legal, o gestionar documentos y actos jurídicos?",
+            "opt1": "Gestión documental",
+            "opt2": "Me da igual",
+            "opt3": "Defensa y litigios",
+            "boosts_1": {
+              "escribania": 0.25,
+              "archivologia": 0.15
+            },
+            "boosts_3": {
+              "abogacia": 0.25
+            }
+          },
+          {
+            "id": "HUF3_12",
+            "texto": "¿Te interesa más la comunicación y el periodismo, o la gestión de archivos e información?",
+            "opt1": "Archivos e información",
+            "opt2": "Me da igual",
+            "opt3": "Comunicación y periodismo",
+            "boosts_1": {
+              "archivologia": 0.2
+            },
+            "boosts_3": {
+              "comunicacion_social": 0.25
+            }
+          },
+          {
+            "id": "HUF3_13",
+            "texto": "¿Preferís trabajar en el ámbito político-gubernamental, o en el cultural y educativo?",
+            "opt1": "Cultural y educativo",
+            "opt2": "Me da igual",
+            "opt3": "Político y gubernamental",
+            "boosts_1": {
+              "historia": 0.15,
+              "ciencias_educacion": 0.1
+            },
+            "boosts_3": {
+              "ciencia_politica": 0.2,
+              "relaciones_internacionales": 0.1
+            }
+          },
+          {
+            "id": "HUF3_14",
+            "texto": "¿Te atrae la catalogación y preservación de archivos históricos, o la docencia e investigación?",
+            "opt1": "Docencia e investigación",
+            "opt2": "Me da igual",
+            "opt3": "Archivos históricos",
+            "boosts_1": {
+              "historia": 0.15,
+              "filosofia": 0.1,
+              "ciencias_educacion": 0.1
+            },
+            "boosts_3": {
+              "archivologia": 0.25
+            }
+          },
+          {
+            "id": "HUF3_15",
+            "texto": "¿Preferís mediar en conflictos (laboral, familiar, judicial), o investigar y comunicar ideas?",
+            "opt1": "Investigar y comunicar",
+            "opt2": "Me da igual",
+            "opt3": "Mediar en conflictos",
+            "boosts_1": {
+              "historia": 0.1,
+              "sociologia": 0.1,
+              "comunicacion_social": 0.1
+            },
+            "boosts_3": {
+              "abogacia": 0.15,
+              "escribania": 0.1,
+              "trabajo_social": 0.1
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
