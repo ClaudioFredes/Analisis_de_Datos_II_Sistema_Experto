@@ -49,7 +49,7 @@ CLAVES_SESION = (
     "dominio_activo", "dominios_explorados", "pref_duracion",
     "pathway_activo",
     "vector_usuario", "idx", "orden",
-    "_err_idx",
+    "_err_idx", "_trans_dom", "_trans_dur",
 )
 
 LIKERT = {1: "Lo detestaría", 2: "No me gustaría", 3: "Me da igual",
@@ -148,12 +148,12 @@ usando el estándar **O\\*NET** y el modelo **RIASEC** de Holland.
 **Tres fases:**
 1. **Fase 1 · 18 preguntas** — respondés actividades generales (escala 1-5).
    El sistema detecta qué dominio te atrae más.
-2. **Fase 2 · comparaciones** — elegís entre tres actividades dentro de tu
-   dominio para construir tu perfil detallado.
-3. **Fase 3 · 5 preguntas** — preguntas específicas para tu perfil que
-   afinan el ranking final.
+2. **Fase 2 · 10 comparaciones** — elegís entre tres actividades dentro de tu
+   dominio para construir tu perfil RIASEC detallado.
+3. **Fase 3 · 5 preguntas** — preguntas de valores y contexto laboral
+   específicas para tu perfil que afinan el ranking final.
 
-**Total: ~28 preguntas · ~8 minutos · Privacidad total.**
+**Total: 33 preguntas · ~10 minutos · Privacidad total.**
     """)
     st.markdown("&nbsp;")
     if st.button("Comenzar →", type="primary", use_container_width=True):
@@ -209,74 +209,150 @@ def pantalla_f1():
               on_next=lambda: ir_a(ETAPA_TRANSICION) if idx == total - 1
                               else _set_idx(idx + 1))
 
-    _barra(idx + 1, total, "Fase 1")
+    _barra(idx + 1, total, "Fase 1", fase=1)
     inyectar_navegacion_teclado(num_opciones=len(LIKERT))
 
 
 # ── TRANSICIÓN ───────────────────────────────────────────────────
 def pantalla_transicion():
     render_header()
-    scores   = calcular_scores()
-    doms     = cargar_dominios()
-    dom_map  = {d["id"]: d for d in doms}
+    scores     = calcular_scores()
+    doms       = cargar_dominios()
+    dom_map    = {d["id"]: d for d in doms}
     explorados = st.session_state.get("dominios_explorados", [])
 
-    st.markdown("## ¿Sobre qué mundo querés profundizar?")
-    st.markdown("Tus respuestas muestran estas afinidades. Elegí **uno** para la Fase 2 y 3.")
-    st.markdown("&nbsp;")
+    # Dominio pre-seleccionado: el mejor no explorado
+    recomendado = next((did for did, _ in scores if did not in explorados), scores[0][0])
+    if "_trans_dom" not in st.session_state:
+        st.session_state["_trans_dom"] = recomendado
 
-    for did, score in scores:
-        d     = dom_map.get(did, {})
-        pct   = int((score - 1) / 4 * 100) if score > 1 else 0
-        top   = (did == scores[0][0]) and (did not in explorados)
-        badge = (" <span style='font-size:0.72rem;background:var(--ink);color:var(--card);"
-                 "padding:2px 7px;border-radius:5px;margin-left:6px;'>ya explorado</span>"
-                 if did in explorados else "")
-        bg    = "var(--violet)" if top else "var(--card)"
-        borde = "3px solid var(--ink)" if top else "2px solid var(--ink)"
+    st.markdown("##### ¿Sobre qué mundo querés profundizar?")
+    st.markdown("---")
+
+    col_doms, col_gap, col_accion = st.columns([3, 0.15, 1.6])
+
+    # CSS: cards partido en dos botones (nombre | barra) que parecen uno
+    st.markdown("""
+    <style>
+    /* Gap entre filas de tarjetas */
+    .st-key-dom_cards [data-testid="stVerticalBlock"] { gap: 0.3rem !important; }
+
+    /* Sin gap entre las dos mitades de cada tarjeta */
+    .st-key-dom_cards [data-testid="stHorizontalBlock"] { gap: 0 !important; }
+
+    /* Estilos base de ambas mitades */
+    .st-key-dom_cards .stButton > button {
+        height: 2.6rem !important;
+        white-space: nowrap !important;
+        padding: 0.4rem 0.8rem !important;
+        font-size: 0.88rem !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        border-bottom-width: 2px !important;
+        border-top-width: 2px !important;
+    }
+    /* Mitad izquierda: borde izquierdo + radio izquierdo */
+    .st-key-dom_cards [data-testid="stHorizontalBlock"] > div:first-child .stButton > button {
+        border-left-width: 2px !important;
+        border-right-width: 1px !important;
+        border-radius: 8px 0 0 8px !important;
+        text-align: left !important;
+    }
+    /* Mitad derecha: borde derecho + radio derecho + sombra al conjunto */
+    .st-key-dom_cards [data-testid="stHorizontalBlock"] > div:last-child .stButton > button {
+        border-left-width: 1px !important;
+        border-right-width: 2px !important;
+        border-radius: 0 8px 8px 0 !important;
+        text-align: right !important;
+        font-family: 'JetBrains Mono', monospace !important;
+        font-size: 0.8rem !important;
+        box-shadow: 3px 3px 0px var(--ink) !important;
+    }
+    /* Seleccionado: lime en ambas mitades */
+    .st-key-dom_cards .stButton > button[kind="primary"] {
+        background-color: var(--lime) !important;
+        color: var(--ink) !important;
+    }
+
+    /* Duración: botones sin margen extra */
+    .st-key-dur_buttons [data-testid="stVerticalBlock"] { gap: 0.3rem !important; }
+    .st-key-dur_buttons .stButton > button {
+        font-size: 0.84rem !important;
+        white-space: nowrap !important;
+        height: 2.6rem !important;
+    }
+    .st-key-dur_buttons .stButton > button[kind="primary"] {
+        background-color: var(--lime) !important;
+        color: var(--ink) !important;
+    }
+
+    /* Botón avanzar: hereda el primario global (violeta). */
+    </style>
+    """, unsafe_allow_html=True)
+
+    with col_doms:
+        with st.container(key="dom_cards"):
+            for did, score in scores:
+                d      = dom_map.get(did, {})
+                sel    = st.session_state["_trans_dom"] == did
+                es_rec = did == recomendado and did not in explorados
+                es_exp = did in explorados
+                tag    = " ★" if es_rec else (" ✓" if es_exp else "")
+                filled = int(score / 5.0 * 10)
+                bar    = "█" * filled + "░" * (10 - filled)
+                btn_type = "primary" if sel else "secondary"
+                c1, c2 = st.columns([2.6, 1.4])
+                with c1:
+                    if st.button(f"{d.get('icono','')} {d.get('nombre','')}{tag}",
+                                 key=f"btn_name_{did}", type=btn_type,
+                                 use_container_width=True):
+                        st.session_state["_trans_dom"] = did
+                        st.rerun()
+                with c2:
+                    if st.button(f"{bar}  {score:.1f}/5",
+                                 key=f"btn_bar_{did}", type=btn_type,
+                                 use_container_width=True):
+                        st.session_state["_trans_dom"] = did
+                        st.rerun()
+
+    with col_accion:
+        dom_sel = st.session_state["_trans_dom"]
+        d_info  = dom_map.get(dom_sel, {})
         st.markdown(
-            f"""<div style="margin-bottom:0.55rem;padding:0.7rem 1rem;
-                border:{borde};border-radius:12px;background:{bg};
-                box-shadow:4px 4px 0px var(--ink);">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
-                    <strong>{d.get('icono','')} {d.get('nombre','')}{badge}</strong>
-                    <span style="font-family:monospace;font-weight:700;">{score:.1f}/5.0</span>
-                </div>
-                <div style="height:7px;background:rgba(17,17,17,0.12);border-radius:4px;overflow:hidden;">
-                    <div style="height:100%;width:{pct}%;background:var(--ink);border-radius:4px;"></div>
-                </div>
+            f"""<div style="padding:0.5rem 0.9rem;border:2px solid var(--ink);
+                border-radius:10px;background:var(--violet);box-shadow:3px 3px 0 var(--ink);
+                margin-bottom:0.8rem;display:flex;align-items:center;gap:0.5rem;">
+                <span style="font-size:1.3rem;">{d_info.get('icono','')}</span>
+                <span style="font-weight:700;font-size:0.95rem;">{d_info.get('nombre','')}</span>
             </div>""",
             unsafe_allow_html=True,
         )
 
-    st.markdown("&nbsp;")
-    st.markdown("### Elegí un dominio para continuar:")
-    ids_ordenados = [did for did, _ in scores]
-    dom_sel = st.radio("dom", ids_ordenados,
-                       format_func=lambda did: (
-                           f"{dom_map[did]['icono']} {dom_map[did]['nombre']}"
-                           + (" ✓ (ya explorado)" if did in explorados else "")
-                       ),
-                       label_visibility="collapsed", key="radio_dom")
+        st.markdown("**Duración preferida:**")
+        if "_trans_dur" not in st.session_state:
+            st.session_state["_trans_dur"] = "ambas"
+        dur_opts = [
+            ("tecnicatura", "⚡ Tecnicatura  (2-3 años)"),
+            ("ambas",       "↔ Indiferente"),
+            ("grado",       "🎓 Licenciatura  (4-6 años)"),
+        ]
+        with st.container(key="dur_buttons"):
+            for val, label in dur_opts:
+                sel_dur = st.session_state["_trans_dur"] == val
+                if st.button(label, key=f"dur_{val}",
+                             type="primary" if sel_dur else "secondary",
+                             use_container_width=True):
+                    st.session_state["_trans_dur"] = val
+                    st.rerun()
+        dur = st.session_state["_trans_dur"]
 
-    st.markdown("---")
-    st.markdown("**¿Qué duración de carrera preferís?**")
-    dur = st.radio("dur", ["tecnicatura", "ambas", "grado"],
-                   format_func=lambda x: {
-                       "tecnicatura": "⚡ Tecnicatura (2-3 años)",
-                       "ambas": "↔ Me da igual",
-                       "grado": "🎓 Licenciatura / Ingeniería (4-6 años)",
-                   }[x],
-                   index=1, horizontal=True, label_visibility="collapsed", key="radio_dur")
-
-    st.markdown("&nbsp;")
-    d_info = dom_map.get(dom_sel, {})
-    st.success(f"Vas a explorar: **{d_info.get('icono','')} {d_info.get('nombre','')}**")
-
-    if st.button("Comenzar Fase 2 →", type="primary", use_container_width=True):
-        st.session_state["dominio_activo"] = dom_sel
-        st.session_state["pref_duracion"]  = dur
-        _init_f2(dom_sel)
+        st.markdown("&nbsp;")
+        if st.button("Comenzar Fase 2 →", type="primary", use_container_width=True):
+            st.session_state["dominio_activo"] = dom_sel
+            st.session_state["pref_duracion"]  = dur
+            st.session_state.pop("_trans_dom", None)
+            st.session_state.pop("_trans_dur", None)
+            _init_f2(dom_sel)
 
 
 # ── FASE 2 — TRÍADAS (1 de 3) ────────────────────────────────────
@@ -336,7 +412,7 @@ def pantalla_f2():
               label_next="Ver mi perfil →" if es_ultima else "Siguiente →",
               on_next=lambda: _finalizar_f2() if es_ultima else _set_idx(idx + 1))
 
-    _barra(idx + 1, total, "Fase 2 · Comparaciones")
+    _barra(idx + 1, total, "Fase 2 · Comparaciones", fase=2)
 
 
 def _finalizar_f2():
@@ -353,33 +429,63 @@ def _finalizar_f2():
 
 # ── TRANSICIÓN F3 — muestra perfil detectado ─────────────────────
 def pantalla_trans_f3():
-    render_header()
+    render_header(is_quiz=True)
     pathway = st.session_state.get("pathway_activo")
     if not pathway:
         _init_f3()
         return
 
-    st.markdown("## Tu perfil dentro del dominio")
-    st.markdown("---")
+    vector = st.session_state.get("vector_usuario")
 
-    # Perfil detectado
+    # Indicador de etapas
     st.markdown(
-        f"""<div style="padding:1.5rem 1.8rem;border:3px solid var(--ink);
-            border-radius:14px;background:var(--violet);box-shadow:6px 6px 0px var(--ink);
-            margin-bottom:1.5rem;">
-            <h2 style="margin:0 0 0.4rem 0;font-size:1.8rem;">✦ {pathway['nombre']}</h2>
-            <p style="margin:0;font-size:1.05rem;line-height:1.5;">{pathway['descripcion']}</p>
+        """<div style="display:flex;gap:0.5rem;align-items:center;
+            font-size:0.82rem;margin-bottom:1.1rem;flex-wrap:wrap;">
+            <span style="padding:3px 10px;background:var(--ink);color:var(--card);
+                border-radius:20px;font-weight:700;">✓ Fase 1</span>
+            <span style="color:#888;">──</span>
+            <span style="padding:3px 10px;background:var(--ink);color:var(--card);
+                border-radius:20px;font-weight:700;">✓ Fase 2</span>
+            <span style="color:#888;">──</span>
+            <span style="padding:3px 10px;background:var(--violet);color:var(--ink);
+                border:2px solid var(--ink);border-radius:20px;font-weight:700;">
+                → Fase 3 · 5 preguntas</span>
         </div>""",
         unsafe_allow_html=True,
     )
 
-    st.markdown(
-        "Basándonos en tus comparaciones, estas últimas **5 preguntas** están "
-        "diseñadas específicamente para tu perfil y afinarán el ranking final."
-    )
-    st.markdown("&nbsp;")
-    if st.button("Continuar con las últimas 5 preguntas →", type="primary", use_container_width=True):
-        _init_f3()
+    col_riasec, col_pathway = st.columns([1.4, 1], gap="large")
+
+    with col_riasec:
+        st.markdown("##### Tu perfil RIASEC")
+        if vector:
+            fig = radar_chart_riasec(vector, titulo="")
+            st.plotly_chart(fig, use_container_width=True,
+                            config={"scrollZoom": False, "displayModeBar": False,
+                                    "doubleClick": False})
+
+    with col_pathway:
+        st.markdown("##### Tu perfil detectado")
+        st.markdown(
+            f"""<div style="padding:1.2rem 1.4rem;border:3px solid var(--ink);
+                border-radius:12px;background:var(--violet);
+                box-shadow:5px 5px 0px var(--ink);margin-bottom:1rem;">
+                <div style="font-size:1.1rem;font-weight:800;margin-bottom:0.35rem;">
+                    ✦ {pathway['nombre']}
+                </div>
+                <div style="font-size:0.9rem;line-height:1.5;">
+                    {pathway['descripcion']}
+                </div>
+            </div>""",
+            unsafe_allow_html=True,
+        )
+        st.markdown(
+            "Las **5 preguntas** de la Fase 3 están diseñadas "
+            "específicamente para este perfil y afinarán el ranking final."
+        )
+        st.markdown("&nbsp;")
+        if st.button("Comenzar Fase 3 →", type="primary", use_container_width=True):
+            _init_f3()
 
 
 def _init_f3():
@@ -469,7 +575,7 @@ def pantalla_f3():
               label_next="Ver resultados →" if es_ultima else "Siguiente →",
               on_next=lambda: _finalizar_completo() if es_ultima else _set_idx(idx + 1))
 
-    _barra(idx + 1, total, "Fase 3 · Valores y contexto")
+    _barra(idx + 1, total, "Fase 3 · Valores y contexto", fase=3)
     inyectar_navegacion_teclado(num_opciones=5)
 
 
@@ -500,17 +606,13 @@ def pantalla_resultados():
     dom_info = dom_map.get(dom_id, {})
     pref_dur = st.session_state.get("pref_duracion", "ambas")
 
-    st.markdown("# Resultados")
-    if dom_info:
-        st.markdown(f"##### Dominio: {dom_info.get('icono','')} **{dom_info.get('nombre','')}**")
-    st.markdown("---")
-
-    st.markdown("### Tu perfil RIASEC")
-    for col, dim in zip(st.columns(6), DIMENSIONES_RIASEC):
-        col.metric(label=ETIQUETAS_RIASEC[dim], value=f"{vector[dim]:.2f}")
-    fig = radar_chart_riasec(vector, titulo="")
-    st.plotly_chart(fig, use_container_width=True,
-                    config={"scrollZoom": False, "displayModeBar": False, "doubleClick": False})
+    icono  = dom_info.get('icono', '')
+    nombre = dom_info.get('nombre', '')
+    st.markdown(
+        f"## Resultados &nbsp; <span style='font-size:1rem;font-weight:400;"
+        f"color:#666;'>{icono} {nombre}</span>",
+        unsafe_allow_html=True,
+    )
     st.markdown("---")
 
     catalogo     = catalogo_dominio(dom_id) if dom_id else cargar_catalogo()
@@ -574,13 +676,11 @@ def pantalla_resultados():
 
 
 def _show_ranking(titulo, top5, ranking_full, n_cat):
-    st.markdown(f"### {titulo}")
-    st.caption(f"Calculado sobre {n_cat} carreras en tu dominio.")
-
-    st.markdown("&nbsp;")
+    if titulo != "Top carreras recomendadas":
+        st.markdown(f"##### {titulo}")
     for i, c in enumerate(top5, 1):
         tarjeta_recomendacion(c, posicion=i)
-    with st.expander(f"Ver ranking completo ({len(ranking_full)} carreras)"):
+    with st.expander(f"Ver las {len(ranking_full)} carreras del dominio"):
         for i, c in enumerate(ranking_full, 1):
             badge = " `tec`" if c.get("duracion") == "tecnicatura" else ""
             st.markdown(f"**{i:02d}.** {c['nombre']}{badge} — `{c['afinidad_pct']}%`")
@@ -614,11 +714,41 @@ def _botonera(idx, tiene_resp, es_ultima, label_next, on_next):
                 st.session_state.pop("_err_idx", None)
                 on_next()
 
-def _barra(n, total, label):
+def _barra(n, total, label, fase: int = 0):
+    """Barra de progreso con indicador de fases integrado como label."""
     pct = n / total * 100
+
+    if fase in (1, 2, 3):
+        pasos = []
+        for i, nombre in enumerate(("Fase 1", "Fase 2", "Fase 3"), 1):
+            if i < fase:
+                texto = f"✓ {nombre}"
+                estilo = ("color:var(--card);background:var(--ink);"
+                          "border:1.5px solid var(--ink);")
+            elif i == fase:
+                texto = f"● {nombre} · {n}/{total}"
+                estilo = ("color:var(--ink);background:var(--lime);"
+                          "border:1.5px solid var(--ink);font-weight:700;")
+            else:
+                texto = nombre
+                estilo = "color:#999;border:1.5px solid #ccc;"
+            pasos.append(
+                f"<span style='padding:1px 9px;border-radius:20px;"
+                f"font-size:0.74rem;white-space:nowrap;{estilo}'>{texto}</span>"
+            )
+        sep = "<span style='color:#ccc;font-size:0.65rem;'>───</span>"
+        label_html = (
+            f"<div style='display:flex;align-items:center;gap:0.25rem;'>"
+            f"{sep.join(pasos)}</div>"
+        )
+    else:
+        label_html = (
+            f"<span style='font-size:0.78rem;color:#555;'>{label} — {n} de {total}</span>"
+        )
+
     st.markdown(
         f"""<div class="quiz-progress">
-            <div class="quiz-progress__label">{label} — {n} de {total}</div>
+            <div class="quiz-progress__label">{label_html}</div>
             <div class="quiz-progress__track">
                 <div class="quiz-progress__fill" style="width:{pct:.1f}%;"></div>
             </div>

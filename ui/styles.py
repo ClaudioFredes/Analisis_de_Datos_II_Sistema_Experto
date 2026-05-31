@@ -180,6 +180,16 @@ h3 {
     box-shadow: var(--shadow-sm);
     cursor: not-allowed;
 }
+/* Primario: violeta + tamaño más compacto */
+.stButton > button[kind="primary"] {
+    background-color: var(--violet);
+    color: var(--ink);
+    padding: 0.38rem 1.1rem;
+}
+.stButton > button[kind="primary"]:hover {
+    background-color: var(--violet);
+}
+/* Secundario: fondo claro */
 .stButton > button[kind="secondary"] {
     background-color: var(--card);
     color: var(--ink);
@@ -356,21 +366,37 @@ div[role="radiogroup"] > label:nth-of-type(5)::before { content: "5"; }
     box-shadow: 2px 2px 0px var(--ink);
 }
 
-/* ---------- 9. Expanders (tarjetas de carrera) ---------- */
+/* ---------- 9. Expanders (tarjetas de carrera expandibles) ---------- */
 [data-testid="stExpander"] {
     border: 2px solid var(--ink);
     border-radius: 12px;
     background-color: var(--card);
     box-shadow: var(--shadow-sm);
     margin-bottom: 0.8rem;
+    transition: all 0.15s ease-out;
+}
+[data-testid="stExpander"]:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--ink);
 }
 [data-testid="stExpander"] summary {
-    font-weight: 700;
-    padding: 0.6rem 0.8rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    list-style: none;
 }
 [data-testid="stExpander"] summary:hover {
     background-color: var(--lime);
     border-radius: 10px;
+}
+[data-testid="stExpander"][open] {
+    transform: none !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+[data-testid="stExpander"][open] summary {
+    border-bottom: 1px solid rgba(17,17,17,0.15);
+    border-radius: 10px 10px 0 0;
 }
 
 /* ---------- 10. Métricas (st.metric) ---------- */
@@ -579,11 +605,7 @@ div[role="radiogroup"] > label {
 .st-key-quiz_prev button:hover {
     background: var(--lime) !important;
 }
-/* Siguiente (→): acento primario. */
-.st-key-quiz_next button {
-    background: var(--violet) !important;
-    color: var(--ink) !important;
-}
+/* Siguiente (→): hereda el primario global (violeta). */
 
 /* --- 17c. Barra de progreso FIJA al fondo de la pantalla --- */
 .quiz-progress {

@@ -150,57 +150,79 @@ def codigo_holland(riasec: dict[str, int]) -> str:
     return "".join(top3)
 
 
-def tarjeta_recomendacion(carrera: dict, posicion: int) -> None:
-    """Renderiza una tarjeta de resultado individual (Top-N).
+_DUR_BADGE = {
+    "tecnicatura": ("⚡", "Tecnicatura · 2-3 años"),
+    "grado":       ("🎓", "Licenciatura / Ingeniería · 4-6 años"),
+}
 
-    Layout (HTML+CSS de ui/styles.py): número de ranking a la izquierda,
-    nombre + área + código Holland en el centro, % de afinidad en
-    monoespaciada a la derecha. El detalle expandible muestra la
-    ocupación O*NET equivalente y un radar usuario vs. carrera.
-    """
-    cod = codigo_holland(carrera["riasec"])
-    st.markdown(
-        f"""
-        <div class="recom-card">
-            <div class="recom-inner" style="display:flex; align-items:center; justify-content:space-between;">
-                <div style="display:flex; align-items:baseline; gap:0.9rem;">
-                    <span style="
-                        font-family:'JetBrains Mono', monospace;
-                        font-size:1.1rem; color:#999999; min-width:2rem;
-                    ">#{posicion:02d}</span>
-                    <div>
-                        <p class="recom-title">{carrera['nombre']}</p>
-                        <p class="recom-subtitle">
-                            {carrera.get('area', '')}
-                            &nbsp;·&nbsp; Código Holland: {cod}
-                        </p>
-                    </div>
-                </div>
-                <div class="recom-pct">{carrera['afinidad_pct']}%</div>
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
+_ETIQUETA_LABEL = {
+    "matematica_intensa":  "Matemática intensa",
+    "programacion":        "Programación",
+    "contacto_pacientes":  "Atención a pacientes",
+    "trabajo_fisico":      "Trabajo físico",
+    "exposicion_publica":  "Exposición pública",
+    "expresion_artistica": "Expresión artística",
+}
+
+
+def tarjeta_recomendacion(carrera: dict, posicion: int) -> None:
+    """Tarjeta expandible: el header ES el botón — no hay botón separado."""
+    cod   = codigo_holland(carrera["riasec"])
+    dur   = carrera.get("duracion", "")
+    dur_icono, dur_texto = _DUR_BADGE.get(dur, ("", ""))
+    boost = carrera.get("boost_f3", 0.0)
+
+    boost_tag = "  ✦" if boost > 0.01 else ""
+    dur_tag   = f"  ·  {dur_icono} {dur_texto}" if dur_texto else ""
+
+    label = (
+        f"**`#{posicion:02d}`**  {carrera['nombre']}{boost_tag}"
+        f"  ·  {carrera.get('area', '')}  ·  `{cod}`{dur_tag}"
+        f"  —  **{carrera['afinidad_pct']}%**"
     )
 
-    # Detalle expandible. El CSS nativo del expander ya está sobrescrito
-    # para que se vea como un panel limpio.
-    with st.expander("Ver detalle"):
-        st.markdown(
-            f"**Equivalente ocupacional O\\*NET:** {carrera.get('onet_titulo', '—')} "
-            f"(`{carrera.get('onet_soc', '—')}`)"
-        )
-        st.markdown(
-            "El vector RIASEC de esta carrera se deriva de esa ocupación del "
-            "estándar O\\*NET. Abajo se compara con tu perfil:"
-        )
+    with st.expander(label):
+        col_info, col_radar = st.columns([1, 1.3])
 
-        # Mini-radar comparativo usuario vs. carrera.
-        if "vector_usuario" in st.session_state:
-            fig = radar_chart_riasec(
-                st.session_state["vector_usuario"],
-                carrera["riasec"],
-                titulo=f"Tu perfil vs. {carrera['nombre']}",
+        with col_info:
+            # Universidades donde se dicta
+            universidades = carrera.get("universidades", [])
+            if universidades:
+                filas_html = "".join(
+                    f"<tr>"
+                    f"<td style='padding:2px 8px 2px 0;font-weight:600;"
+                    f"font-size:0.82rem;white-space:nowrap;'>{u['nombre']}</td>"
+                    f"<td style='padding:2px 0;font-size:0.82rem;"
+                    f"color:#555;'>{u['ciudad']}</td>"
+                    f"</tr>"
+                    for u in universidades
+                )
+                st.markdown(
+                    f"**Dónde estudiarla:**"
+                    f"<table style='margin-top:0.3rem;border-collapse:collapse;"
+                    f"width:100%;'>{filas_html}</table>",
+                    unsafe_allow_html=True,
+                )
+                st.markdown("")
+
+            st.markdown("")
+            if etiquetas := carrera.get("etiquetas"):
+                labels_txt = " · ".join(_ETIQUETA_LABEL.get(e, e) for e in etiquetas)
+                st.caption(f"**Requiere:** {labels_txt}")
+            if boost > 0.01:
+                st.caption(f"**Ajuste F3:** +{boost:.2f} por compatibilidad de valores.")
+            st.caption(
+                f"**O\\*NET:** {carrera.get('onet_titulo', '—')} "
+                f"`{carrera.get('onet_soc', '—')}`"
             )
-            st.plotly_chart(fig, use_container_width=True,
-                            config={"scrollZoom": False, "displayModeBar": False, "doubleClick": False})
+
+        with col_radar:
+            if "vector_usuario" in st.session_state:
+                fig = radar_chart_riasec(
+                    st.session_state["vector_usuario"],
+                    carrera["riasec"],
+                    titulo=f"Vos vs. {carrera['nombre']}",
+                )
+                st.plotly_chart(fig, use_container_width=True,
+                                config={"scrollZoom": False, "displayModeBar": False,
+                                        "doubleClick": False})
