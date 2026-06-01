@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORIENTAI · Sistema Experto Vocacional</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
+
+:root {
+  --ink:       #1a1a1a;
+  --paper:     #faf6ef;
+  --card:      #fffdf8;
+  --terra:     #c0392b;
+  --terra-lt:  #fceae8;
+  --blue:      #2c3e7a;
+  --blue-lt:   #dde3f5;
+  --sage:      #5a8a6a;
+  --sage-lt:   #deeee5;
+  --amber:     #d97706;
+  --amber-lt:  #fef3cd;
+  --sh:        4px 4px 0 var(--ink);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* font-size raíz escalado al viewport → TODO (rem) crece con la pantalla.
+   Calibrado: 16px @ 720px de alto (diseño base 16:9). */
+html { font-size: 2.22vmin; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ─── DECK ─────────────────────────────────── */
+.deck { position: relative; width: 100vw; height: 100vh; }
+
+.slide {
+  display: none;
+  position: absolute;
+  inset: 0;
+  animation: fadeIn .3s ease;
+}
+.slide.active { display: flex; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+
+/* ═══════════════════════════════════════════
+   PORTADA
+══════════════════════════════════════════ */
+.s-cover { flex-direction: row; }
+
+.cover-left {
+  width: 56%;
+  background: var(--blue);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 4.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* patrón de puntos sobre el panel azul */
+.cover-left::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 26px 26px;
+  pointer-events: none;
+}
+
+/* borde decorativo terracota superior */
+.cover-left::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: var(--terra);
+}
+
+.cover-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+  margin-bottom: 1.6rem;
+  position: relative;
+}
+
+.cover-name {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 7rem;
+  line-height: .9;
+  color: #fff;
+  letter-spacing: -.035em;
+  position: relative;
+}
+
+.cover-bar {
+  width: 72px;
+  height: 6px;
+  background: var(--terra);
+  border-radius: 3px;
+  margin-top: 1.8rem;
+  position: relative;
+}
+
+.cover-year {
+  position: absolute;
+  bottom: 2.2rem;
+  right: 2.8rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: rgba(255,255,255,.3);
+  letter-spacing: .12em;
+}
+
+/* ─── panel derecho ─────────────────────── */
+.cover-right {
+  width: 44%;
+  background: var(--paper);
+  background-image: radial-gradient(rgba(26,26,26,.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+  border-left: 3px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 5rem;
+  gap: 1.4rem;
+}
+
+.cover-uni {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.cover-subject {
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--ink);
+  border-left: 5px solid var(--terra);
+  padding-left: 1.1rem;
+}
+
+.cover-prof {
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.cover-divider {
+  width: 44px;
+  height: 2px;
+  background: rgba(26,26,26,.2);
+  border-radius: 1px;
+}
+
+.cover-students {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.cover-student {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+
+.cover-student::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--sage);
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════
+   SLIDES NORMALES — estructura base
+══════════════════════════════════════════ */
+.s-normal {
+  flex-direction: column;
+  padding: 6rem 10rem 4rem;
+  background: var(--paper);
+  background-image: radial-gradient(rgba(26,26,26,.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* cabecera de altura fija → área de contenido consistente */
+.slide-header {
+  flex-shrink: 0;
+  height: 8.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.slide-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .55rem;
+}
+
+.slide-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+}
+.badge-pres  { background: var(--terra-lt); }
+.badge-v1    { background: var(--blue-lt); }
+.badge-evol  { background: var(--sage-lt); }
+.badge-act   { background: var(--amber-lt); }
+.badge-res   { background: var(--card); }
+.badge-conc  { background: var(--ink); color: #fff; }
+
+.slide-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #bbb;
+}
+
+.slide-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 2.9rem;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.slide-rule {
+  width: 64px; height: 5px;
+  border-radius: 2px;
+  background: var(--ink);
+  margin-top: .65rem;
+}
+
+/* body del contenido — elementos juntos, alineados al tope */
+.slide-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1.6rem;
+  margin-top: 1rem;
+}
+
+/* ─── GRILLAS ────────────────────────────── */
+.g2  { display: grid; grid-template-columns: 1fr 1fr;     gap: 1.4rem; }
+.g3  { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.2rem; }
+.g21 { display: grid; grid-template-columns: 2fr 1fr;     gap: 1.4rem; }
+.g12 { display: grid; grid-template-columns: 1fr 2fr;     gap: 1.4rem; }
+.g32 { display: grid; grid-template-columns: 3fr 2fr;     gap: 1.6rem; }
+
+/* ─── CARD ───────────────────────────────── */
+.card {
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  background: var(--card);
+  box-shadow: var(--sh);
+  padding: 1rem 1.2rem;
+}
+.card.terra { background: var(--terra-lt); }
+.card.blue  { background: var(--blue-lt); }
+.card.sage  { background: var(--sage-lt); }
+.card.amber { background: var(--amber-lt); }
+.card.dark  { background: var(--ink); color: #fff; }
+.card h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: .4rem; }
+.card p  { font-size: 1.15rem; line-height: 1.5; color: #444; }
+.card.dark h3 { color: #fff; }
+.card.dark p  { color: #bbb; }
+
+/* ─── PILL ───────────────────────────────── */
+.pill {
+  display: inline-block;
+  padding: 5px 16px;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: var(--card);
+}
+.pill.terra { background: var(--terra-lt); }
+.pill.blue  { background: var(--blue-lt); }
+.pill.sage  { background: var(--sage-lt); }
+.pill.amber { background: var(--amber-lt); }
+.pill.dark  { background: var(--ink); color: #fff; }
+
+/* ─── FÓRMULA ────────────────────────────── */
+.fml {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: .75rem 1.4rem;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: var(--card);
+  box-shadow: 3px 3px 0 var(--ink);
+  display: inline-block;
+}
+
+/* ─── FLOW ───────────────────────────────── */
+.flow { display: flex; align-items: stretch; }
+.fbox {
+  flex: 1;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: var(--card);
+  box-shadow: 3px 3px 0 var(--ink);
+  padding: .65rem .6rem;
+  text-align: center;
+}
+.fbox .ft { font-weight: 800; font-size: 1.2rem; }
+.fbox .fs { font-size: 1rem; color: #666; margin-top: .25rem; font-family: 'JetBrains Mono', monospace; line-height: 1.45; }
+.fbox.terra { background: var(--terra-lt); }
+.fbox.blue  { background: var(--blue-lt); }
+.fbox.sage  { background: var(--sage-lt); }
+.fbox.amber { background: var(--amber-lt); }
+.farr { display: flex; align-items: center; justify-content: center; color: #bbb; font-size: .95rem; padding: 0 .3rem; flex-shrink: 0; }
+
+/* ─── STAT ───────────────────────────────── */
+.stat { text-align: center; padding: .8rem; }
+.stat .sn { font-family: 'Archivo Black', sans-serif; font-size: 3.4rem; line-height: 1; }
+.stat .sl { font-size: 1.1rem; color: #666; margin-top: .35rem; }
+
+/* ─── TABLA ──────────────────────────────── */
+table.t { border-collapse: collapse; width: 100%; font-size: 1.1rem; }
+table.t th { background: var(--ink); color: #fff; padding: .5rem .9rem; text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 1rem; }
+table.t td { padding: .48rem .9rem; border-bottom: 1px solid rgba(26,26,26,.1); }
+table.t tr:hover td { background: rgba(44,62,122,.06); }
+
+/* ─── TIMELINE ───────────────────────────── */
+.tl { display: flex; flex-direction: column; gap: .55rem; }
+.tl-row { display: flex; align-items: flex-start; gap: .75rem; }
+.tl-dot {
+  width: 24px; height: 24px; border-radius: 50%;
+  border: 2px solid var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .65rem; font-weight: 700;
+  flex-shrink: 0; margin-top: 2px;
+}
+.tl-dot.ok  { background: var(--sage-lt); }
+.tl-dot.bad { background: var(--terra-lt); }
+.tl-dot.neu { background: var(--card); }
+.tl-body h4 { font-size: 1.3rem; font-weight: 800; margin-bottom: .12rem; }
+.tl-body p  { font-size: 1.1rem; color: #555; line-height: 1.55; }
+
+/* ─── BEFORE / AFTER ─────────────────────── */
+.ba { display: grid; grid-template-columns: 1fr 36px 1fr; gap: .5rem; align-items: center; }
+.ba-arr { text-align: center; font-size: 1.15rem; color: #bbb; }
+
+/* ─── HEX RIASEC ─────────────────────────── */
+.hex-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; }
+.hex {
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  box-shadow: 3px 3px 0 var(--ink);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: .75rem .4rem;
+}
+.hex .hl { font-family: 'Archivo Black', sans-serif; font-size: 2.8rem; line-height: 1; }
+.hex .hd { font-size: 1.05rem; font-weight: 800; color: #333; margin-top: .3rem; }
+.hex .hx { font-size: .95rem; color: #555; margin-top: .15rem; text-align: center; line-height: 1.3; }
+
+/* ─── LABEL ──────────────────────────────── */
+.lbl {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: .35rem;
+}
+
+/* ─── PROGRESS BAR ───────────────────────── */
+#prog {
+  position: fixed; top: 0; left: 0; right: 0;
+  display: flex; gap: 3px; padding: 5px 1.5rem; z-index: 50;
+}
+.ps { height: 3px; flex: 1; border-radius: 2px; background: rgba(26,26,26,.08); }
+.ps.done   { background: var(--ink); }
+.ps.active { background: var(--terra); }
+
+/* ─── NAV ────────────────────────────────── */
+#nav {
+  position: fixed; bottom: 1.2rem; left: 50%;
+  transform: translateX(-50%);
+  display: flex; align-items: center; gap: .7rem; z-index: 100;
+}
+.nb {
+  width: 32px; height: 32px;
+  border: 2px solid var(--ink); border-radius: 7px;
+  background: var(--card); box-shadow: 3px 3px 0 var(--ink);
+  cursor: pointer; font-size: .85rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .12s;
+}
+.nb:hover { background: var(--sage-lt); transform: translate(2px,2px); box-shadow: 1px 1px 0 var(--ink); }
+#cnt { font-family: 'JetBrains Mono', monospace; font-size: .72rem; font-weight: 700; color: #999; min-width: 40px; text-align: center; }
+
+/* ─── NOTAS ──────────────────────────────── */
+#notes {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0;
+  background: var(--ink); color: #fff;
+  padding: .8rem 2.5rem; font-size: .84rem; line-height: 1.6;
+  max-height: 28vh; overflow-y: auto; z-index: 200;
+}
+#notes.show { display: block; }
+#notes b { color: var(--sage-lt); }
+
+/* ─── KEY HINT ───────────────────────────── */
+#kh { position: fixed; top: .85rem; left: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: .6rem; color: #ccc; z-index: 50; }
+</style>
+</head>
+<body>
+<div id="kh">← → navegar · N notas</div>
+<div id="prog"></div>
+
+<div class="deck" id="deck">
+
+<!-- ══ S0 · PORTADA ══════════════════════════════════════════════════ -->
+<div class="slide s-cover" id="s0"
+  data-al="Alumno 1"
+  data-notes="ALUMNO 1 — Presentarse: 'Buenas tardes. Somos el grupo X de Análisis de Datos II. Hoy les presentamos ORIENTAI, un sistema experto de orientación vocacional.' Hacer una pausa para que el público lea los nombres. Luego avanzar a la siguiente slide.">
+
+  <div class="cover-left">
+    <div class="cover-tag">Sistema Experto · Orientación Vocacional</div>
+    <div class="cover-name">ORIENTAI</div>
+    <div class="cover-bar"></div>
+    <div class="cover-year">2026</div>
+  </div>
+
+  <div class="cover-right">
+    <div class="cover-uni">Universidad de la Ciudad de Buenos Aires</div>
+
+    <div class="cover-subject">
+      Análisis de Datos II<br>
+      Sistemas Expertos y Redes de Conocimiento
+    </div>
+
+    <div class="cover-prof">Prof. Agustín Asuaje</div>
+
+    <div class="cover-divider"></div>
+
+    <div class="cover-students">
+      <div class="cover-student">Ariel Abal</div>
+      <div class="cover-student">Jorge Rearte</div>
+      <div class="cover-student">Claudio Fredes</div>
+      <div class="cover-student">Angel Zambrano</div>
+      <div class="cover-student">Lucía Tomasin</div>
+      <div class="cover-student">Florencia Ardanaz</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ S1 · QUÉ ES ORIENTAI ══════════════════════════════════════════ -->
+<div class="slide s-normal" id="s1"
+  data-al="Alumno 1"
+  data-notes="ALUMNO 1 — Describir ORIENTAI como sistema experto: qué hace, en qué se basa (RIASEC + O*NET) y qué produce. Mencionar las 33 preguntas en 3 fases y el Top 5 con universidades argentinas. Señalar el flujo en la parte inferior para que el público lo siga visualmente.">
+
+  <div class="slide-header">
+    <div class="slide-meta">
+      <span class="slide-badge badge-pres">Presentación</span>
+      <span class="slide-num">02 / 11</span>
+    </div>
+    <div class="slide-title">¿Qué es ORIENTAI?</div>
+    <div class="slide-rule"></div>
+  </div>
+
+  <div class="slide-body" style="gap:1rem;">
+
+    <!-- Descripción académica -->
+    <div style="display:flex;flex-direction:column;gap:.8rem;max-width:52rem;">
+      <p style="font-size:1.6rem;line-height:1.6;color:var(--ink);">
+        <span style="font-family:'Archivo Black',sans-serif;font-size:1.8rem;">ORIENTAI</span>
+        es un sistema experto que orienta al usuario a encontrar sus áreas de interés
+        y decidir qué carrera universitaria seguir.
+      </p>
+      <p style="font-size:1.25rem;line-height:1.55;color:#555;">
+        Su <strong style="color:var(--ink);">base de conocimiento</strong> son
+        <strong style="color:var(--ink);">90 carreras</strong> representadas como vectores
+        del modelo <strong style="color:var(--ink);">RIASEC</strong> —seis dimensiones de
+        interés vocacional— derivados del estándar internacional
+        <strong style="color:var(--ink);">O*NET</strong>. El sistema no decide por el usuario:
+        <strong style="color:var(--ink);">detecta su perfil y lo asesora</strong> con un Top 5
+        de carreras afines.
+      </p>
+    </div>
+
+    <!-- Flecha de conexión → flujo -->
+    <div style="display:flex;flex-direction:column;gap:.6rem;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.85rem;font-weight:700;
+                  letter-spacing:.08em;text-transform:uppercase;color:#bbb;">
+        Cómo funciona
+      </div>
+      <div class="flow" style="gap:0;">
+        <div class="fbox terra" style="padding:.7rem .8rem;">
+          <div class="ft">Perfil del usuario</div>
+          <div class="fs">33 preguntas<br>en 3 fases</div>
+        </div>
+        <div class="farr" style="font-size:1.4rem;padding:0 .5rem;color:#bbb;">→</div>
+        <div class="fbox blue" style="padding:.7rem .8rem;">
+          <div class="ft">Motor de inferencia</div>
+          <div class="fs">RIASEC · O*NET<br>scoring híbrido</div>
+        </div>
+        <div class="farr" style="font-size:1.4rem;padding:0 .5rem;color:#bbb;">→</div>
+        <div class="fbox sage" style="padding:.7rem .8rem;">
+          <div class="ft">Top 5 carreras</div>
+          <div class="fs">% de afinidad<br>universidades ARG</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ S2 · RIASEC ════════════════════════════════════════════════════ -->
+<div class="slide s-normal" id="s2"
+  data-al="Alumno 2"
+  data-notes="ALUMNO 2 — Explicar RIASEC: seis dimensiones de interés vocacional de John Holland. O*NET publica puntajes para cada ocupación. Cada carrera queda representada como un vector de 6 números. Reescalamos de 1–7 a 1–5 sin redondear — ese detalle fue clave para eliminar las colisiones del primer intento.">
+
+  <div class="slide-header">
+    <div class="slide-meta">
+      <span class="slide-badge badge-v1">El primer intento</span>
+      <span class="slide-num">03 / 11</span>
+    </div>
+    <div class="slide-title">El modelo que adoptamos: RIASEC</div>
+    <div class="slide-rule"></div>
+  </div>
+
+  <div class="slide-body" style="gap:1.4rem;">
+
+    <!-- FILA 1: descripción + fórmula en dos columnas -->
+    <div class="g2" style="align-items:stretch;flex-shrink:0;">
+      <div class="card blue">
+        <h3>Estándar O*NET</h3>
+        <p>El Departamento de Trabajo de EE.UU. publica puntajes RIASEC para cada ocupación. Cada carrera queda representada como un <strong>vector de 6 números</strong>.</p>
+      </div>
+      <div class="card">
+        <h3>Reescalado · de 1–7 a 1–5</h3>
+        <div class="fml" style="margin-top:.5rem;display:block;font-size:1rem;">
+          riasec[d] = 1 + (onet[d] − 1) / 6 × 4
+        </div>
+        <p style="margin-top:.6rem;">Sin redondear — el valor decimal es clave para evitar colisiones.</p>
+      </div>
+    </div>
+
+    <!-- FILA 2: 6 hexágonos a lo ancho -->
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;flex-shrink:0;">
+      <div class="hex" style="background:var(--terra-lt);">
+        <div class="hl">R</div>
+        <div class="hd">Realista</div>
+        <div class="hx">Técnico · físico · manual</div>
+      </div>
+      <div class="hex" style="background:var(--blue-lt);">
+        <div class="hl">I</div>
+        <div class="hd">Investigador</div>
+        <div class="hx">Análisis · ciencia · abstracción</div>
+      </div>
+      <div class="hex" style="background:var(--amber-lt);">
+        <div class="hl">A</div>
+        <div class="hd">Artístico</div>
+        <div class="hx">Creatividad · expresión</div>
+      </div>
+      <div class="hex" style="background:var(--sage-lt);">
+        <div class="hl">S</div>
+        <div class="hd">Social</div>
+        <div class="hx">Ayudar · enseñar · vincular</div>
+      </div>
+      <div class="hex" style="background:var(--card);">
+        <div class="hl">E</div>
+        <div class="hd">Emprendedor</div>
+        <div class="hx">Liderar · persuadir · vender</div>
+      </div>
+      <div class="hex" style="background:var(--card);">
+        <div class="hl">C</div>
+        <div class="hd">Convencional</div>
+        <div class="hx">Orden · datos · normas</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ S3 · EL PRIMER INTENTO Y LO QUE SALIÓ MAL ═════════════════════ -->
+<div class="slide s-normal" id="s3"
+  data-al="Alumno 2"
+  data-notes="ALUMNO 2 — La primera versión era simple: 30 preguntas Likert, un promedio por dimensión y similitud de coseno contra el catálogo. Una sola pasada, sin estructura. Tenía dos fallas de raíz. PRIMERA: al redondear los vectores O*NET a enteros, 16 carreras colapsaban en 7 vectores idénticos; como el desempate era por orden de lista, siempre ganaba la primera ('carrera imán'). SEGUNDA: el porcentaje mostrado elevaba el score al cubo, sin justificación — un 0.90 real se mostraba como 73%, hundiendo y desordenando todo.">
+
+  <div class="slide-header">
+    <div class="slide-meta">
+      <span class="slide-badge badge-v1">El primer intento</span>
+      <span class="slide-num">04 / 11</span>
+    </div>
+    <div class="slide-title">El primer intento y lo que salió mal</div>
+    <div class="slide-rule"></div>
+  </div>
+
+  <div class="slide-body" style="gap:.65rem;">
+
+    <!-- Descripción compacta de la v1 -->
+    <p style="font-size:1.1rem;color:#555;line-height:1.4;flex-shrink:0;">
+      <strong style="color:var(--ink);">30 preguntas Likert</strong>, un promedio por dimensión
+      y <strong style="color:var(--ink);">similitud de coseno</strong> contra el catálogo.
+      Una sola pasada, sin estructura — y dos fallas de raíz.
+    </p>
+
+    <!-- Dos problemas equilibrados -->
+    <div class="g2" style="align-items:stretch;gap:1.6rem;flex:1;min-height:0;">
+
+      <!-- PROBLEMA 1: colisión -->
+      <div class="card terra" style="display:flex;flex-direction:column;gap:.6rem;">
+        <h3>Colisiones de vectores</h3>
+        <p>Al redondear los puntajes O*NET a enteros, carreras distintas producían el mismo vector.</p>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:1rem;
+                    background:rgba(192,57,43,.1);border-radius:8px;padding:.55rem .9rem;line-height:1.6;">
+          Medicina&nbsp;&nbsp;&nbsp;→ {R:4, I:4, S:5}<br>
+          Enfermería → {R:4, I:4, S:5}<br>
+          <span style="color:var(--terra);font-weight:800;">← idénticos</span>
+        </div>
+        <p style="margin-top:auto;"><strong style="color:var(--ink);">16 carreras</strong> colapsaban en 7 vectores. El desempate por orden de lista hacía ganar siempre a la primera: <em>"carrera imán"</em>.</p>
+      </div>
+
+      <!-- PROBLEMA 2: score³ -->
+      <div class="card amber" style="display:flex;flex-direction:column;gap:.5rem;">
+        <h3>Porcentajes distorsionados</h3>
+        <p>El porcentaje mostrado elevaba el score al cubo, sin justificación. Un <strong style="color:var(--ink);">0.90 real se mostraba como 73%</strong>.</p>
+
+        <!-- Leyenda -->
+        <div style="display:flex;gap:1.4rem;font-family:'JetBrains Mono',monospace;font-size:.95rem;font-weight:700;margin-top:.1rem;">
+          <span style="color:#5a8a6a;">█ correcto (lineal)</span>
+          <span style="color:#c0392b;">█ mostrado (score³)</span>
+        </div>
+
+        <!-- Barras comparativas -->
+        <div style="display:flex;flex-direction:column;gap:.45rem;margin-top:.25rem;">
+
+          <div style="display:flex;align-items:center;gap:.8rem;">
+            <span style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:1.15rem;width:2.8rem;flex-shrink:0;">0.90</span>
+            <div style="flex:1;display:flex;flex-direction:column;gap:.26rem;">
+              <div style="display:flex;align-items:center;gap:.55rem;">
+                <div style="flex:1;height:15px;background:rgba(26,26,26,.06);border:1.5px solid var(--ink);border-radius:5px;overflow:hidden;"><div style="width:90%;height:100%;background:var(--sage);"></div></div>
+                <span style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:1rem;width:3rem;text-align:right;color:#5a8a6a;">90%</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:.55rem;">
+                <div style="flex:1;height:15px;background:rgba(26,26,26,.06);border:1.5px solid var(--ink);border-radius:5px;overflow:hidden;"><div style="width:73%;height:100%;background:var(--terra);"></div></div>
+                <span style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:1rem;width:3rem;text-align:right;color:var(--terra);">73%</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:.8rem;">
+            <span style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:1.15rem;width:2.8rem;flex-shrink:0;">0.80</span>
+            <div style="flex:1;display:flex;flex-direction:column;gap:.26rem;">
+              <div style="display:flex;align-items:center;gap:.55rem;">
+                <div style="flex:1;height:15px;background:rgba(26,26,26,.06);border:1.5px solid var(--ink);border-radius:5px;overflow:hidden;"><div style="width:80%;height:100%;background:var(--sage);"></div></div>
+                <span style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:1rem;width:3rem;text-align:right;color:#5a8a6a;">80%</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:.55rem;">
+                <div style="flex:1;height:15px;background:rgba(26,26,26,.06);border:1.5px solid var(--ink);border-radius:5px;overflow:hidden;"><div style="width:51%;height:100%;background:var(--terra);"></div></div>
+                <span style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:1rem;width:3rem;text-align:right;color:var(--terra);">51%</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:.8rem;">
+            <span style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:1.15rem;width:2.8rem;flex-shrink:0;">0.70</span>
+            <div style="flex:1;display:flex;flex-direction:column;gap:.26rem;">
+              <div style="display:flex;align-items:center;gap:.55rem;">
+                <div style="flex:1;height:15px;background:rgba(26,26,26,.06);border:1.5px solid var(--ink);border-radius:5px;overflow:hidden;"><div style="width:70%;height:100%;background:var(--sage);"></div></div>
+                <span style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:1rem;width:3rem;text-align:right;color:#5a8a6a;">70%</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:.55rem;">
+                <div style="flex:1;height:15px;background:rgba(26,26,26,.06);border:1.5px solid var(--ink);border-radius:5px;overflow:hidden;"><div style="width:34%;height:100%;background:var(--terra);"></div></div>
+                <span style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:1rem;width:3rem;text-align:right;color:var(--terra);">34%</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ S5 · TRES CAMBIOS ══════════════════════════════════════════════ -->
+<div class="slide s-normal" id="s5"
+  data-al="Alumno 3"
+  data-notes="ALUMNO 3 — Tres soluciones directas a los problemas. PRIMERO: vectores float en lugar de enteros → de 16 colisiones a cero. SEGUNDO: tres fases en lugar de una pasada → la Fase 1 rankea los dominios y EL USUARIO ELIGE sobre cuál profundizar, reduciendo el espacio de 90 a ~15 carreras (el sistema asesora, no decide solo). TERCERO: tríadas en lugar de solo Likert → comparar opciones es más discriminativo que evaluar en absoluto. De 50 preguntas genéricas a 33 estructuradas.">
+
+  <div class="slide-header">
+    <div class="slide-meta">
+      <span class="slide-badge badge-evol">Evolución</span>
+      <span class="slide-num">05 / 11</span>
+    </div>
+    <div class="slide-title">Tres cambios que lo transformaron</div>
+    <div class="slide-rule"></div>
+  </div>
+
+  <div class="slide-body" style="justify-content:space-evenly;">
+
+    <div class="ba">
+      <div class="card terra" style="padding:.9rem 1.2rem;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.9rem;font-weight:700;color:var(--terra);margin-bottom:.3rem;">ANTES</div>
+        <div style="font-weight:800;font-size:1.2rem;">Vectores enteros · 16 colisiones</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:1rem;color:#777;margin-top:.25rem;">{R:4, I:4, S:5} × 16 carreras</div>
+      </div>
+      <div class="ba-arr" style="font-size:1.6rem;">→</div>
+      <div class="card sage" style="padding:.9rem 1.2rem;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.9rem;font-weight:700;color:var(--sage);margin-bottom:.3rem;">AHORA</div>
+        <div style="font-weight:800;font-size:1.2rem;">Vectores float · 0 colisiones</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:1rem;color:#666;margin-top:.25rem;">{R:4.17, I:3.83, S:4.67}</div>
+      </div>
+    </div>
+
+    <div class="ba">
+      <div class="card terra" style="padding:.9rem 1.2rem;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.9rem;font-weight:700;color:var(--terra);margin-bottom:.3rem;">ANTES</div>
+        <div style="font-weight:800;font-size:1.2rem;">1 fase · 50 preguntas genéricas</div>
+        <div style="font-size:1.05rem;color:#777;margin-top:.25rem;">espacio de búsqueda: 90 carreras</div>
+      </div>
+      <div class="ba-arr" style="font-size:1.6rem;">→</div>
+      <div class="card sage" style="padding:.9rem 1.2rem;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.9rem;font-weight:700;color:var(--sage);margin-bottom:.3rem;">AHORA</div>
+        <div style="font-weight:800;font-size:1.2rem;">3 fases · 33 preguntas estructuradas</div>
+        <div style="font-size:1.05rem;color:#666;margin-top:.25rem;">F1 propone, <strong style="color:var(--ink);">el usuario elige</strong> → ~15 carreras</div>
+      </div>
+    </div>
+
+    <div class="ba">
+      <div class="card terra" style="padding:.9rem 1.2rem;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.9rem;font-weight:700;color:var(--terra);margin-bottom:.3rem;">ANTES</div>
+        <div style="font-weight:800;font-size:1.2rem;">Solo Likert · evaluar en absoluto</div>
+        <div style="font-size:1.05rem;color:#777;margin-top:.25rem;">"¿Cuánto te gusta programar?"</div>
+      </div>
+      <div class="ba-arr" style="font-size:1.6rem;">→</div>
+      <div class="card sage" style="padding:.9rem 1.2rem;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.9rem;font-weight:700;color:var(--sage);margin-bottom:.3rem;">AHORA</div>
+        <div style="font-weight:800;font-size:1.2rem;">Comparar opciones · tríadas</div>
+        <div style="font-size:1.05rem;color:#666;margin-top:.25rem;">"Entre IA, UX y redes, ¿cuál elegís?"</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ S6 · ARQUITECTURA EN 3 FASES ═══════════════════════════════════ -->
+<div class="slide s-normal" id="s6"
+  data-al="Alumno 3"
+  data-notes="ALUMNO 3 — Flujo completo. FASE 1: 18 preguntas Likert detectan el dominio; el usuario elige dominio y duración (asesora, no decide). FASE 2: 10 tríadas construyen el vector RIASEC; se muestra el radar y se detecta el sub-perfil. FASE 3: 5 preguntas bipolares sobre valores laborales. Al final, Top 5 carreras del dominio con universidades argentinas.">
+
+  <div class="slide-header">
+    <div class="slide-meta">
+      <span class="slide-badge badge-act">Versión actual</span>
+      <span class="slide-num">06 / 11</span>
+    </div>
+    <div class="slide-title">La arquitectura en tres fases</div>
+    <div class="slide-rule"></div>
+  </div>
+
+  <div class="slide-body" style="gap:.85rem;">
+
+    <!-- FLUJO -->
+    <div class="flow" style="flex-shrink:0;gap:0;">
+      <div class="fbox terra" style="padding:.85rem .6rem;">
+        <div class="ft">Fase 1</div>
+        <div class="fs">18 preguntas<br>→ dominio</div>
+      </div>
+      <div class="farr" style="font-size:1.4rem;">→</div>
+      <div class="fbox" style="padding:.85rem .6rem;background:var(--ink);border-color:var(--ink);">
+        <div class="ft" style="color:#fff;">👤 Vos elegís</div>
+        <div class="fs" style="color:#ccc;">dominio<br>+ duración</div>
+      </div>
+      <div class="farr" style="font-size:1.4rem;">→</div>
+      <div class="fbox amber" style="padding:.85rem .6rem;">
+        <div class="ft">Fase 2</div>
+        <div class="fs">10 tríadas<br>→ vector RIASEC</div>
+      </div>
+      <div class="farr" style="font-size:1.4rem;">→</div>
+      <div class="fbox" style="padding:.85rem .6rem;">
+        <div class="ft">Perfil</div>
+        <div class="fs">radar RIASEC<br>+ sub-perfil</div>
+      </div>
+      <div class="farr" style="font-size:1.4rem;">→</div>
+      <div class="fbox blue" style="padding:.85rem .6rem;">
+        <div class="ft">Fase 3</div>
+        <div class="fs">5 preguntas<br>→ valores</div>
+      </div>
+      <div class="farr" style="font-size:1.4rem;">→</div>
+      <div class="fbox sage" style="padding:.85rem .6rem;">
+        <div class="ft">Resultado</div>
+        <div class="fs">Top 5<br>+ universidades</div>
+      </div>
+    </div>
+
+    <!-- BANNER: humano en el centro -->
+    <div style="display:flex;align-items:center;gap:.9rem;flex-shrink:0;
+                border:2px solid var(--ink);border-radius:10px;background:var(--sage-lt);
+                padding:.65rem 1.2rem;box-shadow:3px 3px 0 var(--ink);">
+      <span style="font-size:1.5rem;">🧭</span>
+      <p style="font-size:1.15rem;line-height:1.4;color:var(--ink);margin:0;">
+        El sistema <strong>rankea y propone</strong> — en cada bifurcación la decisión final
+        es del usuario. <strong>Asesora, no reemplaza.</strong>
+      </p>
+    </div>
+
+    <!-- DETALLE DE LAS 3 FASES -->
+    <div class="g3" style="flex-shrink:0;">
+      <div class="card terra" style="padding:.8rem 1rem;">
+        <div class="lbl" style="color:var(--terra);">F1 · Dominio</div>
+        <p>Detecta cuál de 6 mundos vocacionales atrae más. Reduce el espacio de <strong>90 → ~15 carreras</strong>.</p>
+      </div>
+      <div class="card amber" style="padding:.8rem 1rem;">
+        <div class="lbl" style="color:var(--amber);">F2 · Vector RIASEC</div>
+        <p>Comparación forzada entre actividades. <strong>Comparar es más discriminativo que evaluar.</strong></p>
+      </div>
+      <div class="card blue" style="padding:.8rem 1rem;">
+        <div class="lbl" style="color:var(--blue);">F3 · Valores</div>
+        <p>Dos carreras con igual RIASEC difieren en contexto. La escala bipolar capta <strong>valores laborales</strong>.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ S6B · CASO EN VIVO (MARTINA) ══════════════════════════════════ -->
+<div class="slide s-normal" id="scaso"
+  data-al="Alumno 4"
+  data-notes="ALUMNO 4 — Sigamos a Martina, 17 años, de punta a punta. FASE 1: responde 18 preguntas y Tecnología le da el dominio más alto (4.6/5). Elige Tecnología y licenciatura. FASE 2: sus 10 tríadas construyen un vector con I (Investigador) dominante. Por eso el sistema detecta el pathway 'Analítica & Software'. FASE 3: responde 5 preguntas de valores — prefiere autonomía y trabajar con datos, lo que da boost a Ciencia de Datos. RESULTADO: Ciencia de Datos #1 con 84%; la Fase 3 la subió por encima de Ingeniería en Sistemas.">
+
+  <div class="slide-header">
+    <div class="slide-meta">
+      <span class="slide-badge badge-act">Versión actual</span>
+      <span class="slide-num">07 / 11</span>
+    </div>
+    <div class="slide-title">Caso en vivo: Martina, de punta a punta</div>
+    <div class="slide-rule"></div>
+  </div>
+
+  <div class="slide-body" style="gap:1rem;">
+
+    <!-- INTRO -->
+    <p style="font-size:1.15rem;color:#555;flex-shrink:0;line-height:1.45;">
+      <strong style="color:var(--ink);">Martina, 17 años.</strong> Eligió <strong style="color:var(--ink);">Tecnología</strong>
+      en la Fase 1. Sus 10 tríadas (Fase 2) construyen su perfil RIASEC, que el motor compara con cada carrera del dominio.
+    </p>
+
+    <div class="g2" style="flex:1;min-height:0;align-items:center;gap:1.8rem;">
+
+      <!-- IZQUIERDA: radar Martina vs Ciencia de Datos -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:.4rem;">
+        <div class="lbl" style="text-align:center;">Su perfil vs la carrera #1</div>
+        <svg id="radar-martina" viewBox="0 0 220 220" style="width:13.5rem;height:13.5rem;display:block;"></svg>
+        <div style="display:flex;gap:1.3rem;font-family:'JetBrains Mono',monospace;font-size:.95rem;font-weight:700;">
+          <span style="color:var(--blue);">— Martina</span>
+          <span style="color:var(--sage);">— Ciencia de Datos</span>
+        </div>
+        <p style="font-size:1rem;color:#555;text-align:center;line-height:1.4;max-width:20rem;">
+          Su <strong style="color:var(--ink);">I dominante</strong> se superpone con la forma de la carrera → match alto.
+        </p>
+      </div>
+
+      <!-- DERECHA: pathway + resultado + por qué -->
+      <div style="display:flex;flex-direction:column;gap:.65rem;justify-content:center;">
+        <div style="display:flex;align-items:center;gap:.7rem;border:2px solid var(--ink);border-radius:10px;
+                    background:var(--blue-lt);padding:.5rem .9rem;box-shadow:3px 3px 0 var(--ink);">
+          <span style="font-size:1.3rem;">✦</span>
+          <div>
+            <div style="font-size:.78rem;font-family:'JetBrains Mono',monospace;color:#666;text-transform:uppercase;letter-spacing:.06em;">Pathway detectado</div>
+            <div style="font-weight:800;font-size:1.15rem;">Analítica &amp; Software</div>
+          </div>
+        </div>
+
+        <div class="card blue" style="padding:.6rem 1.1rem;display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:.9rem;color:#666;">#01</span>
+            <div style="font-weight:800;font-size:1.2rem;">Ciencia de Datos ✦</div>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:1.9rem;font-weight:800;">84%</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:0 1.1rem;">
+          <div style="display:flex;align-items:baseline;gap:.6rem;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:.85rem;color:#999;">#02</span>
+            <span style="font-weight:700;font-size:1.05rem;">Ingeniería en Sistemas</span>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:1.25rem;font-weight:800;color:#888;">79%</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:0 1.1rem;">
+          <div style="display:flex;align-items:baseline;gap:.6rem;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:.85rem;color:#999;">#03</span>
+            <span style="font-weight:700;font-size:1.05rem;">Lic. en Computación</span>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:1.25rem;font-weight:800;color:#888;">74%</div>
+        </div>
+
+        <p style="font-size:1rem;color:#555;line-height:1.4;margin-top:.2rem;">
+          La <strong style="color:var(--ink);">Fase 3</strong> (autonomía + datos) subió Ciencia de Datos
+          al <strong style="color:var(--ink);">#1</strong>, sobre Ingeniería en Sistemas. <strong>✦</strong>
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ S7 · MOTOR DE INFERENCIA ═══════════════════════════════════════ -->
+<div class="slide s-normal" id="s7"
+  data-al="Alumno 4"
+  data-notes="ALUMNO 4 — El motor compara el vector del usuario con cada carrera. La métrica obvia, el coseno, tiene una trampa: sobre vectores 1–5 (siempre positivos) da ~0.7–1.0 para casi cualquier par, así que infla la afinidad y premia coincidencias en una dimensión secundaria. EJEMPLO REAL: un perfil R+C alto (la Instrumentadora) sacaba coseno altísimo con el Martillero Público porque comparten la C, aunque no comparten la R. Pearson centra los vectores por su media y compara la FORMA del perfil —el código Holland dominante— así que los separa. Por eso el score pesa 70% Pearson, calibrado por Monte Carlo.">
+
+  <div class="slide-header">
+    <div class="slide-meta">
+      <span class="slide-badge badge-act">Versión actual</span>
+      <span class="slide-num">08 / 11</span>
+    </div>
+    <div class="slide-title">El motor de inferencia</div>
+    <div class="slide-rule"></div>
+  </div>
+
+  <div class="slide-body g2" style="align-items:stretch;gap:1.8rem;">
+
+    <!-- RAZONAMIENTO -->
+    <div style="display:flex;flex-direction:column;gap:.7rem;justify-content:center;">
+      <p style="font-size:1.1rem;color:#555;line-height:1.4;">
+        El motor compara el vector del usuario con cada carrera. La métrica obvia —el coseno— tiene una trampa.
+      </p>
+      <div class="card terra" style="padding:.65rem 1rem;">
+        <h3 style="font-size:1.2rem;">La trampa del coseno</h3>
+        <p style="font-size:1rem;line-height:1.4;">Sobre vectores 1–5 (siempre positivos) da <strong style="color:var(--ink);">~0.7–1.0 para casi cualquier par</strong>: infla la afinidad y premia coincidencias secundarias.</p>
+      </div>
+      <div class="card sage" style="padding:.65rem 1rem;">
+        <h3 style="font-size:1.2rem;">Pearson mira la forma</h3>
+        <p style="font-size:1rem;line-height:1.4;">Centra cada vector por su media y compara la prominencia relativa de las letras: el <strong style="color:var(--ink);">código Holland dominante</strong>.</p>
+      </div>
+      <div class="fml" style="display:block;text-align:center;font-size:1.05rem;">score = 0.3 × coseno + <strong>0.7 × pearson</strong></div>
+    </div>
+
+    <!-- CASO INSTRUMENTADORA -->
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.45rem;">
+      <div class="lbl" style="text-align:center;">El caso que lo motivó: la Instrumentadora</div>
+      <svg id="radar-caso" viewBox="0 0 220 220" style="width:12.5rem;height:12.5rem;display:block;"></svg>
+      <div style="display:flex;gap:1.4rem;font-family:'JetBrains Mono',monospace;font-size:.95rem;font-weight:700;">
+        <span style="color:var(--blue);">— Usuario (R+C)</span>
+        <span style="color:var(--terra);">— Martillero (E+C)</span>
+      </div>
+      <div style="display:flex;gap:.6rem;margin-top:.3rem;">
+        <div style="border:2px solid var(--ink);border-radius:8px;padding:.4rem .8rem;background:var(--card);text-align:center;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:800;color:var(--terra);">0.87</div>
+          <div style="font-size:.85rem;color:#666;">coseno · los confunde</div>
+        </div>
+        <div style="border:2px solid var(--ink);border-radius:8px;padding:.4rem .8rem;background:var(--sage-lt);text-align:center;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:800;color:var(--sage);">0.10</div>
+          <div style="font-size:.85rem;color:#666;">pearson · los separa</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ S8 · ¿CÓMO SABEMOS QUE FUNCIONA? ═══════════════════════════════ -->
+<div class="slide s-normal" id="s8"
+  data-al="Alumno 5"
+  data-notes="ALUMNO 5 — El sistema fue validado con rigor, no solo implementado. 15 tests automatizados que se corren con un comando: perfiles arquetípicos, métricas distintas, sin colisiones, tríadas, casos extremos. Y la simulación Monte Carlo (500 perfiles sintéticos × 3 escenarios) CONFIRMÓ a escala el rebalanceo hacia Pearson que vimos con la Instrumentadora: los falsos positivos comerciales como el Martillero cayeron de 16% a 6%, y la cobertura subió de 67 a 69 carreras distintas en el Top-1. De esa simulación salió la calibración 0.3/0.7.">
+
+  <div class="slide-header">
+    <div class="slide-meta">
+      <span class="slide-badge badge-act">Versión actual</span>
+      <span class="slide-num">09 / 11</span>
+    </div>
+    <div class="slide-title">¿Cómo sabemos que funciona?</div>
+    <div class="slide-rule"></div>
+  </div>
+
+  <div class="slide-body g2" style="align-items:stretch;gap:1.6rem;">
+
+    <!-- TESTS -->
+    <div style="display:flex;flex-direction:column;gap:.9rem;">
+      <div class="card sage" style="text-align:center;padding:.9rem;">
+        <div style="font-family:'Archivo Black',sans-serif;font-size:2.6rem;line-height:1;">15 / 15</div>
+        <div style="font-size:1.1rem;font-weight:700;margin-top:.25rem;">tests automatizados pasando</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.9rem;color:#666;margin-top:.25rem;">python tests/test_perfiles.py</div>
+      </div>
+      <div class="tl">
+        <div class="tl-row"><div class="tl-dot ok">✓</div><div class="tl-body"><h4>Perfiles arquetípicos</h4><p>Social → salud · Artístico → arte · Realista → ingeniería</p></div></div>
+        <div class="tl-row"><div class="tl-dot ok">✓</div><div class="tl-body"><h4>Motor híbrido</h4><p>Coseno ≠ Pearson · sin colisiones · sin score³</p></div></div>
+        <div class="tl-row"><div class="tl-dot ok">✓</div><div class="tl-body"><h4>Tríadas y casos extremos</h4><p>Perfil plano · extremo · multipotencial</p></div></div>
+      </div>
+    </div>
+
+    <!-- MONTE CARLO + CONFIRMACIÓN -->
+    <div style="display:flex;flex-direction:column;gap:.9rem;justify-content:center;">
+      <div class="card blue">
+        <h3>Simulación Monte Carlo</h3>
+        <p>500 perfiles sintéticos × 3 escenarios reproducen el sistema sobre todo el catálogo. De acá salió la calibración <strong>0.3 / 0.7</strong>.</p>
+      </div>
+      <div class="card sage">
+        <h3>El fix, confirmado a escala ✓</h3>
+        <div style="display:flex;flex-direction:column;gap:.55rem;margin-top:.6rem;">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;">
+            <span style="font-size:1.05rem;">Falsos positivos comerciales</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:800;white-space:nowrap;">
+              <span style="color:var(--terra);">16%</span> → <span style="color:var(--sage);">6%</span>
+            </span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;">
+            <span style="font-size:1.05rem;">Cobertura (carreras en Top-1)</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:800;white-space:nowrap;">
+              <span style="color:#999;">67</span> → <span style="color:var(--sage);">69</span>
+            </span>
+          </div>
+        </div>
+        <p style="margin-top:.6rem;font-size:1rem;">El mismo falso positivo del Martillero, suprimido ~3× sobre cientos de perfiles.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ S9 · LO QUE RECIBE EL USUARIO ══════════════════════════════════ -->
+<div class="slide s-normal" id="s9"
+  data-al="Alumno 5"
+  data-notes="ALUMNO 5 — Esto es lo que ve Martina al terminar (el caso que seguimos). Cada tarjeta: posición, nombre, área, código Holland (3 letras dominantes), duración y % de afinidad. El símbolo ✦ marca que la Fase 3 modificó el orden — acá subió Ciencia de Datos al #1. Al expandir: universidades argentinas, radar comparativo y datos del motor. El porcentaje es el score matemático × 100. Todo corre sin servidor: al cerrar la pestaña no queda nada guardado. (Opcional: demo en vivo en localhost:8501).">
+
+  <div class="slide-header">
+    <div class="slide-meta">
+      <span class="slide-badge badge-res">Resultado</span>
+      <span class="slide-num">10 / 11</span>
+    </div>
+    <div class="slide-title">Lo que recibe el usuario</div>
+    <div class="slide-rule"></div>
+  </div>
+
+  <div class="slide-body g2" style="align-items:stretch;gap:1.6rem;">
+
+    <!-- TARJETAS DE RANKING -->
+    <div style="display:flex;flex-direction:column;gap:.7rem;justify-content:center;">
+      <div class="card blue" style="padding:.9rem 1.1rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:.95rem;color:#666;">#01</div>
+            <div style="font-weight:800;font-size:1.25rem;">Ciencia de Datos ✦</div>
+            <div style="font-size:.95rem;color:#555;margin-top:.1rem;">Ing. y Tecnología · <strong>ICE</strong> · 🎓 4-6 años</div>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:2.2rem;font-weight:800;">84%</div>
+        </div>
+      </div>
+      <div class="card" style="padding:.9rem 1.1rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:.95rem;color:#666;">#02</div>
+            <div style="font-weight:800;font-size:1.25rem;">Ingeniería en Sistemas</div>
+            <div style="font-size:.95rem;color:#555;margin-top:.1rem;">Ing. y Tecnología · <strong>RIC</strong> · 🎓 4-6 años</div>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:2.2rem;font-weight:800;">79%</div>
+        </div>
+      </div>
+      <div class="card" style="padding:.9rem 1.1rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:.95rem;color:#666;">#03</div>
+            <div style="font-weight:800;font-size:1.25rem;">Lic. en Computación</div>
+            <div style="font-size:.95rem;color:#555;margin-top:.1rem;">Cs. Exactas · <strong>ICA</strong> · 🎓 4-6 años</div>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:2.2rem;font-weight:800;">74%</div>
+        </div>
+      </div>
+      <div class="card sage" style="padding:.6rem 1.1rem;box-shadow:none;">
+        <p style="font-size:1rem;"><strong>✦</strong> = ajuste de Fase 3 (boosts de valores aplicados)</p>
+      </div>
+    </div>
+
+    <!-- DETALLE EXPANDIDO -->
+    <div style="display:flex;flex-direction:column;gap:.8rem;justify-content:center;">
+      <div class="lbl">Al expandir cada tarjeta</div>
+      <div class="card">
+        <h3>🏛 Dónde estudiarla — Ciencia de Datos</h3>
+        <div style="font-size:1rem;display:flex;flex-direction:column;gap:.25rem;margin-top:.3rem;">
+          <div style="display:flex;justify-content:space-between;"><span><strong>UBA – FCEyN</strong></span><span style="color:#777;">Buenos Aires</span></div>
+          <div style="display:flex;justify-content:space-between;"><span><strong>ITBA</strong></span><span style="color:#777;">Buenos Aires</span></div>
+          <div style="display:flex;justify-content:space-between;"><span><strong>UNLP</strong></span><span style="color:#777;">La Plata</span></div>
+        </div>
+      </div>
+      <div class="card blue">
+        <h3>📊 Radar comparativo</h3>
+        <p>Perfil del usuario vs perfil RIASEC de la carrera: cuánto se superponen.</p>
+      </div>
+      <div class="card sage" style="box-shadow:none;">
+        <p style="font-size:1.05rem;"><strong>Sin servidor · sin datos guardados.</strong> Todo desaparece al cerrar la pestaña.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ S10 · APRENDIZAJES Y PRÓXIMOS PASOS ════════════════════════════ -->
+<div class="slide s-normal" id="s10"
+  data-al="Alumno 6"
+  data-notes="ALUMNO 6 — Cuatro aprendizajes. PRIMERO: estructura más que cantidad — 33 preguntas pensadas superan a 50 genéricas. SEGUNDO: comparar más que evaluar — las tríadas producen datos más discriminativos. TERCERO: la validación con datos reales encuentra lo que el testing manual no ve — Monte Carlo y el falso positivo del Martillero. CUARTO: auditar lo que el código realmente hace — descubrimos que decíamos 'coseno' pero, al centrar los vectores, calculábamos solo Pearson: una métrica disfrazada de otra. Próximo paso: el editor de conocimiento, para agregar carreras y ajustar pesos sin tocar código. ¡Gracias!">
+
+  <div class="slide-header">
+    <div class="slide-meta">
+      <span class="slide-badge badge-conc">Conclusiones</span>
+      <span class="slide-num">11 / 11</span>
+    </div>
+    <div class="slide-title">Aprendizajes y próximos pasos</div>
+    <div class="slide-rule"></div>
+  </div>
+
+  <div class="slide-body g2" style="align-items:stretch;gap:1.6rem;">
+
+    <!-- APRENDIZAJES -->
+    <div style="display:flex;flex-direction:column;gap:.45rem;">
+      <div class="lbl">Lo que aprendimos</div>
+      <div class="card blue" style="display:flex;gap:.9rem;align-items:flex-start;padding:.5rem 1rem;">
+        <div style="font-size:1.4rem;flex-shrink:0;">🏗</div>
+        <div><div style="font-weight:800;font-size:1.1rem;margin-bottom:.05rem;">Estructura &gt; Cantidad</div>
+        <p style="font-size:.98rem;line-height:1.35;">33 preguntas bien estructuradas superan a 50 genéricas.</p></div>
+      </div>
+      <div class="card amber" style="display:flex;gap:.9rem;align-items:flex-start;padding:.5rem 1rem;">
+        <div style="font-size:1.4rem;flex-shrink:0;">⚖️</div>
+        <div><div style="font-weight:800;font-size:1.1rem;margin-bottom:.05rem;">Comparar &gt; Evaluar</div>
+        <p style="font-size:.98rem;line-height:1.35;">Las tríadas dan datos más discriminativos que Likert.</p></div>
+      </div>
+      <div class="card sage" style="display:flex;gap:.9rem;align-items:flex-start;padding:.5rem 1rem;">
+        <div style="font-size:1.4rem;flex-shrink:0;">🔬</div>
+        <div><div style="font-weight:800;font-size:1.1rem;margin-bottom:.05rem;">Validar con datos reales</div>
+        <p style="font-size:.98rem;line-height:1.35;">Monte Carlo detectó el falso positivo del Martillero.</p></div>
+      </div>
+      <div class="card terra" style="display:flex;gap:.9rem;align-items:flex-start;padding:.5rem 1rem;">
+        <div style="font-size:1.4rem;flex-shrink:0;">🔍</div>
+        <div><div style="font-weight:800;font-size:1.1rem;margin-bottom:.05rem;">Lo que creés ≠ lo que corre</div>
+        <p style="font-size:.98rem;line-height:1.35;">Decíamos "coseno", pero centrábamos los vectores: calculábamos Pearson sin saberlo.</p></div>
+      </div>
+    </div>
+
+    <!-- PRÓXIMOS PASOS -->
+    <div style="display:flex;flex-direction:column;gap:.85rem;">
+      <div class="lbl">Próximos pasos</div>
+      <div class="card dark" style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:1rem;">
+        <div style="display:flex;gap:1rem;align-items:center;">
+          <div style="font-size:1.5rem;">📝</div>
+          <div><div style="font-weight:700;font-size:1.15rem;color:#fff;">Editor de conocimiento</div><div style="font-size:.95rem;color:#bbb;">Agregar carreras y preguntas sin tocar código</div></div>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:center;">
+          <div style="font-size:1.5rem;">⚖️</div>
+          <div><div style="font-weight:700;font-size:1.15rem;color:#fff;">Calibrador visual</div><div style="font-size:.95rem;color:#bbb;">Ajustar pesos y ver el impacto en tiempo real</div></div>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:center;">
+          <div style="font-size:1.5rem;">🧪</div>
+          <div><div style="font-weight:700;font-size:1.15rem;color:#fff;">Simulador de perfiles</div><div style="font-size:.95rem;color:#bbb;">Probar cambios antes de publicarlos</div></div>
+        </div>
+      </div>
+      <div class="card sage" style="text-align:center;box-shadow:none;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:1.05rem;font-weight:700;">python -m streamlit run app.py</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /deck -->
+
+<div id="nav">
+  <button class="nb" onclick="go(-1)">←</button>
+  <span id="cnt">1 / 1</span>
+  <button class="nb" onclick="go(1)">→</button>
+</div>
+
+<div id="notes"></div>
+
+<script>
+const slides = Array.from(document.querySelectorAll('.slide'));
+const cnt    = document.getElementById('cnt');
+const prog   = document.getElementById('prog');
+const notes  = document.getElementById('notes');
+let cur = 0, notesOpen = false;
+
+slides.forEach(() => {
+  const s = document.createElement('div'); s.className = 'ps'; prog.appendChild(s);
+});
+
+function show(n) {
+  slides[cur].classList.remove('active');
+  cur = Math.max(0, Math.min(slides.length - 1, n));
+  slides[cur].classList.add('active');
+  cnt.textContent = `${cur + 1} / ${slides.length}`;
+  document.querySelectorAll('.ps').forEach((s, i) => {
+    s.className = 'ps' + (i < cur ? ' done' : i === cur ? ' active' : '');
+  });
+  if (notesOpen) notes.innerHTML = `<b>[${slides[cur].dataset.al || ''}]</b> ${slides[cur].dataset.notes || ''}`;
+}
+
+function go(d) { show(cur + d); }
+
+document.addEventListener('keydown', e => {
+  if (['ArrowRight','ArrowDown',' '].includes(e.key)) { go(1); e.preventDefault(); }
+  if (['ArrowLeft','ArrowUp'].includes(e.key))        { go(-1); e.preventDefault(); }
+  if (e.key === 'n' || e.key === 'N') {
+    notesOpen = !notesOpen;
+    notes.classList.toggle('show', notesOpen);
+    if (notesOpen) notes.innerHTML = `<b>[${slides[cur].dataset.al || ''}]</b> ${slides[cur].dataset.notes || ''}`;
+  }
+  if (e.key === 'Home') { show(0); e.preventDefault(); }
+  if (e.key === 'End')  { show(slides.length - 1); e.preventDefault(); }
+});
+
+document.getElementById('deck').addEventListener('click', e => {
+  if (!e.target.closest('button,a,#nav')) go(1);
+});
+
+show(0);
+
+/* ── RADARES SLIDE S3 ─────────────────────────── */
+(function() {
+  const NS = 'http://www.w3.org/2000/svg';
+
+  function drawRadar(svgId, vals1, hex1, vals2, hex2) {
+    const svg = document.getElementById(svgId);
+    if (!svg) return;
+    const cx = 110, cy = 110, maxR = 82;
+    const dims = ['R','I','A','S','E','C'];
+    const angles = dims.map((_, i) => (90 - i * 60) * Math.PI / 180);
+
+    function hexRgba(h, a) {
+      const r = parseInt(h.slice(1,3),16), g = parseInt(h.slice(3,5),16), b = parseInt(h.slice(5,7),16);
+      return `rgba(${r},${g},${b},${a})`;
+    }
+    function pt(val, i) {
+      const r = ((val - 1) / 4) * maxR;
+      return [cx + r * Math.cos(angles[i]), cy - r * Math.sin(angles[i])];
+    }
+    function polyPts(vals) { return vals.map((v,i) => pt(v,i).join(',')).join(' '); }
+
+    // grid rings
+    for (let l = 1; l <= 4; l++) {
+      const r = (l / 4) * maxR;
+      const pts = dims.map((_,i) => `${cx+r*Math.cos(angles[i])},${cy-r*Math.sin(angles[i])}`).join(' ');
+      const el = document.createElementNS(NS,'polygon');
+      el.setAttribute('points', pts);
+      el.setAttribute('fill','none');
+      el.setAttribute('stroke','rgba(26,26,26,.1)');
+      el.setAttribute('stroke-width','1');
+      svg.appendChild(el);
+    }
+    // axes
+    dims.forEach((_,i) => {
+      const el = document.createElementNS(NS,'line');
+      el.setAttribute('x1',cx); el.setAttribute('y1',cy);
+      el.setAttribute('x2', cx+maxR*Math.cos(angles[i]));
+      el.setAttribute('y2', cy-maxR*Math.sin(angles[i]));
+      el.setAttribute('stroke','rgba(26,26,26,.12)');
+      el.setAttribute('stroke-width','1');
+      svg.appendChild(el);
+    });
+    // polygons — vals2 primero (atrás), vals1 encima
+    [[vals2, hex2, .35],[vals1, hex1, .5]].forEach(([vals, hex, a]) => {
+      const el = document.createElementNS(NS,'polygon');
+      el.setAttribute('points', polyPts(vals));
+      el.setAttribute('fill', hexRgba(hex, a));
+      el.setAttribute('stroke', hex);
+      el.setAttribute('stroke-width','2.5');
+      svg.appendChild(el);
+    });
+    // dim labels
+    dims.forEach((d,i) => {
+      const r = maxR + 13;
+      const el = document.createElementNS(NS,'text');
+      el.setAttribute('x', cx+r*Math.cos(angles[i]));
+      el.setAttribute('y', cy-r*Math.sin(angles[i]));
+      el.setAttribute('text-anchor','middle');
+      el.setAttribute('dominant-baseline','middle');
+      el.setAttribute('font-size','10');
+      el.setAttribute('font-weight','700');
+      el.setAttribute('font-family','JetBrains Mono, monospace');
+      el.setAttribute('fill','#555');
+      el.textContent = d;
+      svg.appendChild(el);
+    });
+  }
+
+  // Motor (slide s7): caso Instrumentadora — Usuario (R+C) vs Martillero (E+C).
+  // Comparten C y magnitud (coseno alto) pero el pico difiere R vs E (pearson bajo).
+  const uInstru    = [4.6, 2.6, 1.4, 3.4, 2.0, 4.4];
+  const martillero = [1.6, 1.8, 1.5, 3.0, 4.6, 4.3];
+  drawRadar('radar-caso', uInstru, '#2c3e7a', martillero, '#c0392b');
+
+  // Caso Martina (slide scaso): su perfil I-dominante vs Ciencia de Datos (true positive).
+  const martina      = [3.5, 4.7, 1.8, 2.3, 2.5, 3.3];
+  const cienciaDatos = [1.87, 4.8, 1.87, 1.67, 2.53, 4.13];
+  drawRadar('radar-martina', martina, '#2c3e7a', cienciaDatos, '#5a8a6a');
+})();
+</script>
+</body>
+</html>

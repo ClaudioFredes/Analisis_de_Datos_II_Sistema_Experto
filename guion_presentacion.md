@@ -1,171 +1,159 @@
 # ORIENTAI — Guión de Presentación
-**Duración total: 12 minutos · 6 integrantes · 2 minutos por alumno**
+**Duración total: 12 minutos · 6 integrantes · ~2 minutos por alumno**
 
-> **Cómo usar este guión:** cada sección es independiente. Estudiá solo la tuya. Los textos son una guía — no los leas textualmente, usalos para entender qué decir y practicá con tus propias palabras. El tiempo indicado es orientativo.
+> **Cómo usar este guión:** cada sección es independiente. Estudiá solo la tuya. Los textos son una guía — no los leas textualmente, usalos para entender qué decir y practicá con tus propias palabras. El tiempo es orientativo. La presentación tiene **11 diapositivas** (portada + 10).
+>
+> **Atajo útil:** durante la presentación, la tecla **N** muestra/oculta las notas del orador de cada slide.
 
 ---
 
 ## ALUMNO 1 · Slides 1 y 2 · ~2 minutos
 
-### Slide 1 — Portada (30 segundos)
+### Slide 1 — Portada (40 segundos)
 
 *[Presentarse y presentar al grupo]*
 
-"Buenas tardes. Somos el grupo [X] de Análisis de Datos II. Hoy les presentamos ORIENTAI, un sistema experto de orientación vocacional que desarrollamos para ayudar a jóvenes de entre 17 y 20 años a elegir una carrera."
+"Buenas tardes. Somos el grupo de Análisis de Datos II — Sistemas Expertos y Redes de Conocimiento, de la Universidad de la Ciudad de Buenos Aires. Hoy les presentamos **ORIENTAI**, un sistema experto de orientación vocacional."
 
-"En 12 minutos les vamos a contar cómo funciona, cómo evolucionó, y qué decisiones técnicas tomamos en el camino."
+"En 12 minutos les vamos a contar qué hace, cómo evolucionó y qué decisiones técnicas tomamos en el camino."
 
 *[Pasar a la siguiente slide]*
 
 ---
 
-### Slide 2 — ¿Qué es un Sistema Experto? (90 segundos)
+### Slide 2 — ¿Qué es ORIENTAI? (80 segundos)
 
-"Un sistema experto es un programa que captura el conocimiento de un especialista y lo aplica automáticamente para resolver un problema. Tiene tres componentes."
+"ORIENTAI es un **sistema experto**: captura el conocimiento de un dominio y lo aplica para asesorar a un usuario. En nuestro caso, ayuda a un joven a encontrar sus áreas de interés y decidir qué carrera seguir."
 
-"La **base de conocimiento** contiene los hechos del dominio. En nuestro caso: 90 carreras con sus perfiles vocacionales tomados del estándar internacional O\*NET, organizadas en 6 dominios y 18 sub-perfiles."
+"Su **base de conocimiento** son 90 carreras, cada una representada como un **vector del modelo RIASEC** —seis dimensiones de interés vocacional— derivados del estándar internacional **O\\*NET** del Departamento de Trabajo de Estados Unidos."
 
-"El **motor de inferencia** aplica ese conocimiento a los datos del usuario. Usamos una combinación de dos métricas matemáticas, que vamos a ver en detalle más adelante."
+"Algo importante: el sistema **no decide por el usuario**. Detecta su perfil y lo asesora con un Top 5 de carreras afines, con universidades argentinas donde cursarlas."
 
-"La **interfaz de usuario** es el quiz adaptativo en Streamlit, con radar chart y tarjetas de resultado."
+"El flujo, abajo, es simple: construimos el **perfil del usuario** con 33 preguntas, lo pasamos por un **motor de inferencia**, y devolvemos el **Top 5**. Todo en unos 10 minutos."
 
-"Abajo ven las 6 dimensiones del modelo RIASEC de Holland, que es el estándar psicométrico que usamos: Realista, Investigador, Artístico, Social, Emprendedor y Convencional."
-
-*[Pasar a la siguiente slide — es el turno del Alumno 2]*
+*[Pasar a la siguiente slide — turno del Alumno 2]*
 
 ---
 
-## ALUMNO 2 · Slide 3 · ~2 minutos
+## ALUMNO 2 · Slides 3 y 4 · ~2 minutos
 
-### Slide 3 — Evolución del sistema (2 minutos)
+### Slide 3 — El modelo que adoptamos: RIASEC (50 segundos)
 
-"Cuando empezamos, el sistema era mucho más simple. Y tuvimos que iterarlo varias veces para llegar a lo que ven hoy."
+"Para construir el sistema necesitábamos una base teórica. Usamos el modelo **RIASEC** de John Holland: seis dimensiones de interés — Realista, Investigador, Artístico, Social, Emprendedor y Convencional."
 
-"La primera versión tenía 30 preguntas Likert — el usuario respondía del 1 al 5 cuánto le gustaba cada actividad. El problema fue que los valores O\*NET se redondeaban a enteros, lo que hacía que 16 carreras distintas tuvieran exactamente el mismo vector matemático. Resultado: siempre ganaba la primera en el archivo. A esas las llamamos 'carreras imán'."
+"Lo potente es que **O\\*NET** publica puntajes RIASEC para cada ocupación. Así, cada carrera queda representada como un **vector de seis números**. Los reescalamos de la escala 1–7 de O\\*NET a 1–5, **sin redondear** — y ese detalle, como vamos a ver ahora, fue clave."
 
-"Aumentamos a 50 preguntas pensando que más datos iban a ayudar. Pero el problema no era la cantidad — era la estructura. Con más preguntas del mismo tipo seguíamos obteniendo resultados genéricos."
+---
 
-"El giro fue separar el sistema en fases. Primero: detectar en cuál de 6 grandes mundos está el usuario. Eso redujo el espacio de búsqueda de 90 carreras a unas 15 del dominio elegido."
+### Slide 4 — El primer intento y lo que salió mal (70 segundos)
 
-"Después reemplazamos las preguntas Likert por tríadas — el usuario elige una de tres actividades. Comparar es más discriminativo que evaluar en absoluto."
+"La primera versión era simple: 30 preguntas Likert, un promedio por dimensión y **similitud de coseno** contra el catálogo. Una sola pasada. Tenía **dos fallas de raíz**."
 
-"Y finalmente agregamos una capa de valores: preguntas bipolares sobre contexto laboral, no sobre actividades."
+"La primera: **colisiones de vectores**. Al redondear los puntajes a enteros, 16 carreras distintas terminaban con el mismo vector — por ejemplo Medicina y Enfermería, ambas {R:4, I:4, S:5}. Como el desempate era por orden en el archivo, **siempre ganaba la primera de la lista**. Lo llamábamos 'carrera imán'."
 
-"Como ven acá: pasamos de 50 preguntas con resultados vagos a 33 preguntas bien estructuradas."
+"La segunda: **porcentajes distorsionados**. El porcentaje mostrado elevaba el score al cubo, sin justificación matemática. Un score real de 0.90 se mostraba como 73%, hundiendo todos los valores y desordenando el ranking."
 
 *[Pasar a la siguiente slide — turno del Alumno 3]*
 
 ---
 
-## ALUMNO 3 · Slides 4 y 5 · ~2 minutos
+## ALUMNO 3 · Slides 5 y 6 · ~2 minutos
 
-### Slide 4 — Arquitectura (60 segundos)
+### Slide 5 — Tres cambios que lo transformaron (55 segundos)
 
-"Acá ven el flujo completo del sistema."
+"Identificados los problemas, hicimos tres cambios."
 
-"El usuario arranca con la Fase 1: 18 preguntas que detectan el dominio. Luego elige el dominio que más le interesa y su preferencia de duración de carrera."
+"**Primero: vectores float en lugar de enteros.** No redondear eliminó las 16 colisiones de un saque — pasamos a cero."
 
-"La Fase 2 son 10 tríadas donde elige 1 de 3 actividades. Con eso construimos el vector RIASEC del usuario. El sistema muestra ese perfil como un radar y detecta el sub-perfil dentro del dominio."
+"**Segundo: tres fases en lugar de una sola pasada.** La Fase 1 rankea los seis dominios vocacionales, y acá es importante: **el sistema propone, pero el usuario elige** sobre cuál profundizar. Eso reduce el espacio de búsqueda de 90 carreras a unas 15."
 
-"La Fase 3 son 5 preguntas bipolares sobre valores laborales. Y al final el usuario recibe el Top 5 de carreras con todas las carrera."
-
-"El catálogo tiene 90 carreras, 6 dominios y 18 sub-perfiles."
+"**Tercero: tríadas en lugar de solo Likert.** En vez de '¿cuánto te gusta programar?', preguntamos '¿entre IA, UX y redes, cuál elegís?'. **Comparar es más discriminativo que evaluar** en absoluto. Pasamos de 50 preguntas genéricas a 33 estructuradas."
 
 ---
 
-### Slide 5 — Base de conocimiento: O\*NET + RIASEC (60 segundos)
+### Slide 6 — La arquitectura en tres fases (65 segundos)
 
-"Ahora explico de dónde salen los datos de cada carrera."
+"Esta es la arquitectura final. Acá ven el flujo completo."
 
-"O\*NET es el estándar del Departamento de Trabajo de Estados Unidos. Cada ocupación tiene un código SOC y puntajes de interés vocacional en escala 1 a 7."
+"La **Fase 1** son 18 preguntas Likert que detectan el dominio. Después, el usuario **elige** el dominio que más le interesa y su preferencia de duración — tecnicatura o licenciatura."
 
-"Nosotros los reescalamos a escala 1 a 5 usando esta fórmula. Lo crítico es que lo hacemos **sin redondear** — mantenemos el valor como número decimal. Eso fue el fix de la primera iteración: con enteros teníamos 16 colisiones, con float tenemos cero."
+"La **Fase 2** son 10 tríadas que construyen el vector RIASEC. El sistema muestra ese perfil como un radar y detecta el **sub-perfil** o pathway dentro del dominio."
 
-"En la tabla ven tres ejemplos reales. Ingeniería en Sistemas tiene I alto, Psicología tiene S alto, Diseño Gráfico tiene un perfil más distribuido."
+"La **Fase 3** son 5 preguntas de valores laborales. Y al final, el Top 5 con universidades."
 
-"Cada carrera incluye además el área, la duración, etiquetas de perfil y las universidades argentinas donde se dicta."
+"El mensaje clave es el del centro: **el sistema rankea y propone, pero la decisión final es del usuario. Asesora, no reemplaza.**"
 
 *[Pasar a la siguiente slide — turno del Alumno 4]*
 
 ---
 
-## ALUMNO 4 · Slides 6 y 7 · ~2 minutos
+## ALUMNO 4 · Slides 7 y 8 · ~2 minutos
 
-### Slide 6 — Motor de inferencia (60 segundos)
+### Slide 7 — Caso en vivo: Martina (55 segundos)
 
-"El corazón del sistema es el scoring híbrido. Usamos dos métricas porque cada una captura una señal distinta."
+"Para que se entienda, sigamos a una usuaria: **Martina, 17 años**."
 
-"La similitud de coseno mide la alineación direccional: si el usuario y la carrera 'apuntan' al mismo lado en el espacio RIASEC."
+"En la Fase 1 elige **Tecnología**. Sus 10 tríadas construyen su perfil RIASEC — un vector con **Investigador dominante**. El sistema detecta el pathway **Analítica & Software**."
 
-"La correlación de Pearson mide la forma del perfil — los picos y valles relativos — independientemente de si el usuario tiende a responder alto o bajo en general."
+"En el radar ven por qué funciona: el perfil de Martina (en azul) **se superpone con el de Ciencia de Datos** (en verde) — los dos tienen el pico en la I. Por eso hay match."
 
-"El score final es 30% coseno y 70% Pearson. Ese peso lo calibramos con una simulación Monte Carlo de 500 perfiles."
-
-"¿Por qué hace falta el Pearson? Porque el coseno solo cometía errores. Un perfil de Instrumentadora Quirúrgica — alto en R y C — recibía Martillero Público en el Top-3, porque ambos comparten la dimensión C. Pearson lo corrige porque compara si C es dominante en ambos, no si aparece en alguno."
+"En la Fase 3 prioriza **autonomía y trabajar con datos**, y ese boost sube **Ciencia de Datos al puesto #1, con 84%**, por encima de Ingeniería en Sistemas. Pero, ¿cómo decide el motor ese ranking? Eso lo explica la siguiente slide."
 
 ---
 
-### Slide 7 — Las tres fases (60 segundos)
+### Slide 8 — El motor de inferencia (65 segundos)
 
-"Las tres fases capturan señales diferentes e independientes."
+"El motor compara el vector del usuario con cada carrera. La métrica obvia —el coseno— tiene una **trampa**: sobre vectores 1 a 5, que son siempre positivos, da entre 0.7 y 1.0 para **casi cualquier par**. Es decir, **infla la afinidad** y premia coincidencias en una dimensión secundaria."
 
-"La Fase 1 detecta el mundo vocacional. Es rápida: 18 preguntas, atajos de teclado del 1 al 5."
+"El caso que nos lo mostró: el perfil de una **Instrumentadora Quirúrgica** —alto en R y C— sacaba coseno altísimo con el **Martillero Público**, solo porque comparten la C, aunque no comparten la R."
 
-"La Fase 2 construye el vector RIASEC por comparación forzada. No pregunta '¿cuánto te gusta desarrollar IA?' sino '¿entre desarrollar IA, diseñar interfaces o armar redes, cuál elegís?' Esa diferencia hace que el resultado sea mucho más informativo."
-
-"La Fase 3 agrega la capa de valores. Dos carreras pueden tener el mismo perfil RIASEC pero diferir completamente en contexto laboral: una implica autonomía, la otra trabajo en equipo. Esto lo captura la escala bipolar."
-
-"La tarjeta de resumen abajo lo dice todo: F1 detecta el dominio, F2 el vector RIASEC, F3 los valores y el contexto. Tres señales complementarias."
+"La solución es **Pearson**: centra cada vector por su media y compara la **forma** del perfil — el código Holland dominante. Miren los números: para ese par, el **coseno da 0.87 y los confunde**, pero el **Pearson da 0.10 y los separa**. Por eso el score final pesa **30% coseno y 70% Pearson**."
 
 *[Pasar a la siguiente slide — turno del Alumno 5]*
 
 ---
 
-## ALUMNO 5 · Slides 8 y 9 · ~2 minutos
+## ALUMNO 5 · Slides 9 y 10 · ~2 minutos
 
-### Slide 8 — Resultado (60 segundos)
+### Slide 9 — ¿Cómo sabemos que funciona? (60 segundos)
 
-"Esto es lo que ve el usuario al terminar las tres fases."
+"El sistema fue **validado con rigor**, no solo implementado."
 
-"Cada tarjeta muestra el número de ranking, el nombre de la carrera, el área, el código Holland — que son las tres letras dominantes del perfil RIASEC — y el porcentaje de afinidad."
+"Por un lado, **15 tests automatizados** que se corren con un comando: verifican perfiles arquetípicos, que coseno y Pearson sean métricas distintas, que no haya colisiones, las tríadas y los casos extremos."
 
-"Al hacer clic en la tarjeta, se expande y muestra: las universidades argentinas donde se puede cursar esa carrera — con el nombre de la institución y la ciudad —, un radar comparativo entre el perfil del usuario y el perfil de la carrera, y detalles técnicos del motor."
-
-"Lo importante del porcentaje: no es inventado, es el score matemático del motor multiplicado por 100. El orden y el número siempre son consistentes."
-
-"Y todo esto corre sin servidor, sin guardar datos. Al cerrar la pestaña del navegador, todo desaparece."
+"Por otro, una **simulación Monte Carlo**: 500 perfiles sintéticos por 3 escenarios. De ahí salió la calibración 0.3 / 0.7, y **confirmó el fix a escala**: los falsos positivos comerciales —como el Martillero que acabamos de ver— cayeron de **16% a 6%**, y la cobertura subió de **67 a 69** carreras distintas en el Top-1."
 
 ---
 
-### Slide 9 — Validación (60 segundos)
+### Slide 10 — Lo que recibe el usuario (60 segundos)
 
-"Queremos mostrar que el sistema fue desarrollado con rigor, no solo implementado."
+"Esto es lo que ve Martina al terminar — el caso que seguimos."
 
-"Tenemos 15 tests automatizados que se corren con un solo comando. Cubren: perfiles arquetípicos — que un perfil Social llegue a carreras de salud o educación —, el motor híbrido — que coseno y Pearson sean realmente métricas distintas, que no haya carreras con vectores idénticos —, los algoritmos de tríadas, y casos extremos."
+"Cada tarjeta muestra la posición, el nombre, el área, el **código Holland** —las tres letras dominantes—, la duración y el **porcentaje de afinidad**. El símbolo ✦ marca que la Fase 3 modificó el orden: acá subió Ciencia de Datos al #1."
 
-"La simulación Monte Carlo corrió 500 perfiles sintéticos en tres escenarios distintos. Fue lo que nos permitió calibrar el peso del coseno en 0.3 y verificar que el sistema distribuye bien las recomendaciones entre el catálogo."
+"Al expandir cada tarjeta aparecen las **universidades argentinas** donde se cursa, un **radar comparativo** y los datos del motor. El porcentaje no es inventado: es el score matemático multiplicado por 100."
 
-"El caso concreto que más nos costó resolver: el perfil de Instrumentadora Quirúrgica. R y C alto, S medio. El motor anterior devolvía Martillero Público. El motor actual devuelve Instrumentación como número uno, con Salud dominando el Top 5."
+"Y todo corre **sin servidor y sin guardar datos**: al cerrar la pestaña, no queda nada."
 
-*[Pasar a la siguiente slide — turno del Alumno 6]*
+*[Opcional, si hay tiempo: demo en vivo en `localhost:8501`. Pasar al Alumno 6.]*
 
 ---
 
-## ALUMNO 6 · Slide 10 · ~2 minutos
+## ALUMNO 6 · Slide 11 · ~2 minutos
 
-### Slide 10 — Conclusiones (2 minutos)
+### Slide 11 — Aprendizajes y próximos pasos (2 minutos)
 
-"Para cerrar, tres aprendizajes que se llevan más allá de este sistema."
+"Para cerrar, **cuatro aprendizajes** que se llevan más allá de este sistema."
 
-"Primero: **estructura es más importante que cantidad**. 50 preguntas genéricas nos dieron peores resultados que 33 bien pensadas en tres fases. Más datos del mismo tipo no resuelven un problema de arquitectura."
+"**Primero: estructura más que cantidad.** 33 preguntas bien pensadas superan a 50 genéricas. Más datos del mismo tipo no arreglan un problema de arquitectura."
 
-"Segundo: **comparar es más rico que evaluar**. Las tríadas pairwise le dan al usuario una tarea cognitivamente más fácil — elegir entre tres opciones — y producen datos más discriminativos que responder cuánto le gusta algo en absoluto."
+"**Segundo: comparar más que evaluar.** Las tríadas le dan al usuario una tarea más natural —elegir entre opciones— y producen datos más discriminativos que poner un número en absoluto."
 
-"Tercero: **la validación automatizada encuentra lo que el testing manual no ve**. El caso de la Instrumentadora y el Martillero Público nunca lo hubiéramos encontrado sin correr el sistema sobre cientos de perfiles sintéticos."
+"**Tercero: validar con datos reales.** La simulación Monte Carlo detectó el falso positivo del Martillero, algo que el testing manual no veía."
 
-"En cuanto al estado actual: tenemos 90 carreras con vectores float de O\*NET, tres fases diferenciadas, motor calibrado, 18 pathways, universidades argentinas reales y 15 tests pasando."
+"**Cuarto, y el que más nos marcó: lo que creés que hace tu código no siempre es lo que corre.** Descubrimos que decíamos usar 'coseno' pero, al centrar los vectores, en realidad calculábamos solo Pearson — una métrica disfrazada de otra. Auditar el código fue tan importante como escribirlo."
 
-"Como trabajo futuro nos quedó pendiente el editor de conocimiento: una interfaz para agregar carreras, modificar pesos, simular perfiles y ver el impacto antes de publicar cualquier cambio. Eso es lo que distingue a un sistema experto mantenible de uno estático."
+"Como **trabajo futuro** nos queda el **editor de conocimiento**: una interfaz para agregar carreras, ajustar pesos y simular perfiles sin tocar código. Eso es lo que distingue a un sistema experto mantenible de uno estático."
 
 "Muchas gracias. Quedamos a disposición para preguntas."
 
@@ -173,22 +161,24 @@
 
 ## Resumen de tiempos
 
-| Alumno | Slides | Tiempo |
-|--------|--------|--------|
-| Alumno 1 | 1 y 2 | ~2 min |
-| Alumno 2 | 3     | ~2 min |
-| Alumno 3 | 4 y 5 | ~2 min |
-| Alumno 4 | 6 y 7 | ~2 min |
-| Alumno 5 | 8 y 9 | ~2 min |
-| Alumno 6 | 10    | ~2 min |
-| **Total** |      | **~12 min** |
+| Alumno | Slides | Tema | Tiempo |
+|--------|--------|------|--------|
+| Alumno 1 | 1 y 2 | Portada · ¿Qué es ORIENTAI? | ~2 min |
+| Alumno 2 | 3 y 4 | RIASEC · El primer intento y lo que salió mal | ~2 min |
+| Alumno 3 | 5 y 6 | Tres cambios · Arquitectura en tres fases | ~2 min |
+| Alumno 4 | 7 y 8 | Caso Martina · El motor de inferencia | ~2 min |
+| Alumno 5 | 9 y 10 | Validación · Lo que recibe el usuario | ~2 min |
+| Alumno 6 | 11 | Aprendizajes y próximos pasos | ~2 min |
+| **Total** | **11 slides** | | **~12 min** |
 
 ---
 
 ## Consejos para la presentación
 
-- **No leer el guión**. Usalo para estudiar los conceptos, después presentá con tus palabras.
+- **No leer el guión.** Usalo para estudiar los conceptos; después presentá con tus palabras.
 - **Antes de pasar de slide**, mirá al público y hacé una pequeña pausa.
-- **Si te pregunta algo el docente**: el Alumno que presentó ese tema responde primero.
-- **Demo en vivo** (opcional, Alumno 5): si hay tiempo, mostrar el sistema corriendo en `localhost:8501`. Filtrar por dominio Tecnología, responder un perfil I alto.
+- **Hilo narrativo**: la presentación cuenta una historia — qué es → el modelo → el primer intento que falló → los tres cambios → cómo funciona → un caso concreto (Martina) → por qué el motor es inteligente → la prueba → el resultado → los aprendizajes. Cada uno toma la posta donde la dejó el anterior.
+- **Conexión clave entre slides 7 y 8**: la slide 7 muestra un *acierto* (el perfil de Martina hace match con Ciencia de Datos) y la 8 muestra el *error histórico* que corrigió Pearson (Instrumentadora vs Martillero). Son las dos caras de la misma decisión.
+- **Si el docente pregunta**: responde primero el alumno que presentó ese tema.
+- **Demo en vivo** (opcional, Alumno 5): si hay tiempo, mostrar el sistema en `localhost:8501`. Filtrar por dominio Tecnología y responder un perfil I-alto.
 - **Tiempo**: practicá cada sección con cronómetro. 2 minutos es más corto de lo que parece.
