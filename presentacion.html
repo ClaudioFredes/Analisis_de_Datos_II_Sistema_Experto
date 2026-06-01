@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORIENTAI · Sistema Experto Vocacional</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
+
+:root {
+  --ink:    #111111;
+  --paper:  #f6f1e7;
+  --card:   #fffdf8;
+  --violet: #c4b5fd;
+  --lime:   #c6ff4d;
+  --red:    #fecaca;
+  --yellow: #fef08a;
+  --sh:     4px 4px 0px var(--ink);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--paper);
+  background-image: radial-gradient(rgba(17,17,17,.07) 1px, transparent 1px);
+  background-size: 22px 22px;
+  color: var(--ink);
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ─── DECK ──────────────────────────────────────────────── */
+.deck { position: relative; width: 100vw; height: 100vh; }
+
+.slide {
+  display: none;
+  position: absolute;
+  inset: 0;
+  padding: 2.4rem 5rem 3.8rem;
+  flex-direction: column;
+  animation: fadeIn .25s ease;
+}
+.slide.active { display: flex; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(5px); } to { opacity:1; transform:translateY(0); } }
+
+/* ─── CABECERA DE SLIDE — altura fija para área de contenido
+       consistente en todas las slides ─────────────────────── */
+.slide-top {
+  flex-shrink: 0;
+  height: 7rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.slide-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: .55rem;
+}
+.slide-section {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 2px 10px;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+}
+.sec-pres   { background: var(--violet); }
+.sec-v1     { background: var(--red); }
+.sec-evol   { background: var(--yellow); }
+.sec-act    { background: var(--lime); }
+.sec-res    { background: var(--card); }
+.sec-conc   { background: var(--ink); color: var(--card); }
+
+.slide-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .68rem;
+  color: #aaa;
+  font-weight: 700;
+}
+
+h2 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 2.3rem;
+  line-height: 1.1;
+  margin-bottom: 0;
+}
+
+.div {
+  width: 56px; height: 4px;
+  background: var(--ink); border-radius: 2px;
+  margin: .55rem 0 0;
+}
+
+/* el cuerpo de contenido ocupa todo el espacio restante */
+.body { flex: 1; min-height: 0; display: flex; flex-direction: column; margin-top: 1rem; }
+
+/* ─── GRID HELPERS ──────────────────────────────────────── */
+.col2  { display: grid; grid-template-columns: 1fr 1fr;     gap: 1.2rem; }
+.col3  { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+.col21 { display: grid; grid-template-columns: 2fr 1fr;     gap: 1.4rem; }
+.col12 { display: grid; grid-template-columns: 1fr 2fr;     gap: 1.4rem; }
+.col32 { display: grid; grid-template-columns: 3fr 2fr;     gap: 1.4rem; }
+.vcenter { display: flex; flex-direction: column; justify-content: center; }
+.hcenter { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+/* ─── TARJETA ────────────────────────────────────────────── */
+.card {
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  background: var(--card);
+  box-shadow: var(--sh);
+  padding: 1rem 1.2rem;
+}
+.card.v  { background: var(--violet); }
+.card.l  { background: var(--lime); }
+.card.r  { background: var(--red); }
+.card.y  { background: var(--yellow); }
+.card.k  { background: var(--ink); color: var(--card); }
+.card h3 { font-size: .95rem; font-weight: 800; margin-bottom: .35rem; }
+.card p  { font-size: .85rem; line-height: 1.55; color: #444; }
+.card.k p { color: #ccc; }
+
+/* ─── PILL ───────────────────────────────────────────────── */
+.pill {
+  display: inline-block;
+  padding: 2px 11px;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  font-size: .75rem;
+  font-weight: 700;
+  background: var(--card);
+}
+.pill.v { background: var(--violet); }
+.pill.l { background: var(--lime); }
+.pill.k { background: var(--ink); color: var(--card); }
+.pill.r { background: var(--red); }
+
+/* ─── FORMULA ────────────────────────────────────────────── */
+.fml {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .9rem;
+  font-weight: 700;
+  padding: .6rem 1.2rem;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: var(--card);
+  box-shadow: 3px 3px 0 var(--ink);
+  display: inline-block;
+  text-align: center;
+}
+
+/* ─── FLOW ───────────────────────────────────────────────── */
+.flow { display: flex; align-items: stretch; gap: 0; }
+.fbox {
+  flex: 1;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  background: var(--card);
+  box-shadow: 3px 3px 0 var(--ink);
+  padding: .65rem .7rem;
+  text-align: center;
+}
+.fbox .ft { font-weight: 800; font-size: .85rem; }
+.fbox .fs { font-size: .7rem; color: #666; margin-top: .15rem; font-family: 'JetBrains Mono', monospace; line-height: 1.4; }
+.fbox.v  { background: var(--violet); }
+.fbox.v .fs { color: #555; }
+.fbox.l  { background: var(--lime); }
+.fbox.l .fs { color: #555; }
+.farr {
+  display: flex; align-items: center; justify-content: center;
+  color: #aaa; font-size: 1.1rem;
+  padding: 0 .3rem; flex-shrink: 0;
+}
+
+/* ─── HEXÁGONO RIASEC ────────────────────────────────────── */
+.hex-wrap {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .6rem;
+}
+.hex {
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  box-shadow: 3px 3px 0 var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: .8rem .4rem;
+}
+.hex .hl { font-family: 'Archivo Black', sans-serif; font-size: 2.2rem; line-height: 1; }
+.hex .hd { font-size: .7rem; font-weight: 700; color: #444; margin-top: .2rem; }
+.hex .hx { font-size: .65rem; color: #777; margin-top: .1rem; text-align: center; line-height: 1.3; }
+
+/* ─── TIMELINE ───────────────────────────────────────────── */
+.tl { display: flex; flex-direction: column; gap: .6rem; }
+.tl-row { display: flex; align-items: flex-start; gap: .8rem; }
+.tl-dot {
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 2px solid var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .7rem; font-weight: 700;
+  flex-shrink: 0; margin-top: 2px;
+}
+.tl-dot.ok  { background: var(--lime); }
+.tl-dot.bad { background: var(--red); }
+.tl-dot.neu { background: var(--card); }
+.tl-body h4 { font-size: .9rem; font-weight: 800; margin-bottom: .1rem; }
+.tl-body p  { font-size: .82rem; color: #555; line-height: 1.45; }
+
+/* ─── TABLA ──────────────────────────────────────────────── */
+table.st { border-collapse: collapse; width: 100%; font-size: .84rem; }
+table.st th { background: var(--ink); color: var(--card); padding: .4rem .75rem; text-align: left; font-family: 'JetBrains Mono', monospace; font-size: .72rem; }
+table.st td { padding: .4rem .75rem; border-bottom: 1px solid rgba(17,17,17,.1); }
+table.st tr:hover td { background: rgba(196,181,253,.15); }
+
+/* ─── STAT ───────────────────────────────────────────────── */
+.stat { text-align: center; padding: .5rem; }
+.stat .sn { font-family: 'Archivo Black', sans-serif; font-size: 2.6rem; line-height: 1; }
+.stat .sl { font-size: .78rem; color: #666; margin-top: .2rem; }
+
+/* ─── BEFORE/AFTER ───────────────────────────────────────── */
+.ba {
+  display: grid; grid-template-columns: 1fr 40px 1fr; gap: .5rem; align-items: center;
+}
+.ba-arr { text-align: center; font-size: 1.3rem; color: #aaa; }
+
+/* ─── PROGRESS BAR ───────────────────────────────────────── */
+#prog {
+  position: fixed; top: 0; left: 0; right: 0;
+  display: flex; gap: 3px; padding: 5px 2rem; z-index: 50;
+}
+.ps { height: 3px; flex: 1; border-radius: 2px; background: rgba(17,17,17,.1); }
+.ps.done   { background: var(--ink); }
+.ps.active { background: var(--violet); }
+
+/* ─── NAV ────────────────────────────────────────────────── */
+#nav {
+  position: fixed; bottom: 1rem; left: 50%;
+  transform: translateX(-50%);
+  display: flex; align-items: center; gap: .7rem; z-index: 100;
+}
+.nb {
+  width: 34px; height: 34px;
+  border: 2px solid var(--ink); border-radius: 7px;
+  background: var(--card); box-shadow: 3px 3px 0 var(--ink);
+  cursor: pointer; font-size: .9rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .12s;
+}
+.nb:hover { background: var(--lime); transform: translate(2px,2px); box-shadow: 1px 1px 0 var(--ink); }
+#cnt { font-family: 'JetBrains Mono', monospace; font-size: .75rem; font-weight: 700; color: #999; min-width: 40px; text-align: center; }
+
+/* ─── NOTAS ──────────────────────────────────────────────── */
+#notes {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0;
+  background: var(--ink); color: var(--card);
+  padding: .8rem 2rem; font-size: .87rem; line-height: 1.55;
+  max-height: 28vh; overflow-y: auto; z-index: 200;
+}
+#notes.show { display: block; }
+#notes b { color: var(--lime); }
+
+/* ─── KEY HINT ───────────────────────────────────────────── */
+#kh { position: fixed; top: .9rem; left: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: .62rem; color: #ccc; }
+</style>
+</head>
+<body>
+<div id="kh">← → navegar &nbsp;·&nbsp; N notas</div>
+<div id="prog"></div>
+
+<div class="deck" id="deck">
+
+<!-- ══ 1 · El problema de elegir una carrera ══════════════════════ -->
+<div class="slide" id="s1"
+  data-sec="Presentación" data-seccls="sec-pres"
+  data-al="Alumno 1"
+  data-notes="ALUMNO 1 — Presentarse. Plantear el problema: un joven de 17 años tiene que elegir entre decenas de carreras sin experiencia profesional. Las herramientas existentes son genéricas. ORIENTAI resuelve eso con un sistema experto basado en psicometría real.">
+
+  <div class="slide-top">
+    <div class="slide-head">
+      <span class="slide-section sec-pres">Presentación</span>
+      <span class="slide-num">01 / 10</span>
+    </div>
+    <h2>El problema de elegir una carrera</h2>
+    <div class="div"></div>
+  </div>
+
+  <div class="body col32" style="align-items:stretch;">
+    <div class="vcenter" style="gap:1rem;">
+      <p style="font-size:1.1rem;font-weight:600;line-height:1.5;max-width:34rem;">
+        Un joven de 17 años debe elegir entre decenas de carreras <strong>sin experiencia profesional real</strong> y con información fragmentada sobre qué hace cada profesión.
+      </p>
+      <p style="font-size:.95rem;color:#555;max-width:34rem;">
+        Las herramientas existentes devuelven áreas amplias — "te gusta ayudar → Medicina o Psicología" — sin discriminar entre 90 opciones reales.
+      </p>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem;">
+        <span class="pill v">Sistema Experto</span>
+        <span class="pill">Modelo RIASEC</span>
+        <span class="pill">Estándar O*NET</span>
+        <span class="pill l">90 carreras</span>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:.8rem;">
+      <div class="card v">
+        <div class="stat" style="padding:.3rem;">
+          <div class="sn">90</div>
+          <div class="sl">carreras en el catálogo</div>
+        </div>
+      </div>
+      <div class="card l">
+        <div class="stat" style="padding:.3rem;">
+          <div class="sn">33</div>
+          <div class="sl">preguntas · ~10 minutos</div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="text-align:center;padding:.3rem;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;color:#888;margin-bottom:.3rem;">RESULTADO</div>
+          <div style="font-weight:800;font-size:.95rem;">Top 5 carreras</div>
+          <div style="font-size:.78rem;color:#666;margin-top:.2rem;">con universidades argentinas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 2 · El modelo que adoptamos: RIASEC ════════════════════════ -->
+<div class="slide" id="s2"
+  data-sec="El primer intento" data-seccls="sec-v1"
+  data-al="Alumno 2"
+  data-notes="ALUMNO 2 — Explicar RIASEC: seis dimensiones de interés vocacional, modelo de John Holland (1959). O*NET tiene puntajes para cada ocupación. Mostrar que cada carrera es un punto en un espacio de 6 dimensiones. Esta fue la base teórica sobre la que construimos la primera versión.">
+
+  <div class="slide-top">
+    <div class="slide-head">
+      <span class="slide-section sec-v1">El primer intento</span>
+      <span class="slide-num">02 / 10</span>
+    </div>
+    <h2>El modelo que adoptamos: RIASEC</h2>
+    <div class="div"></div>
+  </div>
+
+  <div class="body col2" style="align-items:stretch;gap:1.6rem;">
+    <div class="hex-wrap" style="align-content:start;">
+      <div class="hex" style="background:var(--violet);">
+        <div class="hl">R</div><div class="hd">Realista</div>
+        <div class="hx">Técnico · físico · manual</div>
+      </div>
+      <div class="hex" style="background:var(--lime);">
+        <div class="hl">I</div><div class="hd">Investigador</div>
+        <div class="hx">Análisis · ciencia · abstracción</div>
+      </div>
+      <div class="hex" style="background:var(--yellow);">
+        <div class="hl">A</div><div class="hd">Artístico</div>
+        <div class="hx">Creatividad · expresión</div>
+      </div>
+      <div class="hex" style="background:var(--red);">
+        <div class="hl">S</div><div class="hd">Social</div>
+        <div class="hx">Ayudar · enseñar · vincular</div>
+      </div>
+      <div class="hex" style="background:var(--card);">
+        <div class="hl">E</div><div class="hd">Emprendedor</div>
+        <div class="hx">Liderar · persuadir · vender</div>
+      </div>
+      <div class="hex" style="background:var(--card);">
+        <div class="hl">C</div><div class="hd">Convencional</div>
+        <div class="hx">Orden · datos · normas</div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:.9rem;justify-content:center;">
+      <div class="card v">
+        <h3>Estándar O*NET</h3>
+        <p>El Departamento de Trabajo de EE.UU. publica puntajes RIASEC para cada ocupación. Usamos ese dato como base de conocimiento.</p>
+      </div>
+      <div class="card">
+        <h3>Cada carrera = un vector de 6 números</h3>
+        <table class="st" style="margin-top:.4rem;">
+          <tr><th>Carrera</th><th>R</th><th>I</th><th>S</th></tr>
+          <tr><td>Ing. en Sistemas</td><td>3.67</td><td><b>4.50</b></td><td>2.17</td></tr>
+          <tr><td>Psicología</td><td>1.83</td><td>3.67</td><td><b>4.83</b></td></tr>
+          <tr><td>Diseño Gráfico</td><td>3.00</td><td>2.50</td><td>2.67</td></tr>
+        </table>
+      </div>
+      <div class="card l">
+        <h3>Reescalado sin redondear</h3>
+        <div class="fml" style="margin-top:.3rem;font-size:.78rem;">riasec[d] = 1 + (onet[d] − 1) / 6 × 4</div>
+        <p style="margin-top:.4rem;">De escala O*NET 1–7 a escala 1–5, manteniendo el valor como decimal.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 3 · Cómo arrancamos ════════════════════════════════════════ -->
+<div class="slide" id="s3"
+  data-sec="El primer intento" data-seccls="sec-v1"
+  data-al="Alumno 2"
+  data-notes="ALUMNO 2 — Describir la primera versión: 30 preguntas Likert, vector de usuario, similitud de coseno contra el catálogo. Simple y directo. Aclarar que los vectores de las carreras se redondeaban a enteros en esa versión.">
+
+  <div class="slide-top">
+    <div class="slide-head">
+      <span class="slide-section sec-v1">El primer intento</span>
+      <span class="slide-num">03 / 10</span>
+    </div>
+    <h2>Cómo arrancamos</h2>
+    <div class="div"></div>
+  </div>
+
+  <div class="body" style="gap:1.2rem;">
+    <div class="flow" style="margin-bottom:.2rem;">
+      <div class="fbox r">
+        <div class="ft">30 preguntas</div>
+        <div class="fs">Likert 1–5<br>¿cuánto te gusta X?</div>
+      </div>
+      <div class="farr">→</div>
+      <div class="fbox">
+        <div class="ft">Vector usuario</div>
+        <div class="fs">Promedio por dimensión<br>RIASEC enteros</div>
+      </div>
+      <div class="farr">→</div>
+      <div class="fbox">
+        <div class="ft">Similitud coseno</div>
+        <div class="fs">vs cada carrera<br>del catálogo</div>
+      </div>
+      <div class="farr">→</div>
+      <div class="fbox v">
+        <div class="ft">Ranking</div>
+        <div class="fs">Top 5<br>carreras</div>
+      </div>
+    </div>
+
+    <div class="col3" style="flex:1;">
+      <div class="card">
+        <h3>La base de conocimiento</h3>
+        <p>76 carreras con vectores RIASEC derivados de O*NET. Los puntajes se <strong>redondeaban a enteros 1–5</strong>.</p>
+        <div style="margin-top:.7rem;display:flex;gap:.4rem;flex-wrap:wrap;">
+          <span class="pill r">Medicina → {R:4, I:4, S:5}</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>El motor</h3>
+        <p>Similitud de coseno entre el vector del usuario y el vector de cada carrera. Sin fases, sin estructura. Una sola pasada.</p>
+        <div class="fml" style="margin-top:.7rem;font-size:.78rem;">cos(θ) = A·B / ‖A‖·‖B‖</div>
+      </div>
+      <div class="card">
+        <h3>El % mostrado</h3>
+        <p>El score se transformaba con una potencia cúbica antes de mostrarse como porcentaje.</p>
+        <div class="fml" style="margin-top:.7rem;font-size:.78rem;background:var(--red);">pct = round(score³ × 100)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 4 · Lo que salió mal ═══════════════════════════════════════ -->
+<div class="slide" id="s4"
+  data-sec="El primer intento" data-seccls="sec-v1"
+  data-al="Alumno 2"
+  data-notes="ALUMNO 2 — Explicar los tres problemas concretos. El más importante: 16 carreras con el mismo vector entero → siempre ganaba la primera en el archivo. Eso se llama 'carrera imán'. El score cúbico distorsionaba los porcentajes sin razón. Y aumentar a 50 preguntas no ayudó porque el problema era estructural.">
+
+  <div class="slide-top">
+    <div class="slide-head">
+      <span class="slide-section sec-v1">El primer intento</span>
+      <span class="slide-num">04 / 10</span>
+    </div>
+    <h2>Lo que salió mal</h2>
+    <div class="div"></div>
+  </div>
+
+  <div class="body col3" style="align-items:stretch;">
+    <div class="card r" style="display:flex;flex-direction:column;gap:.7rem;">
+      <div style="font-size:1.8rem;">💥</div>
+      <h3>Colisiones de vectores</h3>
+      <p>Al redondear a enteros, <strong>16 carreras distintas</strong> tenían el mismo vector. El desempate era por orden en el archivo → siempre ganaba la primera.</p>
+      <div style="background:rgba(0,0,0,.07);border-radius:8px;padding:.6rem .8rem;font-family:'JetBrains Mono',monospace;font-size:.75rem;line-height:1.7;">
+        Medicina    → {R:4, I:4, S:5}<br>
+        Enfermería  → {R:4, I:4, S:5}<br>
+        <span style="color:#b91c1c;font-weight:700;">← idénticos</span>
+      </div>
+      <p style="font-size:.8rem;">Con <strong>float</strong>: Medicina {R:4.17, I:3.83, S:4.67}<br>Distancia mínima: 0 → <strong>0.346</strong></p>
+    </div>
+
+    <div class="card y" style="display:flex;flex-direction:column;gap:.7rem;">
+      <div style="font-size:1.8rem;">📉</div>
+      <h3>Porcentajes distorsionados</h3>
+      <p>El <code>score³</code> no tenía justificación matemática. Hundía los porcentajes y desalineaba el orden mostrado del ranking real.</p>
+      <table class="st" style="margin-top:.4rem;">
+        <tr><th>Score real</th><th>Mostrado (³)</th><th>Correcto</th></tr>
+        <tr><td>0.90</td><td style="color:#b91c1c;">73%</td><td style="color:#16a34a;">90%</td></tr>
+        <tr><td>0.80</td><td style="color:#b91c1c;">51%</td><td style="color:#16a34a;">80%</td></tr>
+        <tr><td>0.70</td><td style="color:#b91c1c;">34%</td><td style="color:#16a34a;">70%</td></tr>
+      </table>
+      <div class="fml" style="font-size:.78rem;margin-top:auto;">pct = round(max(0, score) × 100)</div>
+    </div>
+
+    <div class="card" style="display:flex;flex-direction:column;gap:.7rem;">
+      <div style="font-size:1.8rem;">🌫️</div>
+      <h3>Resultados vagos</h3>
+      <p>Pasamos a <strong>42 y luego 50 preguntas</strong> pensando que más datos ayudarían. Pero el problema no era la cantidad.</p>
+      <div style="display:flex;flex-direction:column;gap:.4rem;margin-top:.3rem;">
+        <div style="display:flex;align-items:center;gap:.5rem;">
+          <span class="pill r" style="font-size:.7rem;">30q</span>
+          <span style="font-size:.8rem;color:#666;">resultados genéricos</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:.5rem;">
+          <span class="pill r" style="font-size:.7rem;">42q</span>
+          <span style="font-size:.8rem;color:#666;">similar, mismo problema</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:.5rem;">
+          <span class="pill r" style="font-size:.7rem;">50q</span>
+          <span style="font-size:.8rem;color:#666;">largo y sin mejora real</span>
+        </div>
+      </div>
+      <div class="card l" style="margin-top:auto;padding:.6rem .8rem;">
+        <p style="font-size:.82rem;font-weight:700;">El problema era la <em>estructura</em>, no la cantidad.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 5 · Tres cambios que lo transformaron ══════════════════════ -->
+<div class="slide" id="s5"
+  data-sec="Evolución" data-seccls="sec-evol"
+  data-al="Alumno 3"
+  data-notes="ALUMNO 3 — Presentar los tres cambios como soluciones directas a los tres problemas de la slide anterior. 1) Float elimina colisiones. 2) 3 fases reduce el espacio de búsqueda y hace las preguntas más específicas. 3) Tríadas + valores bipolares capturan información que Likert no puede.">
+
+  <div class="slide-top">
+    <div class="slide-head">
+      <span class="slide-section sec-evol">Evolución</span>
+      <span class="slide-num">05 / 10</span>
+    </div>
+    <h2>Tres cambios que lo transformaron</h2>
+    <div class="div"></div>
+  </div>
+
+  <div class="body" style="gap:.9rem;">
+    <div class="ba" style="flex:1;">
+      <div class="card r" style="padding:.7rem 1rem;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#b91c1c;margin-bottom:.25rem;">ANTES</div>
+        <div style="font-weight:700;">Vectores enteros · 16 colisiones</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#666;margin-top:.2rem;">{R:4, I:4, S:5} × 16 carreras</div>
+      </div>
+      <div class="ba-arr">→</div>
+      <div class="card l" style="padding:.7rem 1rem;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#555;margin-bottom:.25rem;">AHORA</div>
+        <div style="font-weight:700;">Vectores float · 0 colisiones</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#555;margin-top:.2rem;">{R:4.17, I:3.83, S:4.67}</div>
+      </div>
+    </div>
+
+    <div class="ba" style="flex:1;">
+      <div class="card r" style="padding:.7rem 1rem;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#b91c1c;margin-bottom:.25rem;">ANTES</div>
+        <div style="font-weight:700;">1 fase · 50 preguntas genéricas</div>
+        <div style="font-size:.82rem;color:#666;margin-top:.2rem;">espacio de búsqueda: 90 carreras</div>
+      </div>
+      <div class="ba-arr">→</div>
+      <div class="card l" style="padding:.7rem 1rem;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#555;margin-bottom:.25rem;">AHORA</div>
+        <div style="font-weight:700;">3 fases · 33 preguntas estructuradas</div>
+        <div style="font-size:.82rem;color:#555;margin-top:.2rem;">F1 detecta dominio → ~15 carreras</div>
+      </div>
+    </div>
+
+    <div class="ba" style="flex:1;">
+      <div class="card r" style="padding:.7rem 1rem;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#b91c1c;margin-bottom:.25rem;">ANTES</div>
+        <div style="font-weight:700;">Solo Likert: evaluar en absoluto</div>
+        <div style="font-size:.82rem;color:#666;margin-top:.2rem;">"¿Cuánto te gusta la programación?"</div>
+      </div>
+      <div class="ba-arr">→</div>
+      <div class="card l" style="padding:.7rem 1rem;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#555;margin-bottom:.25rem;">AHORA</div>
+        <div style="font-weight:700;">Comparar + valores de contexto</div>
+        <div style="font-size:.82rem;color:#555;margin-top:.2rem;">"Entre IA, UX y redes, ¿cuál elegís?"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 6 · La arquitectura en tres fases ══════════════════════════ -->
+<div class="slide" id="s6"
+  data-sec="Versión actual" data-seccls="sec-act"
+  data-al="Alumno 4"
+  data-notes="ALUMNO 4 — Mostrar el flujo completo. F1 detecta el dominio (18 preguntas Likert). El usuario elige el dominio y duración. F2 son 10 tríadas que construyen el vector RIASEC. Se detecta el pathway. F3 son 5 preguntas bipolares de valores. Resultado: top 5 carreras del dominio.">
+
+  <div class="slide-top">
+    <div class="slide-head">
+      <span class="slide-section sec-act">Versión actual</span>
+      <span class="slide-num">06 / 10</span>
+    </div>
+    <h2>La arquitectura en tres fases</h2>
+    <div class="div"></div>
+  </div>
+
+  <div class="body" style="gap:1.2rem;">
+    <div class="flow" style="flex-shrink:0;">
+      <div class="fbox" style="background:#fff0f0;border-color:var(--ink);">
+        <div class="ft">Fase 1</div>
+        <div class="fs">18 preguntas<br>Likert 1–5<br>→ dominio</div>
+      </div>
+      <div class="farr">→</div>
+      <div class="fbox v">
+        <div class="ft">Transición</div>
+        <div class="fs">elige dominio<br>+ duración<br>preferida</div>
+      </div>
+      <div class="farr">→</div>
+      <div class="fbox" style="background:#fef9c3;border-color:var(--ink);">
+        <div class="ft">Fase 2</div>
+        <div class="fs">10 tríadas<br>1 de 3<br>→ vector RIASEC</div>
+      </div>
+      <div class="farr">→</div>
+      <div class="fbox v">
+        <div class="ft">Perfil</div>
+        <div class="fs">radar RIASEC<br>+ pathway<br>detectado</div>
+      </div>
+      <div class="farr">→</div>
+      <div class="fbox l">
+        <div class="ft">Fase 3</div>
+        <div class="fs">5 preguntas<br>bipolares<br>→ boosts</div>
+      </div>
+      <div class="farr">→</div>
+      <div class="fbox" style="background:#dcfce7;border-color:var(--ink);">
+        <div class="ft">Resultado</div>
+        <div class="fs">Top 5 carreras<br>+ universidades<br>argentinas</div>
+      </div>
+    </div>
+
+    <div class="col3">
+      <div class="card" style="padding:.8rem 1rem;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#888;margin-bottom:.3rem;">F1 · DOMINIO</div>
+        <p style="font-size:.85rem;">Detecta cuál de 6 mundos vocacionales atrae más. Reduce el espacio de <strong>90 → ~15 carreras</strong> del dominio.</p>
+        <div style="display:flex;gap:.3rem;margin-top:.5rem;flex-wrap:wrap;font-size:.7rem;">
+          <span class="pill" style="font-size:.68rem;">💻 Tecnología</span>
+          <span class="pill" style="font-size:.68rem;">🔬 Ciencias</span>
+          <span class="pill" style="font-size:.68rem;">🏥 Salud</span>
+        </div>
+      </div>
+      <div class="card y" style="padding:.8rem 1rem;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#888;margin-bottom:.3rem;">F2 · VECTOR RIASEC</div>
+        <p style="font-size:.85rem;">Comparación forzada entre actividades de distinta dimensión RIASEC. <strong>Comparar es más discriminativo que evaluar.</strong></p>
+        <div style="margin-top:.5rem;display:flex;gap:.3rem;flex-wrap:wrap;">
+          <span class="pill v" style="font-size:.68rem;">Desarrollar IA</span>
+          <span class="pill" style="font-size:.68rem;">Diseñar UX</span>
+          <span class="pill l" style="font-size:.68rem;">Armar redes</span>
+        </div>
+      </div>
+      <div class="card l" style="padding:.8rem 1rem;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:#555;margin-bottom:.3rem;">F3 · VALORES</div>
+        <p style="font-size:.85rem;">Dos carreras con igual RIASEC pueden diferir en contexto. La escala bipolar captura <strong>valores laborales</strong>.</p>
+        <div style="margin-top:.5rem;font-size:.8rem;background:rgba(0,0,0,.06);border-radius:6px;padding:.4rem .6rem;">
+          ← Autónomo &nbsp; 1·2·3·4·5 &nbsp; En equipo →
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 7 · El motor de inferencia ════════════════════════════════ -->
+<div class="slide" id="s7"
+  data-sec="Versión actual" data-seccls="sec-act"
+  data-al="Alumno 4"
+  data-notes="ALUMNO 4 — Explicar el vector pairwise, el scoring híbrido y los boosts. El radar SVG muestra un ejemplo visual de cómo el perfil del usuario (violeta) se compara con una carrera (lima). El peso 0.3/0.7 se calibró con Monte Carlo: el coseno está comprimido en el ortante positivo 1-5.">
+
+  <div class="slide-top">
+    <div class="slide-head">
+      <span class="slide-section sec-act">Versión actual</span>
+      <span class="slide-num">07 / 10</span>
+    </div>
+    <h2>El motor de inferencia</h2>
+    <div class="div"></div>
+  </div>
+
+  <div class="body col32" style="gap:1.6rem;align-items:stretch;">
+    <div style="display:flex;flex-direction:column;gap:.9rem;justify-content:center;">
+
+      <div class="card y" style="padding:.8rem 1rem;">
+        <div style="font-weight:800;font-size:.9rem;margin-bottom:.3rem;">Vector RIASEC del usuario (Fase 2)</div>
+        <div class="fml" style="font-size:.78rem;">score<sub>d</sub> = 1 + (victorias<sub>d</sub> / apariciones<sub>d</sub>) × 4</div>
+        <p style="font-size:.8rem;margin-top:.35rem;">Proporción de veces que el usuario eligió cada dimensión → rango [1, 5]</p>
+      </div>
+
+      <div class="card v" style="padding:.8rem 1rem;">
+        <div style="font-weight:800;font-size:.9rem;margin-bottom:.3rem;">Scoring híbrido</div>
+        <div class="fml" style="font-size:.82rem;">score = 0.3 × coseno + 0.7 × pearson</div>
+        <p style="font-size:.8rem;margin-top:.35rem;"><b>Coseno:</b> alineación de intensidad. <b>Pearson:</b> similitud de forma — invariante al sesgo de escala del usuario. Peso calibrado por Monte Carlo.</p>
+      </div>
+
+      <div class="card l" style="padding:.8rem 1rem;">
+        <div style="font-weight:800;font-size:.9rem;margin-bottom:.3rem;">Boosts de Fase 3</div>
+        <div class="fml" style="font-size:.82rem;">factor = (respuesta − 3) / 2 → [−1, +1]</div>
+        <p style="font-size:.8rem;margin-top:.35rem;">Respuesta extrema = boost máximo. Respuesta neutral = sin boost. Continuo y proporcional.</p>
+      </div>
+    </div>
+
+    <div class="hcenter">
+      <div style="font-size:.72rem;font-family:'JetBrains Mono',monospace;color:#888;margin-bottom:.4rem;text-align:center;">PERFIL USUARIO vs CARRERA</div>
+      <svg id="radar" viewBox="0 0 280 280" width="220" height="220" style="display:block;"></svg>
+      <div style="display:flex;gap:1rem;margin-top:.5rem;font-size:.72rem;font-family:'JetBrains Mono',monospace;">
+        <div style="display:flex;align-items:center;gap:.3rem;">
+          <div style="width:12px;height:4px;background:var(--violet);border:1px solid var(--ink);border-radius:2px;"></div>
+          <span>Usuario</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:.3rem;">
+          <div style="width:12px;height:4px;background:var(--lime);border:1px solid var(--ink);border-radius:2px;"></div>
+          <span>Carrera</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 8 · ¿Cómo sabemos que funciona? ═══════════════════════════ -->
+<div class="slide" id="s8"
+  data-sec="Versión actual" data-seccls="sec-act"
+  data-al="Alumno 5"
+  data-notes="ALUMNO 5 — Mostrar que el sistema fue validado con rigor. 15 tests automáticos que se corren en segundos. La simulación Monte Carlo permitió calibrar el peso del coseno y verificar que las recomendaciones se distribuyen bien entre el catálogo. El caso Instrumentadora es el ejemplo más concreto de edge case resuelto.">
+
+  <div class="slide-top">
+    <div class="slide-head">
+      <span class="slide-section sec-act">Versión actual</span>
+      <span class="slide-num">08 / 10</span>
+    </div>
+    <h2>¿Cómo sabemos que funciona?</h2>
+    <div class="div"></div>
+  </div>
+
+  <div class="body col2" style="align-items:stretch;gap:1.4rem;">
+    <div style="display:flex;flex-direction:column;gap:.8rem;">
+      <div class="card l" style="text-align:center;padding:1.2rem;">
+        <div style="font-family:'Archivo Black',sans-serif;font-size:3.2rem;line-height:1;">15/15</div>
+        <div style="font-size:.88rem;font-weight:700;margin-top:.3rem;">tests pasando</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.72rem;color:#555;margin-top:.3rem;">python tests/test_perfiles.py</div>
+      </div>
+      <div class="tl">
+        <div class="tl-row"><div class="tl-dot ok">✓</div><div class="tl-body"><h4>Perfiles arquetípicos</h4><p>Social → salud/educación · Artístico → arte · Realista → ingeniería</p></div></div>
+        <div class="tl-row"><div class="tl-dot ok">✓</div><div class="tl-body"><h4>Motor híbrido</h4><p>Coseno ≠ Pearson · sin colisiones · desempate neutral · sin score³</p></div></div>
+        <div class="tl-row"><div class="tl-dot ok">✓</div><div class="tl-body"><h4>Tríadas pairwise</h4><p>Dimensión ganadora → 5.0 · dimensión ausente → neutro 3.0</p></div></div>
+        <div class="tl-row"><div class="tl-dot ok">✓</div><div class="tl-body"><h4>Edge cases</h4><p>Perfil plano · extremo · multipotencial (R+S opuestos)</p></div></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:.9rem;justify-content:center;">
+      <div class="card v">
+        <h3>Simulación Monte Carlo</h3>
+        <p>500 perfiles sintéticos × 3 escenarios. Permitió calibrar <b>PESO_COSENO = 0.3</b> y verificar que el sistema distribuye bien entre las 90 carreras.</p>
+        <div style="display:flex;gap:.4rem;margin-top:.6rem;flex-wrap:wrap;">
+          <span class="pill k" style="font-size:.68rem;">Aleatorio</span>
+          <span class="pill" style="font-size:.68rem;">Arquetípico</span>
+          <span class="pill" style="font-size:.68rem;">Neutro</span>
+        </div>
+      </div>
+      <div class="card r">
+        <h3>Caso concreto: la Instrumentadora</h3>
+        <p>Perfil R+C alto. Motor anterior: <b>Martillero Público</b> en Top-3. Motor actual: <b>Instrumentación Quirúrgica #1</b>, Salud domina el Top-5, comerciales fuera del Top-20.</p>
+      </div>
+      <div style="display:flex;gap:.9rem;">
+        <div class="card" style="flex:1;text-align:center;padding:.7rem;">
+          <div style="font-family:'Archivo Black',sans-serif;font-size:1.8rem;">68</div>
+          <div style="font-size:.72rem;color:#666;">carreras distintas en Top-1</div>
+        </div>
+        <div class="card" style="flex:1;text-align:center;padding:.7rem;">
+          <div style="font-family:'Archivo Black',sans-serif;font-size:1.8rem;">7</div>
+          <div style="font-size:.72rem;color:#666;">carreras huérfanas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 9 · Lo que recibe el usuario ══════════════════════════════ -->
+<div class="slide" id="s9"
+  data-sec="Resultado" data-seccls="sec-res"
+  data-al="Alumno 5"
+  data-notes="ALUMNO 5 — Mostrar el sistema en vivo si es posible. Señalar cada elemento de la tarjeta: posición, nombre, área, código Holland (3 letras dominantes), duración y % de afinidad. Al expandir: universidades argentinas con ciudad, radar comparativo y datos O*NET. Mencionar que todo corre sin servidor.">
+
+  <div class="slide-top">
+    <div class="slide-head">
+      <span class="slide-section sec-res">Resultado</span>
+      <span class="slide-num">09 / 10</span>
+    </div>
+    <h2>Lo que recibe el usuario</h2>
+    <div class="div"></div>
+  </div>
+
+  <div class="body col2" style="align-items:stretch;gap:1.4rem;">
+    <div style="display:flex;flex-direction:column;gap:.7rem;justify-content:center;">
+      <div class="card v" style="padding:.85rem 1rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:.75rem;color:#555;">#01</div>
+            <div style="font-weight:800;font-size:1.05rem;">Ingeniería en Sistemas</div>
+            <div style="font-size:.78rem;color:#555;margin-top:.15rem;">Ingeniería y Tecnología &nbsp;·&nbsp; <b>RIC</b> &nbsp;·&nbsp; 🎓 4-6 años</div>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:1.9rem;font-weight:800;">87%</div>
+        </div>
+      </div>
+      <div class="card" style="padding:.85rem 1rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:.75rem;color:#555;">#02</div>
+            <div style="font-weight:800;font-size:1.05rem;">Ciencia de Datos ✦</div>
+            <div style="font-size:.78rem;color:#555;margin-top:.15rem;">Ingeniería y Tecnología &nbsp;·&nbsp; <b>IRC</b> &nbsp;·&nbsp; 🎓 4-6 años</div>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:1.9rem;font-weight:800;">81%</div>
+        </div>
+      </div>
+      <div class="card" style="padding:.85rem 1rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:.75rem;color:#555;">#03</div>
+            <div style="font-weight:800;font-size:1.05rem;">Lic. en Computación</div>
+            <div style="font-size:.78rem;color:#555;margin-top:.15rem;">Ciencias Exactas &nbsp;·&nbsp; <b>ICA</b> &nbsp;·&nbsp; 🎓 4-6 años</div>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:1.9rem;font-weight:800;">76%</div>
+        </div>
+      </div>
+      <div class="card l" style="padding:.6rem 1rem;font-size:.8rem;">
+        <b>✦</b> = ajuste de Fase 3 (boosts de valores aplicados)
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:.8rem;justify-content:center;">
+      <div style="font-weight:700;font-size:.85rem;color:#777;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em;">Al expandir cada tarjeta</div>
+      <div class="card" style="padding:.9rem 1rem;">
+        <h3 style="margin-bottom:.5rem;">🏛 Dónde estudiarla</h3>
+        <div style="font-size:.83rem;display:flex;flex-direction:column;gap:.2rem;">
+          <div style="display:flex;justify-content:space-between;"><span><b>UBA – FIUBA</b></span><span style="color:#666;">Buenos Aires</span></div>
+          <div style="display:flex;justify-content:space-between;"><span><b>UTN</b></span><span style="color:#666;">Múltiples sedes</span></div>
+          <div style="display:flex;justify-content:space-between;"><span><b>UNLP</b></span><span style="color:#666;">La Plata</span></div>
+          <div style="display:flex;justify-content:space-between;"><span><b>UNC</b></span><span style="color:#666;">Córdoba</span></div>
+        </div>
+      </div>
+      <div class="card v" style="padding:.9rem 1rem;">
+        <h3 style="margin-bottom:.3rem;">📊 Radar comparativo</h3>
+        <p>Perfil del usuario vs perfil RIASEC de la carrera. Muestra visualmente cuánto se superponen.</p>
+      </div>
+      <div class="card l" style="padding:.7rem 1rem;font-size:.83rem;">
+        <b>Sin servidor · sin datos guardados.</b> Todo desaparece al cerrar la pestaña.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 10 · Aprendizajes y próximos pasos ════════════════════════ -->
+<div class="slide" id="s10"
+  data-sec="Conclusiones" data-seccls="sec-conc"
+  data-al="Alumno 6"
+  data-notes="ALUMNO 6 — Cerrar con los tres aprendizajes metodológicos más importantes. Después mencionar el editor mode como trabajo futuro. El mensaje final: el proceso iterativo y la validación con datos reales son tan importantes como el sistema terminado.">
+
+  <div class="slide-top">
+    <div class="slide-head">
+      <span class="slide-section sec-conc">Conclusiones</span>
+      <span class="slide-num">10 / 10</span>
+    </div>
+    <h2>Aprendizajes y próximos pasos</h2>
+    <div class="div"></div>
+  </div>
+
+  <div class="body col2" style="align-items:stretch;gap:1.4rem;">
+    <div style="display:flex;flex-direction:column;gap:.8rem;">
+      <div style="font-weight:700;font-size:.8rem;font-family:'JetBrains Mono',monospace;color:#888;text-transform:uppercase;letter-spacing:.08em;">Lo que aprendimos</div>
+      <div class="card v" style="padding:.85rem 1rem;">
+        <div style="display:flex;gap:.7rem;align-items:flex-start;">
+          <div style="font-size:1.6rem;flex-shrink:0;">🏗</div>
+          <div><div style="font-weight:800;margin-bottom:.2rem;">Estructura &gt; Cantidad</div>
+          <div style="font-size:.85rem;color:#444;">33 preguntas bien estructuradas superan a 50 genéricas. El problema nunca fue cuántos datos, sino cómo organizarlos.</div></div>
+        </div>
+      </div>
+      <div class="card y" style="padding:.85rem 1rem;">
+        <div style="display:flex;gap:.7rem;align-items:flex-start;">
+          <div style="font-size:1.6rem;flex-shrink:0;">⚖️</div>
+          <div><div style="font-weight:800;margin-bottom:.2rem;">Comparar &gt; Evaluar</div>
+          <div style="font-size:.85rem;color:#444;">Las tríadas pairwise dan más información que Likert. Elegir entre opciones es más discriminativo que poner un número en absoluto.</div></div>
+        </div>
+      </div>
+      <div class="card l" style="padding:.85rem 1rem;">
+        <div style="display:flex;gap:.7rem;align-items:flex-start;">
+          <div style="font-size:1.6rem;flex-shrink:0;">🔬</div>
+          <div><div style="font-weight:800;margin-bottom:.2rem;">Validar con datos reales</div>
+          <div style="font-size:.85rem;color:#444;">Monte Carlo detectó el bug del Martillero Público. Sin esa simulación, el sistema hubiera quedado con un sesgo invisible.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:.8rem;">
+      <div style="font-weight:700;font-size:.8rem;font-family:'JetBrains Mono',monospace;color:#888;text-transform:uppercase;letter-spacing:.08em;">Próximos pasos</div>
+      <div class="card k" style="padding:.85rem 1rem;flex:1;">
+        <div style="display:flex;flex-direction:column;gap:.6rem;">
+          <div style="display:flex;gap:.7rem;align-items:center;">
+            <div style="font-size:1.2rem;">📝</div>
+            <div><div style="font-weight:700;font-size:.9rem;">Editor de conocimiento</div><div style="font-size:.8rem;color:#ccc;">Agregar carreras y preguntas sin tocar código</div></div>
+          </div>
+          <div style="display:flex;gap:.7rem;align-items:center;">
+            <div style="font-size:1.2rem;">⚖️</div>
+            <div><div style="font-weight:700;font-size:.9rem;">Calibrador visual</div><div style="font-size:.8rem;color:#ccc;">Ajustar pesos y ver el impacto en tiempo real</div></div>
+          </div>
+          <div style="display:flex;gap:.7rem;align-items:center;">
+            <div style="font-size:1.2rem;">🧪</div>
+            <div><div style="font-weight:700;font-size:.9rem;">Simulador de perfiles</div><div style="font-size:.8rem;color:#ccc;">Probar cambios antes de publicarlos</div></div>
+          </div>
+          <div style="display:flex;gap:.7rem;align-items:center;">
+            <div style="font-size:1.2rem;">📊</div>
+            <div><div style="font-weight:700;font-size:.9rem;">Dashboard analítico</div><div style="font-size:.8rem;color:#ccc;">Ver distribución de dominios y carreras recomendadas</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="card l" style="padding:.75rem 1rem;text-align:center;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:700;">localhost:8501</div>
+        <div style="font-size:.78rem;color:#555;margin-top:.2rem;">python -m streamlit run app.py</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /deck -->
+
+<div id="nav">
+  <button class="nb" onclick="go(-1)">←</button>
+  <span id="cnt">1 / 10</span>
+  <button class="nb" onclick="go(1)">→</button>
+</div>
+
+<div id="notes"></div>
+
+<script>
+/* ── RADAR SVG ────────────────────────────────── */
+(function() {
+  const svg   = document.getElementById('radar');
+  const cx = 140, cy = 140, maxR = 105, gridLevels = 4;
+  const dims  = ['R','I','A','S','E','C'];
+  const angles = dims.map((_,i) => (90 - i*60) * Math.PI / 180);
+
+  function polar(val, i) {
+    const r = ((val-1)/4) * maxR;
+    return [cx + r*Math.cos(angles[i]), cy - r*Math.sin(angles[i])];
+  }
+
+  function polyPoints(vals) {
+    return vals.map((v,i) => polar(v,i).join(',')).join(' ');
+  }
+
+  for (let l = 1; l <= gridLevels; l++) {
+    const r = (l/gridLevels) * maxR;
+    const pts = dims.map((_,i) => {
+      const x = cx + r*Math.cos(angles[i]);
+      const y = cy - r*Math.sin(angles[i]);
+      return `${x},${y}`;
+    }).join(' ');
+    const poly = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+    poly.setAttribute('points', pts);
+    poly.setAttribute('fill','none');
+    poly.setAttribute('stroke','rgba(17,17,17,0.1)');
+    poly.setAttribute('stroke-width','1');
+    svg.appendChild(poly);
+  }
+
+  dims.forEach((_,i) => {
+    const [x2,y2] = [cx + maxR*Math.cos(angles[i]), cy - maxR*Math.sin(angles[i])];
+    const line = document.createElementNS('http://www.w3.org/2000/svg','line');
+    line.setAttribute('x1',cx); line.setAttribute('y1',cy);
+    line.setAttribute('x2',x2); line.setAttribute('y2',y2);
+    line.setAttribute('stroke','rgba(17,17,17,0.15)'); line.setAttribute('stroke-width','1');
+    svg.appendChild(line);
+  });
+
+  const user    = [3.8, 4.9, 2.1, 2.5, 3.0, 4.2];
+  const carrera = [3.3, 4.5, 2.0, 2.2, 2.8, 4.6];
+
+  [[carrera,'rgba(198,255,77,0.45)','#c6ff4d'],
+   [user,   'rgba(196,181,253,0.5)','#c4b5fd']].forEach(([vals,fill,stroke]) => {
+    const poly = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+    poly.setAttribute('points', polyPoints(vals));
+    poly.setAttribute('fill', fill);
+    poly.setAttribute('stroke', stroke);
+    poly.setAttribute('stroke-width','2.5');
+    svg.appendChild(poly);
+  });
+
+  dims.forEach((_,i) => {
+    const labelR = maxR + 18;
+    const x = cx + labelR*Math.cos(angles[i]);
+    const y = cy - labelR*Math.sin(angles[i]);
+    const t = document.createElementNS('http://www.w3.org/2000/svg','text');
+    t.setAttribute('x', x); t.setAttribute('y', y);
+    t.setAttribute('text-anchor','middle');
+    t.setAttribute('dominant-baseline','middle');
+    t.setAttribute('font-size','9.5');
+    t.setAttribute('font-weight','700');
+    t.setAttribute('font-family','JetBrains Mono, monospace');
+    t.setAttribute('fill','#333');
+    t.textContent = dims[i];
+    svg.appendChild(t);
+  });
+})();
+
+/* ── SLIDES ───────────────────────────────────── */
+const slides = Array.from(document.querySelectorAll('.slide'));
+const cnt    = document.getElementById('cnt');
+const prog   = document.getElementById('prog');
+const notes  = document.getElementById('notes');
+let cur = 0, notesOpen = false;
+
+slides.forEach(() => {
+  const s = document.createElement('div'); s.className = 'ps'; prog.appendChild(s);
+});
+
+function show(n) {
+  slides[cur].classList.remove('active');
+  cur = Math.max(0, Math.min(slides.length-1, n));
+  slides[cur].classList.add('active');
+  cnt.textContent = `${cur+1} / ${slides.length}`;
+  document.querySelectorAll('.ps').forEach((s,i) => {
+    s.className = 'ps' + (i<cur?' done':i===cur?' active':'');
+  });
+  if (notesOpen) {
+    notes.innerHTML = `<b>[ ${slides[cur].dataset.al || ''} ]</b> ${slides[cur].dataset.notes || ''}`;
+  }
+}
+
+function go(d) { show(cur+d); }
+
+document.addEventListener('keydown', e => {
+  if (['ArrowRight','ArrowDown',' '].includes(e.key)) { go(1); e.preventDefault(); }
+  if (['ArrowLeft','ArrowUp'].includes(e.key))        { go(-1); e.preventDefault(); }
+  if (e.key==='n'||e.key==='N') {
+    notesOpen = !notesOpen;
+    notes.classList.toggle('show', notesOpen);
+    if (notesOpen) notes.innerHTML = `<b>[ ${slides[cur].dataset.al||''} ]</b> ${slides[cur].dataset.notes||''}`;
+  }
+  if (e.key==='Home') { show(0); e.preventDefault(); }
+  if (e.key==='End')  { show(slides.length-1); e.preventDefault(); }
+});
+
+document.getElementById('deck').addEventListener('click', e => {
+  if (!e.target.closest('button,a,#nav')) go(1);
+});
+
+show(0);
+</script>
+</body>
+</html>

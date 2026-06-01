@@ -645,7 +645,7 @@ def pantalla_resultados():
             alt = dur_label["grado" if pref_dur == "tecnicatura" else "tecnicatura"]
             with st.expander(f"Ver también: {alt}"):
                 for i, c in enumerate(otra[:5], 1):
-                    st.markdown(f"**{i}.** {c['nombre']} — `{c['afinidad_pct']}%`")
+                    tarjeta_recomendacion(c, posicion=i)
 
     st.markdown("---")
     scores    = calcular_scores()
