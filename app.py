@@ -17,6 +17,7 @@ import streamlit as st
 from engine.inference import (
     DIMENSIONES_RIASEC,
     calcular_vector_pairwise,
+    get_peso_coseno,
     ranking_carreras,
     seleccionar_pathway,
     aplicar_boosts_f3,
@@ -42,6 +43,7 @@ ETAPA_F2          = "f2"
 ETAPA_TRANS_F3    = "trans_f3"
 ETAPA_F3          = "f3"
 ETAPA_RESULTADOS  = "resultados"
+ETAPA_EDITOR      = "editor"
 
 CLAVES_SESION = (
     "etapa",
@@ -163,6 +165,15 @@ usando el estándar **O\\*NET** y el modelo **RIASEC** de Holland.
         st.session_state["idx"]   = 0
         st.session_state["resp_f1"] = {}
         ir_a(ETAPA_F1)
+
+    st.markdown("&nbsp;")
+    st.markdown(
+        "<div style='text-align:center'>",
+        unsafe_allow_html=True,
+    )
+    if st.button("⚙ Panel de administración", type="secondary", use_container_width=False):
+        ir_a(ETAPA_EDITOR)
+    st.markdown("</div>", unsafe_allow_html=True)
 
 
 # ── FASE 1 ───────────────────────────────────────────────────────
@@ -429,7 +440,7 @@ def _finalizar_f2():
 
 # ── TRANSICIÓN F3 — muestra perfil detectado ─────────────────────
 def pantalla_trans_f3():
-    render_header(is_quiz=True)
+    render_header()
     pathway = st.session_state.get("pathway_activo")
     if not pathway:
         _init_f3()
@@ -454,38 +465,39 @@ def pantalla_trans_f3():
         unsafe_allow_html=True,
     )
 
-    col_riasec, col_pathway = st.columns([1.4, 1], gap="large")
+    with st.container(key="trans_f3_layout"):
+        col_riasec, col_pathway = st.columns([1.4, 1], gap="large")
 
-    with col_riasec:
-        st.markdown("##### Tu perfil RIASEC")
-        if vector:
-            fig = radar_chart_riasec(vector, titulo="")
-            st.plotly_chart(fig, use_container_width=True,
-                            config={"scrollZoom": False, "displayModeBar": False,
-                                    "doubleClick": False})
+        with col_riasec:
+            st.markdown("##### Tu perfil RIASEC")
+            if vector:
+                fig = radar_chart_riasec(vector, titulo="")
+                st.plotly_chart(fig, use_container_width=True,
+                                config={"scrollZoom": False, "displayModeBar": False,
+                                        "doubleClick": False})
 
-    with col_pathway:
-        st.markdown("##### Tu perfil detectado")
-        st.markdown(
-            f"""<div style="padding:1.2rem 1.4rem;border:3px solid var(--ink);
-                border-radius:12px;background:var(--violet);
-                box-shadow:5px 5px 0px var(--ink);margin-bottom:1rem;">
-                <div style="font-size:1.1rem;font-weight:800;margin-bottom:0.35rem;">
-                    ✦ {pathway['nombre']}
-                </div>
-                <div style="font-size:0.9rem;line-height:1.5;">
-                    {pathway['descripcion']}
-                </div>
-            </div>""",
-            unsafe_allow_html=True,
-        )
-        st.markdown(
-            "Las **5 preguntas** de la Fase 3 están diseñadas "
-            "específicamente para este perfil y afinarán el ranking final."
-        )
-        st.markdown("&nbsp;")
-        if st.button("Comenzar Fase 3 →", type="primary", use_container_width=True):
-            _init_f3()
+        with col_pathway:
+            st.markdown("##### Tu perfil detectado")
+            st.markdown(
+                f"""<div style="padding:1.2rem 1.4rem;border:3px solid var(--ink);
+                    border-radius:12px;background:var(--violet);
+                    box-shadow:5px 5px 0px var(--ink);margin-bottom:1rem;">
+                    <div style="font-size:1.1rem;font-weight:800;margin-bottom:0.35rem;">
+                        ✦ {pathway['nombre']}
+                    </div>
+                    <div style="font-size:0.9rem;line-height:1.5;">
+                        {pathway['descripcion']}
+                    </div>
+                </div>""",
+                unsafe_allow_html=True,
+            )
+            st.markdown(
+                "Las **5 preguntas** de la Fase 3 están diseñadas "
+                "específicamente para este perfil y afinarán el ranking final."
+            )
+            st.markdown("&nbsp;")
+            if st.button("Comenzar Fase 3 →", type="primary", use_container_width=True):
+                _init_f3()
 
 
 def _init_f3():
@@ -760,6 +772,11 @@ def _barra(n, total, label, fase: int = 0):
 # =================================================================
 # ROUTER
 # =================================================================
+def pantalla_editor_wrapper():
+    from ui.editor import pantalla_editor
+    pantalla_editor(reiniciar, ir_a, ETAPA_BIENVENIDA)
+
+
 def main():
     init_session()
     etapa = st.session_state["etapa"]
@@ -771,6 +788,7 @@ def main():
         ETAPA_TRANS_F3:   pantalla_trans_f3,
         ETAPA_F3:         pantalla_f3,
         ETAPA_RESULTADOS: pantalla_resultados,
+        ETAPA_EDITOR:     pantalla_editor_wrapper,
     }
     dispatch.get(etapa, reiniciar)()
 

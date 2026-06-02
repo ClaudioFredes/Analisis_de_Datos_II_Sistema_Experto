@@ -516,17 +516,8 @@ hr {
 /* ---------- 16. Mobile / Responsive ---------- */
 @media (max-width: 640px) {
 
-    /* En mobile las opciones pueden ir en columna para que el texto no se apriete */
-    div[role="radiogroup"] {
-        flex-wrap: wrap !important;
-    }
-    div[role="radiogroup"] > label {
-        flex-shrink: 1;
-        font-size: 0.82rem;
-        padding: 0.4rem 0.5rem;
-    }
-
     /* Reducir padding del bloque central */
+    .block-container,
     [data-testid="stMainBlockContainer"],
     [data-testid="stAppViewBlockContainer"] {
         padding-left: 0.75rem !important;
@@ -536,6 +527,46 @@ hr {
     /* Tipografía reducida */
     h1 { font-size: 2rem !important; }
     h3 { font-size: 1.15rem !important; }
+
+    /* Opciones Likert: wrap y texto más compacto */
+    div[role="radiogroup"] {
+        flex-wrap: wrap !important;
+    }
+    div[role="radiogroup"] > label {
+        flex-shrink: 1;
+        font-size: 0.82rem;
+        padding: 0.4rem 0.5rem;
+        white-space: normal;
+    }
+
+    /* Pairwise triadas (F2): apilar las 3 tarjetas verticalmente */
+    .st-key-pairwise_row [data-testid="stHorizontalBlock"] {
+        flex-direction: column !important;
+    }
+    .st-key-pairwise_row [data-testid="stColumn"] {
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        min-width: 0 !important;
+    }
+    .st-key-pairwise_row .stButton > button {
+        min-height: 80px !important;
+    }
+
+    /* Tarjetas de recomendación: info + radar apilados */
+    [data-testid="stExpander"] [data-testid="stHorizontalBlock"] {
+        flex-direction: column !important;
+    }
+    [data-testid="stExpander"] [data-testid="stColumn"] {
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* Botonera del quiz: forzar horizontal con wrap permitido */
+    .st-key-quiz_actions [data-testid="stHorizontalBlock"] {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+    }
 
     /* Tarjeta de recomendación: wrap en pantallas chicas */
     .recom-inner {
@@ -548,6 +579,16 @@ hr {
         font-size: 1.3rem;
     }
 
+    /* Transición F3 (radar + descripción + botón): apilar en mobile */
+    .st-key-trans_f3_layout [data-testid="stHorizontalBlock"] {
+        flex-direction: column !important;
+    }
+    .st-key-trans_f3_layout [data-testid="stColumn"] {
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        min-width: 0 !important;
+    }
+
     /* Ocultar atajos de teclado (no aplican en mobile) */
     .keyboard-hint { display: none; }
 }
@@ -556,15 +597,19 @@ hr {
 /* 17. LAYOUT DEL TEST — opciones horizontales + botonera abajo   */
 /* ============================================================== */
 
-/* --- 17a. Opciones Likert: fila única, ancho natural, texto en una línea --- */
-div[role="radiogroup"] {
-    flex-wrap: nowrap !important;
-}
+/* --- 17a. Opciones Likert: fila única en desktop, wrap en mobile (ver sección 16) --- */
 div[role="radiogroup"] > label {
     min-height: 46px;
     justify-content: flex-start;
-    white-space: nowrap;
-    flex-shrink: 0;
+}
+@media (min-width: 641px) {
+    div[role="radiogroup"] {
+        flex-wrap: nowrap !important;
+    }
+    div[role="radiogroup"] > label {
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
 }
 
 /* --- 17b. Área de pregunta con altura mínima fija ---
@@ -738,6 +783,54 @@ div[role="radiogroup"] > label {
     .quiz-progress          { padding: 10px 20px; }
     .quiz-progress__label   { font-size: 0.85rem; }
     .quiz-progress__track   { height: 12px; }
+}
+
+/* ---- 19. Tablet (641px – 1024px) ---- */
+@media (min-width: 641px) and (max-width: 1024px) {
+
+    .block-container {
+        max-width: 100% !important;
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+    }
+
+    h1 { font-size: 2.2rem !important; }
+    h3 { font-size: 1.2rem  !important; }
+    .orientai-subtitle      { font-size: 1.15rem; }
+    .orientai-logo-link svg { height: 44px; }
+
+    /* Tarjetas de recomendación: apilar info + radar también en tablet */
+    [data-testid="stExpander"] [data-testid="stHorizontalBlock"] {
+        flex-direction: column !important;
+    }
+    [data-testid="stExpander"] [data-testid="stColumn"] {
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* Pairwise triadas: apilar en tablet también */
+    .st-key-pairwise_row [data-testid="stHorizontalBlock"] {
+        flex-direction: column !important;
+    }
+    .st-key-pairwise_row [data-testid="stColumn"] {
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        min-width: 0 !important;
+    }
+    .st-key-pairwise_row .stButton > button {
+        min-height: 90px !important;
+    }
+
+    /* Transición F3: apilar en tablet también */
+    .st-key-trans_f3_layout [data-testid="stHorizontalBlock"] {
+        flex-direction: column !important;
+    }
+    .st-key-trans_f3_layout [data-testid="stColumn"] {
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        min-width: 0 !important;
+    }
 }
 
 /* ---- 18b. TV 1080p completo / 4K (1920px+) ---- */

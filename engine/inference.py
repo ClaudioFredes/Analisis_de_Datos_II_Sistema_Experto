@@ -36,14 +36,20 @@ Empareja el vector RIASEC del usuario con cada carrera del catálogo.
 
 from __future__ import annotations
 
+import json
 import numpy as np
+from pathlib import Path
 
 # Orden CANÓNICO de las dimensiones. Es CRÍTICO mantenerlo igual en
 # todo el proyecto (vectores, gráficos, JSON) para evitar bugs
 # silenciosos en el emparejamiento.
 DIMENSIONES_RIASEC: tuple[str, ...] = ("R", "I", "A", "S", "E", "C")
 
+_CONFIG_PATH = Path(__file__).resolve().parents[1] / "data" / "config.json"
+_PESO_COSENO_DEFAULT: float = 0.3
+
 # Peso del coseno en el score híbrido (Pearson lleva el complemento).
+# Se carga desde data/config.json; fallback al valor calibrado por Monte Carlo.
 #
 # AUDITORÍA (caso "Instrumentadora", ver tests/test_perfiles.py):
 #   El coseno sobre vectores 1-5 vive SIEMPRE en el ortante positivo, así
@@ -68,7 +74,30 @@ DIMENSIONES_RIASEC: tuple[str, ...] = ("R", "I", "A", "S", "E", "C")
 #   técnico industrial comparte R+C con la instrumentadora) y hunde afines
 #   legítimas (Medicina). La forma (Pearson) ya prioriza el código Holland
 #   de manera robusta, sin ese efecto colateral.
-PESO_COSENO: float = 0.3
+try:
+    PESO_COSENO: float = float(
+        json.loads(_CONFIG_PATH.read_text(encoding="utf-8"))
+        .get("motor", {})
+        .get("peso_coseno", _PESO_COSENO_DEFAULT)
+    )
+except Exception:
+    PESO_COSENO: float = _PESO_COSENO_DEFAULT
+
+
+def get_peso_coseno() -> float:
+    """Lee PESO_COSENO desde config.json en tiempo de ejecución (sin caché).
+
+    Permite que cambios guardados desde el panel admin surtan efecto
+    sin reiniciar el proceso de Python.
+    """
+    try:
+        return float(
+            json.loads(_CONFIG_PATH.read_text(encoding="utf-8"))
+            .get("motor", {})
+            .get("peso_coseno", _PESO_COSENO_DEFAULT)
+        )
+    except Exception:
+        return _PESO_COSENO_DEFAULT
 
 # Umbral de varianza por debajo del cual consideramos que el usuario
 # "respondió todo igual": un perfil plano no contiene preferencia y no

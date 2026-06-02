@@ -19,6 +19,7 @@ import streamlit as st
 from engine.inference import (
     DIMENSIONES_RIASEC,
     PESO_COSENO,
+    get_peso_coseno,
     ranking_carreras,
 )
 from ui.visualizations import (
@@ -26,9 +27,11 @@ from ui.visualizations import (
     radar_chart_riasec,
 )
 
-_DATA      = Path(__file__).resolve().parents[1] / "data"
-_PATH_CAT  = _DATA / "carreras.json"
-_PATH_DOM  = _DATA / "dominios.json"
+_DATA        = Path(__file__).resolve().parents[1] / "data"
+_PATH_CAT    = _DATA / "carreras.json"
+_PATH_DOM    = _DATA / "dominios.json"
+_PATH_PREGS  = _DATA / "preguntas.json"
+_PATH_CFG    = _DATA / "config.json"
 
 _AREAS = [
     "Ingeniería y Tecnología",
@@ -70,6 +73,21 @@ def _guardar_catalogo(data: dict) -> None:
 
 def _cargar_dominios_raw() -> list[dict]:
     return json.loads(_PATH_DOM.read_text(encoding="utf-8"))["dominios"]
+
+def _cargar_preguntas_raw() -> dict:
+    return json.loads(_PATH_PREGS.read_text(encoding="utf-8"))
+
+def _guardar_preguntas(data: dict) -> None:
+    _PATH_PREGS.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
+def _cargar_config() -> dict:
+    try:
+        return json.loads(_PATH_CFG.read_text(encoding="utf-8"))
+    except Exception:
+        return {"motor": {"peso_coseno": 0.3}}
+
+def _guardar_config(data: dict) -> None:
+    _PATH_CFG.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 
 def _vector_from_state(prefix: str) -> dict[str, float]:
     return {d: float(st.session_state.get(f"{prefix}_{d}", 3.0)) for d in DIMENSIONES_RIASEC}
@@ -134,15 +152,16 @@ def _tab_simulador() -> None:
 # TAB 2 · Calibrador de pesos
 # =================================================================
 def _tab_calibrador() -> None:
+    peso_config = get_peso_coseno()
     st.markdown("### Calibrador de PESO_COSENO")
     st.caption(
-        f"El peso actual en producción es **{PESO_COSENO}** (calibrado por Monte Carlo). "
-        "Modificalo aquí para explorar el impacto en el ranking antes de aplicarlo."
+        f"El peso actual en config.json es **{peso_config}** (calibrado por Monte Carlo). "
+        "Modificalo aquí para explorar el impacto en el ranking antes de guardarlo en Variables."
     )
 
     peso_nuevo = st.slider(
         "PESO_COSENO (peso del coseno en el score híbrido)",
-        0.0, 0.5, PESO_COSENO, 0.05,
+        0.0, 0.5, peso_config, 0.05,
         key="cal_peso",
         help="0 = solo Pearson (forma del perfil) · 0.5 = partes iguales",
     )
@@ -151,7 +170,7 @@ def _tab_calibrador() -> None:
     col_a, col_b, col_c = st.columns(3)
     col_a.metric("Peso Coseno", f"{peso_nuevo:.2f}")
     col_b.metric("Peso Pearson", f"{1 - peso_nuevo:.2f}")
-    col_c.metric("Δ vs producción", f"{peso_nuevo - PESO_COSENO:+.2f}")
+    col_c.metric("Δ vs config.json", f"{peso_nuevo - peso_config:+.2f}")
 
     st.markdown("---")
 
@@ -160,7 +179,7 @@ def _tab_calibrador() -> None:
     vector = {d: float(v) for d, v in _PERFILES_PRUEBA[perfil_sel].items()}
 
     raw = _cargar_catalogo_raw()["carreras"]
-    rk_actual = ranking_carreras(vector, raw, PESO_COSENO)
+    rk_actual = ranking_carreras(vector, raw, peso_config)
     rk_nuevo  = ranking_carreras(vector, raw, peso_nuevo)
 
     ids_actual = [c["id"] for c in rk_actual[:10]]
@@ -168,7 +187,7 @@ def _tab_calibrador() -> None:
 
     col_act, col_new = st.columns(2)
     with col_act:
-        st.markdown(f"**Producción** · `PESO_COSENO = {PESO_COSENO}`")
+        st.markdown(f"**Config actual** · `PESO_COSENO = {peso_config}`")
         for i, c in enumerate(rk_actual[:10], 1):
             salida = "🔴 " if c["id"] not in ids_nuevo else ""
             st.markdown(f"`{i:02d}` {salida}{c['nombre']} `{c['afinidad_pct']}%`")
@@ -180,11 +199,14 @@ def _tab_calibrador() -> None:
             st.markdown(f"`{i:02d}` {entrada}{c['nombre']} `{c['afinidad_pct']}%`")
 
     st.markdown("---")
-    if peso_nuevo != PESO_COSENO:
-        st.info("Para aplicar este valor permanentemente, modificá la línea en `engine/inference.py`:")
-        st.code(f"PESO_COSENO: float = {peso_nuevo}", language="python")
+    if peso_nuevo != peso_config:
+        st.info(
+            "Para guardar este valor permanentemente, usá el tab **🔧 Variables del sistema**. "
+            "También podés copiar directamente:"
+        )
+        st.code(f'{{"motor": {{"peso_coseno": {peso_nuevo}}}}}', language="json")
     else:
-        st.success("El peso actual coincide con el valor en producción.")
+        st.success("El peso explorado coincide con el valor en `data/config.json`.")
 
 
 # =================================================================
@@ -322,6 +344,250 @@ def _tab_carreras() -> None:
 
 
 # =================================================================
+# TAB 4 · Variables del sistema
+# =================================================================
+def _tab_variables() -> None:
+    st.markdown("### Variables del sistema")
+    st.caption(
+        "Editá los parámetros del motor y los pesos del banco de preguntas. "
+        "Todos los cambios se persisten en los archivos JSON correspondientes."
+    )
+
+    # ── Sección 1: Motor de inferencia ──────────────────────────────
+    with st.expander("⚙ Motor de inferencia — PESO_COSENO", expanded=True):
+        st.markdown(
+            "El **score híbrido** combina similitud coseno y correlación de Pearson. "
+            "`PESO_COSENO` controla qué fracción corresponde al coseno; "
+            "el resto (complemento) va a Pearson."
+        )
+        cfg = _cargar_config()
+        peso_actual = float(cfg.get("motor", {}).get("peso_coseno", 0.3))
+
+        col_m1, col_m2, col_m3 = st.columns(3)
+        col_m1.metric("Valor en producción", f"{PESO_COSENO:.2f}", help="Cargado al iniciar el módulo")
+        col_m2.metric("Valor en config.json", f"{peso_actual:.2f}")
+        col_m3.metric("Valor Monte Carlo óptimo", "0.30")
+
+        nuevo_peso = st.slider(
+            "Nuevo PESO_COSENO",
+            0.0, 0.5, peso_actual, 0.05,
+            key="var_peso_coseno",
+            help="0 = solo Pearson · 0.5 = partes iguales",
+        )
+        col_a, col_b = st.columns(2)
+        col_a.markdown(f"Peso coseno: **{nuevo_peso:.2f}**")
+        col_b.markdown(f"Peso Pearson: **{1 - nuevo_peso:.2f}**")
+
+        if st.button("💾 Guardar PESO_COSENO", key="var_save_motor", type="primary"):
+            cfg.setdefault("motor", {})["peso_coseno"] = round(nuevo_peso, 4)
+            _guardar_config(cfg)
+            st.success(
+                f"✓ PESO_COSENO = {nuevo_peso:.2f} guardado en `data/config.json`. "
+                "Recargá la página para que el motor lo tome."
+            )
+
+    # ── Sección 2: Pesos Fase 1 (detección de dominio) ───────────────
+    with st.expander("🔢 Pesos Fase 1 — Detección de dominio"):
+        st.markdown(
+            "Estas 18 preguntas detectan el dominio vocacional del usuario (Likert 1–5). "
+            "La **ponderación** multiplica la respuesta antes de promediar por dominio."
+        )
+        pdata = _cargar_preguntas_raw()
+        pf1   = pdata.get("preguntas_fase1", [])
+
+        dominios_f1 = sorted({p.get("dominio", "?") for p in pf1})
+        dom_filter  = st.selectbox("Filtrar por dominio", ["Todos"] + dominios_f1, key="var_f1_dom")
+
+        cambios_f1: dict[str, float] = {}
+
+        for p in pf1:
+            if dom_filter != "Todos" and p.get("dominio") != dom_filter:
+                continue
+            col_id, col_texto, col_pond = st.columns([0.9, 3.5, 1.1])
+            col_id.markdown(f"`{p['id']}`")
+            col_id.caption(p.get("dominio", ""))
+            col_texto.markdown(p["pregunta"][:120] + ("…" if len(p["pregunta"]) > 120 else ""))
+            pond = col_pond.number_input(
+                "Pond.",
+                min_value=0.1, max_value=5.0,
+                value=float(p.get("ponderacion", 1.0)),
+                step=0.1,
+                key=f"var_f1_{p['id']}",
+                label_visibility="collapsed",
+            )
+            cambios_f1[p["id"]] = pond
+
+        if st.button("💾 Guardar pesos Fase 1", key="var_save_f1", type="primary"):
+            for p in pdata["preguntas_fase1"]:
+                if p["id"] in cambios_f1:
+                    p["ponderacion"] = round(cambios_f1[p["id"]], 4)
+            _guardar_preguntas(pdata)
+            st.cache_data.clear()
+            st.success("✓ Pesos Fase 1 guardados en `data/preguntas.json`.")
+
+    # ── Sección 3: Pesos Fase 2 (RIASEC por dominio) ─────────────────
+    with st.expander("🔢 Pesos Fase 2 — Preguntas RIASEC por dominio"):
+        st.markdown(
+            "Estas preguntas construyen el vector RIASEC del usuario (Fase 2, Likert 1–5). "
+            "La **ponderación** actúa como peso en el promedio ponderado por dimensión."
+        )
+        pdata2       = _cargar_preguntas_raw()
+        pdoms        = pdata2.get("preguntas_por_dominio", {})
+        dom_ids_f2   = list(pdoms.keys())
+        dom_sel_f2   = st.selectbox("Dominio", dom_ids_f2, key="var_f2_dom",
+                                    format_func=lambda x: x.capitalize())
+
+        pregs_dom    = pdoms.get(dom_sel_f2, [])
+        dims_disp    = sorted({p.get("dimension", "?") for p in pregs_dom})
+        dim_filter   = st.selectbox("Filtrar dimensión", ["Todas"] + dims_disp, key="var_f2_dim")
+
+        cambios_f2: dict[str, float] = {}
+
+        for p in pregs_dom:
+            if dim_filter != "Todas" and p.get("dimension") != dim_filter:
+                continue
+            col_id, col_dim, col_texto, col_pond = st.columns([0.85, 0.4, 3.5, 1.0])
+            col_id.markdown(f"`{p['id']}`")
+            col_dim.markdown(f"**{p.get('dimension','')}**")
+            col_texto.markdown(p["pregunta"][:110] + ("…" if len(p["pregunta"]) > 110 else ""))
+            pond = col_pond.number_input(
+                "Pond.",
+                min_value=0.1, max_value=5.0,
+                value=float(p.get("ponderacion", 1.0)),
+                step=0.1,
+                key=f"var_f2_{p['id']}",
+                label_visibility="collapsed",
+            )
+            cambios_f2[p["id"]] = pond
+
+        if st.button("💾 Guardar pesos Fase 2", key="var_save_f2", type="primary"):
+            for p in pdata2["preguntas_por_dominio"].get(dom_sel_f2, []):
+                if p["id"] in cambios_f2:
+                    p["ponderacion"] = round(cambios_f2[p["id"]], 4)
+            _guardar_preguntas(pdata2)
+            st.cache_data.clear()
+            st.success(f"✓ Pesos Fase 2 — {dom_sel_f2} guardados.")
+
+    # ── Sección 4: Boosts Fase 3 ─────────────────────────────────────
+    with st.expander("🎯 Boosts Fase 3 — Ajuste fino por pathway"):
+        st.markdown(
+            "Cada pregunta bipolar de Fase 3 tiene dos mapas de boosts: "
+            "`polo_a` (respuesta 1–2) y `polo_b` (respuesta 4–5). "
+            "Cada entrada es `carrera_id → valor_boost`. "
+            "Editá valores o agregá/eliminá carreras."
+        )
+        pdata3   = _cargar_preguntas_raw()
+        f3_doms  = pdata3.get("fase3_por_dominio", {})
+        dom_ids3 = list(f3_doms.keys())
+
+        if not dom_ids3:
+            st.info("No hay datos de Fase 3 disponibles.")
+        else:
+            dom_sel3 = st.selectbox(
+                "Dominio", dom_ids3, key="var_f3_dom",
+                format_func=lambda x: x.capitalize()
+            )
+            pathways = f3_doms.get(dom_sel3, [])
+            pw_opts  = {pw["nombre"]: pw for pw in pathways}
+            pw_sel   = st.selectbox("Pathway", list(pw_opts.keys()), key="var_f3_pw")
+            pathway  = pw_opts.get(pw_sel, {})
+
+            # Catálogo de carreras para el selector
+            cat_raw   = _cargar_catalogo_raw()["carreras"]
+            cat_map   = {c["id"]: c["nombre"] for c in cat_raw}
+            cat_ids   = sorted(cat_map.keys())
+            cat_labels = {cid: f"{cat_map[cid]} ({cid})" for cid in cat_ids}
+
+            st.markdown(f"**Pathway:** {pathway.get('nombre','')} — "
+                        f"triggers: `{', '.join(pathway.get('dims_trigger', []))}`")
+            st.markdown("---")
+
+            preguntas_f3 = pathway.get("preguntas", [])
+            boost_edits: dict[str, dict] = {}  # q_id → {polo_a: {...}, polo_b: {...}}
+
+            for q in preguntas_f3:
+                qid = q["id"]
+                st.markdown(f"**{q['pregunta']}**")
+                c_a, c_b = st.columns(2)
+
+                for polo, col in (("boosts_polo_a", c_a), ("boosts_polo_b", c_b)):
+                    polo_label = "← Polo A" if polo == "boosts_polo_a" else "Polo B →"
+                    col.markdown(f"*{polo_label}:* _{q.get('polo_a' if polo=='boosts_polo_a' else 'polo_b','')}_ ")
+
+                    # Carreras eliminadas se persisten en session_state entre rerenders
+                    del_key = f"var_f3_deleted_{qid}_{polo}"
+                    if del_key not in st.session_state:
+                        st.session_state[del_key] = set()
+                    deleted: set = st.session_state[del_key]
+
+                    current: dict = dict(q.get(polo, {}))
+                    new_map: dict = {}
+
+                    for cid, val in list(current.items()):
+                        if cid in deleted:
+                            continue
+                        r1, r2, r3 = col.columns([3, 1.5, 0.5])
+                        cnombre = cat_map.get(cid, cid)
+                        r1.markdown(f"`{cnombre}`", help=f"ID: {cid}")
+                        new_val = r2.number_input(
+                            "boost", min_value=0.0, max_value=1.0,
+                            value=float(val), step=0.01,
+                            key=f"var_f3_{qid}_{polo}_{cid}",
+                            label_visibility="collapsed",
+                        )
+                        if r3.button("🗑", key=f"var_f3_del_{qid}_{polo}_{cid}",
+                                     help="Quitar esta carrera del boost"):
+                            deleted.add(cid)
+                            st.rerun()
+                        else:
+                            new_map[cid] = round(new_val, 4)
+
+                    # Agregar nueva entrada
+                    show_key = f"var_f3_show_add_{qid}_{polo}"
+                    if col.checkbox("+ Agregar carrera", key=show_key):
+                        opciones_disp = [c for c in cat_ids if c not in new_map and c not in deleted]
+                        nueva_car = col.selectbox(
+                            "Carrera",
+                            opciones_disp,
+                            key=f"var_f3_new_car_{qid}_{polo}",
+                            format_func=lambda x: cat_labels.get(x, x),
+                        ) if opciones_disp else None
+                        nuevo_val_boost = col.number_input(
+                            "Boost", min_value=0.01, max_value=1.0,
+                            value=0.08, step=0.01,
+                            key=f"var_f3_new_val_{qid}_{polo}",
+                        )
+                        if col.button("Agregar", key=f"var_f3_add_{qid}_{polo}"):
+                            if nueva_car:
+                                new_map[nueva_car] = round(nuevo_val_boost, 4)
+                                st.session_state[show_key] = False
+                                st.rerun()
+
+                    boost_edits.setdefault(qid, {})[polo] = new_map
+
+                st.markdown("---")
+
+            if st.button("💾 Guardar boosts Fase 3", key="var_save_f3", type="primary"):
+                for pw in pdata3["fase3_por_dominio"].get(dom_sel3, []):
+                    if pw["nombre"] != pw_sel:
+                        continue
+                    for q in pw["preguntas"]:
+                        if q["id"] in boost_edits:
+                            edits = boost_edits[q["id"]]
+                            if "boosts_polo_a" in edits:
+                                q["boosts_polo_a"] = edits["boosts_polo_a"]
+                            if "boosts_polo_b" in edits:
+                                q["boosts_polo_b"] = edits["boosts_polo_b"]
+                _guardar_preguntas(pdata3)
+                st.cache_data.clear()
+                # Limpiar estado de eliminaciones para reflejar el JSON actualizado
+                for q in preguntas_f3:
+                    for polo in ("boosts_polo_a", "boosts_polo_b"):
+                        st.session_state.pop(f"var_f3_deleted_{q['id']}_{polo}", None)
+                st.success("✓ Boosts Fase 3 guardados en `data/preguntas.json`.")
+
+
+# =================================================================
 # Entrada principal
 # =================================================================
 def pantalla_editor(reiniciar_fn, ir_a_fn, etapa_bienvenida: str) -> None:
@@ -353,7 +619,12 @@ def pantalla_editor(reiniciar_fn, ir_a_fn, etapa_bienvenida: str) -> None:
 
     st.markdown("---")
 
-    tab_sim, tab_cal, tab_carr = st.tabs(["🧪 Simulador", "⚖ Calibrador de pesos", "📝 Editor de carreras"])
+    tab_sim, tab_cal, tab_carr, tab_vars = st.tabs([
+        "🧪 Simulador",
+        "⚖ Calibrador de pesos",
+        "📝 Editor de carreras",
+        "🔧 Variables del sistema",
+    ])
 
     with tab_sim:
         _tab_simulador()
@@ -363,3 +634,6 @@ def pantalla_editor(reiniciar_fn, ir_a_fn, etapa_bienvenida: str) -> None:
 
     with tab_carr:
         _tab_carreras()
+
+    with tab_vars:
+        _tab_variables()
