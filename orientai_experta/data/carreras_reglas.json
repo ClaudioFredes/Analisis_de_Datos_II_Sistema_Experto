@@ -1,0 +1,4694 @@
+{
+  "_meta": {
+    "descripcion": "Base de conocimiento de la versión por reglas (Experta). 90 carreras, 6 dominios. 'dominios' = lista (una carrera puede estar en varios). 'code' = 3 letras RIASEC dominantes.",
+    "dominios": {
+      "tecnologia": {
+        "nombre": "Tecnología & Sistemas",
+        "icono": "💻"
+      },
+      "ciencias": {
+        "nombre": "Ciencias Naturales",
+        "icono": "🔬"
+      },
+      "salud": {
+        "nombre": "Salud & Cuidado",
+        "icono": "🏥"
+      },
+      "arte": {
+        "nombre": "Arte & Comunicación",
+        "icono": "🎨"
+      },
+      "negocios": {
+        "nombre": "Negocios & Gestión",
+        "icono": "📊"
+      },
+      "humanidades": {
+        "nombre": "Humanidades & Educación",
+        "icono": "📚"
+      }
+    },
+    "orden_dominios": [
+      "tecnologia",
+      "ciencias",
+      "salud",
+      "arte",
+      "negocios",
+      "humanidades"
+    ],
+    "total": 90
+  },
+  "carreras": [
+    {
+      "id": "ingenieria_mecanica",
+      "nombre": "Ingeniería Mecánica",
+      "dominios": [
+        "tecnologia"
+      ],
+      "area": "Ingeniería y Tecnología",
+      "duracion": "grado",
+      "riasec": {
+        "R": 4.53,
+        "I": 4.13,
+        "A": 1.47,
+        "S": 1.0,
+        "E": 2.13,
+        "C": 3.0
+      },
+      "code": [
+        "R",
+        "I",
+        "C"
+      ],
+      "niveles": {
+        "R": "alto",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "matematica_intensa"
+      ],
+      "universidades": [
+        {
+          "nombre": "UTN",
+          "ciudad": "Múltiples sedes"
+        },
+        {
+          "nombre": "UBA – FIUBA",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        }
+      ]
+    },
+    {
+      "id": "ingenieria_civil",
+      "nombre": "Ingeniería Civil",
+      "dominios": [
+        "tecnologia"
+      ],
+      "area": "Ingeniería y Tecnología",
+      "duracion": "grado",
+      "riasec": {
+        "R": 4.13,
+        "I": 3.87,
+        "A": 1.67,
+        "S": 1.2,
+        "E": 2.8,
+        "C": 3.0
+      },
+      "code": [
+        "R",
+        "I",
+        "C"
+      ],
+      "niveles": {
+        "R": "alto",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "medio",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "matematica_intensa",
+        "trabajo_fisico"
+      ],
+      "universidades": [
+        {
+          "nombre": "UTN",
+          "ciudad": "Múltiples sedes"
+        },
+        {
+          "nombre": "UBA – FIUBA",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        }
+      ]
+    },
+    {
+      "id": "ingenieria_electronica",
+      "nombre": "Ingeniería Electrónica",
+      "dominios": [
+        "tecnologia"
+      ],
+      "area": "Ingeniería y Tecnología",
+      "duracion": "grado",
+      "riasec": {
+        "R": 4.13,
+        "I": 4.53,
+        "A": 1.67,
+        "S": 1.0,
+        "E": 1.87,
+        "C": 3.0
+      },
+      "code": [
+        "I",
+        "R",
+        "C"
+      ],
+      "niveles": {
+        "R": "alto",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "matematica_intensa"
+      ],
+      "universidades": [
+        {
+          "nombre": "UTN",
+          "ciudad": "Múltiples sedes"
+        },
+        {
+          "nombre": "UBA – FIUBA",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        }
+      ]
+    },
+    {
+      "id": "ingenieria_industrial",
+      "nombre": "Ingeniería Industrial",
+      "dominios": [
+        "tecnologia"
+      ],
+      "area": "Ingeniería y Tecnología",
+      "duracion": "grado",
+      "riasec": {
+        "R": 3.0,
+        "I": 4.13,
+        "A": 1.47,
+        "S": 1.67,
+        "E": 3.87,
+        "C": 3.67
+      },
+      "code": [
+        "I",
+        "E",
+        "C"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "alto",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "matematica_intensa"
+      ],
+      "universidades": [
+        {
+          "nombre": "UTN",
+          "ciudad": "Múltiples sedes"
+        },
+        {
+          "nombre": "UBA – FIUBA",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        }
+      ]
+    },
+    {
+      "id": "ingenieria_quimica",
+      "nombre": "Ingeniería Química",
+      "dominios": [
+        "ciencias"
+      ],
+      "area": "Ingeniería y Tecnología",
+      "duracion": "grado",
+      "riasec": {
+        "R": 3.87,
+        "I": 4.8,
+        "A": 1.0,
+        "S": 1.0,
+        "E": 2.13,
+        "C": 3.0
+      },
+      "code": [
+        "I",
+        "R",
+        "C"
+      ],
+      "niveles": {
+        "R": "alto",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "matematica_intensa"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FIUBA",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNL",
+          "ciudad": "Santa Fe"
+        },
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        }
+      ]
+    },
+    {
+      "id": "ingenieria_mecatronica",
+      "nombre": "Ingeniería Mecatrónica",
+      "dominios": [
+        "tecnologia"
+      ],
+      "area": "Ingeniería y Tecnología",
+      "duracion": "grado",
+      "riasec": {
+        "R": 4.53,
+        "I": 4.33,
+        "A": 1.67,
+        "S": 1.0,
+        "E": 2.13,
+        "C": 3.2
+      },
+      "code": [
+        "R",
+        "I",
+        "C"
+      ],
+      "niveles": {
+        "R": "alto",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "matematica_intensa",
+        "programacion"
+      ],
+      "universidades": [
+        {
+          "nombre": "UTN – Haedo",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNICEN",
+          "ciudad": "Tandil"
+        },
+        {
+          "nombre": "UNS",
+          "ciudad": "Bahía Blanca"
+        },
+        {
+          "nombre": "UNSJ",
+          "ciudad": "San Juan"
+        }
+      ]
+    },
+    {
+      "id": "ingenieria_electrica",
+      "nombre": "Ingeniería Eléctrica",
+      "dominios": [
+        "tecnologia"
+      ],
+      "area": "Ingeniería y Tecnología",
+      "duracion": "grado",
+      "riasec": {
+        "R": 4.33,
+        "I": 4.13,
+        "A": 1.47,
+        "S": 1.0,
+        "E": 2.33,
+        "C": 3.2
+      },
+      "code": [
+        "R",
+        "I",
+        "C"
+      ],
+      "niveles": {
+        "R": "alto",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "matematica_intensa"
+      ],
+      "universidades": [
+        {
+          "nombre": "UTN",
+          "ciudad": "Múltiples sedes"
+        },
+        {
+          "nombre": "UBA – FIUBA",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        }
+      ]
+    },
+    {
+      "id": "ingenieria_sistemas",
+      "nombre": "Ingeniería en Sistemas / Informática",
+      "dominios": [
+        "tecnologia"
+      ],
+      "area": "Ingeniería y Tecnología",
+      "duracion": "grado",
+      "riasec": {
+        "R": 2.8,
+        "I": 4.8,
+        "A": 1.87,
+        "S": 1.47,
+        "E": 1.67,
+        "C": 3.67
+      },
+      "code": [
+        "I",
+        "C",
+        "R"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "programacion",
+        "matematica_intensa"
+      ],
+      "universidades": [
+        {
+          "nombre": "UTN",
+          "ciudad": "Múltiples sedes"
+        },
+        {
+          "nombre": "UBA – FIUBA",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        }
+      ]
+    },
+    {
+      "id": "ciberseguridad",
+      "nombre": "Licenciatura en Ciberseguridad",
+      "dominios": [
+        "tecnologia"
+      ],
+      "area": "Ingeniería y Tecnología",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.87,
+        "I": 4.13,
+        "A": 1.47,
+        "S": 1.87,
+        "E": 2.8,
+        "C": 3.87
+      },
+      "code": [
+        "I",
+        "C",
+        "E"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "medio",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "programacion"
+      ],
+      "universidades": [
+        {
+          "nombre": "UTN",
+          "ciudad": "Múltiples sedes"
+        },
+        {
+          "nombre": "UADE",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UP",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UAI",
+          "ciudad": "Buenos Aires"
+        }
+      ]
+    },
+    {
+      "id": "tecnologias_digitales",
+      "nombre": "Licenciatura en Tecnologías Digitales",
+      "dominios": [
+        "tecnologia"
+      ],
+      "area": "Ingeniería y Tecnología",
+      "duracion": "grado",
+      "riasec": {
+        "R": 2.13,
+        "I": 4.33,
+        "A": 2.33,
+        "S": 2.53,
+        "E": 2.33,
+        "C": 3.47
+      },
+      "code": [
+        "I",
+        "C",
+        "S"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "alto",
+        "A": "bajo",
+        "S": "medio",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "programacion"
+      ],
+      "universidades": [
+        {
+          "nombre": "UADE",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UTN",
+          "ciudad": "Múltiples sedes"
+        },
+        {
+          "nombre": "UAI",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UBA – FCEyN",
+          "ciudad": "Buenos Aires"
+        }
+      ]
+    },
+    {
+      "id": "tec_programacion",
+      "nombre": "Tecnicatura en Programación",
+      "dominios": [
+        "tecnologia"
+      ],
+      "area": "Ingeniería y Tecnología",
+      "duracion": "tecnicatura",
+      "riasec": {
+        "R": 2.8,
+        "I": 4.33,
+        "A": 2.13,
+        "S": 1.2,
+        "E": 1.67,
+        "C": 3.87
+      },
+      "code": [
+        "I",
+        "C",
+        "R"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "programacion"
+      ],
+      "universidades": [
+        {
+          "nombre": "UTN",
+          "ciudad": "Múltiples sedes"
+        },
+        {
+          "nombre": "UNAJ",
+          "ciudad": "Florencio Varela"
+        },
+        {
+          "nombre": "UNNOBA",
+          "ciudad": "Junín / Pergamino"
+        },
+        {
+          "nombre": "ISFT / Terciarios",
+          "ciudad": "Todo el país"
+        }
+      ]
+    },
+    {
+      "id": "ciencia_datos",
+      "nombre": "Licenciatura en Ciencia de Datos",
+      "dominios": [
+        "tecnologia"
+      ],
+      "area": "Ingeniería y Tecnología",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.87,
+        "I": 4.8,
+        "A": 1.87,
+        "S": 1.67,
+        "E": 2.53,
+        "C": 4.13
+      },
+      "code": [
+        "I",
+        "C",
+        "E"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "medio",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "programacion",
+        "matematica_intensa"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FCEyN",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UTN",
+          "ciudad": "Múltiples sedes"
+        },
+        {
+          "nombre": "ITBA",
+          "ciudad": "Buenos Aires"
+        }
+      ]
+    },
+    {
+      "id": "tec_energias_renovables",
+      "nombre": "Tecnicatura en Energías Renovables",
+      "dominios": [
+        "tecnologia"
+      ],
+      "area": "Ingeniería y Tecnología",
+      "duracion": "tecnicatura",
+      "riasec": {
+        "R": 4.33,
+        "I": 3.47,
+        "A": 1.2,
+        "S": 1.47,
+        "E": 1.87,
+        "C": 3.47
+      },
+      "code": [
+        "R",
+        "I",
+        "C"
+      ],
+      "niveles": {
+        "R": "alto",
+        "I": "medio",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "trabajo_fisico"
+      ],
+      "universidades": [
+        {
+          "nombre": "UTN",
+          "ciudad": "Múltiples sedes"
+        },
+        {
+          "nombre": "UNSJ",
+          "ciudad": "San Juan"
+        },
+        {
+          "nombre": "UNCuyo",
+          "ciudad": "Mendoza"
+        }
+      ]
+    },
+    {
+      "id": "tec_mantenimiento_industrial",
+      "nombre": "Tecnicatura en Mantenimiento Industrial",
+      "dominios": [
+        "tecnologia"
+      ],
+      "area": "Ingeniería y Tecnología",
+      "duracion": "tecnicatura",
+      "riasec": {
+        "R": 5.0,
+        "I": 2.33,
+        "A": 1.0,
+        "S": 1.47,
+        "E": 1.2,
+        "C": 3.2
+      },
+      "code": [
+        "R",
+        "C",
+        "I"
+      ],
+      "niveles": {
+        "R": "alto",
+        "I": "bajo",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "trabajo_fisico"
+      ],
+      "universidades": [
+        {
+          "nombre": "UTN",
+          "ciudad": "Múltiples sedes"
+        },
+        {
+          "nombre": "UNS",
+          "ciudad": "Bahía Blanca"
+        },
+        {
+          "nombre": "UNSJ",
+          "ciudad": "San Juan"
+        }
+      ]
+    },
+    {
+      "id": "tec_higiene_seguridad",
+      "nombre": "Tecnicatura en Higiene y Seguridad Laboral",
+      "dominios": [
+        "tecnologia"
+      ],
+      "area": "Ingeniería y Tecnología",
+      "duracion": "tecnicatura",
+      "riasec": {
+        "R": 3.2,
+        "I": 3.47,
+        "A": 1.0,
+        "S": 2.8,
+        "E": 2.53,
+        "C": 3.67
+      },
+      "code": [
+        "C",
+        "I",
+        "R"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "medio",
+        "A": "bajo",
+        "S": "medio",
+        "E": "medio",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "trabajo_fisico"
+      ],
+      "universidades": [
+        {
+          "nombre": "UTN",
+          "ciudad": "Múltiples sedes"
+        },
+        {
+          "nombre": "UADE",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNL",
+          "ciudad": "Santa Fe"
+        }
+      ]
+    },
+    {
+      "id": "biologia",
+      "nombre": "Licenciatura en Biología",
+      "dominios": [
+        "ciencias"
+      ],
+      "area": "Ciencias Naturales y Exactas",
+      "duracion": "grado",
+      "riasec": {
+        "R": 2.8,
+        "I": 4.8,
+        "A": 1.87,
+        "S": 1.87,
+        "E": 1.0,
+        "C": 2.13
+      },
+      "code": [
+        "I",
+        "R",
+        "C"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "ciencias_naturales"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FCEyN",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        },
+        {
+          "nombre": "UNMdP",
+          "ciudad": "Mar del Plata"
+        }
+      ]
+    },
+    {
+      "id": "quimica",
+      "nombre": "Licenciatura en Química",
+      "dominios": [
+        "ciencias"
+      ],
+      "area": "Ciencias Naturales y Exactas",
+      "duracion": "grado",
+      "riasec": {
+        "R": 3.47,
+        "I": 4.8,
+        "A": 1.0,
+        "S": 1.2,
+        "E": 1.47,
+        "C": 3.2
+      },
+      "code": [
+        "I",
+        "R",
+        "C"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "ciencias_naturales"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FCEyN",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        },
+        {
+          "nombre": "UNL",
+          "ciudad": "Santa Fe"
+        }
+      ]
+    },
+    {
+      "id": "matematica",
+      "nombre": "Licenciatura en Matemática",
+      "dominios": [
+        "ciencias"
+      ],
+      "area": "Ciencias Naturales y Exactas",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 5.0,
+        "A": 1.87,
+        "S": 1.47,
+        "E": 1.0,
+        "C": 3.2
+      },
+      "code": [
+        "I",
+        "C",
+        "A"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "matematica_intensa"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FCEyN",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        },
+        {
+          "nombre": "UNS",
+          "ciudad": "Bahía Blanca"
+        }
+      ]
+    },
+    {
+      "id": "fisica",
+      "nombre": "Licenciatura en Física",
+      "dominios": [
+        "ciencias"
+      ],
+      "area": "Ciencias Naturales y Exactas",
+      "duracion": "grado",
+      "riasec": {
+        "R": 2.53,
+        "I": 5.0,
+        "A": 1.87,
+        "S": 1.47,
+        "E": 1.47,
+        "C": 2.53
+      },
+      "code": [
+        "I",
+        "R",
+        "C"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "matematica_intensa"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FCEyN",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        },
+        {
+          "nombre": "UNS",
+          "ciudad": "Bahía Blanca"
+        }
+      ]
+    },
+    {
+      "id": "biotecnologia",
+      "nombre": "Licenciatura en Biotecnología",
+      "dominios": [
+        "ciencias"
+      ],
+      "area": "Ciencias Naturales y Exactas",
+      "duracion": "grado",
+      "riasec": {
+        "R": 3.2,
+        "I": 4.8,
+        "A": 1.67,
+        "S": 1.47,
+        "E": 1.67,
+        "C": 2.8
+      },
+      "code": [
+        "I",
+        "R",
+        "C"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "ciencias_naturales"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FCEyN",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNQ",
+          "ciudad": "Quilmes"
+        },
+        {
+          "nombre": "UNL",
+          "ciudad": "Santa Fe"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        }
+      ]
+    },
+    {
+      "id": "agronomia",
+      "nombre": "Ingeniería Agronómica",
+      "dominios": [
+        "ciencias"
+      ],
+      "area": "Ciencias Naturales y Exactas",
+      "duracion": "grado",
+      "riasec": {
+        "R": 4.8,
+        "I": 4.13,
+        "A": 1.0,
+        "S": 1.87,
+        "E": 2.8,
+        "C": 3.0
+      },
+      "code": [
+        "R",
+        "I",
+        "C"
+      ],
+      "niveles": {
+        "R": "alto",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "medio",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "trabajo_fisico"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FAUBA",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        },
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        }
+      ]
+    },
+    {
+      "id": "tec_produccion_agropecuaria",
+      "nombre": "Tecnicatura en Producción Agropecuaria",
+      "dominios": [
+        "ciencias"
+      ],
+      "area": "Ciencias Naturales y Exactas",
+      "duracion": "tecnicatura",
+      "riasec": {
+        "R": 4.53,
+        "I": 2.33,
+        "A": 1.47,
+        "S": 1.67,
+        "E": 3.87,
+        "C": 3.47
+      },
+      "code": [
+        "R",
+        "E",
+        "C"
+      ],
+      "niveles": {
+        "R": "alto",
+        "I": "bajo",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "alto",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "trabajo_fisico"
+      ],
+      "universidades": [
+        {
+          "nombre": "UNDEF / Terciarios",
+          "ciudad": "Varias provincias"
+        },
+        {
+          "nombre": "UTN – Agro",
+          "ciudad": "Múltiples sedes"
+        }
+      ]
+    },
+    {
+      "id": "medicina",
+      "nombre": "Medicina",
+      "dominios": [
+        "salud"
+      ],
+      "area": "Ciencias de la Salud",
+      "duracion": "grado",
+      "riasec": {
+        "R": 2.13,
+        "I": 4.8,
+        "A": 1.0,
+        "S": 4.13,
+        "E": 1.87,
+        "C": 2.8
+      },
+      "code": [
+        "I",
+        "S",
+        "C"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "alto",
+        "A": "bajo",
+        "S": "alto",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "contacto_pacientes"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        },
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        },
+        {
+          "nombre": "UNMdP",
+          "ciudad": "Mar del Plata"
+        }
+      ]
+    },
+    {
+      "id": "odontologia",
+      "nombre": "Odontología",
+      "dominios": [
+        "salud"
+      ],
+      "area": "Ciencias de la Salud",
+      "duracion": "grado",
+      "riasec": {
+        "R": 4.13,
+        "I": 4.13,
+        "A": 2.13,
+        "S": 2.8,
+        "E": 2.13,
+        "C": 1.87
+      },
+      "code": [
+        "R",
+        "I",
+        "S"
+      ],
+      "niveles": {
+        "R": "alto",
+        "I": "alto",
+        "A": "bajo",
+        "S": "medio",
+        "E": "bajo",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "contacto_pacientes"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        },
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        }
+      ]
+    },
+    {
+      "id": "enfermeria",
+      "nombre": "Licenciatura en Enfermería",
+      "dominios": [
+        "salud"
+      ],
+      "area": "Ciencias de la Salud",
+      "duracion": "grado",
+      "riasec": {
+        "R": 2.8,
+        "I": 3.0,
+        "A": 1.0,
+        "S": 4.8,
+        "E": 1.47,
+        "C": 2.13
+      },
+      "code": [
+        "S",
+        "I",
+        "R"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "medio",
+        "A": "bajo",
+        "S": "alto",
+        "E": "bajo",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "contacto_pacientes"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        },
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        }
+      ]
+    },
+    {
+      "id": "kinesiologia",
+      "nombre": "Kinesiología y Fisiatría",
+      "dominios": [
+        "salud"
+      ],
+      "area": "Ciencias de la Salud",
+      "duracion": "grado",
+      "riasec": {
+        "R": 3.87,
+        "I": 3.0,
+        "A": 1.0,
+        "S": 4.8,
+        "E": 2.13,
+        "C": 1.87
+      },
+      "code": [
+        "S",
+        "R",
+        "I"
+      ],
+      "niveles": {
+        "R": "alto",
+        "I": "medio",
+        "A": "bajo",
+        "S": "alto",
+        "E": "bajo",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "contacto_pacientes"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        }
+      ]
+    },
+    {
+      "id": "nutricion",
+      "nombre": "Licenciatura en Nutrición",
+      "dominios": [
+        "salud"
+      ],
+      "area": "Ciencias de la Salud",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.87,
+        "I": 4.13,
+        "A": 1.67,
+        "S": 3.87,
+        "E": 2.13,
+        "C": 2.8
+      },
+      "code": [
+        "I",
+        "S",
+        "C"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "alto",
+        "A": "bajo",
+        "S": "alto",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "contacto_pacientes"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        },
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        }
+      ]
+    },
+    {
+      "id": "fonoaudiologia",
+      "nombre": "Fonoaudiología",
+      "dominios": [
+        "salud"
+      ],
+      "area": "Ciencias de la Salud",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.67,
+        "I": 3.0,
+        "A": 1.87,
+        "S": 4.8,
+        "E": 1.87,
+        "C": 2.8
+      },
+      "code": [
+        "S",
+        "I",
+        "C"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "medio",
+        "A": "bajo",
+        "S": "alto",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "contacto_pacientes",
+        "acompanamiento_personas"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        }
+      ]
+    },
+    {
+      "id": "veterinaria",
+      "nombre": "Veterinaria",
+      "dominios": [
+        "salud"
+      ],
+      "area": "Ciencias de la Salud",
+      "duracion": "grado",
+      "riasec": {
+        "R": 4.13,
+        "I": 4.53,
+        "A": 1.0,
+        "S": 3.0,
+        "E": 2.13,
+        "C": 1.87
+      },
+      "code": [
+        "I",
+        "R",
+        "S"
+      ],
+      "niveles": {
+        "R": "alto",
+        "I": "alto",
+        "A": "bajo",
+        "S": "medio",
+        "E": "bajo",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "contacto_pacientes",
+        "trabajo_fisico",
+        "ciencias_naturales"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FVET",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Casilda"
+        },
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        }
+      ]
+    },
+    {
+      "id": "farmacia",
+      "nombre": "Farmacia",
+      "dominios": [
+        "ciencias",
+        "salud"
+      ],
+      "area": "Ciencias de la Salud",
+      "duracion": "grado",
+      "riasec": {
+        "R": 2.8,
+        "I": 4.13,
+        "A": 1.0,
+        "S": 2.13,
+        "E": 2.13,
+        "C": 3.87
+      },
+      "code": [
+        "I",
+        "C",
+        "R"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "contacto_pacientes",
+        "ciencias_naturales"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FFyB",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        },
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        }
+      ]
+    },
+    {
+      "id": "tec_laboratorio",
+      "nombre": "Tecnicatura en Análisis Clínicos / Laboratorio",
+      "dominios": [
+        "ciencias",
+        "salud"
+      ],
+      "area": "Ciencias de la Salud",
+      "duracion": "tecnicatura",
+      "riasec": {
+        "R": 3.47,
+        "I": 3.87,
+        "A": 1.0,
+        "S": 2.33,
+        "E": 1.2,
+        "C": 4.13
+      },
+      "code": [
+        "C",
+        "I",
+        "R"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "alto"
+      },
+      "etiquetas": [],
+      "universidades": [
+        {
+          "nombre": "UNSAM",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UTN",
+          "ciudad": "Múltiples sedes"
+        },
+        {
+          "nombre": "ISFT / Terciarios",
+          "ciudad": "Todo el país"
+        }
+      ]
+    },
+    {
+      "id": "tec_instrumentacion_quirurgica",
+      "nombre": "Instrumentación Quirúrgica",
+      "dominios": [
+        "salud"
+      ],
+      "area": "Ciencias de la Salud",
+      "duracion": "tecnicatura",
+      "riasec": {
+        "R": 4.13,
+        "I": 2.53,
+        "A": 1.0,
+        "S": 3.47,
+        "E": 1.0,
+        "C": 3.67
+      },
+      "code": [
+        "R",
+        "C",
+        "S"
+      ],
+      "niveles": {
+        "R": "alto",
+        "I": "medio",
+        "A": "bajo",
+        "S": "medio",
+        "E": "bajo",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "contacto_pacientes"
+      ],
+      "universidades": [
+        {
+          "nombre": "ISFT / Terciarios",
+          "ciudad": "CABA, Córdoba, Rosario"
+        },
+        {
+          "nombre": "UCES",
+          "ciudad": "Buenos Aires"
+        }
+      ]
+    },
+    {
+      "id": "tec_anestesia",
+      "nombre": "Tecnicatura en Anestesia",
+      "dominios": [
+        "salud"
+      ],
+      "area": "Ciencias de la Salud",
+      "duracion": "tecnicatura",
+      "riasec": {
+        "R": 3.0,
+        "I": 3.47,
+        "A": 1.0,
+        "S": 3.47,
+        "E": 1.47,
+        "C": 3.67
+      },
+      "code": [
+        "C",
+        "I",
+        "S"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "medio",
+        "A": "bajo",
+        "S": "medio",
+        "E": "bajo",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "contacto_pacientes"
+      ],
+      "universidades": [
+        {
+          "nombre": "ISFT / Terciarios",
+          "ciudad": "CABA, La Plata, Córdoba"
+        },
+        {
+          "nombre": "UCES",
+          "ciudad": "Buenos Aires"
+        }
+      ]
+    },
+    {
+      "id": "acompanamiento_terapeutico",
+      "nombre": "Acompañamiento Terapéutico",
+      "dominios": [
+        "salud"
+      ],
+      "area": "Ciencias de la Salud",
+      "duracion": "tecnicatura",
+      "riasec": {
+        "R": 1.0,
+        "I": 1.67,
+        "A": 1.67,
+        "S": 4.8,
+        "E": 1.87,
+        "C": 2.33
+      },
+      "code": [
+        "S",
+        "C",
+        "E"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "bajo",
+        "A": "bajo",
+        "S": "alto",
+        "E": "bajo",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "contacto_pacientes",
+        "acompanamiento_personas"
+      ],
+      "universidades": [
+        {
+          "nombre": "ISFT / Terciarios",
+          "ciudad": "CABA, GBA, Córdoba, Rosario"
+        }
+      ]
+    },
+    {
+      "id": "gastronomia",
+      "nombre": "Gastronomía",
+      "dominios": [
+        "arte"
+      ],
+      "area": "Arte y Diseño",
+      "duracion": "tecnicatura",
+      "riasec": {
+        "R": 4.33,
+        "I": 1.47,
+        "A": 3.67,
+        "S": 2.33,
+        "E": 3.47,
+        "C": 2.8
+      },
+      "code": [
+        "R",
+        "A",
+        "E"
+      ],
+      "niveles": {
+        "R": "alto",
+        "I": "bajo",
+        "A": "alto",
+        "S": "bajo",
+        "E": "medio",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "trabajo_fisico"
+      ],
+      "universidades": [
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "IAG",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "ISCH",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "Terciarios privados",
+          "ciudad": "Todo el país"
+        }
+      ]
+    },
+    {
+      "id": "arquitectura",
+      "nombre": "Arquitectura",
+      "dominios": [
+        "arte"
+      ],
+      "area": "Arte y Diseño",
+      "duracion": "grado",
+      "riasec": {
+        "R": 2.8,
+        "I": 2.8,
+        "A": 4.8,
+        "S": 1.87,
+        "E": 3.0,
+        "C": 2.13
+      },
+      "code": [
+        "A",
+        "E",
+        "R"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "medio",
+        "A": "alto",
+        "S": "bajo",
+        "E": "medio",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "expresion_artistica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FADU",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        },
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        }
+      ]
+    },
+    {
+      "id": "diseno_grafico",
+      "nombre": "Diseño Gráfico",
+      "dominios": [
+        "arte"
+      ],
+      "area": "Arte y Diseño",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.67,
+        "I": 1.87,
+        "A": 4.8,
+        "S": 1.47,
+        "E": 2.8,
+        "C": 1.87
+      },
+      "code": [
+        "A",
+        "E",
+        "I"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "bajo",
+        "A": "alto",
+        "S": "bajo",
+        "E": "medio",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "expresion_artistica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FADU",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UP",
+          "ciudad": "Buenos Aires"
+        }
+      ]
+    },
+    {
+      "id": "diseno_industrial",
+      "nombre": "Diseño Industrial",
+      "dominios": [
+        "arte"
+      ],
+      "area": "Arte y Diseño",
+      "duracion": "grado",
+      "riasec": {
+        "R": 3.87,
+        "I": 2.8,
+        "A": 3.87,
+        "S": 1.0,
+        "E": 2.13,
+        "C": 1.87
+      },
+      "code": [
+        "R",
+        "A",
+        "I"
+      ],
+      "niveles": {
+        "R": "alto",
+        "I": "medio",
+        "A": "alto",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "expresion_artistica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FADU",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        }
+      ]
+    },
+    {
+      "id": "diseno_indumentaria",
+      "nombre": "Diseño de Indumentaria",
+      "dominios": [
+        "arte"
+      ],
+      "area": "Arte y Diseño",
+      "duracion": "grado",
+      "riasec": {
+        "R": 2.53,
+        "I": 1.87,
+        "A": 4.8,
+        "S": 1.67,
+        "E": 3.0,
+        "C": 2.13
+      },
+      "code": [
+        "A",
+        "E",
+        "R"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "bajo",
+        "A": "alto",
+        "S": "bajo",
+        "E": "medio",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "expresion_artistica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FADU",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNA",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UP",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "Terciarios",
+          "ciudad": "CABA y GBA"
+        }
+      ]
+    },
+    {
+      "id": "diseno_multimedial",
+      "nombre": "Diseño Multimedial y Animación",
+      "dominios": [
+        "arte"
+      ],
+      "area": "Arte y Diseño",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.87,
+        "I": 2.53,
+        "A": 4.8,
+        "S": 1.47,
+        "E": 2.33,
+        "C": 2.8
+      },
+      "code": [
+        "A",
+        "C",
+        "I"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "medio",
+        "A": "alto",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "expresion_artistica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UNA",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UP",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "Terciarios",
+          "ciudad": "CABA y GBA"
+        }
+      ]
+    },
+    {
+      "id": "diseno_ux_ui",
+      "nombre": "Diseño de Interfaces (UX/UI)",
+      "dominios": [
+        "tecnologia",
+        "arte"
+      ],
+      "area": "Arte y Diseño",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.67,
+        "I": 3.2,
+        "A": 4.13,
+        "S": 2.33,
+        "E": 2.53,
+        "C": 3.2
+      },
+      "code": [
+        "A",
+        "I",
+        "C"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "medio",
+        "A": "alto",
+        "S": "bajo",
+        "E": "medio",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "expresion_artistica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UP",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UCES",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UTN – cursos",
+          "ciudad": "Múltiples sedes"
+        },
+        {
+          "nombre": "Terciarios",
+          "ciudad": "CABA y GBA"
+        }
+      ]
+    },
+    {
+      "id": "artes_visuales",
+      "nombre": "Artes Visuales",
+      "dominios": [
+        "arte"
+      ],
+      "area": "Arte y Diseño",
+      "duracion": "grado",
+      "riasec": {
+        "R": 2.53,
+        "I": 1.87,
+        "A": 5.0,
+        "S": 1.47,
+        "E": 1.67,
+        "C": 1.2
+      },
+      "code": [
+        "A",
+        "R",
+        "I"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "bajo",
+        "A": "alto",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "expresion_artistica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UNA",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        },
+        {
+          "nombre": "UNSAM",
+          "ciudad": "Buenos Aires"
+        }
+      ]
+    },
+    {
+      "id": "musica",
+      "nombre": "Música",
+      "dominios": [
+        "arte"
+      ],
+      "area": "Arte y Diseño",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.47,
+        "I": 2.53,
+        "A": 5.0,
+        "S": 2.53,
+        "E": 2.8,
+        "C": 1.87
+      },
+      "code": [
+        "A",
+        "E",
+        "I"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "medio",
+        "A": "alto",
+        "S": "medio",
+        "E": "medio",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "expresion_artistica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UNA",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        },
+        {
+          "nombre": "UNMdP",
+          "ciudad": "Mar del Plata"
+        }
+      ]
+    },
+    {
+      "id": "artes_audiovisuales",
+      "nombre": "Artes Audiovisuales",
+      "dominios": [
+        "arte"
+      ],
+      "area": "Arte y Diseño",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.47,
+        "I": 2.13,
+        "A": 4.33,
+        "S": 3.0,
+        "E": 3.87,
+        "C": 2.13
+      },
+      "code": [
+        "A",
+        "E",
+        "S"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "bajo",
+        "A": "alto",
+        "S": "medio",
+        "E": "alto",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "expresion_artistica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UNA",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNTREF",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNSAM",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UP",
+          "ciudad": "Buenos Aires"
+        }
+      ]
+    },
+    {
+      "id": "fotografia",
+      "nombre": "Fotografía",
+      "dominios": [
+        "arte"
+      ],
+      "area": "Arte y Diseño",
+      "duracion": "tecnicatura",
+      "riasec": {
+        "R": 3.0,
+        "I": 2.13,
+        "A": 4.8,
+        "S": 2.33,
+        "E": 2.8,
+        "C": 2.33
+      },
+      "code": [
+        "A",
+        "R",
+        "E"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "bajo",
+        "A": "alto",
+        "S": "bajo",
+        "E": "medio",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "expresion_artistica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UNTREF",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UP",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "Terciarios",
+          "ciudad": "CABA y GBA"
+        }
+      ]
+    },
+    {
+      "id": "actuacion",
+      "nombre": "Actuación / Artes Dramáticas",
+      "dominios": [
+        "arte"
+      ],
+      "area": "Arte y Diseño",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.47,
+        "I": 1.87,
+        "A": 5.0,
+        "S": 2.53,
+        "E": 3.47,
+        "C": 1.47
+      },
+      "code": [
+        "A",
+        "E",
+        "S"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "bajo",
+        "A": "alto",
+        "S": "medio",
+        "E": "medio",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "expresion_artistica",
+        "exposicion_publica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UNA – IUNA",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "Conservatorios",
+          "ciudad": "CABA, Córdoba, Rosario"
+        }
+      ]
+    },
+    {
+      "id": "creacion_videojuegos",
+      "nombre": "Desarrollo y Producción de Videojuegos",
+      "dominios": [
+        "tecnologia",
+        "arte"
+      ],
+      "area": "Arte y Diseño",
+      "duracion": "grado",
+      "riasec": {
+        "R": 2.53,
+        "I": 4.13,
+        "A": 3.87,
+        "S": 1.2,
+        "E": 2.13,
+        "C": 3.0
+      },
+      "code": [
+        "I",
+        "A",
+        "C"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "alto",
+        "A": "alto",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "programacion",
+        "expresion_artistica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UTN",
+          "ciudad": "Múltiples sedes"
+        },
+        {
+          "nombre": "UP",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UADE",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "CAECE",
+          "ciudad": "Buenos Aires"
+        }
+      ]
+    },
+    {
+      "id": "psicologia",
+      "nombre": "Psicología",
+      "dominios": [
+        "humanidades"
+      ],
+      "area": "Ciencias Sociales y Humanidades",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 4.13,
+        "A": 2.8,
+        "S": 4.8,
+        "E": 1.87,
+        "C": 1.87
+      },
+      "code": [
+        "S",
+        "I",
+        "A"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "alto",
+        "A": "medio",
+        "S": "alto",
+        "E": "bajo",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "acompanamiento_personas"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FFYB",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        },
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        }
+      ]
+    },
+    {
+      "id": "trabajo_social",
+      "nombre": "Licenciatura en Trabajo Social",
+      "dominios": [
+        "humanidades"
+      ],
+      "area": "Ciencias Sociales y Humanidades",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 1.87,
+        "A": 1.87,
+        "S": 4.8,
+        "E": 2.13,
+        "C": 1.87
+      },
+      "code": [
+        "S",
+        "E",
+        "I"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "bajo",
+        "A": "bajo",
+        "S": "alto",
+        "E": "bajo",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "acompanamiento_personas"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FSOC",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        },
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        }
+      ]
+    },
+    {
+      "id": "sociologia",
+      "nombre": "Sociología",
+      "dominios": [
+        "humanidades"
+      ],
+      "area": "Ciencias Sociales y Humanidades",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 4.33,
+        "A": 2.13,
+        "S": 4.13,
+        "E": 1.47,
+        "C": 1.87
+      },
+      "code": [
+        "I",
+        "S",
+        "A"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "alto",
+        "A": "bajo",
+        "S": "alto",
+        "E": "bajo",
+        "C": "bajo"
+      },
+      "etiquetas": [],
+      "universidades": [
+        {
+          "nombre": "UBA – FSOC",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        }
+      ]
+    },
+    {
+      "id": "ciencia_politica",
+      "nombre": "Ciencia Política",
+      "dominios": [
+        "humanidades"
+      ],
+      "area": "Ciencias Sociales y Humanidades",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 4.33,
+        "A": 2.13,
+        "S": 3.87,
+        "E": 3.67,
+        "C": 1.87
+      },
+      "code": [
+        "I",
+        "S",
+        "E"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "alto",
+        "A": "bajo",
+        "S": "alto",
+        "E": "alto",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "dominio_politico"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FSOC",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        }
+      ]
+    },
+    {
+      "id": "abogacia",
+      "nombre": "Abogacía",
+      "dominios": [
+        "humanidades"
+      ],
+      "area": "Ciencias Sociales y Humanidades",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 3.0,
+        "A": 2.13,
+        "S": 3.87,
+        "E": 4.53,
+        "C": 3.67
+      },
+      "code": [
+        "E",
+        "S",
+        "C"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "medio",
+        "A": "bajo",
+        "S": "alto",
+        "E": "alto",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "exposicion_publica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – Derecho",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        },
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        },
+        {
+          "nombre": "UNMdP",
+          "ciudad": "Mar del Plata"
+        }
+      ]
+    },
+    {
+      "id": "comunicacion_social",
+      "nombre": "Comunicación Social / Periodismo",
+      "dominios": [
+        "arte",
+        "humanidades"
+      ],
+      "area": "Ciencias Sociales y Humanidades",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 2.8,
+        "A": 4.13,
+        "S": 3.67,
+        "E": 3.0,
+        "C": 1.67
+      },
+      "code": [
+        "A",
+        "S",
+        "E"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "medio",
+        "A": "alto",
+        "S": "alto",
+        "E": "medio",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "exposicion_publica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FSOC",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        },
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        }
+      ]
+    },
+    {
+      "id": "letras",
+      "nombre": "Letras",
+      "dominios": [
+        "arte",
+        "humanidades"
+      ],
+      "area": "Ciencias Sociales y Humanidades",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 3.87,
+        "A": 4.8,
+        "S": 2.8,
+        "E": 1.47,
+        "C": 1.87
+      },
+      "code": [
+        "A",
+        "I",
+        "S"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "alto",
+        "A": "alto",
+        "S": "medio",
+        "E": "bajo",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "expresion_artistica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FFyL",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        },
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        }
+      ]
+    },
+    {
+      "id": "traductorado",
+      "nombre": "Traductorado",
+      "dominios": [
+        "humanidades"
+      ],
+      "area": "Ciencias Sociales y Humanidades",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 3.47,
+        "A": 4.13,
+        "S": 3.47,
+        "E": 2.13,
+        "C": 2.53
+      },
+      "code": [
+        "A",
+        "I",
+        "S"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "medio",
+        "A": "alto",
+        "S": "medio",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [],
+      "universidades": [
+        {
+          "nombre": "UBA – FFYL",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "IES / Institutos",
+          "ciudad": "Todo el país"
+        }
+      ]
+    },
+    {
+      "id": "archivologia",
+      "nombre": "Bibliotecología y Archivología",
+      "dominios": [
+        "humanidades"
+      ],
+      "area": "Ciencias Sociales y Humanidades",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 2.8,
+        "A": 1.87,
+        "S": 3.87,
+        "E": 1.87,
+        "C": 4.8
+      },
+      "code": [
+        "C",
+        "S",
+        "I"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "medio",
+        "A": "bajo",
+        "S": "alto",
+        "E": "bajo",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "rutina_administrativa"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FFyL",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNMdP",
+          "ciudad": "Mar del Plata"
+        },
+        {
+          "nombre": "UNL",
+          "ciudad": "Santa Fe"
+        }
+      ]
+    },
+    {
+      "id": "ciencias_educacion",
+      "nombre": "Ciencias de la Educación",
+      "dominios": [
+        "humanidades"
+      ],
+      "area": "Educación",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 3.0,
+        "A": 2.8,
+        "S": 4.8,
+        "E": 2.13,
+        "C": 1.87
+      },
+      "code": [
+        "S",
+        "I",
+        "A"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "medio",
+        "A": "medio",
+        "S": "alto",
+        "E": "bajo",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "exposicion_publica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FFYL",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        }
+      ]
+    },
+    {
+      "id": "profesorado_educacion_primaria",
+      "nombre": "Profesorado de Educación Primaria",
+      "dominios": [
+        "humanidades"
+      ],
+      "area": "Educación",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.2,
+        "I": 2.13,
+        "A": 2.8,
+        "S": 4.8,
+        "E": 2.33,
+        "C": 2.33
+      },
+      "code": [
+        "S",
+        "A",
+        "E"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "bajo",
+        "A": "medio",
+        "S": "alto",
+        "E": "bajo",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "exposicion_publica"
+      ],
+      "universidades": [
+        {
+          "nombre": "ISFD / Institutos terciarios",
+          "ciudad": "Todo el país"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        }
+      ]
+    },
+    {
+      "id": "profesorado_ciencias_exactas",
+      "nombre": "Profesorado en Ciencias Exactas",
+      "dominios": [
+        "humanidades"
+      ],
+      "area": "Educación",
+      "duracion": "grado",
+      "riasec": {
+        "R": 3.47,
+        "I": 1.67,
+        "A": 2.13,
+        "S": 4.8,
+        "E": 2.8,
+        "C": 1.87
+      },
+      "code": [
+        "S",
+        "R",
+        "E"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "bajo",
+        "A": "bajo",
+        "S": "alto",
+        "E": "medio",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "matematica_intensa",
+        "exposicion_publica"
+      ],
+      "universidades": [
+        {
+          "nombre": "ISFD / Institutos terciarios",
+          "ciudad": "Todo el país"
+        },
+        {
+          "nombre": "UTN",
+          "ciudad": "Múltiples sedes"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        }
+      ]
+    },
+    {
+      "id": "administracion_empresas",
+      "nombre": "Licenciatura en Administración de Empresas",
+      "dominios": [
+        "negocios"
+      ],
+      "area": "Economía y Negocios",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 1.87,
+        "A": 1.0,
+        "S": 2.8,
+        "E": 4.8,
+        "C": 3.67
+      },
+      "code": [
+        "E",
+        "C",
+        "S"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "bajo",
+        "A": "bajo",
+        "S": "medio",
+        "E": "alto",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "exposicion_publica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FCE",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        },
+        {
+          "nombre": "UADE",
+          "ciudad": "Buenos Aires"
+        }
+      ]
+    },
+    {
+      "id": "marketing",
+      "nombre": "Licenciatura en Marketing",
+      "dominios": [
+        "negocios"
+      ],
+      "area": "Economía y Negocios",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 1.87,
+        "A": 3.87,
+        "S": 2.8,
+        "E": 4.8,
+        "C": 2.13
+      },
+      "code": [
+        "E",
+        "A",
+        "S"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "bajo",
+        "A": "alto",
+        "S": "medio",
+        "E": "alto",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "exposicion_publica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FCE",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UADE",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UP",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UAI",
+          "ciudad": "Buenos Aires"
+        }
+      ]
+    },
+    {
+      "id": "relaciones_publicas",
+      "nombre": "Relaciones Públicas",
+      "dominios": [
+        "negocios"
+      ],
+      "area": "Economía y Negocios",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 2.13,
+        "A": 3.2,
+        "S": 3.47,
+        "E": 4.8,
+        "C": 2.53
+      },
+      "code": [
+        "E",
+        "S",
+        "A"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "bajo",
+        "A": "medio",
+        "S": "medio",
+        "E": "alto",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "exposicion_publica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UADE",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "USAL",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UP",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UAI",
+          "ciudad": "Buenos Aires"
+        }
+      ]
+    },
+    {
+      "id": "recursos_humanos",
+      "nombre": "Relaciones del Trabajo / Recursos Humanos",
+      "dominios": [
+        "negocios"
+      ],
+      "area": "Economía y Negocios",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 2.13,
+        "A": 1.47,
+        "S": 3.47,
+        "E": 4.8,
+        "C": 3.47
+      },
+      "code": [
+        "E",
+        "S",
+        "C"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "bajo",
+        "A": "bajo",
+        "S": "medio",
+        "E": "alto",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "exposicion_publica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FCE",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UADE",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UAI",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "USAL",
+          "ciudad": "Buenos Aires"
+        }
+      ]
+    },
+    {
+      "id": "comercio_internacional",
+      "nombre": "Comercio Internacional",
+      "dominios": [
+        "negocios"
+      ],
+      "area": "Economía y Negocios",
+      "duracion": "grado",
+      "riasec": {
+        "R": 2.13,
+        "I": 3.67,
+        "A": 1.2,
+        "S": 1.67,
+        "E": 3.0,
+        "C": 3.87
+      },
+      "code": [
+        "C",
+        "I",
+        "E"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "medio",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "exposicion_publica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FCE",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UADE",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UAI",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UCES",
+          "ciudad": "Buenos Aires"
+        }
+      ]
+    },
+    {
+      "id": "negocios_digitales",
+      "nombre": "Negocios Digitales",
+      "dominios": [
+        "negocios"
+      ],
+      "area": "Economía y Negocios",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.2,
+        "I": 3.0,
+        "A": 2.8,
+        "S": 2.13,
+        "E": 3.87,
+        "C": 3.67
+      },
+      "code": [
+        "E",
+        "C",
+        "I"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "medio",
+        "A": "medio",
+        "S": "bajo",
+        "E": "alto",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "exposicion_publica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UADE",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UP",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UAI",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "Terciarios",
+          "ciudad": "CABA y GBA"
+        }
+      ]
+    },
+    {
+      "id": "tec_turismo",
+      "nombre": "Tecnicatura en Turismo",
+      "dominios": [
+        "negocios"
+      ],
+      "area": "Economía y Negocios",
+      "duracion": "tecnicatura",
+      "riasec": {
+        "R": 1.2,
+        "I": 1.87,
+        "A": 2.8,
+        "S": 4.13,
+        "E": 3.87,
+        "C": 2.8
+      },
+      "code": [
+        "S",
+        "E",
+        "A"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "bajo",
+        "A": "medio",
+        "S": "alto",
+        "E": "alto",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "exposicion_publica"
+      ],
+      "universidades": [
+        {
+          "nombre": "Terciarios",
+          "ciudad": "Todo el país"
+        },
+        {
+          "nombre": "UNA",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        }
+      ]
+    },
+    {
+      "id": "martillero_publico",
+      "nombre": "Martillero Público y Corredor Inmobiliario",
+      "dominios": [
+        "negocios"
+      ],
+      "area": "Economía y Negocios",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.47,
+        "I": 1.67,
+        "A": 2.13,
+        "S": 2.33,
+        "E": 4.53,
+        "C": 3.47
+      },
+      "code": [
+        "E",
+        "C",
+        "S"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "bajo",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "alto",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "exposicion_publica"
+      ],
+      "universidades": [
+        {
+          "nombre": "Colegios de Martilleros",
+          "ciudad": "CABA, La Plata, Córdoba, Rosario"
+        },
+        {
+          "nombre": "UADE",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UAI",
+          "ciudad": "Buenos Aires"
+        }
+      ]
+    },
+    {
+      "id": "contador_publico",
+      "nombre": "Contador Público",
+      "dominios": [
+        "negocios"
+      ],
+      "area": "Economía y Negocios",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 2.8,
+        "A": 1.0,
+        "S": 1.67,
+        "E": 3.0,
+        "C": 4.8
+      },
+      "code": [
+        "C",
+        "E",
+        "I"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "medio",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "medio",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "rutina_administrativa"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FCE",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        },
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        }
+      ]
+    },
+    {
+      "id": "economia",
+      "nombre": "Licenciatura en Economía",
+      "dominios": [
+        "negocios"
+      ],
+      "area": "Economía y Negocios",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 4.53,
+        "A": 1.0,
+        "S": 1.87,
+        "E": 3.0,
+        "C": 3.87
+      },
+      "code": [
+        "I",
+        "C",
+        "E"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "medio",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "matematica_intensa"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FCE",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        },
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        }
+      ]
+    },
+    {
+      "id": "finanzas",
+      "nombre": "Licenciatura en Finanzas",
+      "dominios": [
+        "negocios"
+      ],
+      "area": "Economía y Negocios",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 3.47,
+        "A": 1.2,
+        "S": 1.47,
+        "E": 3.87,
+        "C": 4.8
+      },
+      "code": [
+        "C",
+        "E",
+        "I"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "medio",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "alto",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "matematica_intensa"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FCE",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UADE",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "USAL",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UP",
+          "ciudad": "Buenos Aires"
+        }
+      ]
+    },
+    {
+      "id": "actuario",
+      "nombre": "Ciencias Actuariales (Actuario)",
+      "dominios": [
+        "negocios"
+      ],
+      "area": "Economía y Negocios",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 4.8,
+        "A": 1.47,
+        "S": 1.67,
+        "E": 2.8,
+        "C": 4.53
+      },
+      "code": [
+        "I",
+        "C",
+        "E"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "medio",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "matematica_intensa"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FCE",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        }
+      ]
+    },
+    {
+      "id": "administracion_publica",
+      "nombre": "Administración Pública",
+      "dominios": [
+        "negocios"
+      ],
+      "area": "Economía y Negocios",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.2,
+        "I": 2.33,
+        "A": 1.2,
+        "S": 2.53,
+        "E": 3.87,
+        "C": 4.53
+      },
+      "code": [
+        "C",
+        "E",
+        "S"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "bajo",
+        "A": "bajo",
+        "S": "medio",
+        "E": "alto",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "rutina_administrativa"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FCE",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNSAM",
+          "ciudad": "Buenos Aires"
+        }
+      ]
+    },
+    {
+      "id": "logistica",
+      "nombre": "Licenciatura en Logística",
+      "dominios": [
+        "negocios"
+      ],
+      "area": "Economía y Negocios",
+      "duracion": "grado",
+      "riasec": {
+        "R": 2.33,
+        "I": 3.0,
+        "A": 1.2,
+        "S": 2.13,
+        "E": 3.47,
+        "C": 4.53
+      },
+      "code": [
+        "C",
+        "E",
+        "I"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "medio",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "medio",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "rutina_administrativa"
+      ],
+      "universidades": [
+        {
+          "nombre": "UTN",
+          "ciudad": "Múltiples sedes"
+        },
+        {
+          "nombre": "UADE",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "USAL",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UAI",
+          "ciudad": "Buenos Aires"
+        }
+      ]
+    },
+    {
+      "id": "tec_administracion_contable",
+      "nombre": "Tecnicatura en Administración Contable",
+      "dominios": [
+        "negocios"
+      ],
+      "area": "Economía y Negocios",
+      "duracion": "tecnicatura",
+      "riasec": {
+        "R": 1.0,
+        "I": 1.67,
+        "A": 1.0,
+        "S": 1.67,
+        "E": 1.87,
+        "C": 5.0
+      },
+      "code": [
+        "C",
+        "E",
+        "I"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "bajo",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "rutina_administrativa"
+      ],
+      "universidades": [
+        {
+          "nombre": "UTN",
+          "ciudad": "Múltiples sedes"
+        },
+        {
+          "nombre": "UADE",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "ISFT / Terciarios",
+          "ciudad": "Todo el país"
+        }
+      ]
+    },
+    {
+      "id": "secretariado_ejecutivo",
+      "nombre": "Secretariado Ejecutivo",
+      "dominios": [
+        "negocios"
+      ],
+      "area": "Economía y Negocios",
+      "duracion": "tecnicatura",
+      "riasec": {
+        "R": 1.0,
+        "I": 1.47,
+        "A": 1.67,
+        "S": 3.2,
+        "E": 2.8,
+        "C": 4.8
+      },
+      "code": [
+        "C",
+        "S",
+        "E"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "bajo",
+        "A": "bajo",
+        "S": "medio",
+        "E": "medio",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "rutina_administrativa"
+      ],
+      "universidades": [
+        {
+          "nombre": "USAL",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UCES",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "Terciarios",
+          "ciudad": "CABA y GBA"
+        }
+      ]
+    },
+    {
+      "id": "relaciones_internacionales",
+      "nombre": "Licenciatura en Relaciones Internacionales",
+      "dominios": [
+        "negocios",
+        "humanidades"
+      ],
+      "area": "Ciencias Sociales y Humanidades",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 3.87,
+        "A": 2.53,
+        "S": 3.87,
+        "E": 4.13,
+        "C": 2.53
+      },
+      "code": [
+        "E",
+        "I",
+        "S"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "alto",
+        "A": "medio",
+        "S": "alto",
+        "E": "alto",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "exposicion_publica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FSOC",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "USAL",
+          "ciudad": "Buenos Aires"
+        }
+      ]
+    },
+    {
+      "id": "historia",
+      "nombre": "Licenciatura en Historia",
+      "dominios": [
+        "humanidades"
+      ],
+      "area": "Ciencias Sociales y Humanidades",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 4.53,
+        "A": 3.87,
+        "S": 2.53,
+        "E": 1.47,
+        "C": 2.53
+      },
+      "code": [
+        "I",
+        "A",
+        "S"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "alto",
+        "A": "alto",
+        "S": "medio",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [],
+      "universidades": [
+        {
+          "nombre": "UBA – FFyL",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        },
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        }
+      ]
+    },
+    {
+      "id": "filosofia",
+      "nombre": "Licenciatura en Filosofía",
+      "dominios": [
+        "humanidades"
+      ],
+      "area": "Ciencias Sociales y Humanidades",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 4.8,
+        "A": 4.13,
+        "S": 2.53,
+        "E": 1.47,
+        "C": 1.47
+      },
+      "code": [
+        "I",
+        "A",
+        "S"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "alto",
+        "A": "alto",
+        "S": "medio",
+        "E": "bajo",
+        "C": "bajo"
+      },
+      "etiquetas": [],
+      "universidades": [
+        {
+          "nombre": "UBA – FFyL",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        }
+      ]
+    },
+    {
+      "id": "geografia",
+      "nombre": "Licenciatura en Geografía",
+      "dominios": [
+        "ciencias"
+      ],
+      "area": "Ciencias Sociales y Humanidades",
+      "duracion": "grado",
+      "riasec": {
+        "R": 3.0,
+        "I": 4.53,
+        "A": 2.13,
+        "S": 1.87,
+        "E": 1.47,
+        "C": 3.0
+      },
+      "code": [
+        "I",
+        "R",
+        "C"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "ciencias_naturales"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FFyL",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        }
+      ]
+    },
+    {
+      "id": "psicopedagogia",
+      "nombre": "Psicopedagogía",
+      "dominios": [
+        "salud",
+        "humanidades"
+      ],
+      "area": "Educación",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 3.47,
+        "A": 2.53,
+        "S": 4.53,
+        "E": 2.13,
+        "C": 2.33
+      },
+      "code": [
+        "S",
+        "I",
+        "A"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "medio",
+        "A": "medio",
+        "S": "alto",
+        "E": "bajo",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "acompanamiento_personas",
+        "exposicion_publica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FFyL",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UAI",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "USAL",
+          "ciudad": "Buenos Aires"
+        }
+      ]
+    },
+    {
+      "id": "terapia_ocupacional",
+      "nombre": "Terapia Ocupacional",
+      "dominios": [
+        "salud"
+      ],
+      "area": "Ciencias de la Salud",
+      "duracion": "grado",
+      "riasec": {
+        "R": 3.2,
+        "I": 3.0,
+        "A": 3.2,
+        "S": 4.53,
+        "E": 1.67,
+        "C": 2.53
+      },
+      "code": [
+        "S",
+        "R",
+        "A"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "medio",
+        "A": "medio",
+        "S": "alto",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "contacto_pacientes",
+        "acompanamiento_personas"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        }
+      ]
+    },
+    {
+      "id": "educacion_fisica",
+      "nombre": "Profesorado / Licenciatura en Educación Física",
+      "dominios": [
+        "humanidades"
+      ],
+      "area": "Educación",
+      "duracion": "grado",
+      "riasec": {
+        "R": 4.13,
+        "I": 2.13,
+        "A": 2.13,
+        "S": 4.53,
+        "E": 2.8,
+        "C": 1.67
+      },
+      "code": [
+        "S",
+        "R",
+        "E"
+      ],
+      "niveles": {
+        "R": "alto",
+        "I": "bajo",
+        "A": "bajo",
+        "S": "alto",
+        "E": "medio",
+        "C": "bajo"
+      },
+      "etiquetas": [
+        "exposicion_publica",
+        "trabajo_fisico"
+      ],
+      "universidades": [
+        {
+          "nombre": "UNLP – FHCE",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNTREF",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "ISEF / Institutos",
+          "ciudad": "Todo el país"
+        }
+      ]
+    },
+    {
+      "id": "ingenieria_ambiental",
+      "nombre": "Ingeniería Ambiental",
+      "dominios": [
+        "tecnologia",
+        "ciencias"
+      ],
+      "area": "Ingeniería y Tecnología",
+      "duracion": "grado",
+      "riasec": {
+        "R": 3.47,
+        "I": 4.53,
+        "A": 1.47,
+        "S": 2.13,
+        "E": 2.13,
+        "C": 3.0
+      },
+      "code": [
+        "I",
+        "R",
+        "C"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "matematica_intensa",
+        "ciencias_naturales"
+      ],
+      "universidades": [
+        {
+          "nombre": "UTN",
+          "ciudad": "Múltiples sedes"
+        },
+        {
+          "nombre": "UNQ",
+          "ciudad": "Quilmes"
+        },
+        {
+          "nombre": "UNICEN",
+          "ciudad": "Tandil"
+        },
+        {
+          "nombre": "UADER",
+          "ciudad": "Entre Ríos"
+        }
+      ]
+    },
+    {
+      "id": "ingenieria_alimentos",
+      "nombre": "Ingeniería en Alimentos",
+      "dominios": [
+        "tecnologia",
+        "ciencias"
+      ],
+      "area": "Ingeniería y Tecnología",
+      "duracion": "grado",
+      "riasec": {
+        "R": 3.47,
+        "I": 4.53,
+        "A": 1.0,
+        "S": 1.47,
+        "E": 2.13,
+        "C": 3.47
+      },
+      "code": [
+        "I",
+        "R",
+        "C"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "matematica_intensa",
+        "ciencias_naturales"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FIUBA",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNQ",
+          "ciudad": "Quilmes"
+        },
+        {
+          "nombre": "UNL",
+          "ciudad": "Santa Fe"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        }
+      ]
+    },
+    {
+      "id": "geologia",
+      "nombre": "Licenciatura en Geología",
+      "dominios": [
+        "ciencias"
+      ],
+      "area": "Ciencias Naturales y Exactas",
+      "duracion": "grado",
+      "riasec": {
+        "R": 4.13,
+        "I": 4.53,
+        "A": 1.47,
+        "S": 1.0,
+        "E": 1.47,
+        "C": 2.8
+      },
+      "code": [
+        "I",
+        "R",
+        "C"
+      ],
+      "niveles": {
+        "R": "alto",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "ciencias_naturales",
+        "trabajo_fisico"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FCEyN",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNS",
+          "ciudad": "Bahía Blanca"
+        },
+        {
+          "nombre": "UNSJ",
+          "ciudad": "San Juan"
+        },
+        {
+          "nombre": "UNPSJB",
+          "ciudad": "Comodoro Rivadavia"
+        }
+      ]
+    },
+    {
+      "id": "tec_redes",
+      "nombre": "Tecnicatura en Redes y Telecomunicaciones",
+      "dominios": [
+        "tecnologia"
+      ],
+      "area": "Ingeniería y Tecnología",
+      "duracion": "tecnicatura",
+      "riasec": {
+        "R": 3.0,
+        "I": 3.87,
+        "A": 1.0,
+        "S": 1.47,
+        "E": 1.47,
+        "C": 4.13
+      },
+      "code": [
+        "C",
+        "I",
+        "R"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "programacion"
+      ],
+      "universidades": [
+        {
+          "nombre": "UTN",
+          "ciudad": "Múltiples sedes"
+        },
+        {
+          "nombre": "ISFT / Terciarios",
+          "ciudad": "Todo el país"
+        },
+        {
+          "nombre": "UADE",
+          "ciudad": "Buenos Aires"
+        }
+      ]
+    },
+    {
+      "id": "escribania",
+      "nombre": "Escribanía / Notariado",
+      "dominios": [
+        "negocios",
+        "humanidades"
+      ],
+      "area": "Ciencias Sociales y Humanidades",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.0,
+        "I": 3.0,
+        "A": 1.47,
+        "S": 2.13,
+        "E": 3.0,
+        "C": 4.53
+      },
+      "code": [
+        "C",
+        "I",
+        "E"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "medio",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "medio",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "exposicion_publica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – Derecho",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        },
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        }
+      ]
+    },
+    {
+      "id": "lic_turismo",
+      "nombre": "Licenciatura en Turismo y Hotelería",
+      "dominios": [
+        "negocios"
+      ],
+      "area": "Economía y Negocios",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.47,
+        "I": 2.53,
+        "A": 3.0,
+        "S": 4.13,
+        "E": 3.87,
+        "C": 2.8
+      },
+      "code": [
+        "S",
+        "E",
+        "A"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "medio",
+        "A": "medio",
+        "S": "alto",
+        "E": "alto",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "exposicion_publica"
+      ],
+      "universidades": [
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNComahue",
+          "ciudad": "Neuquén"
+        },
+        {
+          "nombre": "UNMdP",
+          "ciudad": "Mar del Plata"
+        }
+      ]
+    },
+    {
+      "id": "bioingenieria",
+      "nombre": "Bioingeniería",
+      "dominios": [
+        "tecnologia",
+        "ciencias"
+      ],
+      "area": "Ingeniería y Tecnología",
+      "duracion": "grado",
+      "riasec": {
+        "R": 3.0,
+        "I": 4.8,
+        "A": 1.67,
+        "S": 2.13,
+        "E": 1.67,
+        "C": 3.0
+      },
+      "code": [
+        "I",
+        "R",
+        "C"
+      ],
+      "niveles": {
+        "R": "medio",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "medio"
+      },
+      "etiquetas": [
+        "matematica_intensa",
+        "ciencias_naturales"
+      ],
+      "universidades": [
+        {
+          "nombre": "UNT",
+          "ciudad": "Tucumán"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        }
+      ]
+    },
+    {
+      "id": "lic_computacion",
+      "nombre": "Licenciatura en Ciencias de la Computación",
+      "dominios": [
+        "tecnologia"
+      ],
+      "area": "Ingeniería y Tecnología",
+      "duracion": "grado",
+      "riasec": {
+        "R": 1.67,
+        "I": 5.0,
+        "A": 2.13,
+        "S": 1.0,
+        "E": 1.67,
+        "C": 3.87
+      },
+      "code": [
+        "I",
+        "C",
+        "A"
+      ],
+      "niveles": {
+        "R": "bajo",
+        "I": "alto",
+        "A": "bajo",
+        "S": "bajo",
+        "E": "bajo",
+        "C": "alto"
+      },
+      "etiquetas": [
+        "programacion",
+        "matematica_intensa"
+      ],
+      "universidades": [
+        {
+          "nombre": "UBA – FCEyN",
+          "ciudad": "Buenos Aires"
+        },
+        {
+          "nombre": "UNLP",
+          "ciudad": "La Plata"
+        },
+        {
+          "nombre": "UNC",
+          "ciudad": "Córdoba"
+        },
+        {
+          "nombre": "UNR",
+          "ciudad": "Rosario"
+        },
+        {
+          "nombre": "UNS",
+          "ciudad": "Bahía Blanca"
+        }
+      ]
+    }
+  ]
+}

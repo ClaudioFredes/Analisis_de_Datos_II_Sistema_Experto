@@ -243,6 +243,19 @@ body {
   color: #bbb;
 }
 
+.slide-meta-right { display: flex; align-items: center; gap: .9rem; }
+
+.slide-presenter {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--ink);
+  padding: 3px 12px;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  background: var(--card);
+}
+
 .slide-title {
   font-family: 'Archivo Black', sans-serif;
   font-size: 2.9rem;
@@ -424,36 +437,25 @@ table.t tr:hover td { background: rgba(44,62,122,.06); }
 .nb:hover { background: var(--sage-lt); transform: translate(2px,2px); box-shadow: 1px 1px 0 var(--ink); }
 #cnt { font-family: 'JetBrains Mono', monospace; font-size: .72rem; font-weight: 700; color: #999; min-width: 40px; text-align: center; }
 
-/* ─── NOTAS ──────────────────────────────── */
-#notes {
-  display: none; position: fixed; bottom: 0; left: 0; right: 0;
-  background: var(--ink); color: #fff;
-  padding: .8rem 2.5rem; font-size: .84rem; line-height: 1.6;
-  max-height: 28vh; overflow-y: auto; z-index: 200;
-}
-#notes.show { display: block; }
-#notes b { color: var(--sage-lt); }
-
 /* ─── KEY HINT ───────────────────────────── */
 #kh { position: fixed; top: .85rem; left: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: .6rem; color: #ccc; z-index: 50; }
 </style>
 </head>
 <body>
-<div id="kh">← → navegar · N notas</div>
+<div id="kh">← → navegar</div>
 <div id="prog"></div>
 
 <div class="deck" id="deck">
 
 <!-- ══ S0 · PORTADA ══════════════════════════════════════════════════ -->
 <div class="slide s-cover" id="s0"
-  data-al="Alumno 1"
+  data-al="Angel Zambrano"
   data-notes="ALUMNO 1 — Presentarse: 'Buenas tardes. Somos el grupo X de Análisis de Datos II. Hoy les presentamos ORIENTAI, un sistema experto de orientación vocacional.' Hacer una pausa para que el público lea los nombres. Luego avanzar a la siguiente slide.">
 
   <div class="cover-left">
     <div class="cover-tag">Sistema Experto · Orientación Vocacional</div>
     <div class="cover-name">ORIENTAI</div>
     <div class="cover-bar"></div>
-    <div class="cover-year">2026</div>
   </div>
 
   <div class="cover-right">
@@ -469,12 +471,12 @@ table.t tr:hover td { background: rgba(44,62,122,.06); }
     <div class="cover-divider"></div>
 
     <div class="cover-students">
-      <div class="cover-student">Ariel Abal</div>
-      <div class="cover-student">Jorge Rearte</div>
-      <div class="cover-student">Claudio Fredes</div>
       <div class="cover-student">Angel Zambrano</div>
-      <div class="cover-student">Lucía Tomasin</div>
+      <div class="cover-student">Ariel Abal</div>
+      <div class="cover-student">Claudio Fredes</div>
       <div class="cover-student">Florencia Ardanaz</div>
+      <div class="cover-student">Jorge Rearte</div>
+      <div class="cover-student">Lucía Tomasin</div>
     </div>
   </div>
 
@@ -482,13 +484,16 @@ table.t tr:hover td { background: rgba(44,62,122,.06); }
 
 <!-- ══ S1 · QUÉ ES ORIENTAI ══════════════════════════════════════════ -->
 <div class="slide s-normal" id="s1"
-  data-al="Alumno 1"
+  data-al="Angel Zambrano"
   data-notes="ALUMNO 1 — Describir ORIENTAI como sistema experto: qué hace, en qué se basa (RIASEC + O*NET) y qué produce. Mencionar las 33 preguntas en 3 fases y el Top 5 con universidades argentinas. Señalar el flujo en la parte inferior para que el público lo siga visualmente.">
 
   <div class="slide-header">
     <div class="slide-meta">
       <span class="slide-badge badge-pres">Presentación</span>
-      <span class="slide-num">02 / 11</span>
+      <div class="slide-meta-right">
+        <span class="slide-presenter">Angel Zambrano</span>
+        <span class="slide-num">02 / 11</span>
+      </div>
     </div>
     <div class="slide-title">¿Qué es ORIENTAI?</div>
     <div class="slide-rule"></div>
@@ -543,13 +548,16 @@ table.t tr:hover td { background: rgba(44,62,122,.06); }
 
 <!-- ══ S2 · RIASEC ════════════════════════════════════════════════════ -->
 <div class="slide s-normal" id="s2"
-  data-al="Alumno 2"
+  data-al="Lucía Tomasin"
   data-notes="ALUMNO 2 — Explicar RIASEC: seis dimensiones de interés vocacional de John Holland. O*NET publica puntajes para cada ocupación. Cada carrera queda representada como un vector de 6 números. Reescalamos de 1–7 a 1–5 sin redondear — ese detalle fue clave para eliminar las colisiones del primer intento.">
 
   <div class="slide-header">
     <div class="slide-meta">
       <span class="slide-badge badge-v1">El primer intento</span>
-      <span class="slide-num">03 / 11</span>
+      <div class="slide-meta-right">
+        <span class="slide-presenter">Lucía Tomasin</span>
+        <span class="slide-num">03 / 11</span>
+      </div>
     </div>
     <div class="slide-title">El modelo que adoptamos: RIASEC</div>
     <div class="slide-rule"></div>
@@ -611,13 +619,16 @@ table.t tr:hover td { background: rgba(44,62,122,.06); }
 
 <!-- ══ S3 · EL PRIMER INTENTO Y LO QUE SALIÓ MAL ═════════════════════ -->
 <div class="slide s-normal" id="s3"
-  data-al="Alumno 2"
-  data-notes="ALUMNO 2 — La primera versión era simple: 30 preguntas Likert, un promedio por dimensión y similitud de coseno contra el catálogo. Una sola pasada, sin estructura. Tenía dos fallas de raíz. PRIMERA: al redondear los vectores O*NET a enteros, 16 carreras colapsaban en 7 vectores idénticos; como el desempate era por orden de lista, siempre ganaba la primera ('carrera imán'). SEGUNDA: el porcentaje mostrado elevaba el score al cubo, sin justificación — un 0.90 real se mostraba como 73%, hundiendo y desordenando todo.">
+  data-al="Lucía Tomasin"
+  data-notes="ALUMNO 2 — La versión previa a las fases era simple: 50 preguntas Likert (una sola pasada), un promedio por dimensión y similitud de coseno contra el catálogo. Una sola pasada, sin estructura. Tenía dos fallas de raíz. PRIMERA: al redondear los vectores O*NET a enteros, 16 carreras colapsaban en 7 vectores idénticos; como el desempate era por orden de lista, siempre ganaba la primera ('carrera imán'). SEGUNDA: el porcentaje mostrado elevaba el score al cubo, sin justificación — un 0.90 real se mostraba como 73%, hundiendo y desordenando todo.">
 
   <div class="slide-header">
     <div class="slide-meta">
       <span class="slide-badge badge-v1">El primer intento</span>
-      <span class="slide-num">04 / 11</span>
+      <div class="slide-meta-right">
+        <span class="slide-presenter">Lucía Tomasin</span>
+        <span class="slide-num">04 / 11</span>
+      </div>
     </div>
     <div class="slide-title">El primer intento y lo que salió mal</div>
     <div class="slide-rule"></div>
@@ -627,7 +638,7 @@ table.t tr:hover td { background: rgba(44,62,122,.06); }
 
     <!-- Descripción compacta de la v1 -->
     <p style="font-size:1.1rem;color:#555;line-height:1.4;flex-shrink:0;">
-      <strong style="color:var(--ink);">30 preguntas Likert</strong>, un promedio por dimensión
+      <strong style="color:var(--ink);">50 preguntas Likert</strong>, un promedio por dimensión
       y <strong style="color:var(--ink);">similitud de coseno</strong> contra el catálogo.
       Una sola pasada, sin estructura — y dos fallas de raíz.
     </p>
@@ -714,13 +725,16 @@ table.t tr:hover td { background: rgba(44,62,122,.06); }
 
 <!-- ══ S5 · TRES CAMBIOS ══════════════════════════════════════════════ -->
 <div class="slide s-normal" id="s5"
-  data-al="Alumno 3"
+  data-al="Ariel Abal"
   data-notes="ALUMNO 3 — Tres soluciones directas a los problemas. PRIMERO: vectores float en lugar de enteros → de 16 colisiones a cero. SEGUNDO: tres fases en lugar de una pasada → la Fase 1 rankea los dominios y EL USUARIO ELIGE sobre cuál profundizar, reduciendo el espacio de 90 a ~15 carreras (el sistema asesora, no decide solo). TERCERO: tríadas en lugar de solo Likert → comparar opciones es más discriminativo que evaluar en absoluto. De 50 preguntas genéricas a 33 estructuradas.">
 
   <div class="slide-header">
     <div class="slide-meta">
       <span class="slide-badge badge-evol">Evolución</span>
-      <span class="slide-num">05 / 11</span>
+      <div class="slide-meta-right">
+        <span class="slide-presenter">Ariel Abal</span>
+        <span class="slide-num">05 / 11</span>
+      </div>
     </div>
     <div class="slide-title">Tres cambios que lo transformaron</div>
     <div class="slide-rule"></div>
@@ -746,7 +760,7 @@ table.t tr:hover td { background: rgba(44,62,122,.06); }
       <div class="card terra" style="padding:.9rem 1.2rem;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:.9rem;font-weight:700;color:var(--terra);margin-bottom:.3rem;">ANTES</div>
         <div style="font-weight:800;font-size:1.2rem;">1 fase · 50 preguntas genéricas</div>
-        <div style="font-size:1.05rem;color:#777;margin-top:.25rem;">espacio de búsqueda: 90 carreras</div>
+        <div style="font-size:1.05rem;color:#777;margin-top:.25rem;">espacio de búsqueda: 75 carreras</div>
       </div>
       <div class="ba-arr" style="font-size:1.6rem;">→</div>
       <div class="card sage" style="padding:.9rem 1.2rem;">
@@ -775,13 +789,16 @@ table.t tr:hover td { background: rgba(44,62,122,.06); }
 
 <!-- ══ S6 · ARQUITECTURA EN 3 FASES ═══════════════════════════════════ -->
 <div class="slide s-normal" id="s6"
-  data-al="Alumno 3"
+  data-al="Ariel Abal"
   data-notes="ALUMNO 3 — Flujo completo. FASE 1: 18 preguntas Likert detectan el dominio; el usuario elige dominio y duración (asesora, no decide). FASE 2: 10 tríadas construyen el vector RIASEC; se muestra el radar y se detecta el sub-perfil. FASE 3: 5 preguntas bipolares sobre valores laborales. Al final, Top 5 carreras del dominio con universidades argentinas.">
 
   <div class="slide-header">
     <div class="slide-meta">
       <span class="slide-badge badge-act">Versión actual</span>
-      <span class="slide-num">06 / 11</span>
+      <div class="slide-meta-right">
+        <span class="slide-presenter">Ariel Abal</span>
+        <span class="slide-num">06 / 11</span>
+      </div>
     </div>
     <div class="slide-title">La arquitectura en tres fases</div>
     <div class="slide-rule"></div>
@@ -854,13 +871,16 @@ table.t tr:hover td { background: rgba(44,62,122,.06); }
 
 <!-- ══ S6B · CASO EN VIVO (MARTINA) ══════════════════════════════════ -->
 <div class="slide s-normal" id="scaso"
-  data-al="Alumno 4"
+  data-al="Claudio Fredes"
   data-notes="ALUMNO 4 — Sigamos a Martina, 17 años, de punta a punta. FASE 1: responde 18 preguntas y Tecnología le da el dominio más alto (4.6/5). Elige Tecnología y licenciatura. FASE 2: sus 10 tríadas construyen un vector con I (Investigador) dominante. Por eso el sistema detecta el pathway 'Analítica & Software'. FASE 3: responde 5 preguntas de valores — prefiere autonomía y trabajar con datos, lo que da boost a Ciencia de Datos. RESULTADO: Ciencia de Datos #1 con 84%; la Fase 3 la subió por encima de Ingeniería en Sistemas.">
 
   <div class="slide-header">
     <div class="slide-meta">
       <span class="slide-badge badge-act">Versión actual</span>
-      <span class="slide-num">07 / 11</span>
+      <div class="slide-meta-right">
+        <span class="slide-presenter">Claudio Fredes</span>
+        <span class="slide-num">07 / 11</span>
+      </div>
     </div>
     <div class="slide-title">Caso en vivo: Martina, de punta a punta</div>
     <div class="slide-rule"></div>
@@ -935,13 +955,16 @@ table.t tr:hover td { background: rgba(44,62,122,.06); }
 
 <!-- ══ S7 · MOTOR DE INFERENCIA ═══════════════════════════════════════ -->
 <div class="slide s-normal" id="s7"
-  data-al="Alumno 4"
+  data-al="Claudio Fredes"
   data-notes="ALUMNO 4 — El motor compara el vector del usuario con cada carrera. La métrica obvia, el coseno, tiene una trampa: sobre vectores 1–5 (siempre positivos) da ~0.7–1.0 para casi cualquier par, así que infla la afinidad y premia coincidencias en una dimensión secundaria. EJEMPLO REAL: un perfil R+C alto (la Instrumentadora) sacaba coseno altísimo con el Martillero Público porque comparten la C, aunque no comparten la R. Pearson centra los vectores por su media y compara la FORMA del perfil —el código Holland dominante— así que los separa. Por eso el score pesa 70% Pearson, calibrado por Monte Carlo.">
 
   <div class="slide-header">
     <div class="slide-meta">
       <span class="slide-badge badge-act">Versión actual</span>
-      <span class="slide-num">08 / 11</span>
+      <div class="slide-meta-right">
+        <span class="slide-presenter">Claudio Fredes</span>
+        <span class="slide-num">08 / 11</span>
+      </div>
     </div>
     <div class="slide-title">El motor de inferencia</div>
     <div class="slide-rule"></div>
@@ -990,13 +1013,16 @@ table.t tr:hover td { background: rgba(44,62,122,.06); }
 
 <!-- ══ S8 · ¿CÓMO SABEMOS QUE FUNCIONA? ═══════════════════════════════ -->
 <div class="slide s-normal" id="s8"
-  data-al="Alumno 5"
+  data-al="Jorge Rearte"
   data-notes="ALUMNO 5 — El sistema fue validado con rigor, no solo implementado. 15 tests automatizados que se corren con un comando: perfiles arquetípicos, métricas distintas, sin colisiones, tríadas, casos extremos. Y la simulación Monte Carlo (500 perfiles sintéticos × 3 escenarios) CONFIRMÓ a escala el rebalanceo hacia Pearson que vimos con la Instrumentadora: los falsos positivos comerciales como el Martillero cayeron de 16% a 6%, y la cobertura subió de 67 a 69 carreras distintas en el Top-1. De esa simulación salió la calibración 0.3/0.7.">
 
   <div class="slide-header">
     <div class="slide-meta">
       <span class="slide-badge badge-act">Versión actual</span>
-      <span class="slide-num">09 / 11</span>
+      <div class="slide-meta-right">
+        <span class="slide-presenter">Jorge Rearte</span>
+        <span class="slide-num">09 / 11</span>
+      </div>
     </div>
     <div class="slide-title">¿Cómo sabemos que funciona?</div>
     <div class="slide-rule"></div>
@@ -1049,13 +1075,16 @@ table.t tr:hover td { background: rgba(44,62,122,.06); }
 
 <!-- ══ S9 · LO QUE RECIBE EL USUARIO ══════════════════════════════════ -->
 <div class="slide s-normal" id="s9"
-  data-al="Alumno 5"
+  data-al="Jorge Rearte"
   data-notes="ALUMNO 5 — Esto es lo que ve Martina al terminar (el caso que seguimos). Cada tarjeta: posición, nombre, área, código Holland (3 letras dominantes), duración y % de afinidad. El símbolo ✦ marca que la Fase 3 modificó el orden — acá subió Ciencia de Datos al #1. Al expandir: universidades argentinas, radar comparativo y datos del motor. El porcentaje es el score matemático × 100. Todo corre sin servidor: al cerrar la pestaña no queda nada guardado. (Opcional: demo en vivo en localhost:8501).">
 
   <div class="slide-header">
     <div class="slide-meta">
       <span class="slide-badge badge-res">Resultado</span>
-      <span class="slide-num">10 / 11</span>
+      <div class="slide-meta-right">
+        <span class="slide-presenter">Jorge Rearte</span>
+        <span class="slide-num">10 / 11</span>
+      </div>
     </div>
     <div class="slide-title">Lo que recibe el usuario</div>
     <div class="slide-rule"></div>
@@ -1125,13 +1154,16 @@ table.t tr:hover td { background: rgba(44,62,122,.06); }
 
 <!-- ══ S10 · APRENDIZAJES Y PRÓXIMOS PASOS ════════════════════════════ -->
 <div class="slide s-normal" id="s10"
-  data-al="Alumno 6"
+  data-al="Florencia Ardanaz"
   data-notes="ALUMNO 6 — Cuatro aprendizajes. PRIMERO: estructura más que cantidad — 33 preguntas pensadas superan a 50 genéricas. SEGUNDO: comparar más que evaluar — las tríadas producen datos más discriminativos. TERCERO: la validación con datos reales encuentra lo que el testing manual no ve — Monte Carlo y el falso positivo del Martillero. CUARTO: auditar lo que el código realmente hace — descubrimos que decíamos 'coseno' pero, al centrar los vectores, calculábamos solo Pearson: una métrica disfrazada de otra. Próximo paso: el editor de conocimiento, para agregar carreras y ajustar pesos sin tocar código. ¡Gracias!">
 
   <div class="slide-header">
     <div class="slide-meta">
       <span class="slide-badge badge-conc">Conclusiones</span>
-      <span class="slide-num">11 / 11</span>
+      <div class="slide-meta-right">
+        <span class="slide-presenter">Florencia Ardanaz</span>
+        <span class="slide-num">11 / 11</span>
+      </div>
     </div>
     <div class="slide-title">Aprendizajes y próximos pasos</div>
     <div class="slide-rule"></div>
@@ -1167,7 +1199,7 @@ table.t tr:hover td { background: rgba(44,62,122,.06); }
     <!-- PRÓXIMOS PASOS -->
     <div style="display:flex;flex-direction:column;gap:.85rem;">
       <div class="lbl">Próximos pasos</div>
-      <div class="card dark" style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:1rem;">
+      <div class="card dark" style="display:flex;flex-direction:column;gap:1.15rem;">
         <div style="display:flex;gap:1rem;align-items:center;">
           <div style="font-size:1.5rem;">📝</div>
           <div><div style="font-weight:700;font-size:1.15rem;color:#fff;">Editor de conocimiento</div><div style="font-size:.95rem;color:#bbb;">Agregar carreras y preguntas sin tocar código</div></div>
@@ -1180,9 +1212,6 @@ table.t tr:hover td { background: rgba(44,62,122,.06); }
           <div style="font-size:1.5rem;">🧪</div>
           <div><div style="font-weight:700;font-size:1.15rem;color:#fff;">Simulador de perfiles</div><div style="font-size:.95rem;color:#bbb;">Probar cambios antes de publicarlos</div></div>
         </div>
-      </div>
-      <div class="card sage" style="text-align:center;box-shadow:none;">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:1.05rem;font-weight:700;">python -m streamlit run app.py</div>
       </div>
     </div>
 
@@ -1197,14 +1226,11 @@ table.t tr:hover td { background: rgba(44,62,122,.06); }
   <button class="nb" onclick="go(1)">→</button>
 </div>
 
-<div id="notes"></div>
-
 <script>
 const slides = Array.from(document.querySelectorAll('.slide'));
 const cnt    = document.getElementById('cnt');
 const prog   = document.getElementById('prog');
-const notes  = document.getElementById('notes');
-let cur = 0, notesOpen = false;
+let cur = 0;
 
 slides.forEach(() => {
   const s = document.createElement('div'); s.className = 'ps'; prog.appendChild(s);
@@ -1218,7 +1244,6 @@ function show(n) {
   document.querySelectorAll('.ps').forEach((s, i) => {
     s.className = 'ps' + (i < cur ? ' done' : i === cur ? ' active' : '');
   });
-  if (notesOpen) notes.innerHTML = `<b>[${slides[cur].dataset.al || ''}]</b> ${slides[cur].dataset.notes || ''}`;
 }
 
 function go(d) { show(cur + d); }
@@ -1226,17 +1251,8 @@ function go(d) { show(cur + d); }
 document.addEventListener('keydown', e => {
   if (['ArrowRight','ArrowDown',' '].includes(e.key)) { go(1); e.preventDefault(); }
   if (['ArrowLeft','ArrowUp'].includes(e.key))        { go(-1); e.preventDefault(); }
-  if (e.key === 'n' || e.key === 'N') {
-    notesOpen = !notesOpen;
-    notes.classList.toggle('show', notesOpen);
-    if (notesOpen) notes.innerHTML = `<b>[${slides[cur].dataset.al || ''}]</b> ${slides[cur].dataset.notes || ''}`;
-  }
   if (e.key === 'Home') { show(0); e.preventDefault(); }
   if (e.key === 'End')  { show(slides.length - 1); e.preventDefault(); }
-});
-
-document.getElementById('deck').addEventListener('click', e => {
-  if (!e.target.closest('button,a,#nav')) go(1);
 });
 
 show(0);

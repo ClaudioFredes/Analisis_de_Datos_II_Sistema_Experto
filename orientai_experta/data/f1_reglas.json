@@ -1,0 +1,115 @@
+{
+  "_meta": {
+    "descripcion": "Preguntas de Fase 1 (detección de dominio), copiadas del proyecto original. Likert 1-5."
+  },
+  "fase1_dominio": [
+    {
+      "id": "D_T1",
+      "dominio": "tecnologia",
+      "texto": "Configurar y mantener una red de computadoras para que todos los dispositivos se conecten sin problemas",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_T2",
+      "dominio": "tecnologia",
+      "texto": "Escribir código para crear una aplicación, automatizar una tarea o resolver un problema lógico",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_T3",
+      "dominio": "tecnologia",
+      "texto": "Entender, armar y reparar el hardware de una computadora, servidor o dispositivo electrónico",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_CN1",
+      "dominio": "ciencias",
+      "texto": "Trabajar en laboratorio estudiando cómo funciona un proceso biológico, químico o físico",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_CN2",
+      "dominio": "ciencias",
+      "texto": "Salir al campo a explorar y registrar fenómenos naturales: suelos, ecosistemas, rocas o especies",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_CN3",
+      "dominio": "ciencias",
+      "texto": "Resolver problemas matemáticos complejos o modelar fenómenos de la naturaleza con ecuaciones",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_SA1",
+      "dominio": "salud",
+      "texto": "Aprender a interpretar síntomas, análisis de sangre o radiografías para ayudar a diagnosticar",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_SA2",
+      "dominio": "salud",
+      "texto": "Acompañar y ayudar a una persona enferma o lesionada en su proceso de recuperación",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_SA3",
+      "dominio": "salud",
+      "texto": "Estudiar cómo funciona el cuerpo humano o animal y qué pasa cuando enferma o se lesiona",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_AR1",
+      "dominio": "arte",
+      "texto": "Diseñar algo visualmente impactante: una pieza gráfica, una identidad de marca o un espacio",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_AR2",
+      "dominio": "arte",
+      "texto": "Crear una obra artística propia: música, fotografía, video, escritura o actuación",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_AR3",
+      "dominio": "arte",
+      "texto": "Comunicar ideas o noticias de forma que llegue, convenza o emocione a quien las recibe",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_NG1",
+      "dominio": "negocios",
+      "texto": "Analizar un negocio o mercado para entender por qué funciona y cómo podría crecer",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_NG2",
+      "dominio": "negocios",
+      "texto": "Liderar un equipo de personas para que trabajen juntos y logren un objetivo comercial",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_NG3",
+      "dominio": "negocios",
+      "texto": "Negociar, vender o convencer a alguien de que acepte una propuesta o tome una decisión",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_HU1",
+      "dominio": "humanidades",
+      "texto": "Investigar un fenómeno social, histórico o cultural para entender sus causas y consecuencias profundas",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_HU2",
+      "dominio": "humanidades",
+      "texto": "Enseñar, guiar o acompañar a alguien en su proceso de aprendizaje o desarrollo personal",
+      "ponderacion": 1.0
+    },
+    {
+      "id": "D_HU3",
+      "dominio": "humanidades",
+      "texto": "Defender los derechos de alguien, mediar en un conflicto o trabajar por la justicia social",
+      "ponderacion": 1.0
+    }
+  ]
+}

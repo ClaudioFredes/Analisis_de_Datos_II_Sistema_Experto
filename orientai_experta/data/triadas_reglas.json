@@ -1,0 +1,1219 @@
+{
+  "_meta": {
+    "descripcion": "Tríadas de Fase 2 por dominio (1 de 3, comparación forzada). Copiadas del proyecto original."
+  },
+  "triadas_por_dominio": {
+    "tecnologia": [
+      {
+        "id": "TEC_TR01",
+        "opciones": [
+          {
+            "id": "TEC_TR01_R",
+            "dimension": "R",
+            "texto": "Armar y reparar el hardware de servidores o equipos electrónicos"
+          },
+          {
+            "id": "TEC_TR01_I",
+            "dimension": "I",
+            "texto": "Desarrollar modelos de IA que aprenden de grandes volúmenes de datos"
+          },
+          {
+            "id": "TEC_TR01_A",
+            "dimension": "A",
+            "texto": "Diseñar la experiencia visual e interactiva de una aplicación digital"
+          }
+        ]
+      },
+      {
+        "id": "TEC_TR02",
+        "opciones": [
+          {
+            "id": "TEC_TR02_R",
+            "dimension": "R",
+            "texto": "Instalar y mantener la infraestructura física de una red empresarial"
+          },
+          {
+            "id": "TEC_TR02_S",
+            "dimension": "S",
+            "texto": "Capacitar usuarios y equipos en el uso de nuevas tecnologías"
+          },
+          {
+            "id": "TEC_TR02_C",
+            "dimension": "C",
+            "texto": "Revisar y documentar el código garantizando calidad y estándares"
+          }
+        ]
+      },
+      {
+        "id": "TEC_TR03",
+        "opciones": [
+          {
+            "id": "TEC_TR03_R",
+            "dimension": "R",
+            "texto": "Construir y calibrar sistemas electrónicos o de automatización industrial"
+          },
+          {
+            "id": "TEC_TR03_E",
+            "dimension": "E",
+            "texto": "Crear una startup tecnológica y conseguir inversores para escalarla"
+          },
+          {
+            "id": "TEC_TR03_I",
+            "dimension": "I",
+            "texto": "Detectar y corregir vulnerabilidades de seguridad en sistemas informáticos"
+          }
+        ]
+      },
+      {
+        "id": "TEC_TR04",
+        "opciones": [
+          {
+            "id": "TEC_TR04_R",
+            "dimension": "R",
+            "texto": "Configurar y mantener servidores y servicios en producción"
+          },
+          {
+            "id": "TEC_TR04_A",
+            "dimension": "A",
+            "texto": "Crear videojuegos diseñando mecánicas, mundos y experiencia del jugador"
+          },
+          {
+            "id": "TEC_TR04_S",
+            "dimension": "S",
+            "texto": "Guiar y ayudar a usuarios a resolver sus problemas tecnológicos"
+          }
+        ]
+      },
+      {
+        "id": "TEC_TR05",
+        "opciones": [
+          {
+            "id": "TEC_TR05_R",
+            "dimension": "R",
+            "texto": "Diseñar y soldar circuitos electrónicos para sistemas embebidos"
+          },
+          {
+            "id": "TEC_TR05_C",
+            "dimension": "C",
+            "texto": "Administrar una red corporativa asegurando conectividad y seguridad"
+          },
+          {
+            "id": "TEC_TR05_E",
+            "dimension": "E",
+            "texto": "Gestionar proyectos de TI coordinando equipos, plazos y presupuesto"
+          }
+        ]
+      },
+      {
+        "id": "TEC_TR06",
+        "opciones": [
+          {
+            "id": "TEC_TR06_I",
+            "dimension": "I",
+            "texto": "Programar la lógica central de una aplicación o sistema de backend"
+          },
+          {
+            "id": "TEC_TR06_A",
+            "dimension": "A",
+            "texto": "Diseñar interfaces y flujos de usuario intuitivos y visualmente atractivos"
+          },
+          {
+            "id": "TEC_TR06_E",
+            "dimension": "E",
+            "texto": "Definir el roadmap de un producto digital y priorizar sus funcionalidades"
+          }
+        ]
+      },
+      {
+        "id": "TEC_TR07",
+        "opciones": [
+          {
+            "id": "TEC_TR07_I",
+            "dimension": "I",
+            "texto": "Analizar datos para descubrir patrones y construir modelos predictivos"
+          },
+          {
+            "id": "TEC_TR07_S",
+            "dimension": "S",
+            "texto": "Enseñar programación o tecnología a estudiantes o equipos de trabajo"
+          },
+          {
+            "id": "TEC_TR07_C",
+            "dimension": "C",
+            "texto": "Diseñar y optimizar bases de datos para rendimiento e integridad"
+          }
+        ]
+      },
+      {
+        "id": "TEC_TR08",
+        "opciones": [
+          {
+            "id": "TEC_TR08_I",
+            "dimension": "I",
+            "texto": "Analizar ataques informáticos para entender cómo fueron posibles"
+          },
+          {
+            "id": "TEC_TR08_A",
+            "dimension": "A",
+            "texto": "Crear visualizaciones gráficas que expliquen datos complejos con claridad"
+          },
+          {
+            "id": "TEC_TR08_C",
+            "dimension": "C",
+            "texto": "Automatizar el despliegue y mantenimiento de infraestructura en la nube"
+          }
+        ]
+      },
+      {
+        "id": "TEC_TR09",
+        "opciones": [
+          {
+            "id": "TEC_TR09_A",
+            "dimension": "A",
+            "texto": "Crear sistemas de diseño y componentes visuales para productos digitales"
+          },
+          {
+            "id": "TEC_TR09_S",
+            "dimension": "S",
+            "texto": "Coordinar equipos técnicos multidisciplinarios en proyectos tecnológicos"
+          },
+          {
+            "id": "TEC_TR09_E",
+            "dimension": "E",
+            "texto": "Definir la estrategia tecnológica de una organización como CTO o director IT"
+          }
+        ]
+      },
+      {
+        "id": "TEC_TR10",
+        "opciones": [
+          {
+            "id": "TEC_TR10_S",
+            "dimension": "S",
+            "texto": "Atender y resolver incidencias técnicas de los usuarios de una empresa"
+          },
+          {
+            "id": "TEC_TR10_E",
+            "dimension": "E",
+            "texto": "Asesorar a organizaciones en su estrategia de transformación digital"
+          },
+          {
+            "id": "TEC_TR10_C",
+            "dimension": "C",
+            "texto": "Auditar sistemas para garantizar el cumplimiento de normas de seguridad"
+          }
+        ]
+      }
+    ],
+    "ciencias": [
+      {
+        "id": "CN_TR01",
+        "opciones": [
+          {
+            "id": "CN_TR01_R",
+            "dimension": "R",
+            "texto": "Explorar terrenos geológicos o ecosistemas y recolectar muestras"
+          },
+          {
+            "id": "CN_TR01_I",
+            "dimension": "I",
+            "texto": "Analizar secuencias genéticas para entender la función de genes"
+          },
+          {
+            "id": "CN_TR01_A",
+            "dimension": "A",
+            "texto": "Comunicar descubrimientos científicos al público general de forma clara"
+          }
+        ]
+      },
+      {
+        "id": "CN_TR02",
+        "opciones": [
+          {
+            "id": "CN_TR02_R",
+            "dimension": "R",
+            "texto": "Sintetizar compuestos químicos nuevos en laboratorio"
+          },
+          {
+            "id": "CN_TR02_S",
+            "dimension": "S",
+            "texto": "Trabajar con comunidades en proyectos de conservación ambiental"
+          },
+          {
+            "id": "CN_TR02_C",
+            "dimension": "C",
+            "texto": "Sistematizar datos experimentales para garantizar reproducibilidad"
+          }
+        ]
+      },
+      {
+        "id": "CN_TR03",
+        "opciones": [
+          {
+            "id": "CN_TR03_R",
+            "dimension": "R",
+            "texto": "Cultivar microorganismos o tejidos celulares en condiciones controladas"
+          },
+          {
+            "id": "CN_TR03_E",
+            "dimension": "E",
+            "texto": "Gestionar un proyecto de investigación con equipo y presupuesto externo"
+          },
+          {
+            "id": "CN_TR03_I",
+            "dimension": "I",
+            "texto": "Resolver problemas de matemática avanzada o modelado computacional"
+          }
+        ]
+      },
+      {
+        "id": "CN_TR04",
+        "opciones": [
+          {
+            "id": "CN_TR04_R",
+            "dimension": "R",
+            "texto": "Recolectar y procesar muestras de rocas, suelos o minerales en campo"
+          },
+          {
+            "id": "CN_TR04_A",
+            "dimension": "A",
+            "texto": "Ilustrar con precisión organismos, procesos biológicos o formaciones"
+          },
+          {
+            "id": "CN_TR04_S",
+            "dimension": "S",
+            "texto": "Enseñar ciencias en instituciones educativas o centros de divulgación"
+          }
+        ]
+      },
+      {
+        "id": "CN_TR05",
+        "opciones": [
+          {
+            "id": "CN_TR05_R",
+            "dimension": "R",
+            "texto": "Operar equipos de laboratorio complejos: espectrómetros, PCR, centrífugas"
+          },
+          {
+            "id": "CN_TR05_C",
+            "dimension": "C",
+            "texto": "Verificar con rigor estadístico la validez de los resultados de un estudio"
+          },
+          {
+            "id": "CN_TR05_E",
+            "dimension": "E",
+            "texto": "Fundar una empresa de biotecnología basada en un descubrimiento propio"
+          }
+        ]
+      },
+      {
+        "id": "CN_TR06",
+        "opciones": [
+          {
+            "id": "CN_TR06_I",
+            "dimension": "I",
+            "texto": "Simular y modelar fenómenos naturales con computación científica"
+          },
+          {
+            "id": "CN_TR06_A",
+            "dimension": "A",
+            "texto": "Escribir artículos o libros que expliquen descubrimientos científicos"
+          },
+          {
+            "id": "CN_TR06_E",
+            "dimension": "E",
+            "texto": "Dirigir un laboratorio de investigación tomando decisiones estratégicas"
+          }
+        ]
+      },
+      {
+        "id": "CN_TR07",
+        "opciones": [
+          {
+            "id": "CN_TR07_I",
+            "dimension": "I",
+            "texto": "Investigar mecanismos moleculares de enfermedades para nuevos tratamientos"
+          },
+          {
+            "id": "CN_TR07_S",
+            "dimension": "S",
+            "texto": "Asesorar a empresas o gobiernos sobre impacto ambiental y sostenibilidad"
+          },
+          {
+            "id": "CN_TR07_C",
+            "dimension": "C",
+            "texto": "Gestionar bases de datos científicas garantizando trazabilidad"
+          }
+        ]
+      },
+      {
+        "id": "CN_TR08",
+        "opciones": [
+          {
+            "id": "CN_TR08_I",
+            "dimension": "I",
+            "texto": "Resolver ecuaciones diferenciales o problemas de física teórica avanzada"
+          },
+          {
+            "id": "CN_TR08_A",
+            "dimension": "A",
+            "texto": "Diseñar visualizaciones de datos científicos para publicaciones"
+          },
+          {
+            "id": "CN_TR08_C",
+            "dimension": "C",
+            "texto": "Asegurar que los procedimientos cumplan las normas de bioseguridad"
+          }
+        ]
+      },
+      {
+        "id": "CN_TR09",
+        "opciones": [
+          {
+            "id": "CN_TR09_A",
+            "dimension": "A",
+            "texto": "Fotografiar o documentar visualmente fenómenos naturales para investigación"
+          },
+          {
+            "id": "CN_TR09_S",
+            "dimension": "S",
+            "texto": "Colaborar con comunidades para proteger ecosistemas amenazados"
+          },
+          {
+            "id": "CN_TR09_E",
+            "dimension": "E",
+            "texto": "Negociar financiamiento con organismos científicos internacionales"
+          }
+        ]
+      },
+      {
+        "id": "CN_TR10",
+        "opciones": [
+          {
+            "id": "CN_TR10_S",
+            "dimension": "S",
+            "texto": "Explicar conceptos científicos complejos a audiencias no especializadas"
+          },
+          {
+            "id": "CN_TR10_E",
+            "dimension": "E",
+            "texto": "Dirigir equipos de investigadores hacia objetivos científicos concretos"
+          },
+          {
+            "id": "CN_TR10_C",
+            "dimension": "C",
+            "texto": "Redactar publicaciones e informes técnicos con metodología rigurosa"
+          }
+        ]
+      }
+    ],
+    "salud": [
+      {
+        "id": "SA_TR01",
+        "opciones": [
+          {
+            "id": "SA_TR01_R",
+            "dimension": "R",
+            "texto": "Aplicar técnicas de rehabilitación física: masajes y ejercicios terapéuticos"
+          },
+          {
+            "id": "SA_TR01_I",
+            "dimension": "I",
+            "texto": "Diagnosticar enfermedades integrando síntomas, análisis e imágenes médicas"
+          },
+          {
+            "id": "SA_TR01_A",
+            "dimension": "A",
+            "texto": "Usar el arte, la música o el juego como herramienta terapéutica con pacientes"
+          }
+        ]
+      },
+      {
+        "id": "SA_TR02",
+        "opciones": [
+          {
+            "id": "SA_TR02_R",
+            "dimension": "R",
+            "texto": "Asistir en procedimientos quirúrgicos como instrumentador o anestesista"
+          },
+          {
+            "id": "SA_TR02_S",
+            "dimension": "S",
+            "texto": "Acompañar y contener emocionalmente a pacientes y familias en crisis"
+          },
+          {
+            "id": "SA_TR02_C",
+            "dimension": "C",
+            "texto": "Registrar con exactitud la historia clínica y evolución de cada paciente"
+          }
+        ]
+      },
+      {
+        "id": "SA_TR03",
+        "opciones": [
+          {
+            "id": "SA_TR03_R",
+            "dimension": "R",
+            "texto": "Realizar tratamientos dentales y procedimientos de salud bucal"
+          },
+          {
+            "id": "SA_TR03_E",
+            "dimension": "E",
+            "texto": "Gestionar un equipo de salud o dirigir un centro asistencial"
+          },
+          {
+            "id": "SA_TR03_I",
+            "dimension": "I",
+            "texto": "Interpretar análisis clínicos: bioquímica, hematología, microbiología"
+          }
+        ]
+      },
+      {
+        "id": "SA_TR04",
+        "opciones": [
+          {
+            "id": "SA_TR04_R",
+            "dimension": "R",
+            "texto": "Preparar y dispensar medicamentos verificando dosis e interacciones"
+          },
+          {
+            "id": "SA_TR04_A",
+            "dimension": "A",
+            "texto": "Crear materiales educativos de salud accesibles para distintos públicos"
+          },
+          {
+            "id": "SA_TR04_S",
+            "dimension": "S",
+            "texto": "Detectar y acompañar situaciones de vulnerabilidad social o psicológica"
+          }
+        ]
+      },
+      {
+        "id": "SA_TR05",
+        "opciones": [
+          {
+            "id": "SA_TR05_R",
+            "dimension": "R",
+            "texto": "Aplicar procedimientos de enfermería: inyecciones, sueros, curaciones"
+          },
+          {
+            "id": "SA_TR05_C",
+            "dimension": "C",
+            "texto": "Verificar que cada práctica cumpla los protocolos sanitarios vigentes"
+          },
+          {
+            "id": "SA_TR05_E",
+            "dimension": "E",
+            "texto": "Diseñar y ejecutar programas de prevención y salud pública en una comunidad"
+          }
+        ]
+      },
+      {
+        "id": "SA_TR06",
+        "opciones": [
+          {
+            "id": "SA_TR06_I",
+            "dimension": "I",
+            "texto": "Investigar evidencia científica para actualizar protocolos clínicos"
+          },
+          {
+            "id": "SA_TR06_A",
+            "dimension": "A",
+            "texto": "Diseñar actividades creativas y lúdicas para programas de rehabilitación"
+          },
+          {
+            "id": "SA_TR06_E",
+            "dimension": "E",
+            "texto": "Liderar equipos de salud en situaciones de emergencia o alta complejidad"
+          }
+        ]
+      },
+      {
+        "id": "SA_TR07",
+        "opciones": [
+          {
+            "id": "SA_TR07_I",
+            "dimension": "I",
+            "texto": "Estudiar cómo la alimentación impacta en la salud y las enfermedades"
+          },
+          {
+            "id": "SA_TR07_S",
+            "dimension": "S",
+            "texto": "Orientar a niños o jóvenes con dificultades de aprendizaje o desarrollo"
+          },
+          {
+            "id": "SA_TR07_C",
+            "dimension": "C",
+            "texto": "Gestionar stocks de medicamentos garantizando disponibilidad y vencimientos"
+          }
+        ]
+      },
+      {
+        "id": "SA_TR08",
+        "opciones": [
+          {
+            "id": "SA_TR08_I",
+            "dimension": "I",
+            "texto": "Evaluar y tratar trastornos del habla, la voz o la comunicación"
+          },
+          {
+            "id": "SA_TR08_A",
+            "dimension": "A",
+            "texto": "Diseñar actividades de terapia ocupacional adaptadas a cada paciente"
+          },
+          {
+            "id": "SA_TR08_C",
+            "dimension": "C",
+            "texto": "Seguir estrictamente los protocolos de bioseguridad e higiene hospitalaria"
+          }
+        ]
+      },
+      {
+        "id": "SA_TR09",
+        "opciones": [
+          {
+            "id": "SA_TR09_A",
+            "dimension": "A",
+            "texto": "Comunicar información de salud de forma visual, clara y accesible"
+          },
+          {
+            "id": "SA_TR09_S",
+            "dimension": "S",
+            "texto": "Acompañar a pacientes en procesos largos de recuperación física o emocional"
+          },
+          {
+            "id": "SA_TR09_E",
+            "dimension": "E",
+            "texto": "Gestionar el presupuesto y los recursos de un área de salud"
+          }
+        ]
+      },
+      {
+        "id": "SA_TR10",
+        "opciones": [
+          {
+            "id": "SA_TR10_S",
+            "dimension": "S",
+            "texto": "Educar a pacientes y familias sobre el manejo de enfermedades crónicas"
+          },
+          {
+            "id": "SA_TR10_E",
+            "dimension": "E",
+            "texto": "Diseñar nuevos servicios o programas de salud para una institución"
+          },
+          {
+            "id": "SA_TR10_C",
+            "dimension": "C",
+            "texto": "Redactar informes clínicos cumpliendo normativas y estándares de calidad"
+          }
+        ]
+      }
+    ],
+    "arte": [
+      {
+        "id": "AR_TR01",
+        "opciones": [
+          {
+            "id": "AR_TR01_R",
+            "dimension": "R",
+            "texto": "Elaborar platos de alta cocina con técnica culinaria y presentación artística"
+          },
+          {
+            "id": "AR_TR01_I",
+            "dimension": "I",
+            "texto": "Investigar el contexto histórico y cultural para un concepto creativo"
+          },
+          {
+            "id": "AR_TR01_A",
+            "dimension": "A",
+            "texto": "Componer música original que transmita emociones o cuente una historia"
+          }
+        ]
+      },
+      {
+        "id": "AR_TR02",
+        "opciones": [
+          {
+            "id": "AR_TR02_R",
+            "dimension": "R",
+            "texto": "Fotografiar o filmar capturando encuadres y momentos con impacto visual"
+          },
+          {
+            "id": "AR_TR02_S",
+            "dimension": "S",
+            "texto": "Dirigir actores o un equipo creativo en una producción artística"
+          },
+          {
+            "id": "AR_TR02_C",
+            "dimension": "C",
+            "texto": "Editar y postproducir material audiovisual con precisión técnica"
+          }
+        ]
+      },
+      {
+        "id": "AR_TR03",
+        "opciones": [
+          {
+            "id": "AR_TR03_R",
+            "dimension": "R",
+            "texto": "Diseñar y coser indumentaria de moda con técnica y criterio estético"
+          },
+          {
+            "id": "AR_TR03_E",
+            "dimension": "E",
+            "texto": "Gestionar un estudio de diseño, productora o sello musical como empresa"
+          },
+          {
+            "id": "AR_TR03_I",
+            "dimension": "I",
+            "texto": "Analizar tendencias del mercado para definir estrategias de contenido"
+          }
+        ]
+      },
+      {
+        "id": "AR_TR04",
+        "opciones": [
+          {
+            "id": "AR_TR04_R",
+            "dimension": "R",
+            "texto": "Diseñar espacios habitables integrando función, estética y experiencia"
+          },
+          {
+            "id": "AR_TR04_A",
+            "dimension": "A",
+            "texto": "Escribir una novela, guión o historia que conecte emocionalmente"
+          },
+          {
+            "id": "AR_TR04_S",
+            "dimension": "S",
+            "texto": "Informar sobre hechos de actualidad de forma clara y con impacto social"
+          }
+        ]
+      },
+      {
+        "id": "AR_TR05",
+        "opciones": [
+          {
+            "id": "AR_TR05_R",
+            "dimension": "R",
+            "texto": "Actuar en teatro o cine habitando un personaje con cuerpo y emoción"
+          },
+          {
+            "id": "AR_TR05_C",
+            "dimension": "C",
+            "texto": "Gestionar derechos, contratos y aspectos legales del trabajo artístico"
+          },
+          {
+            "id": "AR_TR05_E",
+            "dimension": "E",
+            "texto": "Desarrollar y vender tu obra o servicios creativos de forma autónoma"
+          }
+        ]
+      },
+      {
+        "id": "AR_TR06",
+        "opciones": [
+          {
+            "id": "AR_TR06_I",
+            "dimension": "I",
+            "texto": "Estudiar referentes para desarrollar tu propio lenguaje creativo"
+          },
+          {
+            "id": "AR_TR06_A",
+            "dimension": "A",
+            "texto": "Diseñar la identidad visual de una marca: logo, colores y tipografía"
+          },
+          {
+            "id": "AR_TR06_E",
+            "dimension": "E",
+            "texto": "Liderar la producción de una película, álbum o exposición de arte"
+          }
+        ]
+      },
+      {
+        "id": "AR_TR07",
+        "opciones": [
+          {
+            "id": "AR_TR07_I",
+            "dimension": "I",
+            "texto": "Analizar el comportamiento de audiencias para diseñar experiencias impactantes"
+          },
+          {
+            "id": "AR_TR07_S",
+            "dimension": "S",
+            "texto": "Colaborar con artistas de otras disciplinas en proyectos multidisciplinarios"
+          },
+          {
+            "id": "AR_TR07_C",
+            "dimension": "C",
+            "texto": "Organizar y gestionar el archivo y los derechos de una obra artística"
+          }
+        ]
+      },
+      {
+        "id": "AR_TR08",
+        "opciones": [
+          {
+            "id": "AR_TR08_I",
+            "dimension": "I",
+            "texto": "Analizar obras artísticas para escribir crítica cultural con profundidad"
+          },
+          {
+            "id": "AR_TR08_A",
+            "dimension": "A",
+            "texto": "Interpretar danza, teatro o performance en vivo ante una audiencia"
+          },
+          {
+            "id": "AR_TR08_C",
+            "dimension": "C",
+            "texto": "Dominar el software técnico de diseño, composición musical o edición"
+          }
+        ]
+      },
+      {
+        "id": "AR_TR09",
+        "opciones": [
+          {
+            "id": "AR_TR09_A",
+            "dimension": "A",
+            "texto": "Crear animaciones, motion graphics o contenido visual para medios digitales"
+          },
+          {
+            "id": "AR_TR09_S",
+            "dimension": "S",
+            "texto": "Enseñar tu disciplina artística y acompañar el desarrollo de otros creadores"
+          },
+          {
+            "id": "AR_TR09_E",
+            "dimension": "E",
+            "texto": "Crear contenido digital que construya una audiencia y genere ingresos"
+          }
+        ]
+      },
+      {
+        "id": "AR_TR10",
+        "opciones": [
+          {
+            "id": "AR_TR10_S",
+            "dimension": "S",
+            "texto": "Enseñar arte o música en comunidades y espacios educativos"
+          },
+          {
+            "id": "AR_TR10_E",
+            "dimension": "E",
+            "texto": "Negociar con galerías, festivales o medios para distribuir tu obra"
+          },
+          {
+            "id": "AR_TR10_C",
+            "dimension": "C",
+            "texto": "Cumplir entregas creativas con calidad en los plazos y formatos acordados"
+          }
+        ]
+      }
+    ],
+    "negocios": [
+      {
+        "id": "NG_TR01",
+        "opciones": [
+          {
+            "id": "NG_TR01_R",
+            "dimension": "R",
+            "texto": "Supervisar la logística y operaciones de un depósito o punto de venta"
+          },
+          {
+            "id": "NG_TR01_I",
+            "dimension": "I",
+            "texto": "Construir modelos financieros para evaluar la rentabilidad de proyectos"
+          },
+          {
+            "id": "NG_TR01_A",
+            "dimension": "A",
+            "texto": "Diseñar campañas publicitarias que conecten emocionalmente con el público"
+          }
+        ]
+      },
+      {
+        "id": "NG_TR02",
+        "opciones": [
+          {
+            "id": "NG_TR02_R",
+            "dimension": "R",
+            "texto": "Gestionar un local o comercio coordinando el equipo y las operaciones"
+          },
+          {
+            "id": "NG_TR02_S",
+            "dimension": "S",
+            "texto": "Reclutar, capacitar y motivar a las personas de una organización"
+          },
+          {
+            "id": "NG_TR02_C",
+            "dimension": "C",
+            "texto": "Preparar estados financieros, balances e informes contables"
+          }
+        ]
+      },
+      {
+        "id": "NG_TR03",
+        "opciones": [
+          {
+            "id": "NG_TR03_R",
+            "dimension": "R",
+            "texto": "Coordinar la importación, exportación y distribución de productos"
+          },
+          {
+            "id": "NG_TR03_E",
+            "dimension": "E",
+            "texto": "Crear y escalar un emprendimiento desde la idea hasta el mercado"
+          },
+          {
+            "id": "NG_TR03_I",
+            "dimension": "I",
+            "texto": "Analizar indicadores macroeconómicos para decisiones de inversión"
+          }
+        ]
+      },
+      {
+        "id": "NG_TR04",
+        "opciones": [
+          {
+            "id": "NG_TR04_R",
+            "dimension": "R",
+            "texto": "Organizar eventos corporativos o ferias garantizando cada detalle operativo"
+          },
+          {
+            "id": "NG_TR04_A",
+            "dimension": "A",
+            "texto": "Diseñar la identidad visual y la estrategia de marca de una empresa"
+          },
+          {
+            "id": "NG_TR04_S",
+            "dimension": "S",
+            "texto": "Negociar acuerdos y construir relaciones comerciales de largo plazo"
+          }
+        ]
+      },
+      {
+        "id": "NG_TR05",
+        "opciones": [
+          {
+            "id": "NG_TR05_R",
+            "dimension": "R",
+            "texto": "Controlar inventarios y optimizar el abastecimiento de una empresa"
+          },
+          {
+            "id": "NG_TR05_C",
+            "dimension": "C",
+            "texto": "Auditar cuentas y procesos para garantizar cumplimiento y transparencia"
+          },
+          {
+            "id": "NG_TR05_E",
+            "dimension": "E",
+            "texto": "Liderar la estrategia de una organización con decisiones de alto impacto"
+          }
+        ]
+      },
+      {
+        "id": "NG_TR06",
+        "opciones": [
+          {
+            "id": "NG_TR06_I",
+            "dimension": "I",
+            "texto": "Analizar datos de mercado y consumidores para definir estrategias"
+          },
+          {
+            "id": "NG_TR06_A",
+            "dimension": "A",
+            "texto": "Crear contenido creativo para redes sociales y plataformas digitales"
+          },
+          {
+            "id": "NG_TR06_E",
+            "dimension": "E",
+            "texto": "Presentar un plan de negocio ante inversores para levantar capital"
+          }
+        ]
+      },
+      {
+        "id": "NG_TR07",
+        "opciones": [
+          {
+            "id": "NG_TR07_I",
+            "dimension": "I",
+            "texto": "Analizar KPIs financieros para detectar riesgos u oportunidades"
+          },
+          {
+            "id": "NG_TR07_S",
+            "dimension": "S",
+            "texto": "Asesorar y fidelizar clientes construyendo relaciones de confianza"
+          },
+          {
+            "id": "NG_TR07_C",
+            "dimension": "C",
+            "texto": "Diseñar y controlar procesos administrativos eficientes"
+          }
+        ]
+      },
+      {
+        "id": "NG_TR08",
+        "opciones": [
+          {
+            "id": "NG_TR08_I",
+            "dimension": "I",
+            "texto": "Investigar mercados internacionales y normativas de comercio exterior"
+          },
+          {
+            "id": "NG_TR08_A",
+            "dimension": "A",
+            "texto": "Crear la propuesta de valor y el discurso de venta de un nuevo producto"
+          },
+          {
+            "id": "NG_TR08_C",
+            "dimension": "C",
+            "texto": "Gestionar contratos, documentación legal y cumplimiento normativo"
+          }
+        ]
+      },
+      {
+        "id": "NG_TR09",
+        "opciones": [
+          {
+            "id": "NG_TR09_A",
+            "dimension": "A",
+            "texto": "Diseñar la experiencia del cliente en todos sus puntos de contacto"
+          },
+          {
+            "id": "NG_TR09_S",
+            "dimension": "S",
+            "texto": "Representar a una empresa en eventos, congresos o presentaciones"
+          },
+          {
+            "id": "NG_TR09_E",
+            "dimension": "E",
+            "texto": "Tomar decisiones estratégicas bajo presión para mantener la competitividad"
+          }
+        ]
+      },
+      {
+        "id": "NG_TR10",
+        "opciones": [
+          {
+            "id": "NG_TR10_S",
+            "dimension": "S",
+            "texto": "Mediar en conflictos laborales o comerciales buscando acuerdos justos"
+          },
+          {
+            "id": "NG_TR10_E",
+            "dimension": "E",
+            "texto": "Negociar fusiones, adquisiciones o alianzas estratégicas de gran impacto"
+          },
+          {
+            "id": "NG_TR10_C",
+            "dimension": "C",
+            "texto": "Optimizar los procesos y flujo de trabajo de un área administrativa"
+          }
+        ]
+      }
+    ],
+    "humanidades": [
+      {
+        "id": "HU_TR01",
+        "opciones": [
+          {
+            "id": "HU_TR01_R",
+            "dimension": "R",
+            "texto": "Hacer trabajo de campo etnográfico observando y entrevistando comunidades"
+          },
+          {
+            "id": "HU_TR01_I",
+            "dimension": "I",
+            "texto": "Investigar fenómenos históricos o sociales analizando fuentes primarias"
+          },
+          {
+            "id": "HU_TR01_A",
+            "dimension": "A",
+            "texto": "Escribir textos que transmitan ideas complejas con claridad y estilo"
+          }
+        ]
+      },
+      {
+        "id": "HU_TR02",
+        "opciones": [
+          {
+            "id": "HU_TR02_R",
+            "dimension": "R",
+            "texto": "Dar clases de educación física o entrenar deportistas"
+          },
+          {
+            "id": "HU_TR02_S",
+            "dimension": "S",
+            "texto": "Acompañar psicológicamente a personas que atraviesan dificultades"
+          },
+          {
+            "id": "HU_TR02_C",
+            "dimension": "C",
+            "texto": "Redactar documentos legales o escrituras con exactitud técnica"
+          }
+        ]
+      },
+      {
+        "id": "HU_TR03",
+        "opciones": [
+          {
+            "id": "HU_TR03_R",
+            "dimension": "R",
+            "texto": "Visitar hogares y comunidades para evaluar situaciones de vulnerabilidad"
+          },
+          {
+            "id": "HU_TR03_E",
+            "dimension": "E",
+            "texto": "Liderar campañas políticas o gestionar instituciones públicas"
+          },
+          {
+            "id": "HU_TR03_I",
+            "dimension": "I",
+            "texto": "Analizar argumentos filosóficos o jurídicos buscando verdades e incoherencias"
+          }
+        ]
+      },
+      {
+        "id": "HU_TR04",
+        "opciones": [
+          {
+            "id": "HU_TR04_R",
+            "dimension": "R",
+            "texto": "Restaurar, catalogar y preservar objetos o documentos históricos"
+          },
+          {
+            "id": "HU_TR04_A",
+            "dimension": "A",
+            "texto": "Traducir textos capturando matices culturales y expresivos"
+          },
+          {
+            "id": "HU_TR04_S",
+            "dimension": "S",
+            "texto": "Enseñar y acompañar el proceso de aprendizaje de tus alumnos"
+          }
+        ]
+      },
+      {
+        "id": "HU_TR05",
+        "opciones": [
+          {
+            "id": "HU_TR05_R",
+            "dimension": "R",
+            "texto": "Coordinar actividades recreativas en centros comunitarios o educativos"
+          },
+          {
+            "id": "HU_TR05_C",
+            "dimension": "C",
+            "texto": "Clasificar y conservar archivos históricos, legales o documentales"
+          },
+          {
+            "id": "HU_TR05_E",
+            "dimension": "E",
+            "texto": "Gestionar programas de desarrollo social con impacto comunitario"
+          }
+        ]
+      },
+      {
+        "id": "HU_TR06",
+        "opciones": [
+          {
+            "id": "HU_TR06_I",
+            "dimension": "I",
+            "texto": "Analizar datos sociales o estadísticas para entender fenómenos humanos"
+          },
+          {
+            "id": "HU_TR06_A",
+            "dimension": "A",
+            "texto": "Diseñar materiales pedagógicos creativos que hagan accesible el conocimiento"
+          },
+          {
+            "id": "HU_TR06_E",
+            "dimension": "E",
+            "texto": "Defender causas judiciales argumentando con rigor ante un tribunal"
+          }
+        ]
+      },
+      {
+        "id": "HU_TR07",
+        "opciones": [
+          {
+            "id": "HU_TR07_I",
+            "dimension": "I",
+            "texto": "Estudiar sistemas políticos e instituciones para entender el poder"
+          },
+          {
+            "id": "HU_TR07_S",
+            "dimension": "S",
+            "texto": "Orientar y apoyar a personas con dificultades de aprendizaje o desarrollo"
+          },
+          {
+            "id": "HU_TR07_C",
+            "dimension": "C",
+            "texto": "Sistematizar datos de investigación social con rigor metodológico"
+          }
+        ]
+      },
+      {
+        "id": "HU_TR08",
+        "opciones": [
+          {
+            "id": "HU_TR08_I",
+            "dimension": "I",
+            "texto": "Aprender idiomas y analizar culturas y textos en profundidad"
+          },
+          {
+            "id": "HU_TR08_A",
+            "dimension": "A",
+            "texto": "Diseñar entornos o actividades que estimulen el pensamiento crítico"
+          },
+          {
+            "id": "HU_TR08_C",
+            "dimension": "C",
+            "texto": "Seguir marcos normativos y protocolos en contextos pedagógicos o legales"
+          }
+        ]
+      },
+      {
+        "id": "HU_TR09",
+        "opciones": [
+          {
+            "id": "HU_TR09_A",
+            "dimension": "A",
+            "texto": "Producir contenidos de divulgación histórica o cultural para distintos medios"
+          },
+          {
+            "id": "HU_TR09_S",
+            "dimension": "S",
+            "texto": "Trabajar con comunidades vulnerables para mejorar sus condiciones de vida"
+          },
+          {
+            "id": "HU_TR09_E",
+            "dimension": "E",
+            "texto": "Representar los intereses de personas o grupos ante instituciones del Estado"
+          }
+        ]
+      },
+      {
+        "id": "HU_TR10",
+        "opciones": [
+          {
+            "id": "HU_TR10_S",
+            "dimension": "S",
+            "texto": "Mediar en conflictos familiares o comunitarios buscando resoluciones justas"
+          },
+          {
+            "id": "HU_TR10_E",
+            "dimension": "E",
+            "texto": "Liderar organizaciones sociales, ONGs o movimientos con impacto real"
+          },
+          {
+            "id": "HU_TR10_C",
+            "dimension": "C",
+            "texto": "Redactar actas, resoluciones e informes institucionales con precisión"
+          }
+        ]
+      }
+    ]
+  }
+}

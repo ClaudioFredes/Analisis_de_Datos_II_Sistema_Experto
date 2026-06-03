@@ -7,7 +7,7 @@
 
 ---
 
-## ALUMNO 1 · Slides 1 y 2 · ~2 minutos
+## Angel Zambrano · Slides 1 y 2 · ~2 minutos
 
 ### Slide 1 — Portada (40 segundos)
 
@@ -31,11 +31,11 @@
 
 "El flujo, abajo, es simple: construimos el **perfil del usuario** con 33 preguntas, lo pasamos por un **motor de inferencia**, y devolvemos el **Top 5**. Todo en unos 10 minutos."
 
-*[Pasar a la siguiente slide — turno del Alumno 2]*
+*[Pasar a la siguiente slide — turno de Lucía Tomasin]*
 
 ---
 
-## ALUMNO 2 · Slides 3 y 4 · ~2 minutos
+## Lucía Tomasin · Slides 3 y 4 · ~2 minutos
 
 ### Slide 3 — El modelo que adoptamos: RIASEC (50 segundos)
 
@@ -47,17 +47,17 @@
 
 ### Slide 4 — El primer intento y lo que salió mal (70 segundos)
 
-"La primera versión era simple: 30 preguntas Likert, un promedio por dimensión y **similitud de coseno** contra el catálogo. Una sola pasada. Tenía **dos fallas de raíz**."
+"La versión previa a las fases era simple: 50 preguntas Likert en una sola pasada, un promedio por dimensión y **similitud de coseno** contra el catálogo. Tenía **dos fallas de raíz**."
 
 "La primera: **colisiones de vectores**. Al redondear los puntajes a enteros, 16 carreras distintas terminaban con el mismo vector — por ejemplo Medicina y Enfermería, ambas {R:4, I:4, S:5}. Como el desempate era por orden en el archivo, **siempre ganaba la primera de la lista**. Lo llamábamos 'carrera imán'."
 
 "La segunda: **porcentajes distorsionados**. El porcentaje mostrado elevaba el score al cubo, sin justificación matemática. Un score real de 0.90 se mostraba como 73%, hundiendo todos los valores y desordenando el ranking."
 
-*[Pasar a la siguiente slide — turno del Alumno 3]*
+*[Pasar a la siguiente slide — turno de Ariel Abal]*
 
 ---
 
-## ALUMNO 3 · Slides 5 y 6 · ~2 minutos
+## Ariel Abal · Slides 5 y 6 · ~2 minutos
 
 ### Slide 5 — Tres cambios que lo transformaron (55 segundos)
 
@@ -83,11 +83,11 @@
 
 "El mensaje clave es el del centro: **el sistema rankea y propone, pero la decisión final es del usuario. Asesora, no reemplaza.**"
 
-*[Pasar a la siguiente slide — turno del Alumno 4]*
+*[Pasar a la siguiente slide — turno de Claudio Fredes]*
 
 ---
 
-## ALUMNO 4 · Slides 7 y 8 · ~2 minutos
+## Claudio Fredes · Slides 7 y 8 · ~2 minutos
 
 ### Slide 7 — Caso en vivo: Martina (55 segundos)
 
@@ -109,11 +109,11 @@
 
 "La solución es **Pearson**: centra cada vector por su media y compara la **forma** del perfil — el código Holland dominante. Miren los números: para ese par, el **coseno da 0.87 y los confunde**, pero el **Pearson da 0.10 y los separa**. Por eso el score final pesa **30% coseno y 70% Pearson**."
 
-*[Pasar a la siguiente slide — turno del Alumno 5]*
+*[Pasar a la siguiente slide — turno de Jorge Rearte]*
 
 ---
 
-## ALUMNO 5 · Slides 9 y 10 · ~2 minutos
+## Jorge Rearte · Slides 9 y 10 · ~2 minutos
 
 ### Slide 9 — ¿Cómo sabemos que funciona? (60 segundos)
 
@@ -135,11 +135,11 @@
 
 "Y todo corre **sin servidor y sin guardar datos**: al cerrar la pestaña, no queda nada."
 
-*[Opcional, si hay tiempo: demo en vivo en `localhost:8501`. Pasar al Alumno 6.]*
+*[Opcional, si hay tiempo: demo en vivo en `localhost:8501`. Pasar a Florencia Ardanaz.]*
 
 ---
 
-## ALUMNO 6 · Slide 11 · ~2 minutos
+## Florencia Ardanaz · Slide 11 · ~2 minutos
 
 ### Slide 11 — Aprendizajes y próximos pasos (2 minutos)
 
@@ -161,14 +161,14 @@
 
 ## Resumen de tiempos
 
-| Alumno | Slides | Tema | Tiempo |
-|--------|--------|------|--------|
-| Alumno 1 | 1 y 2 | Portada · ¿Qué es ORIENTAI? | ~2 min |
-| Alumno 2 | 3 y 4 | RIASEC · El primer intento y lo que salió mal | ~2 min |
-| Alumno 3 | 5 y 6 | Tres cambios · Arquitectura en tres fases | ~2 min |
-| Alumno 4 | 7 y 8 | Caso Martina · El motor de inferencia | ~2 min |
-| Alumno 5 | 9 y 10 | Validación · Lo que recibe el usuario | ~2 min |
-| Alumno 6 | 11 | Aprendizajes y próximos pasos | ~2 min |
+| Presentador | Slides | Tema | Tiempo |
+|-------------|--------|------|--------|
+| Angel Zambrano | 1 y 2 | Portada · ¿Qué es ORIENTAI? | ~2 min |
+| Lucía Tomasin | 3 y 4 | RIASEC · El primer intento y lo que salió mal | ~2 min |
+| Ariel Abal | 5 y 6 | Tres cambios · Arquitectura en tres fases | ~2 min |
+| Claudio Fredes | 7 y 8 | Caso Martina · El motor de inferencia | ~2 min |
+| Jorge Rearte | 9 y 10 | Validación · Lo que recibe el usuario | ~2 min |
+| Florencia Ardanaz | 11 | Aprendizajes y próximos pasos | ~2 min |
 | **Total** | **11 slides** | | **~12 min** |
 
 ---
@@ -180,5 +180,5 @@
 - **Hilo narrativo**: la presentación cuenta una historia — qué es → el modelo → el primer intento que falló → los tres cambios → cómo funciona → un caso concreto (Martina) → por qué el motor es inteligente → la prueba → el resultado → los aprendizajes. Cada uno toma la posta donde la dejó el anterior.
 - **Conexión clave entre slides 7 y 8**: la slide 7 muestra un *acierto* (el perfil de Martina hace match con Ciencia de Datos) y la 8 muestra el *error histórico* que corrigió Pearson (Instrumentadora vs Martillero). Son las dos caras de la misma decisión.
 - **Si el docente pregunta**: responde primero el alumno que presentó ese tema.
-- **Demo en vivo** (opcional, Alumno 5): si hay tiempo, mostrar el sistema en `localhost:8501`. Filtrar por dominio Tecnología y responder un perfil I-alto.
+- **Demo en vivo** (opcional, Jorge Rearte): si hay tiempo, mostrar el sistema en `localhost:8501`. Filtrar por dominio Tecnología y responder un perfil I-alto.
 - **Tiempo**: practicá cada sección con cronómetro. 2 minutos es más corto de lo que parece.

@@ -1,0 +1,6 @@
+# Versión por REGLAS (Experta) — dependencias
+streamlit>=1.30
+experta==1.9.4
+# experta arrastra frozendict==1.2 y schema==0.6.7.
+# IMPORTANTE: en Python 3.10+ Experta necesita los shims de compat.py
+# (se importan automáticamente desde motor_reglas.py).
