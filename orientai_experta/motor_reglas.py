@@ -21,6 +21,13 @@ REGLAS:
   R3 (Boost)    : aplica el ajuste de Fase 3 (boost por carrera específica,
                   calculado de las preguntas bipolares del pathway) a su Reco.
 
+REGLAS EXPERTAS (transversales — conocimiento humano que el matching no tiene):
+  E1 anti-confound      : la letra dominante de la carrera no es interés del usuario (−0.8).
+  E2 rechazo dominante  : el usuario puntúa muy bajo la letra que define la carrera (−1.2).
+  E3 alineación principal: el interés #1 del usuario ES la letra dominante (+0.5).
+  E4 preferencia duración: la carrera coincide con la duración preferida (+0.4).
+  Todas acumulan en `boost`; el orden final usa certeza + boost.
+
 DESEMPATE: la CERTEZA (discreta, por reglas) es el orden primario. Para separar
 las carreras que empatan, se usa una AFINIDAD continua = intensidad real del
 perfil del usuario sobre las letras del código de la carrera (ponderada por
@@ -76,7 +83,7 @@ def letras_altas(perfil: dict) -> list:
 
 def seleccionar_pathway(pathways, perfil):
     """Elige el pathway cuyo `dims_trigger` contiene la dimensión dominante del
-    perfil del usuario (igual que el sistema original). Fallback: el primero."""
+    perfil del usuario. Fallback: el primero."""
     if not pathways:
         return None
     top = max(DIMS, key=lambda d: perfil[d])
@@ -87,7 +94,7 @@ def seleccionar_pathway(pathways, perfil):
 
 
 def boosts_de_fase3(pathway, respuestas):
-    """Acumula los boosts por carrera de la Fase 3 (fórmula del original).
+    """Acumula los boosts por carrera de la Fase 3.
 
     Para cada pregunta bipolar: factor = (respuesta - 3) / 2  ->  [-1, +1].
       factor < 0  -> aplica boosts_polo_a * |factor|
@@ -121,15 +128,16 @@ class MotorVocacional(KnowledgeEngine):
             yield Carrera(
                 id=c["id"], nombre=c["nombre"], dominios=tuple(c["dominios"]),
                 code=tuple(c["code"]), etiquetas=tuple(c["etiquetas"]),
+                duracion=c.get("duracion", "grado"),
             )
 
     # ── R1: emparejamiento por código Holland ─────────────────────
     @Rule(Usuario(dominio=MATCH.dom, altos=MATCH.altos, perfil=MATCH.perfil),
           Carrera(id=MATCH.cid, nombre=MATCH.nom, dominios=MATCH.doms,
-                  code=MATCH.code, etiquetas=MATCH.tags),
+                  code=MATCH.code, etiquetas=MATCH.tags, duracion=MATCH.dur),
           TEST(lambda dom, doms: dom in doms),
           salience=30)
-    def r_holland(self, dom, altos, perfil, cid, nom, doms, code, tags):
+    def r_holland(self, dom, altos, perfil, cid, nom, doms, code, tags, dur):
         score, motivos, afinidad = 0, [], 0.0
         for i, letra in enumerate(code):
             afinidad += PESOS[i] * perfil[IDX[letra]]   # desempate (intensidad)
@@ -141,8 +149,8 @@ class MotorVocacional(KnowledgeEngine):
         if score > 0:
             self.declare(Reco(id=cid, nombre=nom, score=score,
                               afinidad=round(afinidad, 3), motivos=tuple(motivos),
-                              etiquetas=tuple(tags), code=tuple(code),
-                              boost=0.0, f3=False))
+                              etiquetas=tuple(tags), code=tuple(code), duracion=dur,
+                              boost=0.0, f3=False, reglas=()))
 
     # ── R2: veto por aversión (retracta la recomendación) ─────────
     @Rule(Veto(etiqueta=MATCH.et),
@@ -161,6 +169,55 @@ class MotorVocacional(KnowledgeEngine):
         self.modify(reco, boost=round(b + v, 3), f3=True,
                     motivos=m + (f"Ajuste de Fase 3 (+{round(v, 2)}) por tus respuestas de valores",))
 
+    # ════════════════════════════════════════════════════════════
+    # REGLAS EXPERTAS (transversales) — conocimiento que el matching
+    # genérico no tiene. Acumulan en `boost` y se registran en `reglas`
+    # (la guarda 'EX not in reglas' evita que se re-disparen tras modify).
+    # ════════════════════════════════════════════════════════════
+
+    # E1 · anti-confound ("Martillero"): la letra que DEFINE la carrera no es un
+    #      interés del usuario -> el match vino solo de una letra secundaria.
+    @Rule(Usuario(altos=MATCH.altos),
+          AS.reco << Reco(code=MATCH.code, boost=MATCH.b, reglas=MATCH.rg, motivos=MATCH.m),
+          TEST(lambda altos, code, rg: "E1" not in rg and code[0] not in altos),
+          salience=8)
+    def e1_anticonfound(self, reco, altos, code, b, rg, m):
+        self.modify(reco, boost=round(b - 0.8, 3), reglas=rg + ("E1",),
+                    motivos=m + (f"⚑ Regla experta E1: la carrera se define por "
+                                 f"{NOMBRES[code[0]]} ({code[0]}), que no es un interés tuyo (−0.8)",))
+
+    # E2 · rechazo del rasgo dominante: el usuario puntúa MUY BAJO la letra que
+    #      define la carrera (la rechaza activamente).
+    @Rule(Usuario(perfil=MATCH.perfil),
+          AS.reco << Reco(code=MATCH.code, boost=MATCH.b, reglas=MATCH.rg, motivos=MATCH.m),
+          TEST(lambda perfil, code, rg: "E2" not in rg and perfil[IDX[code[0]]] <= 2.0),
+          salience=8)
+    def e2_rechazo(self, reco, perfil, code, b, rg, m):
+        self.modify(reco, boost=round(b - 1.2, 3), reglas=rg + ("E2",),
+                    motivos=m + (f"⚑ Regla experta E2: tu interés {NOMBRES[code[0]]} ({code[0]}) "
+                                 f"es muy bajo y es lo que define la carrera (−1.2)",))
+
+    # E3 · alineación principal: el interés #1 del usuario es JUSTO la letra
+    #      dominante de la carrera (señal fuerte de buen ajuste).
+    @Rule(Usuario(perfil=MATCH.perfil),
+          AS.reco << Reco(code=MATCH.code, boost=MATCH.b, reglas=MATCH.rg, motivos=MATCH.m),
+          TEST(lambda perfil, code, rg: "E3" not in rg and DIMS[perfil.index(max(perfil))] == code[0]),
+          salience=8)
+    def e3_alineacion(self, reco, perfil, code, b, rg, m):
+        self.modify(reco, boost=round(b + 0.5, 3), reglas=rg + ("E3",),
+                    motivos=m + (f"★ Regla experta E3: tu interés principal ({code[0]}) "
+                                 f"es el que define la carrera (+0.5)",))
+
+    # E4 · preferencia de duración: la carrera coincide con la duración que
+    #      prefiere el usuario (tecnicatura / grado).
+    @Rule(Usuario(dur_pref=MATCH.pref),
+          AS.reco << Reco(duracion=MATCH.dur, boost=MATCH.b, reglas=MATCH.rg, motivos=MATCH.m),
+          TEST(lambda pref, dur, rg: "E4" not in rg and pref in ("tecnicatura", "grado") and dur == pref),
+          salience=8)
+    def e4_duracion(self, reco, pref, dur, b, rg, m):
+        self.modify(reco, boost=round(b + 0.4, 3), reglas=rg + ("E4",),
+                    motivos=m + ("★ Regla experta E4: coincide con tu preferencia de duración (+0.4)",))
+
 
 def _iter_facts(engine):
     """Itera los hechos del motor de forma robusta entre versiones de Experta."""
@@ -171,7 +228,7 @@ def _iter_facts(engine):
         return [fl[k] for k in list(fl)]
 
 
-def recomendar(carreras, dominio, perfil, vetos=(), boosts_f3=None):
+def recomendar(carreras, dominio, perfil, vetos=(), boosts_f3=None, dur_pref="ambas"):
     """Corre el motor y devuelve las recomendaciones ordenadas.
 
     Args:
@@ -180,10 +237,11 @@ def recomendar(carreras, dominio, perfil, vetos=(), boosts_f3=None):
         perfil:    dict RIASEC del usuario {R:.., I:.., ...} en escala 1-5.
         vetos:     iterable de etiquetas vetadas (deal-breakers, opcional).
         boosts_f3: dict {carrera_id: refuerzo} acumulado de la Fase 3.
+        dur_pref:  preferencia de duración ('tecnicatura' / 'grado' / 'ambas').
 
     Returns:
         lista de Reco ordenada por (certeza + boost desc, afinidad desc, nombre).
-        El boost de Fase 3 ajusta finamente el orden entre carreras parecidas.
+        `boost` acumula el ajuste de Fase 3 y de las reglas expertas (E1-E4).
     """
     altos = letras_altas(perfil)
     perfil_t = tuple(float(perfil[d]) for d in DIMS)
@@ -191,7 +249,8 @@ def recomendar(carreras, dominio, perfil, vetos=(), boosts_f3=None):
 
     eng = MotorVocacional(carreras)
     eng.reset()
-    eng.declare(Usuario(dominio=dominio, altos=frozenset(altos), perfil=perfil_t))
+    eng.declare(Usuario(dominio=dominio, altos=frozenset(altos), perfil=perfil_t,
+                        dur_pref=dur_pref))
     for et in vetos:
         eng.declare(Veto(etiqueta=et))
     for cid, v in boosts_f3.items():

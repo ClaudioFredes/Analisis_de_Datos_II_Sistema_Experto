@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-Genera la base de conocimiento de la versión por reglas (Experta).
+Genera la base de conocimiento de ORIENTAI.
 
-Lee (en SOLO LECTURA) el catálogo y los dominios del proyecto original y
-produce `data/carreras_reglas.json` con las 90 carreras de los 6 dominios.
-Para cada carrera agrega:
+Produce `data/carreras_reglas.json` con las 90 carreras de los 6 dominios.
+Para cada carrera incluye:
   - la LISTA de dominios a los que pertenece (una carrera puede estar en varios),
   - su CÓDIGO HOLLAND (las 3 letras RIASEC dominantes),
   - el nivel discretizado por dimensión (bajo/medio/alto).
@@ -68,7 +67,7 @@ def main():
 
     out = {
         "_meta": {
-            "descripcion": "Base de conocimiento de la versión por reglas (Experta). "
+            "descripcion": "Base de conocimiento de ORIENTAI. "
                            "90 carreras, 6 dominios. 'dominios' = lista (una carrera puede "
                            "estar en varios). 'code' = 3 letras RIASEC dominantes.",
             "dominios": dom_info,
@@ -85,25 +84,22 @@ def main():
 
     preg = json.loads((RAIZ / "data" / "preguntas.json").read_text("utf-8"))
 
-    # ── Preguntas de Fase 1 (reusadas del original: 18, 3 por dominio) ──
+    # ── Preguntas de Fase 1: 18 preguntas Likert, 3 por dominio ──
     f1 = [{"id": q["id"], "dominio": q["dominio"], "texto": q["pregunta"],
            "ponderacion": q.get("ponderacion", 1.0)}
           for q in preg.get("preguntas_fase1", [])]
     out_f1 = {
-        "_meta": {"descripcion": "Preguntas de Fase 1 (detección de dominio), "
-                                 "copiadas del proyecto original. Likert 1-5."},
+        "_meta": {"descripcion": "Preguntas de Fase 1 (detección de dominio). Likert 1-5."},
         "fase1_dominio": f1,
     }
     dest_f1 = AQUI / "data" / "f1_reglas.json"
     dest_f1.write_text(json.dumps(out_f1, ensure_ascii=False, indent=2), "utf-8")
     print(f"OK -> {dest_f1.name}: {len(f1)} preguntas de Fase 1")
 
-    # ── Tríadas de Fase 2 (reusadas del proyecto original, copiadas
-    #    para que esta carpeta sea autocontenida) ──────────────────
+    # ── Tríadas de Fase 2: comparación forzada 1 de 3 ────────────
     triadas = preg.get("triadas_por_dominio", {})
     out_t = {
-        "_meta": {"descripcion": "Tríadas de Fase 2 por dominio (1 de 3, comparación "
-                                 "forzada). Copiadas del proyecto original."},
+        "_meta": {"descripcion": "Tríadas de Fase 2 por dominio (1 de 3, comparación forzada)."},
         "triadas_por_dominio": triadas,
     }
     dest_t = AQUI / "data" / "triadas_reglas.json"
@@ -116,8 +112,7 @@ def main():
     out_f3 = {
         "_meta": {"descripcion": "Fase 3 por dominio: cada dominio tiene pathways "
                                  "(sub-perfiles) con dims_trigger y 5 preguntas bipolares; "
-                                 "cada polo aporta boosts a carreras específicas. Copiado "
-                                 "del proyecto original."},
+                                 "cada polo aporta boosts a carreras específicas."},
         "fase3_por_dominio": fase3,
     }
     dest_f3 = AQUI / "data" / "fase3_reglas.json"

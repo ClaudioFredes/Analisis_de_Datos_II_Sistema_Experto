@@ -33,13 +33,13 @@ def test_veto_retracta():
 
 
 def test_boost_f3():
-    """Un boost de Fase 3 se registra en la carrera y mejora su posición efectiva."""
-    base = recomendar(KB, "tecnologia", P_IC)
+    """Un boost de Fase 3 suma al ajuste total y mejora la posición efectiva."""
+    base = recomendar(KB, "tecnologia", P_IC)                           # solo reglas expertas
     con = recomendar(KB, "tecnologia", P_IC, boosts_f3={"ciencia_datos": 0.5})
-    cd = next(r for r in con if r["id"] == "ciencia_datos")
     cd_base = next(r for r in base if r["id"] == "ciencia_datos")
-    assert cd["boost"] == 0.5, "el boost debe quedar registrado en la carrera"
-    assert (cd["score"] + cd["boost"]) > cd_base["score"], "su posición efectiva debe subir"
+    cd = next(r for r in con if r["id"] == "ciencia_datos")
+    assert cd["boost"] > cd_base["boost"], "el boost de F3 debe sumar al ajuste"
+    assert (cd["score"] + cd["boost"]) > (cd_base["score"] + cd_base["boost"])
 
 
 def test_pathway_seleccion():
@@ -76,9 +76,28 @@ def test_multidominio():
     assert "bioingenieria" in en_tec and "bioingenieria" in en_cie
 
 
+def test_regla_experta_E3_y_E1():
+    """E3 premia la carrera cuya dominante es el interés #1; E1 penaliza el confound."""
+    perfil = {"R": 1.5, "I": 5.0, "A": 2.0, "S": 2.0, "E": 2.5, "C": 4.0}
+    by_id = {r["id"]: r for r in recomendar(KB, "tecnologia", perfil)}
+    cd = by_id["ciencia_datos"]                 # I-C-E, dominante I = interés #1
+    assert "E3" in cd["reglas"] and cd["boost"] > 0
+    im = by_id["ingenieria_mecanica"]           # R-I-C, dominante R (no es interés)
+    assert "E1" in im["reglas"] and im["boost"] < 0
+
+
+def test_regla_experta_E4_duracion():
+    """E4 refuerza las carreras que coinciden con la duración preferida."""
+    perfil = {"R": 2, "I": 5, "A": 2, "S": 2, "E": 2.5, "C": 4}
+    by_id = {r["id"]: r for r in recomendar(KB, "tecnologia", perfil, dur_pref="tecnicatura")}
+    tp = by_id["tec_programacion"]
+    assert tp["duracion"] == "tecnicatura" and "E4" in tp["reglas"]
+
+
 if __name__ == "__main__":
     fns = [test_holland_basico, test_veto_retracta, test_boost_f3, test_pathway_seleccion,
-           test_explicabilidad, test_desempate_afinidad, test_multidominio]
+           test_explicabilidad, test_desempate_afinidad, test_multidominio,
+           test_regla_experta_E3_y_E1, test_regla_experta_E4_duracion]
     ok = 0
     for fn in fns:
         try:

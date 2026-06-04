@@ -1,75 +1,84 @@
-# ORIENTAI · versión por REGLAS (Experta)
+# ORIENTAI · Sistema Experto de Orientación Vocacional
 
-Reimplementación del sistema experto vocacional usando un **motor de reglas**
-(Experta / forward-chaining) en lugar de la similitud numérica (coseno/Pearson)
-de la versión original. Cubre las **90 carreras** de los **6 dominios** (una
-carrera puede pertenecer a varios).
-
-> Esta carpeta es **independiente**: no modifica el proyecto original. Lee el
-> catálogo original en **solo lectura** (vía `build_kb.py`) para derivar su base
-> de conocimiento.
+Sistema experto vocacional basado en un **motor de reglas** (Experta /
+forward-chaining). Cubre **90 carreras** en **6 dominios vocacionales**
+(una carrera puede pertenecer a más de un dominio).
 
 ---
 
-## Qué cambia respecto a la versión original
+## Cómo funciona
 
-| | Original | Esta versión (reglas) |
-|---|---|---|
-| Razonamiento | Similitud de coseno + Pearson (vectores) | **Reglas Experta** (hechos + forward-chaining) |
-| Resultado | Ranking continuo con % de afinidad | Ranking por **certeza** (suma de reglas) |
-| Explicación | Implícita | **Explícita**: cada recomendación lista las reglas que la sostienen |
-| Desempate | — | **Afinidad** continua (intensidad del perfil sobre el código de la carrera) |
+El razonamiento es 100 % simbólico: **hechos + reglas**. No hay similitud
+numérica ni vectores de distancia. Cada recomendación se justifica con las
+reglas concretas que la generaron.
 
-Las 3 fases y la base de conocimiento (vectores RIASEC de O\*NET) se conservan;
-lo que cambia es el **motor**.
+### Las tres fases de elicitación
 
-**Las 3 fases (interfaz):**
-1. **F1 · Dominio** — 18 preguntas Likert (reusadas del original) -> puntaje por dominio -> el usuario elige uno de los 6.
-2. **F2 · Perfil RIASEC** — **tríadas** (comparación forzada *1 de 3*, como el sistema
-   original), con la fórmula pairwise `score = 1 + (victorias / apariciones) × 4`.
-3. **F3 · Valores (pathway)** — se detecta un *pathway* (sub-perfil) por la dimensión dominante
-   y sus 5 preguntas bipolares aplican **boosts a carreras específicas** (igual que el original),
-   ajustando finamente el ranking. *(El motor también soporta vetos/deal-breakers, opcionales.)*
+1. **F1 · Dominio** — 18 preguntas Likert evalúan la afinidad del usuario con
+   cada uno de los 6 dominios. El sistema rankea los dominios y el usuario elige
+   uno (puede elegir uno distinto al recomendado). También elige preferencia de
+   duración (tecnicatura / grado / indiferente). Esto reduce el espacio de búsqueda
+   de 90 a ~15 carreras.
 
-El perfil que sale de F2 alimenta el motor de reglas (no cambia nada del motor).
+2. **F2 · Perfil RIASEC** — 10 tríadas de comparación forzada (1 de 3) construyen
+   el vector RIASEC del usuario. Cada elección suma una victoria a la dimensión
+   elegida. Fórmula: `score[dim] = 1 + (victorias / apariciones) × 4` → perfil 1–5.
+
+3. **F3 · Valores (pathway)** — Según la dimensión dominante del perfil, el sistema
+   detecta un *pathway* (sub-perfil) y presenta 5 preguntas bipolares calibradas
+   para ese sub-perfil. Las respuestas generan **boosts a carreras específicas**
+   (`factor = (respuesta − 3) / 2 → [−1, +1]`), ajustando finamente el ranking.
+   Hay 18 pathways × 5 preguntas = 90 ajustes posibles.
+
+### Las reglas del motor
+
+**Reglas principales:**
+
+- **R1 · Holland** — Si la carrera está en el dominio elegido y sus letras RIASEC
+  dominantes coinciden con los intereses *altos* del usuario, genera una
+  recomendación. Puntaje de certeza: letra dominante = +3, secundaria = +2,
+  terciaria = +1.
+- **R3 · Boost F3** — Aplica los boosts del pathway (calculados en F3) a las
+  carreras concretas que cada respuesta bipolar favorece.
+
+**Reglas expertas** — conocimiento humano que el matching genérico no captura.
+Acumulan en el campo `boost` y son completamente explicables:
+
+- **E1 · anti-confound** — penaliza (−0.8) si la letra que *define* la carrera no
+  está entre los intereses altos del usuario. Evita que una coincidencia en letra
+  secundaria posicione mal una carrera.
+- **E2 · rechazo del rasgo dominante** — penaliza (−1.2) si el usuario puntúa muy
+  bajo la letra dominante de la carrera (la rechaza activamente).
+- **E3 · alineación principal** — refuerza (+0.5) si el interés #1 del usuario
+  coincide exactamente con la letra dominante de la carrera. Ejemplo: Psicología
+  (S-I-A) y Biología (I-S-R) pueden empatar en certeza 5; E3 detecta que Biología
+  es I-dominante y que I es el interés #1 del usuario → +0.5 que rompe el empate.
+- **E4 · preferencia de duración** — refuerza (+0.4) las carreras cuya duración
+  coincide con la preferencia elegida en F1.
+
+### Ordenamiento final
+
+`certeza (R1) + ajustes (R3 + E1–E4)` como criterio primario.
+Ante empates, **afinidad** continua (intensidad del perfil sobre el código Holland
+de la carrera). Todo dirigido por reglas y completamente explicable.
 
 ---
 
-## Cómo razona (las reglas)
-
-- **R1 · Holland** — Si la carrera está en el dominio elegido y sus letras
-  RIASEC dominantes coinciden con los intereses *altos* del usuario, concluye una
-  recomendación. Letra dominante = +3, secundaria = +2, terciaria = +1.
-- **R2 · Veto** — Si el usuario vetó una etiqueta (deal-breaker, ej.
-  `contacto_pacientes`), **retracta** toda recomendación de carreras que la tengan.
-- **R3 · Ajuste de Fase 3** — Aplica los *boosts del pathway* (calculados de las
-  preguntas bipolares, `boost = boost_carrera × |factor|`) a las carreras concretas que
-  cada respuesta favorece. Es lo que da el "acercamiento fino" al resultado, como el original
-  (ej. sube *Ciencia de Datos* sobre *Ing. en Sistemas*).
-
-El puntaje (*certeza*) no es una métrica geométrica: es la **acumulación de
-certeza de las reglas que dispararon**. Cuando dos carreras empatan en certeza,
-se ordenan por **afinidad** — la intensidad real del perfil del usuario sobre las
-letras del código de la carrera (ponderada por posición). Así el ranking final
-es fino sin dejar de estar dirigido por reglas.
-
----
-
-## Estructura
+## Estructura del proyecto
 
 ```
 orientai_experta/
-├── compat.py             # shims para correr Experta en Python 3.10+/3.14
-├── build_kb.py           # genera data/carreras_reglas.json desde el catálogo original
-├── motor_reglas.py       # KnowledgeEngine: hechos + reglas R1/R2/R3
-├── app_reglas.py         # UI Streamlit de 3 fases
-├── test_motor.py         # tests del motor (4 casos)
+├── compat.py               # shims para correr Experta en Python 3.10+/3.14
+├── build_kb.py             # genera data/carreras_reglas.json
+├── motor_reglas.py         # KnowledgeEngine: hechos + reglas R1/R3 + E1–E4
+├── app_reglas.py           # UI Streamlit de 3 fases
+├── test_motor.py           # tests del motor
 ├── requirements.txt
 └── data/
     ├── carreras_reglas.json    # base de conocimiento (90 carreras, 6 dominios, código Holland)
-    ├── f1_reglas.json          # preguntas de F1 (18, reusadas del original)
-    ├── triadas_reglas.json     # tríadas de F2 (comparación 1-de-3, reusadas del original)
-    └── fase3_reglas.json       # F3: pathways + bipolares con boosts por carrera (reusadas del original)
+    ├── f1_reglas.json          # 18 preguntas Likert de F1 (3 por dominio)
+    ├── triadas_reglas.json     # tríadas de F2 (comparación 1-de-3, por dominio)
+    └── fase3_reglas.json       # F3: 18 pathways con 5 preguntas bipolares cada uno
 ```
 
 ---
@@ -79,11 +88,11 @@ orientai_experta/
 ```bash
 pip install -r requirements.txt
 
-# (opcional) regenerar la base de conocimiento desde el catálogo original
+# (opcional) regenerar la base de conocimiento
 python build_kb.py
 
 # tests del motor
-python test_motor.py            # -> 4/4 tests OK
+python test_motor.py
 
 # correr la app
 python -m streamlit run app_reglas.py   # -> http://localhost:8501
@@ -91,23 +100,13 @@ python -m streamlit run app_reglas.py   # -> http://localhost:8501
 
 ---
 
-## ⚠️ Compatibilidad de Experta
+## Compatibilidad con Python 3.10+
 
-Experta (último release 2018) **no es compatible de fábrica** con Python 3.10+:
+Experta (último release 2018) no es compatible de fábrica con Python 3.10+:
+
 - `frozendict==1.2` usa `collections.Mapping` (movido a `collections.abc` en 3.10).
 - Experta usa `inspect.getargspec` (removido en 3.11).
 
-`compat.py` aplica ambos *shims* y se importa automáticamente desde
-`motor_reglas.py`, así que la app corre tal cual en Python 3.14. Verificado.
-
----
-
-## Alcance y próximos pasos
-
-- **Catálogo completo:** 90 carreras en 6 dominios (12 carreras pertenecen a más
-  de un dominio). Generado por `build_kb.py` desde el catálogo original.
-- **Desempate:** la certeza por reglas se afina con la *afinidad* continua.
-- Posibles mejoras: usar los niveles (bajo/medio/alto) dentro del match, reglas
-  expertas específicas (ej. demover carreras comerciales para perfiles de salud,
-  replicando el caso Instrumentadora/Martillero), y portar el estilo visual del
-  proyecto original.
+`compat.py` aplica ambos *shims* antes de importar Experta. Se importa
+automáticamente desde `motor_reglas.py`, por lo que la app funciona sin
+modificaciones en Python 3.14. Verificado.

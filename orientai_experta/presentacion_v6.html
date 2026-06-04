@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORIENTAI · Sistema Experto Vocacional</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
+
+:root {
+  --ink:       #1a1a1a;
+  --paper:     #faf6ef;
+  --card:      #fffdf8;
+  --terra:     #c0392b;
+  --terra-lt:  #fceae8;
+  --blue:      #2c3e7a;
+  --blue-lt:   #dde3f5;
+  --sage:      #5a8a6a;
+  --sage-lt:   #deeee5;
+  --amber:     #d97706;
+  --amber-lt:  #fef3cd;
+  --sh:        4px 4px 0 var(--ink);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 2.5vmin; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.deck { position: relative; width: 100vw; height: 100vh; }
+
+.slide {
+  display: none;
+  position: absolute;
+  inset: 0;
+  animation: fadeIn .3s ease;
+}
+.slide.active { display: flex; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+
+/* ── COVER ── */
+.s-cover { flex-direction: row; }
+.cover-left {
+  width: 56%;
+  background: var(--blue);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 4.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.cover-left::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 26px 26px;
+  pointer-events: none;
+}
+.cover-left::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: var(--terra);
+}
+.cover-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+  margin-bottom: 1.6rem;
+  position: relative;
+}
+.cover-name {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 7rem;
+  line-height: .9;
+  color: #fff;
+  letter-spacing: -.035em;
+  position: relative;
+}
+.cover-bar {
+  width: 72px;
+  height: 6px;
+  background: var(--terra);
+  border-radius: 3px;
+  margin-top: 1.8rem;
+  position: relative;
+}
+.cover-year {
+  position: absolute;
+  bottom: 2.2rem;
+  right: 2.8rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: rgba(255,255,255,.3);
+  letter-spacing: .12em;
+}
+.cover-right {
+  width: 44%;
+  background: var(--paper);
+  background-image: radial-gradient(rgba(26,26,26,.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+  border-left: 3px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 5rem;
+  gap: 1.4rem;
+}
+.cover-uni {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.cover-subject {
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--ink);
+  border-left: 5px solid var(--terra);
+  padding-left: 1.1rem;
+}
+.cover-prof {
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: #555;
+}
+.cover-divider {
+  width: 44px;
+  height: 2px;
+  background: rgba(26,26,26,.2);
+  border-radius: 1px;
+}
+.cover-students {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.cover-student {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+.cover-student::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--sage);
+  flex-shrink: 0;
+}
+
+/* ── NORMAL SLIDES ── */
+.s-normal {
+  flex-direction: column;
+  padding: 5rem 9rem 3.5rem;
+  background: var(--paper);
+  background-image: radial-gradient(rgba(26,26,26,.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.slide-header {
+  flex-shrink: 0;
+  height: 7rem;
+  display: flex;
+  flex-direction: column;
+}
+.slide-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .4rem;
+}
+.slide-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .9rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+}
+.badge-pres  { background: var(--terra-lt); }
+.badge-v1    { background: var(--blue-lt); }
+.badge-evol  { background: var(--sage-lt); }
+.badge-act   { background: var(--amber-lt); }
+.badge-res   { background: var(--card); }
+.slide-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .9rem;
+  font-weight: 700;
+  color: #bbb;
+}
+.slide-meta-right { display: flex; align-items: center; gap: .9rem; }
+.slide-presenter {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--ink);
+  padding: 3px 12px;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  background: var(--card);
+}
+.slide-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 2.6rem;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.slide-rule {
+  width: 64px; height: 5px;
+  border-radius: 2px;
+  background: var(--ink);
+  margin-top: .5rem;
+}
+.slide-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1.2rem;
+  margin-top: .8rem;
+  overflow: hidden;
+}
+
+/* ── GRIDS ── */
+.g2  { display: grid; grid-template-columns: 1fr 1fr;     gap: 1.2rem; }
+.g3  { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+.g21 { display: grid; grid-template-columns: 2fr 1fr;     gap: 1.2rem; }
+.g12 { display: grid; grid-template-columns: 1fr 2fr;     gap: 1.2rem; }
+
+/* ── CARDS ── */
+.card {
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  background: var(--card);
+  box-shadow: var(--sh);
+  padding: .85rem 1.1rem;
+}
+.card.terra { background: var(--terra-lt); }
+.card.blue  { background: var(--blue-lt); }
+.card.sage  { background: var(--sage-lt); }
+.card.amber { background: var(--amber-lt); }
+.card.dark  { background: var(--ink); color: #fff; }
+.card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: .3rem; line-height: 1.2; }
+.card p  { font-size: 1rem; line-height: 1.45; color: #444; }
+.card.dark h3 { color: #fff; }
+.card.dark p  { color: #bbb; }
+
+/* ── PILLS ── */
+.pill {
+  display: inline-block;
+  padding: 4px 14px;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  background: var(--card);
+}
+.pill.terra { background: var(--terra-lt); }
+.pill.blue  { background: var(--blue-lt); }
+.pill.sage  { background: var(--sage-lt); }
+.pill.amber { background: var(--amber-lt); }
+.pill.dark  { background: var(--ink); color: #fff; }
+
+/* ── FLOW ── */
+.flow { display: flex; align-items: stretch; gap: .4rem; }
+.fbox {
+  flex: 1;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: var(--card);
+  box-shadow: 3px 3px 0 var(--ink);
+  padding: .55rem .5rem;
+  text-align: center;
+}
+.fbox .ft { font-weight: 800; font-size: 1.1rem; line-height: 1.2; }
+.fbox .fs { font-size: .9rem; color: #666; margin-top: .2rem; font-family: 'JetBrains Mono', monospace; line-height: 1.4; }
+.fbox.terra { background: var(--terra-lt); }
+.fbox.blue  { background: var(--blue-lt); }
+.fbox.sage  { background: var(--sage-lt); }
+.fbox.amber { background: var(--amber-lt); }
+.farr { display: flex; align-items: center; justify-content: center; color: #bbb; font-size: .9rem; padding: 0 .2rem; flex-shrink: 0; }
+
+/* ── STATS ── */
+.stat { text-align: center; padding: .6rem; }
+.stat .sn { font-family: 'Archivo Black', sans-serif; font-size: 3rem; line-height: 1; }
+.stat .sl { font-size: 1rem; color: #666; margin-top: .3rem; }
+
+/* ── TABLE ── */
+table.t { border-collapse: collapse; width: 100%; font-size: 1rem; }
+table.t th { background: var(--ink); color: #fff; padding: .4rem .8rem; text-align: left; font-family: 'JetBrains Mono', monospace; font-size: .9rem; }
+table.t td { padding: .4rem .8rem; border-bottom: 1px solid rgba(26,26,26,.1); }
+table.t tr:hover td { background: rgba(44,62,122,.06); }
+
+/* ── TIMELINE ── */
+.tl { display: flex; flex-direction: column; gap: .5rem; }
+.tl-row { display: flex; align-items: flex-start; gap: .7rem; }
+.tl-dot {
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 2px solid var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .6rem; font-weight: 700;
+  flex-shrink: 0; margin-top: 2px;
+}
+.tl-dot.ok  { background: var(--sage-lt); }
+.tl-dot.bad { background: var(--terra-lt); }
+.tl-dot.neu { background: var(--card); }
+.tl-body h4 { font-size: 1.15rem; font-weight: 800; margin-bottom: .1rem; line-height: 1.2; }
+.tl-body p  { font-size: .95rem; color: #555; line-height: 1.45; }
+
+/* ── HEXAGON GRID ── */
+.hex-wrap { display: grid; grid-template-columns: repeat(6, 1fr); gap: .5rem; }
+.hex {
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  box-shadow: 3px 3px 0 var(--ink);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: .6rem .3rem;
+  text-align: center;
+}
+.hex .hl { font-family: 'Archivo Black', sans-serif; font-size: 2.2rem; line-height: 1; }
+.hex .hd { font-size: .95rem; font-weight: 800; color: #333; margin-top: .2rem; }
+.hex .hx { font-size: .85rem; color: #555; margin-top: .1rem; line-height: 1.3; }
+
+/* ── LABELS ── */
+.lbl {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: .3rem;
+}
+
+/* ── FORMULA BOX ── */
+.fml {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: .6rem 1.2rem;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: var(--card);
+  box-shadow: 3px 3px 0 var(--ink);
+  display: inline-block;
+}
+
+/* ── MINI CARD (compact) ── */
+.mcard {
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: var(--card);
+  box-shadow: 3px 3px 0 var(--ink);
+  padding: .5rem .8rem;
+}
+.mcard .mt { font-weight: 800; font-size: .95rem; }
+.mcard .ms { font-size: .82rem; color: #666; margin-top: .1rem; }
+
+/* ── BIPOLAR SCALE ── */
+.bipolar {
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  background: var(--card);
+  box-shadow: var(--sh);
+  padding: .6rem 1rem;
+}
+.bipolar .bq { font-weight: 800; font-size: 1rem; margin-bottom: .3rem; }
+.bipolar .bp { display: flex; justify-content: space-between; align-items: center; gap: .6rem; margin: .3rem 0; }
+.bipolar .bp-l, .bipolar .bp-r { font-size: .85rem; color: #666; flex: 1; }
+.bipolar .bp-l { text-align: left; }
+.bipolar .bp-r { text-align: right; }
+.bipolar .bp-s {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--ink);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.bipolar .bb {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .78rem;
+  color: #888;
+  line-height: 1.5;
+  margin-top: .3rem;
+  border-top: 1px solid rgba(26,26,26,.1);
+  padding-top: .3rem;
+}
+
+/* ── RADAR SVG ── */
+.radar-wrap { display: flex; flex-direction: column; align-items: center; gap: .3rem; }
+.radar-wrap svg { width: 10rem; height: 10rem; display: block; }
+
+/* ── PROGRESS BAR ── */
+#prog {
+  position: fixed; top: 0; left: 0; right: 0;
+  display: flex; gap: 3px; padding: 5px 1.5rem; z-index: 50;
+}
+.ps { height: 3px; flex: 1; border-radius: 2px; background: rgba(26,26,26,.08); }
+.ps.done   { background: var(--ink); }
+.ps.active { background: var(--terra); }
+
+/* ── NAV ── */
+#nav {
+  position: fixed; bottom: 1.2rem; left: 50%;
+  transform: translateX(-50%);
+  display: flex; align-items: center; gap: .7rem; z-index: 100;
+}
+.nb {
+  width: 32px; height: 32px;
+  border: 2px solid var(--ink); border-radius: 7px;
+  background: var(--card); box-shadow: 3px 3px 0 var(--ink);
+  cursor: pointer; font-size: .85rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .12s;
+}
+.nb:hover { background: var(--sage-lt); transform: translate(2px,2px); box-shadow: 1px 1px 0 var(--ink); }
+#cnt { font-family: 'JetBrains Mono', monospace; font-size: .72rem; font-weight: 700; color: #999; min-width: 40px; text-align: center; }
+
+#kh { position: fixed; top: .85rem; left: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: .6rem; color: #ccc; z-index: 50; }
+
+/* ── SCORE BADGE ── */
+.score-badge {
+  text-align: center;
+  flex-shrink: 0;
+}
+.score-badge .sv {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 2.2rem;
+  line-height: 1;
+}
+.score-badge .sl {
+  font-size: .75rem;
+  color: #888;
+  margin-top: .1rem;
+}
+
+/* ── MINI FLOW ── */
+.mflow {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+.mflow-item {
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  background: var(--card);
+  box-shadow: 2px 2px 0 var(--ink);
+  padding: .35rem .6rem;
+  text-align: center;
+  font-size: .85rem;
+  font-weight: 700;
+}
+.mflow-arr { color: #bbb; font-size: .9rem; }
+
+/* ── DOMINIO BAR ── */
+.dom-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .35rem .8rem;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: var(--card);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.dom-bar .dn { font-weight: 800; font-size: .95rem; }
+.dom-bar .dv { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: .9rem; }
+.dom-bar.rec { background: var(--blue-lt); }
+
+/* ── RESPONSIVE TWEAKS ── */
+@media (max-height: 700px) {
+  .s-normal { padding: 3.5rem 6rem 2.5rem; }
+  .slide-header { height: 5.5rem; }
+  .slide-title { font-size: 2.2rem; }
+  .hex .hl { font-size: 1.8rem; }
+  .hex .hd { font-size: .85rem; }
+  .hex .hx { font-size: .78rem; }
+}
+</style>
+</head>
+<body>
+<div id="kh">← → navegar</div>
+<div id="prog"></div>
+
+<div class="deck" id="deck">
+<!-- ══ S0 · PORTADA ══════════════════════════════════════════════════ -->
+<div class="slide s-cover active" id="s0"
+  data-al="Angel Zambrano"
+  data-notes="ALUMNO 1 — Presentarse: 'Buenas tardes. Somos el grupo X de Análisis de Datos II. Hoy les presentamos ORIENTAI, un sistema experto de orientación vocacional.' Hacer una pausa para que el público lea los nombres. Luego avanzar a la siguiente slide.">
+
+  <div class="cover-left">
+    <div class="cover-tag">Sistema Experto · Orientación Vocacional</div>
+    <div class="cover-name">ORIENTAI</div>
+    <div class="cover-bar"></div>
+  </div>
+
+  <div class="cover-right">
+    <div class="cover-uni">Universidad de la Ciudad de Buenos Aires</div>
+    <div class="cover-subject">
+      Análisis de Datos II<br>
+      Sistemas Expertos y Redes de Conocimiento
+    </div>
+    <div class="cover-prof">Prof. Agustín Asuaje</div>
+    <div class="cover-divider"></div>
+    <div class="cover-students">
+      <div class="cover-student">Angel Zambrano</div>
+      <div class="cover-student">Ariel Abal</div>
+      <div class="cover-student">Claudio Fredes</div>
+      <div class="cover-student">Florencia Ardanaz</div>
+      <div class="cover-student">Jorge Rearte</div>
+      <div class="cover-student">Lucía Tomasin</div>
+    </div>
+  </div>
+</div>
+<!-- ══ S1 · QUÉ HACE ORIENTAI ══════════════════════════════════════════ -->
+<div class="slide s-normal" id="s1"
+  data-al="Angel Zambrano"
+  data-notes="ALUMNO 1 — ORIENTAI responde una pregunta concreta: ¿qué carrera universitaria debería estudiar? Explicar los tres rasgos que lo hacen ideal para un sistema experto: personalizado, requiere conocimiento del dominio (RIASEC + O*NET), y debe ser explicable. Cerrar con el flujo de punta a punta.">
+
+  <div class="slide-header">
+    <div class="slide-meta">
+      <span class="slide-badge badge-pres">Presentación</span>
+      <div class="slide-meta-right">
+        <span class="slide-presenter">Angel Zambrano</span>
+        <span class="slide-num">01 / 09</span>
+      </div>
+    </div>
+    <div class="slide-title">¿Qué hace ORIENTAI?</div>
+    <div class="slide-rule"></div>
+  </div>
+
+  <div class="slide-body" style="gap:1.2rem;">
+    <div style="border:2px solid var(--ink);border-radius:12px;background:var(--blue);
+                padding:1rem 2rem;text-align:center;flex-shrink:0;box-shadow:var(--sh);">
+      <div style="font-family:'Archivo Black',sans-serif;font-size:1.8rem;color:#fff;line-height:1.2;">
+        "¿Qué carrera universitaria debería estudiar?"
+      </div>
+    </div>
+
+    <div class="g3" style="flex-shrink:0;">
+      <div class="card blue" style="text-align:center;padding:1.4rem 1rem;">
+        <div style="font-size:2.8rem;line-height:1;">🎯</div>
+        <div style="font-family:'Archivo Black',sans-serif;font-size:1.4rem;margin-top:.5rem;">Personalizado</div>
+      </div>
+      <div class="card amber" style="text-align:center;padding:1.4rem 1rem;">
+        <div style="font-size:2.8rem;line-height:1;">🧠</div>
+        <div style="font-family:'Archivo Black',sans-serif;font-size:1.4rem;margin-top:.5rem;">Conocimiento experto</div>
+      </div>
+      <div class="card sage" style="text-align:center;padding:1.4rem 1rem;">
+        <div style="font-size:2.8rem;line-height:1;">💡</div>
+        <div style="font-family:'Archivo Black',sans-serif;font-size:1.4rem;margin-top:.5rem;">Explicable</div>
+      </div>
+    </div>
+
+    <div class="flow" style="gap:0;flex-shrink:0;">
+      <div class="fbox terra" style="padding:.6rem .7rem;">
+        <div class="ft">Perfil del usuario</div>
+        <div class="fs">3 fases<br>33 preguntas</div>
+      </div>
+      <div class="farr" style="font-size:1.3rem;padding:0 .4rem;">→</div>
+      <div class="fbox blue" style="padding:.6rem .7rem;">
+        <div class="ft">Motor de reglas</div>
+        <div class="fs">Experta<br>forward-chaining</div>
+      </div>
+      <div class="farr" style="font-size:1.3rem;padding:0 .4rem;">+</div>
+      <div class="fbox" style="padding:.6rem .7rem;background:var(--blue-lt);">
+        <div class="ft">Base de conocimiento</div>
+        <div class="fs">90 carreras<br>RIASEC · O*NET</div>
+      </div>
+      <div class="farr" style="font-size:1.3rem;padding:0 .4rem;">→</div>
+      <div class="fbox sage" style="padding:.6rem .7rem;">
+        <div class="ft">Top 5 carreras</div>
+        <div class="fs">certeza · motivos<br>universidades ARG</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ══ S2 · ANATOMÍA DE ORIENTAI ════════════════════════════════════════ -->
+<div class="slide s-normal" id="s2"
+  data-al="Lucía Tomasin"
+  data-notes="ALUMNO 2 — Tres componentes concretos. La base de conocimiento tiene 90 carreras como vectores RIASEC. La elicitación construye los hechos del usuario en 3 fases. El motor Experta con forward-chaining evalúa reglas y produce recomendaciones explicadas.">
+
+  <div class="slide-header">
+    <div class="slide-meta">
+      <span class="slide-badge badge-pres">Presentación</span>
+      <div class="slide-meta-right">
+        <span class="slide-presenter">Lucía Tomasin</span>
+        <span class="slide-num">02 / 09</span>
+      </div>
+    </div>
+    <div class="slide-title">Cómo está construido ORIENTAI</div>
+    <div class="slide-rule"></div>
+  </div>
+
+  <div class="slide-body" style="gap:1rem;">
+    <div class="g3" style="flex:1;align-items:stretch;">
+      <div class="card blue" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:.5rem;padding:1.2rem 1rem;">
+        <div class="lbl" style="color:var(--blue);">Componente 1</div>
+        <div style="font-size:3rem;line-height:1;">📚</div>
+        <div style="font-family:'Archivo Black',sans-serif;font-size:1.3rem;line-height:1.2;">Base de conocimiento</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.95rem;
+                    background:var(--blue-lt);border-radius:6px;padding:.5rem .8rem;
+                    margin-top:auto;line-height:1.7;text-align:left;width:100%;">
+          Carrera(id, nombre, code,<br>dominios, etiquetas)
+        </div>
+      </div>
+      <div class="card terra" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:.5rem;padding:1.2rem 1rem;">
+        <div class="lbl" style="color:var(--terra);">Componente 2</div>
+        <div style="font-size:3rem;line-height:1;">📝</div>
+        <div style="font-family:'Archivo Black',sans-serif;font-size:1.3rem;line-height:1.2;">Elicitación del perfil</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.95rem;
+                    background:var(--terra-lt);border-radius:6px;padding:.5rem .8rem;
+                    margin-top:auto;line-height:1.7;text-align:left;width:100%;">
+          Usuario(dominio, altos,<br>perfil) · Boost
+        </div>
+      </div>
+      <div class="card sage" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:.5rem;padding:1.2rem 1rem;">
+        <div class="lbl" style="color:var(--sage);">Componente 3</div>
+        <div style="font-size:3rem;line-height:1;">⚙️</div>
+        <div style="font-family:'Archivo Black',sans-serif;font-size:1.3rem;line-height:1.2;">Motor de inferencia</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.95rem;
+                    background:var(--sage-lt);border-radius:6px;padding:.5rem .8rem;
+                    margin-top:auto;line-height:1.7;text-align:left;width:100%;">
+          Reco(id, certeza,<br>boost, motivos)
+        </div>
+      </div>
+    </div>
+
+    <div class="flow" style="gap:0;flex-shrink:0;">
+      <div class="fbox terra" style="padding:.5rem .6rem;">
+        <div class="ft">Fases 1–3</div>
+        <div class="fs">cargan los<br>hechos</div>
+      </div>
+      <div class="farr" style="font-size:1.2rem;padding:0 .3rem;">→</div>
+      <div class="fbox sage" style="padding:.5rem .6rem;">
+        <div class="ft">Motor Experta</div>
+        <div class="fs">dispara reglas<br>sobre hechos</div>
+      </div>
+      <div class="farr" style="font-size:1.2rem;padding:0 .3rem;">+</div>
+      <div class="fbox blue" style="padding:.5rem .6rem;">
+        <div class="ft">Base de conocimiento</div>
+        <div class="fs">90 carreras<br>RIASEC</div>
+      </div>
+      <div class="farr" style="font-size:1.2rem;padding:0 .3rem;">→</div>
+      <div class="fbox" style="padding:.5rem .6rem;background:var(--ink);">
+        <div class="ft" style="color:#fff;">Top 5 Recos</div>
+        <div class="fs" style="color:#ccc;">con motivos<br>explicados</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ══ S3 · BASE DE CONOCIMIENTO ══════════════════════════════════════ -->
+<div class="slide s-normal" id="s3bc"
+  data-al="Lucía Tomasin"
+  data-notes="ALUMNO 2 — La base de conocimiento tiene dos partes. RIASEC: modelo de John Holland, 6 tipos de interés vocacional. O*NET publica puntajes para miles de ocupaciones, normalizados de escala 1-7 a 1-5. 90 CARRERAS: organizadas en 6 dominios; al elegir dominio en Fase 1, el espacio se reduce de 90 a ~15 carreras. Cada carrera tiene un código Holland de 3 letras que el motor compara con el perfil del usuario.">
+
+  <div class="slide-header">
+    <div class="slide-meta">
+      <span class="slide-badge badge-v1">Base de conocimiento</span>
+      <div class="slide-meta-right">
+        <span class="slide-presenter">Lucía Tomasin</span>
+        <span class="slide-num">03 / 09</span>
+      </div>
+    </div>
+    <div class="slide-title">La base de conocimiento</div>
+    <div class="slide-rule"></div>
+  </div>
+
+  <div class="slide-body g2" style="align-items:stretch;gap:1.4rem;">
+    <div style="display:flex;flex-direction:column;gap:.7rem;">
+      <div class="lbl">Modelo RIASEC · O*NET · escala 1–5</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;flex:1;">
+        <div class="hex" style="background:var(--terra-lt);">
+          <div class="hl">R</div><div class="hd">Realista</div>
+          <div class="hx">Técnico · físico · manual</div>
+        </div>
+        <div class="hex" style="background:var(--blue-lt);">
+          <div class="hl">I</div><div class="hd">Investigador</div>
+          <div class="hx">Análisis · ciencia · abstracción</div>
+        </div>
+        <div class="hex" style="background:var(--amber-lt);">
+          <div class="hl">A</div><div class="hd">Artístico</div>
+          <div class="hx">Creatividad · expresión</div>
+        </div>
+        <div class="hex" style="background:var(--sage-lt);">
+          <div class="hl">S</div><div class="hd">Social</div>
+          <div class="hx">Ayudar · enseñar · vincular</div>
+        </div>
+        <div class="hex" style="background:var(--card);">
+          <div class="hl">E</div><div class="hd">Emprendedor</div>
+          <div class="hx">Liderar · persuadir · vender</div>
+        </div>
+        <div class="hex" style="background:var(--card);">
+          <div class="hl">C</div><div class="hd">Convencional</div>
+          <div class="hx">Orden · datos · normas</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:.5rem;">
+      <div style="display:flex;gap:1.8rem;align-items:center;flex-shrink:0;">
+        <div class="stat" style="padding:.2rem;">
+          <div class="sn" style="font-size:2.2rem;color:var(--blue);">90</div>
+          <div class="sl">carreras totales</div>
+        </div>
+        <div class="stat" style="padding:.2rem;">
+          <div class="sn" style="font-size:2.2rem;color:var(--sage);">~15</div>
+          <div class="sl">tras elegir dominio</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;flex:1;">
+        <div class="card terra" style="padding:.45rem .7rem;">
+          <div style="font-weight:800;font-size:.95rem;">💻 Tecnología</div>
+          <div style="font-size:.82rem;color:#555;margin-top:.05rem;">Sistemas · Datos · UX</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:700;color:var(--terra);margin-top:.2rem;">I-C-E</div>
+        </div>
+        <div class="card blue" style="padding:.45rem .7rem;">
+          <div style="font-weight:800;font-size:.95rem;">🔬 Ciencias Naturales</div>
+          <div style="font-size:.82rem;color:#555;margin-top:.05rem;">Biología · Química · Física</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:700;color:var(--blue);margin-top:.2rem;">I-R-C</div>
+        </div>
+        <div class="card sage" style="padding:.45rem .7rem;">
+          <div style="font-weight:800;font-size:.95rem;">🏥 Salud</div>
+          <div style="font-size:.82rem;color:#555;margin-top:.05rem;">Medicina · Enfermería</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:700;color:var(--sage);margin-top:.2rem;">I-R-S</div>
+        </div>
+        <div class="card amber" style="padding:.45rem .7rem;">
+          <div style="font-weight:800;font-size:.95rem;">🎨 Arte & Comunicación</div>
+          <div style="font-size:.82rem;color:#555;margin-top:.05rem;">Diseño · Periodismo</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:700;color:var(--amber);margin-top:.2rem;">A-E-S</div>
+        </div>
+        <div class="card" style="padding:.45rem .7rem;">
+          <div style="font-weight:800;font-size:.95rem;">📊 Negocios</div>
+          <div style="font-size:.82rem;color:#555;margin-top:.05rem;">Administración · Marketing</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:700;color:#888;margin-top:.2rem;">E-C-S</div>
+        </div>
+        <div class="card" style="padding:.45rem .7rem;">
+          <div style="font-weight:800;font-size:.95rem;">📚 Humanidades</div>
+          <div style="font-size:.82rem;color:#555;margin-top:.05rem;">Psicología · Derecho</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:700;color:#888;margin-top:.2rem;">S-A-I</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ══ S3 · ARQUITECTURA EN 3 FASES ═══════════════════════════════════ -->
+<div class="slide s-normal" id="s3"
+  data-al="Ariel Abal"
+  data-notes="ALUMNO 3 — Flujo completo de punta a punta. FASE 1: 18 preguntas Likert detectan el dominio. FASE 2: 10 tríadas construyen el vector RIASEC. FASE 3: 5 preguntas bipolares sobre valores. Al final, Top 5 carreras con universidades argentinas. El sistema asesora, no decide.">
+
+  <div class="slide-header">
+    <div class="slide-meta">
+      <span class="slide-badge badge-evol">Cómo funciona</span>
+      <div class="slide-meta-right">
+        <span class="slide-presenter">Ariel Abal</span>
+        <span class="slide-num">04 / 09</span>
+      </div>
+    </div>
+    <div class="slide-title">La arquitectura en tres fases</div>
+    <div class="slide-rule"></div>
+  </div>
+
+  <div class="slide-body" style="gap:.8rem;">
+    <div class="flow" style="flex-shrink:0;gap:0;">
+      <div class="fbox terra" style="padding:.7rem .5rem;">
+        <div class="ft">Fase 1</div>
+        <div class="fs">18 preguntas<br>→ dominio</div>
+      </div>
+      <div class="farr" style="font-size:1.2rem;">→</div>
+      <div class="fbox" style="padding:.7rem .5rem;background:var(--ink);border-color:var(--ink);">
+        <div class="ft" style="color:#fff;">👤 Vos elegís</div>
+        <div class="fs" style="color:#ccc;">dominio<br>+ duración</div>
+      </div>
+      <div class="farr" style="font-size:1.2rem;">→</div>
+      <div class="fbox amber" style="padding:.7rem .5rem;">
+        <div class="ft">Fase 2</div>
+        <div class="fs">10 tríadas<br>→ vector RIASEC</div>
+      </div>
+      <div class="farr" style="font-size:1.2rem;">→</div>
+      <div class="fbox" style="padding:.7rem .5rem;">
+        <div class="ft">Perfil</div>
+        <div class="fs">radar RIASEC<br>+ sub-perfil</div>
+      </div>
+      <div class="farr" style="font-size:1.2rem;">→</div>
+      <div class="fbox blue" style="padding:.7rem .5rem;">
+        <div class="ft">Fase 3</div>
+        <div class="fs">5 preguntas<br>→ valores</div>
+      </div>
+      <div class="farr" style="font-size:1.2rem;">→</div>
+      <div class="fbox sage" style="padding:.7rem .5rem;">
+        <div class="ft">Resultado</div>
+        <div class="fs">Top 5<br>+ universidades</div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:.8rem;flex-shrink:0;
+                border:2px solid var(--ink);border-radius:10px;background:var(--sage-lt);
+                padding:.55rem 1.2rem;box-shadow:3px 3px 0 var(--ink);">
+      <span style="font-size:1.4rem;">🧭</span>
+      <p style="font-size:1.05rem;line-height:1.4;color:var(--ink);margin:0;">
+        El sistema <strong>rankea y propone</strong> — la decisión final es del usuario.
+        <strong>Asesora, no reemplaza.</strong>
+      </p>
+    </div>
+
+    <div class="g3" style="flex-shrink:0;">
+      <div class="card terra" style="text-align:center;padding:1.1rem 1rem;">
+        <div style="font-family:'Archivo Black',sans-serif;font-size:4.5rem;line-height:1;color:var(--terra);">18</div>
+        <div style="font-weight:800;font-size:1.1rem;margin-top:.35rem;">preguntas Likert</div>
+        <div style="font-size:.9rem;color:#666;margin-top:.1rem;">→ detección de dominio</div>
+      </div>
+      <div class="card amber" style="text-align:center;padding:1.1rem 1rem;">
+        <div style="font-family:'Archivo Black',sans-serif;font-size:4.5rem;line-height:1;color:var(--amber);">10</div>
+        <div style="font-weight:800;font-size:1.1rem;margin-top:.35rem;">tríadas 1 de 3</div>
+        <div style="font-size:.9rem;color:#666;margin-top:.1rem;">→ vector RIASEC</div>
+      </div>
+      <div class="card blue" style="text-align:center;padding:1.1rem 1rem;">
+        <div style="font-family:'Archivo Black',sans-serif;font-size:4.5rem;line-height:1;color:var(--blue);">5</div>
+        <div style="font-weight:800;font-size:1.1rem;margin-top:.35rem;">preguntas bipolares</div>
+        <div style="font-size:.9rem;color:#666;margin-top:.1rem;">→ valores laborales</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ══ S4 · FASE 1: DETECCIÓN DEL DOMINIO ════════════════════════════════════════ -->
+<div class="slide s-normal" id="s4"
+  data-al="Ariel Abal"
+  data-notes="ALUMNO 3 — Fase 1: 18 preguntas Likert (3 por dominio). El usuario evalúa actividades en escala 1-5. El sistema promedia por dominio y presenta los 6 ordenados. El usuario elige uno y la duración preferida. Esto reduce el espacio de 90 a ~15 carreras.">
+
+  <div class="slide-header">
+    <div class="slide-meta">
+      <span class="slide-badge badge-evol">Cómo funciona</span>
+      <div class="slide-meta-right">
+        <span class="slide-presenter">Ariel Abal</span>
+        <span class="slide-num">05 / 09</span>
+      </div>
+    </div>
+    <div class="slide-title">Fase 1: Detección del dominio</div>
+    <div class="slide-rule"></div>
+  </div>
+
+  <div class="slide-body" style="gap:1rem;">
+    <div class="g2" style="flex-shrink:0;align-items:stretch;gap:1.2rem;">
+      <div style="display:flex;flex-direction:column;gap:.8rem;justify-content:center;height:100%;">
+        <div class="card blue" style="text-align:center;padding:.7rem 1rem;">
+          <div style="font-family:'Archivo Black',sans-serif;font-size:2.6rem;line-height:1;color:var(--blue);">18</div>
+          <div style="font-weight:800;font-size:1rem;margin-top:.2rem;">preguntas · 6 dominios · 3 c/u</div>
+        </div>
+        <div class="card" style="padding:.9rem 1.1rem;">
+          <div class="lbl" style="color:var(--blue);margin-bottom:.4rem;">Ejemplo de pregunta</div>
+          <p style="font-size:1.05rem;line-height:1.45;font-style:italic;color:#333;margin:0;">
+            "Escribir código para crear una aplicación o resolver un problema lógico"
+          </p>
+          <div style="display:flex;gap:.4rem;margin-top:.65rem;flex-wrap:wrap;">
+            <span class="pill" style="font-size:.92rem;padding:5px 13px;">1 Nada</span>
+            <span class="pill" style="font-size:.92rem;padding:5px 13px;">2 Poco</span>
+            <span class="pill" style="font-size:.92rem;padding:5px 13px;background:var(--blue-lt);">3 Neutro</span>
+            <span class="pill" style="font-size:.92rem;padding:5px 13px;">4 Bastante</span>
+            <span class="pill" style="font-size:.92rem;padding:5px 13px;">5 Mucho</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:.4rem;justify-content:center;">
+        <div class="lbl">Ranking de dominios</div>
+        <div class="dom-bar rec">
+          <span class="dn">💻 Tecnología & Sistemas</span>
+          <span class="dv">4.6/5 ⭐</span>
+        </div>
+        <div class="dom-bar">
+          <span class="dn">🔬 Ciencias Naturales</span>
+          <span class="dv">3.8/5</span>
+        </div>
+        <div class="dom-bar">
+          <span class="dn">🏥 Salud & Cuidado</span>
+          <span class="dv">3.2/5</span>
+        </div>
+        <div class="dom-bar">
+          <span class="dn">🎨 Arte & Comunicación</span>
+          <span class="dv">2.9/5</span>
+        </div>
+        <div class="dom-bar">
+          <span class="dn">📊 Negocios & Gestión</span>
+          <span class="dv">2.5/5</span>
+        </div>
+        <div class="dom-bar">
+          <span class="dn">📚 Humanidades & Educación</span>
+          <span class="dv">2.1/5</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:.7rem;border:2px solid var(--ink);border-radius:8px;
+                    background:var(--sage-lt);padding:.45rem .9rem;box-shadow:3px 3px 0 var(--ink);margin-top:.3rem;">
+          <span style="font-size:1.2rem;">🎯</span>
+          <span style="font-size:.92rem;font-weight:700;">Elegís dominio + duración → 90 carreras → ~15</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ══ S5 · FASE 2: LAS TRÍADAS ══════════════════════════════════════ -->
+<div class="slide s-normal" id="s5"
+  data-al="Ariel Abal"
+  data-notes="ALUMNO 3 — Fase 2: 10 comparaciones forzadas (tríadas) construyen el vector RIASEC. En Likert el usuario puede dar 5/5 a todo sin revelar prioridades. La tríada obliga a elegir 1 de 3, revelando preferencias relativas. Fórmula: score = 1 + (victorias/apariciones) × 4. El resultado es el perfil RIASEC del usuario.">
+
+  <div class="slide-header">
+    <div class="slide-meta">
+      <span class="slide-badge badge-evol">Cómo funciona</span>
+      <div class="slide-meta-right">
+        <span class="slide-presenter">Claudio Fredes</span>
+        <span class="slide-num">06 / 09</span>
+      </div>
+    </div>
+    <div class="slide-title">Fase 2: las tríadas</div>
+    <div class="slide-rule"></div>
+  </div>
+
+  <div class="slide-body" style="gap:1rem;">
+    <div class="g2" style="flex-shrink:0;align-items:stretch;gap:1.2rem;">
+      <div style="display:flex;flex-direction:column;gap:.8rem;justify-content:center;height:100%;">
+        <div class="card amber" style="text-align:center;padding:.7rem 1rem;">
+          <div style="font-family:'Archivo Black',sans-serif;font-size:2.6rem;line-height:1;color:var(--amber);">10</div>
+          <div style="font-weight:800;font-size:1rem;margin-top:.2rem;">comparaciones · elegís 1 de 3</div>
+        </div>
+        <div class="card" style="padding:.9rem 1.1rem;">
+          <div class="lbl" style="color:var(--amber);margin-bottom:.4rem;">Ejemplo de tríada</div>
+          <p style="font-size:.95rem;color:#444;line-height:1.3;font-style:italic;margin-bottom:.5rem;">"¿Qué actividad preferirías?"</p>
+          <div style="display:flex;flex-direction:column;gap:.35rem;">
+            <div style="border:2px solid var(--ink);border-radius:8px;padding:.45rem .9rem;
+                        background:var(--sage-lt);box-shadow:3px 3px 0 var(--ink);">
+              <div style="font-weight:800;font-size:.95rem;">✓ Desarrollar algoritmos de IA</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:.75rem;color:#555;margin-top:.1rem;">dimensión I — elegida → victorias[I]++</div>
+            </div>
+            <div style="border:2px solid rgba(26,26,26,.18);border-radius:8px;padding:.45rem .9rem;background:var(--card);">
+              <div style="font-weight:600;font-size:.9rem;color:#888;">Diseñar interfaces de usuario</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:.75rem;color:#bbb;">dimensión A</div>
+            </div>
+            <div style="border:2px solid rgba(26,26,26,.18);border-radius:8px;padding:.45rem .9rem;background:var(--card);">
+              <div style="font-weight:600;font-size:.9rem;color:#888;">Administrar servidores en red</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:.75rem;color:#bbb;">dimensión R</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:.4rem;justify-content:center;">
+        <div class="lbl">Perfil RIASEC resultante</div>
+        <div class="dom-bar rec" style="background:var(--blue-lt);">
+          <span class="dn"><strong>I</strong> · Investigador</span>
+          <span class="dv">4.5/5</span>
+        </div>
+        <div class="dom-bar">
+          <span class="dn"><strong>C</strong> · Convencional</span>
+          <span class="dv">3.3/5</span>
+        </div>
+        <div class="dom-bar">
+          <span class="dn"><strong>R</strong> · Realista</span>
+          <span class="dv">2.8/5</span>
+        </div>
+        <div class="dom-bar">
+          <span class="dn"><strong>S</strong> · Social</span>
+          <span class="dv">2.3/5</span>
+        </div>
+        <div class="dom-bar">
+          <span class="dn"><strong>E</strong> · Emprendedor</span>
+          <span class="dv">2.1/5</span>
+        </div>
+        <div class="dom-bar">
+          <span class="dn"><strong>A</strong> · Artístico</span>
+          <span class="dv">1.8/5</span>
+        </div>
+        <div class="card amber" style="padding:.5rem .9rem;margin-top:.3rem;">
+          <p style="font-size:.92rem;margin:0;"><strong>Más victorias = interés más alto.</strong> Cuántas veces elegiste cada dimensión en las 10 comparaciones.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ══ S6 · FASE 3: VALORES LABORALES ════════════════════════════════════════ -->
+<div class="slide s-normal" id="s6"
+  data-al="Ariel Abal"
+  data-notes="ALUMNO 3 — Fase 3: tras detectar el sub-perfil (pathway) por la dimensión dominante del RIASEC, el sistema presenta 5 preguntas bipolares. Cada pregunta tiene dos polos opuestos (escala 1-5). Según la respuesta, se aplican boosts a carreras específicas. La fórmula es factor = (respuesta - 3) / 2, que da [-1, +1]. Esto genera hechos Boost(carrera, valor) que el motor aplica en R3.">
+
+  <div class="slide-header">
+    <div class="slide-meta">
+      <span class="slide-badge badge-evol">Cómo funciona</span>
+      <div class="slide-meta-right">
+        <span class="slide-presenter">Claudio Fredes</span>
+        <span class="slide-num">07 / 09</span>
+      </div>
+    </div>
+    <div class="slide-title">Fase 3: Valores laborales</div>
+    <div class="slide-rule"></div>
+  </div>
+
+  <div class="slide-body" style="gap:1rem;">
+    <div class="g2" style="flex-shrink:0;align-items:stretch;gap:1.2rem;">
+      <div style="display:flex;flex-direction:column;gap:.8rem;justify-content:center;height:100%;">
+        <div class="card blue" style="text-align:center;padding:.7rem 1rem;">
+          <div style="font-family:'Archivo Black',sans-serif;font-size:2.6rem;line-height:1;color:var(--blue);">5</div>
+          <div style="font-weight:800;font-size:1rem;margin-top:.2rem;">preguntas bipolares · por pathway</div>
+        </div>
+        <div class="card" style="padding:.9rem 1.1rem;">
+          <div class="lbl" style="color:var(--blue);margin-bottom:.4rem;">Ejemplo · Analítica &amp; Software</div>
+          <div class="bipolar" style="border:none;padding:0;box-shadow:none;background:transparent;">
+            <div class="bq" style="font-size:1rem;">¿Cómo preferís trabajar?</div>
+            <div class="bp" style="margin:.45rem 0;">
+              <span class="bp-l" style="font-size:.9rem;">Solo, autonomía,<br>tareas técnicas</span>
+              <span class="bp-s" style="font-size:1rem;">← 1 · 2 · 3 · 4 · 5 →</span>
+              <span class="bp-r" style="font-size:.9rem;">En equipo,<br>comunicación constante</span>
+            </div>
+            <div class="bb" style="font-size:.85rem;margin-top:.4rem;">
+              ← refuerza: Ciberseguridad, Programación<br>
+              → refuerza: Tecnologías Digitales, Ing. en Sistemas
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:.55rem;justify-content:center;">
+        <div class="lbl">Resultado</div>
+        <div class="card amber" style="padding:.8rem 1rem;">
+          <h3 style="font-size:1.1rem;">🧭 Detección del pathway</h3>
+          <p style="margin-top:.3rem;font-size:.95rem;line-height:1.5;">Según tu dimensión dominante, el sistema elige un sub-perfil.<br>Ej: perfil <strong>I</strong> en Tecnología → <em>Analítica &amp; Software</em></p>
+        </div>
+        <div class="card" style="padding:.8rem 1rem;">
+          <p style="font-size:.95rem;line-height:1.55;margin:0;">Cada respuesta <strong>refuerza carreras concretas</strong> según el polo elegido. Cuanto más extrema, mayor el ajuste al ranking.</p>
+        </div>
+        <div style="border:2px solid var(--ink);border-radius:8px;background:var(--sage-lt);
+                    box-shadow:3px 3px 0 var(--ink);padding:.6rem 1rem;">
+          <div style="font-weight:800;font-size:1rem;">18 pathways × 5 preguntas = 90 ajustes finos</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ══ S9 · MOTOR DE INFERENCIA ═══════════════════════════════════════ -->
+<div class="slide s-normal" id="s9"
+  data-al="Claudio Fredes"
+  data-notes="ALUMNO 4 — El motor usa encadenamiento hacia adelante: carga hechos y dispara reglas. R1 (Holland): suma puntos por coincidencia de letras (+3 dominante, +2 secundaria, +1 terciaria). R3: aplica boosts de Fase 3. E1-E4: reglas expertas que capturan lo que el matching puro no ve. CASO VALENTINA: tiene I y S altos. Psicología (S-I-A) y Biología (I-S-R) ambas suman certeza 5 — empate exacto. E3 detecta que Biología es I-dominante y que I es el interés #1 de Valentina → +0.5. Ese detalle rompe el empate. Mostrar el radar: los dos polígonos son casi idénticos, pero uno tiene el pico en S y el otro en I.">
+
+  <div class="slide-header">
+    <div class="slide-meta">
+      <span class="slide-badge badge-evol">Cómo funciona</span>
+      <div class="slide-meta-right">
+        <span class="slide-presenter">Jorge Rearte</span>
+        <span class="slide-num">08 / 09</span>
+      </div>
+    </div>
+    <div class="slide-title">El motor de inferencia</div>
+    <div class="slide-rule"></div>
+  </div>
+
+  <div class="slide-body g12" style="align-items:stretch;gap:1.2rem;">
+    <!-- Columna angosta: reglas + comparación -->
+    <div style="display:flex;flex-direction:column;gap:.3rem;justify-content:center;">
+      <div class="card" style="padding:.35rem .8rem;display:flex;gap:.6rem;align-items:center;">
+        <span style="font-family:'JetBrains Mono',monospace;font-weight:800;color:var(--blue);flex-shrink:0;font-size:1rem;">R1</span>
+        <div style="font-size:.88rem;"><strong>Holland</strong> — intereses ↔ código<br>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:.82rem;">dom. <strong style="color:var(--blue);">+3</strong> · sec. <strong style="color:var(--blue);">+2</strong> · ter. <strong style="color:var(--blue);">+1</strong></span></div>
+      </div>
+      <div class="card" style="padding:.35rem .8rem;display:flex;gap:.6rem;align-items:center;">
+        <span style="font-family:'JetBrains Mono',monospace;font-weight:800;color:var(--sage);flex-shrink:0;font-size:1rem;">R3</span>
+        <div style="font-size:.88rem;"><strong>Boost F3</strong> — ajusta por valores</div>
+      </div>
+      <div class="card amber" style="padding:.35rem .8rem;">
+        <div class="lbl" style="color:var(--amber);margin-bottom:.25rem;">Reglas expertas</div>
+        <div style="display:grid;grid-template-columns:auto 1fr auto;gap:.15rem .5rem;align-items:center;">
+          <span style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:.85rem;">E1</span>
+          <span style="font-size:.82rem;">letra dominante no es tu interés</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:.85rem;color:var(--terra);">−0.8</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:.85rem;">E2</span>
+          <span style="font-size:.82rem;">puntuás muy bajo la letra dominante</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:.85rem;color:var(--terra);">−1.2</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:.85rem;">E3</span>
+          <span style="font-size:.82rem;">tu interés #1 = letra dominante</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:.85rem;color:var(--sage);">+0.5</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:.85rem;">E4</span>
+          <span style="font-size:.82rem;">duración coincide con tu preferencia</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:.85rem;color:var(--sage);">+0.4</span>
+        </div>
+      </div>
+      <div style="border:2px solid var(--ink);border-radius:8px;padding:.35rem .8rem;background:var(--terra-lt);">
+        <div style="font-weight:800;font-size:.84rem;">❌ Sin E3 → empate en certeza 5</div>
+        <div style="font-size:.78rem;color:#555;margin-top:.1rem;">R1 puntúa igual a Psicología y Biología</div>
+      </div>
+      <div style="border:2px solid var(--ink);border-radius:8px;padding:.35rem .8rem;background:var(--sage-lt);">
+        <div style="font-weight:800;font-size:.84rem;">✅ Con E3 → Biología sube +0.5</div>
+        <div style="font-size:.78rem;color:#555;margin-top:.1rem;">I es el interés #1 de Valentina y define Biología</div>
+      </div>
+    </div>
+    <!-- Columna ancha: radar centrado -->
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem;">
+      <div class="lbl" style="text-align:center;">Caso Valentina — I y S dominantes</div>
+      <svg id="radar-caso" viewBox="0 0 220 220" style="width:17rem;height:17rem;display:block;flex-shrink:0;"></svg>
+      <div style="display:flex;gap:.8rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:700;">
+        <span style="color:var(--blue);">— Psicología (S-I-A)</span>
+        <span style="color:var(--terra);">— Biología (I-S-R)</span>
+      </div>
+      <p style="font-size:.82rem;color:#555;text-align:center;margin:0;">
+        Ambas tienen certeza 5. E3 detecta que <strong>I</strong> define a Biología
+        y es el interés #1 de Valentina → <strong>+0.5</strong> que rompe el empate.
+      </p>
+    </div>
+  </div>
+</div>
+<!-- ══ S11 · LO QUE RECIBE EL USUARIO ══════════════════════════════════ -->
+<div class="slide s-normal" id="s11"
+  data-al="Jorge Rearte"
+  data-notes="ALUMNO 5 — Esto es lo que ve Martina al terminar. Cada tarjeta muestra: posición, nombre, área, código Holland, duración y certeza. El símbolo ▲ marca que Fase 3 o reglas expertas ajustaron la posición. Al expandir: universidades argentinas donde se puede cursar, y la lista de reglas que la sostienen (el ¿Por qué?). Todo corre localmente en Streamlit: al cerrar la pestaña no queda nada guardado.">
+
+  <div class="slide-header">
+    <div class="slide-meta">
+      <span class="slide-badge badge-res">Resultado</span>
+      <div class="slide-meta-right">
+        <span class="slide-presenter">Florencia Ardanaz</span>
+        <span class="slide-num">09 / 09</span>
+      </div>
+    </div>
+    <div class="slide-title">Lo que recibe el usuario</div>
+    <div class="slide-rule"></div>
+  </div>
+
+  <div class="slide-body g2" style="align-items:stretch;gap:1.2rem;">
+    <div style="display:flex;flex-direction:column;gap:.5rem;justify-content:center;">
+      <div class="card blue" style="padding:.7rem 1rem;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:.88rem;color:#666;">#01</div>
+            <div style="font-weight:800;font-size:1.15rem;">Ciencia de Datos ▲</div>
+            <div style="font-size:.88rem;color:#555;margin-top:.05rem;">Ing. y Tecnología · <strong>ICE</strong> · 🎓 4-6 años</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#666;margin-top:.1rem;">boost +0.9 (F3 + E3 + E4)</div>
+          </div>
+          <div class="score-badge">
+            <div class="sv">5</div>
+            <div class="sl">certeza</div>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="padding:.7rem 1rem;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:.88rem;color:#666;">#02</div>
+            <div style="font-weight:800;font-size:1.15rem;">Ingeniería en Sistemas</div>
+            <div style="font-size:.88rem;color:#555;margin-top:.05rem;">Ing. y Tecnología · <strong>ICR</strong> · 🎓 4-6 años</div>
+          </div>
+          <div class="score-badge">
+            <div class="sv" style="color:#888;">5</div>
+            <div class="sl">certeza</div>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="padding:.7rem 1rem;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:.88rem;color:#666;">#03</div>
+            <div style="font-weight:800;font-size:1.15rem;">Lic. en Computación</div>
+            <div style="font-size:.88rem;color:#555;margin-top:.05rem;">Cs. Exactas · <strong>ICA</strong> · 🎓 4-6 años</div>
+          </div>
+          <div class="score-badge">
+            <div class="sv" style="color:#888;">3</div>
+            <div class="sl">certeza</div>
+          </div>
+        </div>
+      </div>
+      <div class="card sage" style="padding:.5rem 1rem;box-shadow:none;">
+        <p style="font-size:.95rem;"><strong>▲</strong> = Fase 3 y reglas expertas ajustaron la posición</p>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:.6rem;justify-content:center;">
+      <div class="lbl">Al expandir cada tarjeta</div>
+      <div class="card">
+        <h3>🏛 Dónde estudiarla</h3>
+        <div style="font-size:.95rem;display:flex;flex-direction:column;gap:.15rem;margin-top:.25rem;">
+          <div style="display:flex;justify-content:space-between;"><span><strong>UBA – FCEyN</strong></span><span style="color:#777;">Buenos Aires</span></div>
+          <div style="display:flex;justify-content:space-between;"><span><strong>ITBA</strong></span><span style="color:#777;">Buenos Aires</span></div>
+          <div style="display:flex;justify-content:space-between;"><span><strong>UNLP</strong></span><span style="color:#777;">La Plata</span></div>
+        </div>
+      </div>
+      <div class="card blue">
+        <h3>🧠 ¿Por qué?</h3>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.6;margin-top:.2rem;">
+          ✓ R1: I coincide con letra dominante (+3)<br>
+          ✓ R1: C coincide con letra secundaria (+2)<br>
+          ★ E3: interés #1 = letra dominante (+0.5)<br>
+          ★ E4: duración preferida coincide (+0.4)
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div><!-- /deck -->
+
+<div id="nav">
+  <button class="nb" onclick="go(-1)">←</button>
+  <span id="cnt">1 / 1</span>
+  <button class="nb" onclick="go(1)">→</button>
+</div>
+
+<script>
+const slides = Array.from(document.querySelectorAll('.slide'));
+const cnt    = document.getElementById('cnt');
+const prog   = document.getElementById('prog');
+let cur = 0;
+
+slides.forEach(() => {
+  const s = document.createElement('div'); s.className = 'ps'; prog.appendChild(s);
+});
+
+function show(n) {
+  slides[cur].classList.remove('active');
+  cur = Math.max(0, Math.min(slides.length - 1, n));
+  slides[cur].classList.add('active');
+  cnt.textContent = `${cur} / ${slides.length - 1}`;
+  document.querySelectorAll('.ps').forEach((s, i) => {
+    s.className = 'ps' + (i < cur ? ' done' : i === cur ? ' active' : '');
+  });
+}
+
+function go(d) { show(cur + d); }
+
+document.addEventListener('keydown', e => {
+  if (['ArrowRight','ArrowDown',' '].includes(e.key)) { go(1); e.preventDefault(); }
+  if (['ArrowLeft','ArrowUp'].includes(e.key))        { go(-1); e.preventDefault(); }
+  if (e.key === 'Home') { show(0); e.preventDefault(); }
+  if (e.key === 'End')  { show(slides.length - 1); e.preventDefault(); }
+});
+
+show(0);
+
+/* ── RADARES ─────────────────────────────────── */
+(function() {
+  const NS = 'http://www.w3.org/2000/svg';
+
+  function drawRadar(svgId, vals1, hex1, vals2, hex2) {
+    const svg = document.getElementById(svgId);
+    if (!svg) return;
+    const cx = 110, cy = 110, maxR = 82;
+    const dims = ['R','I','A','S','E','C'];
+    const angles = dims.map((_, i) => (90 - i * 60) * Math.PI / 180);
+
+    function hexRgba(h, a) {
+      const r = parseInt(h.slice(1,3),16), g = parseInt(h.slice(3,5),16), b = parseInt(h.slice(5,7),16);
+      return `rgba(${r},${g},${b},${a})`;
+    }
+    function pt(val, i) {
+      const r = ((val - 1) / 4) * maxR;
+      return [cx + r * Math.cos(angles[i]), cy - r * Math.sin(angles[i])];
+    }
+    function polyPts(vals) { return vals.map((v,i) => pt(v,i).join(',')).join(' '); }
+
+    // grid rings
+    for (let l = 1; l <= 4; l++) {
+      const r = (l / 4) * maxR;
+      const pts = dims.map((_,i) => `${cx+r*Math.cos(angles[i])},${cy-r*Math.sin(angles[i])}`).join(' ');
+      const el = document.createElementNS(NS,'polygon');
+      el.setAttribute('points', pts);
+      el.setAttribute('fill','none');
+      el.setAttribute('stroke','rgba(26,26,26,.1)');
+      el.setAttribute('stroke-width','1');
+      svg.appendChild(el);
+    }
+    // axes
+    dims.forEach((_,i) => {
+      const el = document.createElementNS(NS,'line');
+      el.setAttribute('x1',cx); el.setAttribute('y1',cy);
+      el.setAttribute('x2', cx+maxR*Math.cos(angles[i]));
+      el.setAttribute('y2', cy-maxR*Math.sin(angles[i]));
+      el.setAttribute('stroke','rgba(26,26,26,.12)');
+      el.setAttribute('stroke-width','1');
+      svg.appendChild(el);
+    });
+    // polygons
+    [[vals2, hex2, .35],[vals1, hex1, .5]].forEach(([vals, hex, a]) => {
+      const el = document.createElementNS(NS,'polygon');
+      el.setAttribute('points', polyPts(vals));
+      el.setAttribute('fill', hexRgba(hex, a));
+      el.setAttribute('stroke', hex);
+      el.setAttribute('stroke-width','2.5');
+      svg.appendChild(el);
+    });
+    // dim labels
+    dims.forEach((d,i) => {
+      const r = maxR + 13;
+      const el = document.createElementNS(NS,'text');
+      el.setAttribute('x', cx+r*Math.cos(angles[i]));
+      el.setAttribute('y', cy-r*Math.sin(angles[i]));
+      el.setAttribute('text-anchor','middle');
+      el.setAttribute('dominant-baseline','middle');
+      el.setAttribute('font-size','10');
+      el.setAttribute('font-weight','700');
+      el.setAttribute('font-family','JetBrains Mono, monospace');
+      el.setAttribute('fill','#555');
+      el.textContent = d;
+      svg.appendChild(el);
+    });
+  }
+
+  // Caso Valentina: Psicología (S-I-A) vs Biología (I-S-R)
+  // orden: R, I, A, S, E, C
+  // Psicología: S dominante, I secundaria → S:4.5 I:3.8 A:3.0 ...
+  const psicologia = [2.0, 3.8, 3.0, 4.5, 2.5, 2.2];
+  // Biología: I dominante, S secundaria → I:4.5 S:3.5 R:3.2 ...
+  const biologia   = [3.2, 4.5, 1.5, 3.5, 1.5, 2.5];
+  drawRadar('radar-caso', psicologia, '#2c3e7a', biologia, '#c0392b');
+
+})();
+</script>
+</body>
+</html>
